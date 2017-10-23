@@ -1,0 +1,26 @@
+{
+	"totalSize": 1,
+	"done": true,
+	"records": [{
+		"attributes": {
+			"type": "Vehicle__c",
+			"url": "/services/data/v39.0/sobjects/Vehicle__c/a059E000003UIBEQA4"
+		},
+		"Id": "a059E000003UIBEQA4",
+		"VehicleType__c": "a049E00000313NjQAI",
+		"Warehouse__r": {
+			"attributes": {
+				"type": "Depot__c",
+				"url": "/services/data/v39.0/sobjects/Depot__c/a039E000004RTjeQAG"
+			},
+			"Contact__r": {
+				"attributes": {
+					"type": "Contact",
+					"url": "/services/data/v39.0/sobjects/Contact/0039E00000M63EwQAJ"
+				},
+				"MailingLatitude": 37.794644,
+				"MailingLongitude": -122.399644
+			}
+		}
+	}]
+}

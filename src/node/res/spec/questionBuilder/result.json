@@ -1,0 +1,156 @@
+{
+	"id": "",
+	"vehicles": [{
+		"id": "a059E000003UIBEQA4",
+		"typeId": "a049E00000313NjQAI",
+		"location": {
+			"lat": 37.794644,
+			"lng": -122.399644
+		}
+	}],
+	"vehicleTypes": [{
+		"id": "a049E00000313NjQAI",
+		"capacity": 80,
+		"costs": {
+			"fixed": 0,
+			"distance": 1,
+			"time": 0
+		}
+	}],
+	"deliveries": [{
+			"id": "a029E000005K26mQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.800609,
+				"lng": -122.455842
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26nQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.804728,
+				"lng": -122.411565
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26oQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.790655,
+				"lng": -122.44535
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26pQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.7931,
+				"lng": -122.4207
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26qQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.775379,
+				"lng": -122.421829
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26rQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.763465,
+				"lng": -122.476432
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26sQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.763773,
+				"lng": -122.45053
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26tQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.763618,
+				"lng": -122.429688
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26uQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.743463,
+				"lng": -122.464591
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26vQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.745775,
+				"lng": -122.450046
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26wQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.750689,
+				"lng": -122.409691
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26xQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.713285,
+				"lng": -122.475599
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26yQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.710356,
+				"lng": -122.44773
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K26zQAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.710292,
+				"lng": -122.434409
+			},
+			"capacity": 1
+		},
+		{
+			"id": "a029E000005K270QAC",
+			"type": "Delivery",
+			"location": {
+				"lat": 37.73278,
+				"lng": -122.411698
+			},
+			"capacity": 1
+		}
+	]
+}

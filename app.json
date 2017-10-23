@@ -1,0 +1,32 @@
+{
+	"name": "orizuru",
+	"description": "Dreamforce Sample App to demonstrate the Orizuru framework",
+	"formation": {
+		"web": {
+			"quantity": 1,
+			"size": "standard-1x"
+		},
+		"questionBuilder": {
+			"quantity": 1,
+			"size": "standard-1x"
+		},
+		"routeSolver": {
+			"quantity": 1,
+			"size": "standard-1x"
+		},
+		"resultWriter": {
+			"quantity": 1,
+			"size": "standard-1x"
+		},
+		"dataCreator": {
+			"quantity": 1,
+			"size": "standard-1x"
+		}
+	},
+	"addons": [
+		"cloudamqp"
+	],
+	"buildpacks": [{
+		"url": "heroku/nodejs"
+	}]
+}

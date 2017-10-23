@@ -1,0 +1,4119 @@
+{
+	"records": [{
+		"FirstName": "Mission High School",
+		"LastName": "Mission High School",
+		"MailingLatitude": 37.76171660000001,
+		"MailingLongitude": -122.4273151,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Grattan Elementary School",
+		"LastName": "Grattan Elementary School",
+		"MailingLatitude": 37.7637948,
+		"MailingLongitude": -122.4505091,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lawton Elementary School",
+		"LastName": "Lawton Elementary School",
+		"MailingLatitude": 37.7576672,
+		"MailingLongitude": -122.4892675,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Daniel Webster Elementary School",
+		"LastName": "Daniel Webster Elementary School",
+		"MailingLatitude": 37.7605811,
+		"MailingLongitude": -122.3958437,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Independence High School",
+		"LastName": "Independence High School",
+		"MailingLatitude": 37.7632393,
+		"MailingLongitude": -122.4637979,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "French American International School:Ea",
+		"LastName": "French American International School:Ea",
+		"MailingLatitude": 37.7717079,
+		"MailingLongitude": -122.4397095,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Hamlin School",
+		"LastName": "The Hamlin School",
+		"MailingLatitude": 37.7948921,
+		"MailingLongitude": -122.4324259,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Claire Lilienthal Elementary School - S",
+		"LastName": "Claire Lilienthal Elementary School - S",
+		"MailingLatitude": 37.80338640000001,
+		"MailingLongitude": -122.4434063,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Francisco Middle School",
+		"LastName": "Francisco Middle School",
+		"MailingLatitude": 37.8045973,
+		"MailingLongitude": -122.4115531,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marin Preparatory School",
+		"LastName": "Marin Preparatory School",
+		"MailingLatitude": 37.7602185,
+		"MailingLongitude": -122.4368956,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John O'Connell Technical High School",
+		"LastName": "John O'Connell Technical High School",
+		"MailingLatitude": 37.7595222,
+		"MailingLongitude": -122.4140747,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Burlingame High School",
+		"LastName": "Burlingame High School",
+		"MailingLatitude": 37.5822503,
+		"MailingLongitude": -122.3467952,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Jefferson Elementary School",
+		"LastName": "Jefferson Elementary School",
+		"MailingLatitude": 37.7630802,
+		"MailingLongitude": -122.4765995,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Katherine Delmar Burke School",
+		"LastName": "Katherine Delmar Burke School",
+		"MailingLatitude": 37.7843368,
+		"MailingLongitude": -122.4933221,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "James Lick Middle School",
+		"LastName": "James Lick Middle School",
+		"MailingLatitude": 37.749402,
+		"MailingLongitude": -122.4322143,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Linda Mar School",
+		"LastName": "Linda Mar School",
+		"MailingLatitude": 37.5859453,
+		"MailingLongitude": -122.4989392,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Argonne Elementary School",
+		"LastName": "Argonne Elementary School",
+		"MailingLatitude": 37.7753075,
+		"MailingLongitude": -122.4766444,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Francisco Waldorf Grade School",
+		"LastName": "San Francisco Waldorf Grade School",
+		"MailingLatitude": 37.7908706,
+		"MailingLongitude": -122.4419123,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mills High School",
+		"LastName": "Mills High School",
+		"MailingLatitude": 37.5941001,
+		"MailingLongitude": -122.390505,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mission High School",
+		"LastName": "Mission High School",
+		"MailingLatitude": 37.7120519,
+		"MailingLongitude": -122.4349466,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "UCSF School of Dentistry",
+		"LastName": "UCSF School of Dentistry",
+		"MailingLatitude": 37.76304699999999,
+		"MailingLongitude": -122.458465,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "McKinley Elementary School",
+		"LastName": "McKinley Elementary School",
+		"MailingLatitude": 37.5797186,
+		"MailingLongitude": -122.3567963,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Laurel School",
+		"LastName": "The Laurel School",
+		"MailingLatitude": 37.7819205,
+		"MailingLongitude": -122.4667591,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Franklin Elementary School",
+		"LastName": "Franklin Elementary School",
+		"MailingLatitude": 37.58838799999999,
+		"MailingLongitude": -122.3886786,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Woodrow Wilson Elementary School",
+		"LastName": "Woodrow Wilson Elementary School",
+		"MailingLatitude": 37.7039537,
+		"MailingLongitude": -122.4647721,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Vallemar Elementary School",
+		"LastName": "Vallemar Elementary School",
+		"MailingLatitude": 37.6142683,
+		"MailingLongitude": -122.4838731,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John Muir Elementary School",
+		"LastName": "John Muir Elementary School",
+		"MailingLatitude": 37.6139828,
+		"MailingLongitude": -122.4360253,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Francis Scott Key Elementary School",
+		"LastName": "Francis Scott Key Elementary School",
+		"MailingLatitude": 37.7581754,
+		"MailingLongitude": -122.5022217,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lick Wilmerding High School",
+		"LastName": "Lick Wilmerding High School",
+		"MailingLatitude": 37.722267,
+		"MailingLongitude": -122.448946,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Francisco Unified School",
+		"LastName": "San Francisco Unified School",
+		"MailingLatitude": 37.7543105,
+		"MailingLongitude": -122.443891,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "University of the Pacific, Arthur A. Du",
+		"LastName": "University of the Pacific, Arthur A. Du",
+		"MailingLatitude": 37.78236949999999,
+		"MailingLongitude": -122.4052901,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Spring Valley Elementary School",
+		"LastName": "Spring Valley Elementary School",
+		"MailingLatitude": 37.590955,
+		"MailingLongitude": -122.39073,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Taylor Middle School",
+		"LastName": "Taylor Middle School",
+		"MailingLatitude": 37.5978323,
+		"MailingLongitude": -122.4011537,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sunset Elementary School",
+		"LastName": "Sunset Elementary School",
+		"MailingLatitude": 37.7508971,
+		"MailingLongitude": -122.4995634,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "A. P. Giannini Middle School",
+		"LastName": "A. P. Giannini Middle School",
+		"MailingLatitude": 37.7510411,
+		"MailingLongitude": -122.4974065,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Commodore Sloat Elementary School",
+		"LastName": "Commodore Sloat Elementary School",
+		"MailingLatitude": 37.73158939999999,
+		"MailingLongitude": -122.47091,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Charles School",
+		"LastName": "St. Charles School",
+		"MailingLatitude": 37.7621467,
+		"MailingLongitude": -122.4163149,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lakeshore Alternative Elementary School",
+		"LastName": "Lakeshore Alternative Elementary School",
+		"MailingLatitude": 37.73060359999999,
+		"MailingLongitude": -122.4857111,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "UC San Francisco (UCSF) School of Nursi",
+		"LastName": "UC San Francisco (UCSF) School of Nursi",
+		"MailingLatitude": 37.761929,
+		"MailingLongitude": -122.4603509,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. James School",
+		"LastName": "St. James School",
+		"MailingLatitude": 37.75122460000001,
+		"MailingLongitude": -122.4238331,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Dianne Feinstein Elementary School",
+		"LastName": "Dianne Feinstein Elementary School",
+		"MailingLatitude": 37.7396634,
+		"MailingLongitude": -122.4817726,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ulloa Elementary School",
+		"LastName": "Ulloa Elementary School",
+		"MailingLatitude": 37.73718059999999,
+		"MailingLongitude": -122.4997017,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brisbane Elementary School",
+		"LastName": "Brisbane Elementary School",
+		"MailingLatitude": 37.6803857,
+		"MailingLongitude": -122.3994219,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fernando Rivera Middle School",
+		"LastName": "Fernando Rivera Middle School",
+		"MailingLatitude": 37.6767607,
+		"MailingLongitude": -122.4861439,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St John's School",
+		"LastName": "St John's School",
+		"MailingLatitude": 37.7350175,
+		"MailingLongitude": -122.4379151,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Carey School",
+		"LastName": "The Carey School",
+		"MailingLatitude": 37.544701,
+		"MailingLongitude": -122.318754,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lincoln Elementary School",
+		"LastName": "Lincoln Elementary School",
+		"MailingLatitude": 37.5884719,
+		"MailingLongitude": -122.3787794,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John Yehall Chin Elementary School",
+		"LastName": "John Yehall Chin Elementary School",
+		"MailingLatitude": 37.7984631,
+		"MailingLongitude": -122.4030926,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Roosevelt Elementary School",
+		"LastName": "Roosevelt Elementary School",
+		"MailingLatitude": 37.5796191,
+		"MailingLongitude": -122.3697299,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Junipero Serra High School",
+		"LastName": "Junipero Serra High School",
+		"MailingLatitude": 37.54579099999999,
+		"MailingLongitude": -122.317408,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Nursing",
+		"LastName": "School of Nursing",
+		"MailingLatitude": 37.7230122,
+		"MailingLongitude": -122.479354,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Holy Angels School",
+		"LastName": "Holy Angels School",
+		"MailingLatitude": 37.6871763,
+		"MailingLongitude": -122.467,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Francisco Waldorf High School",
+		"LastName": "San Francisco Waldorf High School",
+		"MailingLatitude": 37.7359083,
+		"MailingLongitude": -122.4715653,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ingrid B Lacy School",
+		"LastName": "Ingrid B Lacy School",
+		"MailingLatitude": 37.6380164,
+		"MailingLongitude": -122.4913235,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Balboa High School",
+		"LastName": "Balboa High School",
+		"MailingLatitude": 37.72157959999999,
+		"MailingLongitude": -122.4407711,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "South San Francisco High School",
+		"LastName": "South San Francisco High School",
+		"MailingLatitude": 37.6478152,
+		"MailingLongitude": -122.4261976,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Westmoor High School",
+		"LastName": "Westmoor High School",
+		"MailingLatitude": 37.6840558,
+		"MailingLongitude": -122.4833425,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Terra Nova High School",
+		"LastName": "Terra Nova High School",
+		"MailingLatitude": 37.5946419,
+		"MailingLongitude": -122.4761369,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Thornton High School",
+		"LastName": "Thornton High School",
+		"MailingLatitude": 37.6912898,
+		"MailingLongitude": -122.4640782,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Oceana High School",
+		"LastName": "Oceana High School",
+		"MailingLatitude": 37.6386407,
+		"MailingLongitude": -122.4870567,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Nueva School Bay Meadows Campus",
+		"LastName": "The Nueva School Bay Meadows Campus",
+		"MailingLatitude": 37.5439281,
+		"MailingLongitude": -122.2996261,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Parkside Elementary School",
+		"LastName": "Parkside Elementary School",
+		"MailingLatitude": 37.561438,
+		"MailingLongitude": -122.296622,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cipriani Elementary School",
+		"LastName": "Cipriani Elementary School",
+		"MailingLatitude": 37.5166468,
+		"MailingLongitude": -122.3060488,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Highlands Elementary School",
+		"LastName": "Highlands Elementary School",
+		"MailingLatitude": 37.524102,
+		"MailingLongitude": -122.350545,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "All Souls Catholic School",
+		"LastName": "All Souls Catholic School",
+		"MailingLatitude": 37.6573312,
+		"MailingLongitude": -122.4155915,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Arundel Elementary School",
+		"LastName": "Arundel Elementary School",
+		"MailingLatitude": 37.50418799999999,
+		"MailingLongitude": -122.275141,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Foster City Elementary School",
+		"LastName": "Foster City Elementary School",
+		"MailingLatitude": 37.54611729999999,
+		"MailingLongitude": -122.2735413,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Half Moon Bay High School",
+		"LastName": "Half Moon Bay High School",
+		"MailingLatitude": 37.4729508,
+		"MailingLongitude": -122.4284305,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brewer Island Elementary School",
+		"LastName": "Brewer Island Elementary School",
+		"MailingLatitude": 37.561649,
+		"MailingLongitude": -122.261289,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Central Middle School",
+		"LastName": "Central Middle School",
+		"MailingLatitude": 37.5009534,
+		"MailingLongitude": -122.2617287,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sea Crest School",
+		"LastName": "Sea Crest School",
+		"MailingLatitude": 37.456506,
+		"MailingLongitude": -122.4272865,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "LEAD Elementary School",
+		"LastName": "LEAD Elementary School",
+		"MailingLatitude": 37.56931610000001,
+		"MailingLongitude": -122.3016464,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bowditch Middle School",
+		"LastName": "Bowditch Middle School",
+		"MailingLatitude": 37.55936459999999,
+		"MailingLongitude": -122.2486732,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Aragon High School Main Office",
+		"LastName": "Aragon High School Main Office",
+		"MailingLatitude": 37.5497983,
+		"MailingLongitude": -122.330335,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Daniel Webster Elementary School",
+		"LastName": "Daniel Webster Elementary School",
+		"MailingLatitude": 37.6776864,
+		"MailingLongitude": -122.4777228,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Redwood Shores Elementary School",
+		"LastName": "Redwood Shores Elementary School",
+		"MailingLatitude": 37.54363059999999,
+		"MailingLongitude": -122.2460239,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Design Tech High School",
+		"LastName": "Design Tech High School",
+		"MailingLatitude": 37.53256549999999,
+		"MailingLongitude": -122.2638279,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "North Shoreview Elementary",
+		"LastName": "North Shoreview Elementary",
+		"MailingLatitude": 37.5753737,
+		"MailingLongitude": -122.3162435,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sunnybrae Elementary School",
+		"LastName": "Sunnybrae Elementary School",
+		"MailingLatitude": 37.5617043,
+		"MailingLongitude": -122.3130547,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Woodside Elementary School",
+		"LastName": "Woodside Elementary School",
+		"MailingLatitude": 37.4277608,
+		"MailingLongitude": -122.259141,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Odyssey School",
+		"LastName": "Odyssey School",
+		"MailingLatitude": 37.53422279999999,
+		"MailingLongitude": -122.3493084,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Central Elementary School",
+		"LastName": "Central Elementary School",
+		"MailingLatitude": 37.52401090000001,
+		"MailingLongitude": -122.2822173,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Abbott Middle School",
+		"LastName": "Abbott Middle School",
+		"MailingLatitude": 37.5303635,
+		"MailingLongitude": -122.3092709,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Selby Lane Elementary School",
+		"LastName": "Selby Lane Elementary School",
+		"MailingLatitude": 37.45811499999999,
+		"MailingLongitude": -122.22021,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fiesta Gardens International School",
+		"LastName": "Fiesta Gardens International School",
+		"MailingLatitude": 37.5516995,
+		"MailingLongitude": -122.2983496,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Junipero Serra Elementary School",
+		"LastName": "Junipero Serra Elementary School",
+		"MailingLatitude": 37.660826,
+		"MailingLongitude": -122.4694048,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Buri Buri Elementary School",
+		"LastName": "Buri Buri Elementary School",
+		"MailingLatitude": 37.6567422,
+		"MailingLongitude": -122.4447542,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Allen Elementary School",
+		"LastName": "Allen Elementary School",
+		"MailingLatitude": 37.62445760000001,
+		"MailingLongitude": -122.4158938,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Skyline Elementary School",
+		"LastName": "Skyline Elementary School",
+		"MailingLatitude": 37.6515456,
+		"MailingLongitude": -122.465477,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "College Park Elementary School",
+		"LastName": "College Park Elementary School",
+		"MailingLatitude": 37.5763316,
+		"MailingLongitude": -122.3278906,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Borel Middle School",
+		"LastName": "Borel Middle School",
+		"MailingLatitude": 37.54996459999999,
+		"MailingLongitude": -122.3215136,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sequoia High School",
+		"LastName": "Sequoia High School",
+		"MailingLatitude": 37.48460439999999,
+		"MailingLongitude": -122.2380235,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Mateo-Foster City School District",
+		"LastName": "San Mateo-Foster City School District",
+		"MailingLatitude": 37.5660877,
+		"MailingLongitude": -122.2736234,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Pius Elementary School",
+		"LastName": "St. Pius Elementary School",
+		"MailingLatitude": 37.46172140000001,
+		"MailingLongitude": -122.2268125,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Visitacion Valley Middle School",
+		"LastName": "Visitacion Valley Middle School",
+		"MailingLatitude": 37.7157607,
+		"MailingLongitude": -122.4123083,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Clifford Elementary School",
+		"LastName": "Clifford Elementary School",
+		"MailingLatitude": 37.48226450000001,
+		"MailingLongitude": -122.2634719,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Design Tech High School",
+		"LastName": "Design Tech High School",
+		"MailingLatitude": 37.5981938,
+		"MailingLongitude": -122.379426,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bridge School",
+		"LastName": "Bridge School",
+		"MailingLatitude": 37.5687563,
+		"MailingLongitude": -122.3637093,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Burlingame Elementary School",
+		"LastName": "Burlingame Elementary School",
+		"MailingLatitude": 37.5918008,
+		"MailingLongitude": -122.3857228,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hillsborough City School District",
+		"LastName": "Hillsborough City School District",
+		"MailingLatitude": 37.5627393,
+		"MailingLongitude": -122.3381848,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lomita Park Elementary School",
+		"LastName": "Lomita Park Elementary School",
+		"MailingLatitude": 37.6121316,
+		"MailingLongitude": -122.400365,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hoover Elementary School",
+		"LastName": "Hoover Elementary School",
+		"MailingLatitude": 37.5770395,
+		"MailingLongitude": -122.381194,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "White Oaks Elementary School",
+		"LastName": "White Oaks Elementary School",
+		"MailingLatitude": 37.4914156,
+		"MailingLongitude": -122.2536462,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Thomas Edison Elementary School",
+		"LastName": "Thomas Edison Elementary School",
+		"MailingLatitude": 37.6767212,
+		"MailingLongitude": -122.4847635,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Manuel F. Cunha Intermediate School",
+		"LastName": "Manuel F. Cunha Intermediate School",
+		"MailingLatitude": 37.4624555,
+		"MailingLongitude": -122.4318997,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Mateo High School",
+		"LastName": "San Mateo High School",
+		"MailingLatitude": 37.5776785,
+		"MailingLongitude": -122.3291391,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Washington Elementary School",
+		"LastName": "Washington Elementary School",
+		"MailingLatitude": 37.5805512,
+		"MailingLongitude": -122.3404663,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Phillips Brooks School",
+		"LastName": "Phillips Brooks School",
+		"MailingLatitude": 37.429174,
+		"MailingLongitude": -122.203753,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Woodland School",
+		"LastName": "Woodland School",
+		"MailingLatitude": 37.402995,
+		"MailingLongitude": -122.19691,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Peninsula School",
+		"LastName": "The Peninsula School",
+		"MailingLatitude": 37.466322,
+		"MailingLongitude": -122.1662951,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Las Lomitas Elementary School",
+		"LastName": "Las Lomitas Elementary School",
+		"MailingLatitude": 37.43813419999999,
+		"MailingLongitude": -122.2123735,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Woodside Priory School",
+		"LastName": "Woodside Priory School",
+		"MailingLatitude": 37.37590699999999,
+		"MailingLongitude": -122.213111,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "La Entrada Middle School",
+		"LastName": "La Entrada Middle School",
+		"MailingLatitude": 37.4278331,
+		"MailingLongitude": -122.2019191,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hoover Elementary School",
+		"LastName": "Hoover Elementary School",
+		"MailingLatitude": 37.4816628,
+		"MailingLongitude": -122.2154838,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Trinity School",
+		"LastName": "Trinity School",
+		"MailingLatitude": 37.4219498,
+		"MailingLongitude": -122.2077199,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ormondale Elementary School",
+		"LastName": "Ormondale Elementary School",
+		"MailingLatitude": 37.3806395,
+		"MailingLongitude": -122.2179216,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sequoiah Union High School",
+		"LastName": "Sequoiah Union High School",
+		"MailingLatitude": 37.4848387,
+		"MailingLongitude": -122.2377696,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Amphitheater at Woodside School",
+		"LastName": "Amphitheater at Woodside School",
+		"MailingLatitude": 37.4264549,
+		"MailingLongitude": -122.2583849,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sellman Pavilion at Woodside School",
+		"LastName": "Sellman Pavilion at Woodside School",
+		"MailingLatitude": 37.42793509999999,
+		"MailingLongitude": -122.2581218,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Menlo-Atherton High School",
+		"LastName": "Menlo-Atherton High School",
+		"MailingLatitude": 37.460767,
+		"MailingLongitude": -122.1751142,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Encinal Elementary School",
+		"LastName": "Encinal Elementary School",
+		"MailingLatitude": 37.4648646,
+		"MailingLongitude": -122.1861575,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Stanford Medical School",
+		"LastName": "Stanford Medical School",
+		"MailingLatitude": 37.4318102,
+		"MailingLongitude": -122.175758,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Nativity Elementary School",
+		"LastName": "Nativity Elementary School",
+		"MailingLatitude": 37.45794939999999,
+		"MailingLongitude": -122.1830552,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fair Oaks Elementary School",
+		"LastName": "Fair Oaks Elementary School",
+		"MailingLatitude": 37.4792611,
+		"MailingLongitude": -122.2061753,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lucille M. Nixon Elementary School",
+		"LastName": "Lucille M. Nixon Elementary School",
+		"MailingLatitude": 37.4143374,
+		"MailingLongitude": -122.1563196,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Escondido Elementary School",
+		"LastName": "Escondido Elementary School",
+		"MailingLatitude": 37.4215229,
+		"MailingLongitude": -122.1553109,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Castilleja School",
+		"LastName": "Castilleja School",
+		"MailingLatitude": 37.43869619999999,
+		"MailingLongitude": -122.1522075,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Addison Elementary School",
+		"LastName": "Addison Elementary School",
+		"MailingLatitude": 37.44589850000001,
+		"MailingLongitude": -122.150499,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Barron Park Elementary School",
+		"LastName": "Barron Park Elementary School",
+		"MailingLatitude": 37.4129,
+		"MailingLongitude": -122.13751,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Jordan Middle School",
+		"LastName": "Jordan Middle School",
+		"MailingLatitude": 37.43875739999999,
+		"MailingLongitude": -122.1344637,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Gardner Bullis Elementary School",
+		"LastName": "Gardner Bullis Elementary School",
+		"MailingLatitude": 37.3817524,
+		"MailingLongitude": -122.1304822,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Juana Briones Elementary School",
+		"LastName": "Juana Briones Elementary School",
+		"MailingLatitude": 37.4075338,
+		"MailingLongitude": -122.1300503,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Timothy School",
+		"LastName": "St. Timothy School",
+		"MailingLatitude": 37.57433069999999,
+		"MailingLongitude": -122.3109826,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Santa Clara High School",
+		"LastName": "Santa Clara High School",
+		"MailingLatitude": 37.3454879,
+		"MailingLongitude": -121.9819306,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Graham Middle School",
+		"LastName": "Graham Middle School",
+		"MailingLatitude": 37.3819695,
+		"MailingLongitude": -122.085526,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Theuerkauf Elementary School",
+		"LastName": "Theuerkauf Elementary School",
+		"MailingLatitude": 37.4053522,
+		"MailingLongitude": -122.0843647,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Nicholas Catholic School",
+		"LastName": "St. Nicholas Catholic School",
+		"MailingLatitude": 37.3625844,
+		"MailingLongitude": -122.1163619,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pinewood School-Upper Campus",
+		"LastName": "Pinewood School-Upper Campus",
+		"MailingLatitude": 37.388058,
+		"MailingLongitude": -122.142138,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Covington Elementary School",
+		"LastName": "Covington Elementary School",
+		"MailingLatitude": 37.3715623,
+		"MailingLongitude": -122.1070776,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Stanford Online High School",
+		"LastName": "Stanford Online High School",
+		"MailingLatitude": 37.4302122,
+		"MailingLongitude": -122.1792276,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Our Lady of Mount Carmel School",
+		"LastName": "Our Lady of Mount Carmel School",
+		"MailingLatitude": 37.4814697,
+		"MailingLongitude": -122.2390224,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Kings Mountain Elementary School",
+		"LastName": "Kings Mountain Elementary School",
+		"MailingLatitude": 37.42014979999999,
+		"MailingLongitude": -122.3240706,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Adelante Elementary School",
+		"LastName": "Adelante Elementary School",
+		"MailingLatitude": 37.45438259999999,
+		"MailingLongitude": -122.244133,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ralston Middle School",
+		"LastName": "Ralston Middle School",
+		"MailingLatitude": 37.51133960000001,
+		"MailingLongitude": -122.3119946,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Corte Madera School",
+		"LastName": "Corte Madera School",
+		"MailingLatitude": 37.3678574,
+		"MailingLongitude": -122.2118498,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ellis Elementary School",
+		"LastName": "Ellis Elementary School",
+		"MailingLatitude": 37.36950059999999,
+		"MailingLongitude": -122.0239663,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Kathryn Hughes Elementary School",
+		"LastName": "Kathryn Hughes Elementary School",
+		"MailingLatitude": 37.4051543,
+		"MailingLongitude": -121.963904,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Don Callejon School",
+		"LastName": "Don Callejon School",
+		"MailingLatitude": 37.3984291,
+		"MailingLongitude": -121.9464201,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fairwood Elementary School",
+		"LastName": "Fairwood Elementary School",
+		"MailingLatitude": 37.3962683,
+		"MailingLongitude": -121.9909328,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Laurelwood Elementary School",
+		"LastName": "Laurelwood Elementary School",
+		"MailingLatitude": 37.3431016,
+		"MailingLongitude": -122.0022384,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Nimitz Elementary School",
+		"LastName": "Nimitz Elementary School",
+		"MailingLatitude": 37.3482806,
+		"MailingLongitude": -122.035975,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Louis E. Stocklmeir Elementary School",
+		"LastName": "Louis E. Stocklmeir Elementary School",
+		"MailingLatitude": 37.3443245,
+		"MailingLongitude": -122.0283576,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Westwood Elementary School",
+		"LastName": "Westwood Elementary School",
+		"MailingLatitude": 37.3330546,
+		"MailingLongitude": -121.9611397,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Edith Landels Elementary School",
+		"LastName": "Edith Landels Elementary School",
+		"MailingLatitude": 37.3883726,
+		"MailingLongitude": -122.0713186,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bishop Elementary School",
+		"LastName": "Bishop Elementary School",
+		"MailingLatitude": 37.3867637,
+		"MailingLongitude": -122.0247508,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ponderosa Elementary School",
+		"LastName": "Ponderosa Elementary School",
+		"MailingLatitude": 37.3629811,
+		"MailingLongitude": -122.0086974,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "George Mayne Elementary School",
+		"LastName": "George Mayne Elementary School",
+		"MailingLatitude": 37.424572,
+		"MailingLongitude": -121.9672389,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pearl Zanker Elementary School",
+		"LastName": "Pearl Zanker Elementary School",
+		"MailingLatitude": 37.4075715,
+		"MailingLongitude": -121.905804,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Eisenhower Elementary School",
+		"LastName": "Eisenhower Elementary School",
+		"MailingLatitude": 37.3289062,
+		"MailingLongitude": -121.9883653,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pomeroy Elementary School",
+		"LastName": "Pomeroy Elementary School",
+		"MailingLatitude": 37.34795539999999,
+		"MailingLongitude": -121.9869959,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Columbia Middle School",
+		"LastName": "Columbia Middle School",
+		"MailingLatitude": 37.39380709999999,
+		"MailingLongitude": -122.0190783,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Easterbrook Discovery School",
+		"LastName": "Easterbrook Discovery School",
+		"MailingLatitude": 37.30402050000001,
+		"MailingLongitude": -121.9856533,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Stevens Creek Elementary School",
+		"LastName": "Stevens Creek Elementary School",
+		"MailingLatitude": 37.3283993,
+		"MailingLongitude": -122.063792,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Frank L. Huff Elementary School",
+		"LastName": "Frank L. Huff Elementary School",
+		"MailingLatitude": 37.373953,
+		"MailingLongitude": -122.0740586,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sherman Oaks Elementary School",
+		"LastName": "Sherman Oaks Elementary School",
+		"MailingLatitude": 37.310014,
+		"MailingLongitude": -121.9253518,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Wilson High School",
+		"LastName": "Wilson High School",
+		"MailingLatitude": 37.3456286,
+		"MailingLongitude": -121.954588,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cupertino Middle School",
+		"LastName": "Cupertino Middle School",
+		"MailingLatitude": 37.339445,
+		"MailingLongitude": -122.0590275,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Westmont High School",
+		"LastName": "Westmont High School",
+		"MailingLatitude": 37.2708751,
+		"MailingLongitude": -121.9857147,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Saint Joseph of Cupertino School",
+		"LastName": "Saint Joseph of Cupertino School",
+		"MailingLatitude": 37.324452,
+		"MailingLongitude": -122.030837,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Denali Public School; 6th grade buildin",
+		"LastName": "Denali Public School; 6th grade buildin",
+		"MailingLatitude": 37.4090365,
+		"MailingLongitude": -122.0756952,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cumberland Elementary School",
+		"LastName": "Cumberland Elementary School",
+		"MailingLatitude": 37.3669917,
+		"MailingLongitude": -122.0432872,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Vargas Elementary School",
+		"LastName": "Vargas Elementary School",
+		"MailingLatitude": 37.3814604,
+		"MailingLongitude": -122.048853,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Monta Vista High School",
+		"LastName": "Monta Vista High School",
+		"MailingLatitude": 37.3149946,
+		"MailingLongitude": -122.0562395,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cupertino High School",
+		"LastName": "Cupertino High School",
+		"MailingLatitude": 37.3202289,
+		"MailingLongitude": -122.0102368,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Grant Elementary School",
+		"LastName": "Grant Elementary School",
+		"MailingLatitude": 37.350647,
+		"MailingLongitude": -121.887753,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Harker School - Middle School Campu",
+		"LastName": "The Harker School - Middle School Campu",
+		"MailingLatitude": 37.3136246,
+		"MailingLongitude": -121.9690038,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sartorette Elementary School",
+		"LastName": "Sartorette Elementary School",
+		"MailingLatitude": 37.2609233,
+		"MailingLongitude": -121.910478,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "L.P. Collins Elementary School",
+		"LastName": "L.P. Collins Elementary School",
+		"MailingLatitude": 37.32721060000001,
+		"MailingLongitude": -122.0222551,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John F. Kennedy Middle School",
+		"LastName": "John F. Kennedy Middle School",
+		"MailingLatitude": 37.3108992,
+		"MailingLongitude": -122.0508568,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Oster Elementary School",
+		"LastName": "Oster Elementary School",
+		"MailingLatitude": 37.2559408,
+		"MailingLongitude": -121.9201995,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Golden Harvest Montessori School",
+		"LastName": "Golden Harvest Montessori School",
+		"MailingLatitude": 37.4582841,
+		"MailingLongitude": -121.9120837,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Harker's Lower School",
+		"LastName": "Harker's Lower School",
+		"MailingLatitude": 37.28310089999999,
+		"MailingLongitude": -121.9779959,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lynbrook High School",
+		"LastName": "Lynbrook High School",
+		"MailingLatitude": 37.2997035,
+		"MailingLongitude": -122.003469,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "International School of the Peninsula",
+		"LastName": "International School of the Peninsula",
+		"MailingLatitude": 37.4525648,
+		"MailingLongitude": -122.1255019,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "R.I. Meyerholz Elementary School",
+		"LastName": "R.I. Meyerholz Elementary School",
+		"MailingLatitude": 37.3064954,
+		"MailingLongitude": -122.0264295,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Palo Verde Elementary School",
+		"LastName": "Palo Verde Elementary School",
+		"MailingLatitude": 37.4309694,
+		"MailingLongitude": -122.1144096,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brooktree Elementary School",
+		"LastName": "Brooktree Elementary School",
+		"MailingLatitude": 37.3977717,
+		"MailingLongitude": -121.8800132,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Khan Lab School",
+		"LastName": "Khan Lab School",
+		"MailingLatitude": 37.3967304,
+		"MailingLongitude": -122.0839222,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "North Valley Baptist Schools",
+		"LastName": "North Valley Baptist Schools",
+		"MailingLatitude": 37.390355,
+		"MailingLongitude": -121.951206,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Adrian Wilcox High School",
+		"LastName": "Adrian Wilcox High School",
+		"MailingLatitude": 37.36613810000001,
+		"MailingLongitude": -121.9863612,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sam H. Lawson Middle School",
+		"LastName": "Sam H. Lawson Middle School",
+		"MailingLatitude": 37.3292677,
+		"MailingLongitude": -122.0270958,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fred E. Weibel Elementary School",
+		"LastName": "Fred E. Weibel Elementary School",
+		"MailingLatitude": 37.5059639,
+		"MailingLongitude": -121.9259304,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Parkmont Elementary School",
+		"LastName": "Parkmont Elementary School",
+		"MailingLatitude": 37.56060349999999,
+		"MailingLongitude": -121.9840432,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Maloney Elementary School",
+		"LastName": "Maloney Elementary School",
+		"MailingLatitude": 37.54589840000001,
+		"MailingLongitude": -121.998005,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "New Horizons School",
+		"LastName": "New Horizons School",
+		"MailingLatitude": 37.5612563,
+		"MailingLongitude": -121.9928895,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brier Elementary School",
+		"LastName": "Brier Elementary School",
+		"MailingLatitude": 37.5407678,
+		"MailingLongitude": -121.9853448,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Patterson Elementary School",
+		"LastName": "Patterson Elementary School",
+		"MailingLatitude": 37.5618206,
+		"MailingLongitude": -122.0313142,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Irvington High School",
+		"LastName": "Irvington High School",
+		"MailingLatitude": 37.5243627,
+		"MailingLongitude": -121.9665241,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Itliong-Vera Cruz Middle School",
+		"LastName": "Itliong-Vera Cruz Middle School",
+		"MailingLatitude": 37.59386889999999,
+		"MailingLongitude": -122.0756132,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mission Hills Middle School",
+		"LastName": "Mission Hills Middle School",
+		"MailingLatitude": 37.60776839999999,
+		"MailingLongitude": -122.0261504,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Our Lady of Guadalupe School",
+		"LastName": "Our Lady of Guadalupe School",
+		"MailingLatitude": 37.5396673,
+		"MailingLongitude": -121.9668318,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fremont Christian School",
+		"LastName": "Fremont Christian School",
+		"MailingLatitude": 37.550625,
+		"MailingLongitude": -122.018709,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Durham Elementary School",
+		"LastName": "Durham Elementary School",
+		"MailingLatitude": 37.5426583,
+		"MailingLongitude": -121.9662851,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Costano Elementary School",
+		"LastName": "Costano Elementary School",
+		"MailingLatitude": 37.4779322,
+		"MailingLongitude": -122.1388482,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Niles Elementary School",
+		"LastName": "Niles Elementary School",
+		"MailingLatitude": 37.5766357,
+		"MailingLongitude": -121.9845007,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Washington High School",
+		"LastName": "Washington High School",
+		"MailingLatitude": 37.5528198,
+		"MailingLongitude": -121.9948276,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John F. Kennedy High School",
+		"LastName": "John F. Kennedy High School",
+		"MailingLatitude": 37.5286578,
+		"MailingLongitude": -121.9866462,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ardenwood Elementary School",
+		"LastName": "Ardenwood Elementary School",
+		"MailingLatitude": 37.5724688,
+		"MailingLongitude": -122.052538,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Thornton Junior High School",
+		"LastName": "Thornton Junior High School",
+		"MailingLatitude": 37.5564237,
+		"MailingLongitude": -122.0158687,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Circle of Independent Learning School",
+		"LastName": "Circle of Independent Learning School",
+		"MailingLatitude": 37.53785329999999,
+		"MailingLongitude": -121.9910309,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Duveneck Elementary School",
+		"LastName": "Duveneck Elementary School",
+		"MailingLatitude": 37.4500667,
+		"MailingLongitude": -122.1344772,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "American High School",
+		"LastName": "American High School",
+		"MailingLatitude": 37.5644828,
+		"MailingLongitude": -122.0164373,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Robertson High School",
+		"LastName": "Robertson High School",
+		"MailingLatitude": 37.51988399999999,
+		"MailingLongitude": -121.964688,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Steven Millard Elementary School",
+		"LastName": "Steven Millard Elementary School",
+		"MailingLatitude": 37.519335,
+		"MailingLongitude": -121.974914,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Challenger School - Newark",
+		"LastName": "Challenger School - Newark",
+		"MailingLatitude": 37.521889,
+		"MailingLongitude": -121.9980707,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Harvey Green Elementary School",
+		"LastName": "Harvey Green Elementary School",
+		"MailingLatitude": 37.5192764,
+		"MailingLongitude": -121.9588807,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John Gomes Elementary School",
+		"LastName": "John Gomes Elementary School",
+		"MailingLatitude": 37.5506571,
+		"MailingLongitude": -121.9486901,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Martin Luther King Jr. Middle School",
+		"LastName": "Martin Luther King Jr. Middle School",
+		"MailingLatitude": 37.6351945,
+		"MailingLongitude": -122.0921328,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Anthony Spangler Elementary School",
+		"LastName": "Anthony Spangler Elementary School",
+		"MailingLatitude": 37.4305189,
+		"MailingLongitude": -121.913538,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Braly Elementary School",
+		"LastName": "Braly Elementary School",
+		"MailingLatitude": 37.3640839,
+		"MailingLongitude": -122.018559,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School",
+		"LastName": "School",
+		"MailingLatitude": 37.7951564,
+		"MailingLongitude": -122.2157509,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "SCHOOL",
+		"LastName": "SCHOOL",
+		"MailingLatitude": 37.4735927,
+		"MailingLongitude": -122.2039899,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School",
+		"LastName": "School",
+		"MailingLatitude": 37.74963489999999,
+		"MailingLongitude": -122.4048335,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School",
+		"LastName": "School",
+		"MailingLatitude": 37.5620499,
+		"MailingLongitude": -122.3806246,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Urban School of San Francisco",
+		"LastName": "The Urban School of San Francisco",
+		"MailingLatitude": 37.7709383,
+		"MailingLongitude": -122.4460845,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "International High School of San Franci",
+		"LastName": "International High School of San Franci",
+		"MailingLatitude": 37.7753407,
+		"MailingLongitude": -122.4217506,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Galileo Academy of Science and Technolo",
+		"LastName": "Galileo Academy of Science and Technolo",
+		"MailingLatitude": 37.80346249999999,
+		"MailingLongitude": -122.4240285,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Children's Day School",
+		"LastName": "Children's Day School",
+		"MailingLatitude": 37.76413220000001,
+		"MailingLongitude": -122.4253185,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mindful Schools",
+		"LastName": "Mindful Schools",
+		"MailingLatitude": 37.83349700000001,
+		"MailingLongitude": -122.2850779,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "June Jordan School for Equity",
+		"LastName": "June Jordan School for Equity",
+		"MailingLatitude": 37.7193732,
+		"MailingLongitude": -122.4248772,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Guadalupe Elementary School",
+		"LastName": "Guadalupe Elementary School",
+		"MailingLatitude": 37.7102358,
+		"MailingLongitude": -122.4346501,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "SF Waldorf School: Business Office",
+		"LastName": "SF Waldorf School: Business Office",
+		"MailingLatitude": 37.78832339999999,
+		"MailingLongitude": -122.4444024,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Francisco Ballet School",
+		"LastName": "San Francisco Ballet School",
+		"MailingLatitude": 37.77872550000001,
+		"MailingLongitude": -122.4218643,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "West Oakland Middle School",
+		"LastName": "West Oakland Middle School",
+		"MailingLatitude": 37.8083934,
+		"MailingLongitude": -122.2827237,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Peralta Elementary School",
+		"LastName": "Peralta Elementary School",
+		"MailingLatitude": 37.8496598,
+		"MailingLongitude": -122.2584291,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Synergy School",
+		"LastName": "Synergy School",
+		"MailingLatitude": 37.7508557,
+		"MailingLongitude": -122.4202596,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sterne School",
+		"LastName": "Sterne School",
+		"MailingLatitude": 37.7689989,
+		"MailingLongitude": -122.4218584,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Community School For Creative",
+		"LastName": "Community School For Creative",
+		"MailingLatitude": 37.7849697,
+		"MailingLongitude": -122.2388126,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Masagung Graduate School of Management",
+		"LastName": "Masagung Graduate School of Management",
+		"MailingLatitude": 37.77559670000001,
+		"MailingLongitude": -122.4497894,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Brigid School",
+		"LastName": "St. Brigid School",
+		"MailingLatitude": 37.79520600000001,
+		"MailingLongitude": -122.424693,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Francisco School of Ballet",
+		"LastName": "San Francisco School of Ballet",
+		"MailingLatitude": 37.772809,
+		"MailingLongitude": -122.4191965,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Redding Elementary School",
+		"LastName": "Redding Elementary School",
+		"MailingLatitude": 37.7896484,
+		"MailingLongitude": -122.4191963,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Notre Dame Des Victoires School",
+		"LastName": "Notre Dame Des Victoires School",
+		"MailingLatitude": 37.7912027,
+		"MailingLongitude": -122.4066052,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Glenview Elementary School",
+		"LastName": "Glenview Elementary School",
+		"MailingLatitude": 37.83806750000001,
+		"MailingLongitude": -122.2743831,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Jean Parker Elementary School",
+		"LastName": "Jean Parker Elementary School",
+		"MailingLatitude": 37.7974664,
+		"MailingLongitude": -122.4113092,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sheridan Elementary School",
+		"LastName": "Sheridan Elementary School",
+		"MailingLatitude": 37.7145979,
+		"MailingLongitude": -122.4596391,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Malcolm X Elementary School",
+		"LastName": "Malcolm X Elementary School",
+		"MailingLatitude": 37.8525375,
+		"MailingLongitude": -122.2735647,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Five Keys Charter School",
+		"LastName": "Five Keys Charter School",
+		"MailingLatitude": 37.77724339999999,
+		"MailingLongitude": -122.4021011,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "AltSchool",
+		"LastName": "AltSchool",
+		"MailingLatitude": 37.7742401,
+		"MailingLongitude": -122.4105571,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Five Keys Charter School",
+		"LastName": "Five Keys Charter School",
+		"MailingLatitude": 37.7371197,
+		"MailingLongitude": -122.3941903,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Chinese Education Center Elementary Sch",
+		"LastName": "Chinese Education Center Elementary Sch",
+		"MailingLatitude": 37.7949069,
+		"MailingLongitude": -122.4040823,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Alamo Elementary School",
+		"LastName": "Alamo Elementary School",
+		"MailingLatitude": 37.7832553,
+		"MailingLongitude": -122.4825466,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St Thomas More Catholic School",
+		"LastName": "St Thomas More Catholic School",
+		"MailingLatitude": 37.7125552,
+		"MailingLongitude": -122.4733429,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Wade Thomas Elementary School",
+		"LastName": "Wade Thomas Elementary School",
+		"MailingLatitude": 37.9714565,
+		"MailingLongitude": -122.5672558,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mill Valley Middle School",
+		"LastName": "Mill Valley Middle School",
+		"MailingLatitude": 37.89724449999999,
+		"MailingLongitude": -122.5288652,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Strawberry Point School",
+		"LastName": "Strawberry Point School",
+		"MailingLatitude": 37.8967281,
+		"MailingLongitude": -122.504388,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Redwood High School",
+		"LastName": "Redwood High School",
+		"MailingLatitude": 37.938251,
+		"MailingLongitude": -122.524948,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Rafael High School",
+		"LastName": "San Rafael High School",
+		"MailingLatitude": 37.9749355,
+		"MailingLongitude": -122.5216737,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cascade Canyon School",
+		"LastName": "Cascade Canyon School",
+		"MailingLatitude": 37.9989221,
+		"MailingLongitude": -122.600019,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Short Elementary School",
+		"LastName": "Short Elementary School",
+		"MailingLatitude": 37.9676359,
+		"MailingLongitude": -122.5355188,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sun Valley Elementary School",
+		"LastName": "Sun Valley Elementary School",
+		"MailingLatitude": 37.9852222,
+		"MailingLongitude": -122.5508557,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Greenwood School",
+		"LastName": "Greenwood School",
+		"MailingLatitude": 37.9071576,
+		"MailingLongitude": -122.5458772,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Branson School",
+		"LastName": "The Branson School",
+		"MailingLatitude": 37.9645255,
+		"MailingLongitude": -122.5665711,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Venetia Valley School",
+		"LastName": "Venetia Valley School",
+		"MailingLatitude": 38.0008925,
+		"MailingLongitude": -122.5243242,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marin Horizon School",
+		"LastName": "Marin Horizon School",
+		"MailingLatitude": 37.89644860000001,
+		"MailingLongitude": -122.5434203,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "A.E. Kent Middle School",
+		"LastName": "A.E. Kent Middle School",
+		"MailingLatitude": 37.95265439999999,
+		"MailingLongitude": -122.5490272,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Anselm School",
+		"LastName": "St. Anselm School",
+		"MailingLatitude": 37.9704045,
+		"MailingLongitude": -122.5630898,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Domenico School",
+		"LastName": "San Domenico School",
+		"MailingLatitude": 38.015707,
+		"MailingLongitude": -122.585535,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sir Francis Drake High School",
+		"LastName": "Sir Francis Drake High School",
+		"MailingLatitude": 37.983914,
+		"MailingLongitude": -122.573328,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mark Day School",
+		"LastName": "Mark Day School",
+		"MailingLatitude": 38.0066773,
+		"MailingLongitude": -122.5553937,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hall Middle School",
+		"LastName": "Hall Middle School",
+		"MailingLatitude": 37.9390132,
+		"MailingLongitude": -122.531175,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Rafael High School",
+		"LastName": "San Rafael High School",
+		"MailingLatitude": 37.96960840000001,
+		"MailingLongitude": -122.5133849,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marin Waldorf School",
+		"LastName": "Marin Waldorf School",
+		"MailingLatitude": 38.027406,
+		"MailingLongitude": -122.558491,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Tamiscal High School",
+		"LastName": "Tamiscal High School",
+		"MailingLatitude": 37.937832,
+		"MailingLongitude": -122.529631,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Laurel Dell Elementary School",
+		"LastName": "Laurel Dell Elementary School",
+		"MailingLatitude": 37.9639499,
+		"MailingLongitude": -122.526288,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cascade Canyon School",
+		"LastName": "Cascade Canyon School",
+		"MailingLatitude": 37.99007,
+		"MailingLongitude": -122.591193,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Oak Hill School",
+		"LastName": "The Oak Hill School",
+		"MailingLatitude": 37.9832413,
+		"MailingLongitude": -122.5624179,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Terra Linda High School",
+		"LastName": "Terra Linda High School",
+		"MailingLatitude": 37.9997921,
+		"MailingLongitude": -122.5543908,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Neil Cummins Elementary School",
+		"LastName": "Neil Cummins Elementary School",
+		"MailingLatitude": 37.9289286,
+		"MailingLongitude": -122.5231613,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "James B Davidson Middle School",
+		"LastName": "James B Davidson Middle School",
+		"MailingLatitude": 37.96621289999999,
+		"MailingLongitude": -122.5256598,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marin County Community School",
+		"LastName": "Marin County Community School",
+		"MailingLatitude": 38.0144145,
+		"MailingLongitude": -122.5501513,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Anselmo Montessori School",
+		"LastName": "San Anselmo Montessori School",
+		"MailingLatitude": 37.980054,
+		"MailingLongitude": -122.564801,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Anthony G Bacich Elementary School",
+		"LastName": "Anthony G Bacich Elementary School",
+		"MailingLatitude": 37.95253510000001,
+		"MailingLongitude": -122.5390419,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Safe Routes To Schools",
+		"LastName": "Safe Routes To Schools",
+		"MailingLatitude": 37.9867948,
+		"MailingLongitude": -122.5871821,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marin School of Environmental Leadershi",
+		"LastName": "Marin School of Environmental Leadershi",
+		"MailingLatitude": 38.0003007,
+		"MailingLongitude": -122.5537378,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Vallecito Elementary School",
+		"LastName": "Vallecito Elementary School",
+		"MailingLatitude": 38.00633029999999,
+		"MailingLongitude": -122.5515014,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Miller Creek Middle School",
+		"LastName": "Miller Creek Middle School",
+		"MailingLatitude": 38.0300011,
+		"MailingLongitude": -122.5475268,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brookside Elementary School",
+		"LastName": "Brookside Elementary School",
+		"MailingLatitude": 37.990756,
+		"MailingLongitude": -122.575812,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Manor Elementary School",
+		"LastName": "Manor Elementary School",
+		"MailingLatitude": 37.996867,
+		"MailingLongitude": -122.593591,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ross School K-8",
+		"LastName": "Ross School K-8",
+		"MailingLatitude": 37.9615379,
+		"MailingLongitude": -122.5581705,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Tamalpais High School",
+		"LastName": "Tamalpais High School",
+		"MailingLatitude": 37.891435,
+		"MailingLongitude": -122.529702,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mount Tam School",
+		"LastName": "Mount Tam School",
+		"MailingLatitude": 37.88842289999999,
+		"MailingLongitude": -122.5331265,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Reed Elementary School",
+		"LastName": "Reed Elementary School",
+		"MailingLatitude": 37.8812821,
+		"MailingLongitude": -122.4647266,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Novato High School",
+		"LastName": "Novato High School",
+		"MailingLatitude": 38.0895324,
+		"MailingLongitude": -122.5735024,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Tamalpais Valley Elementary School",
+		"LastName": "Tamalpais Valley Elementary School",
+		"MailingLatitude": 37.8743164,
+		"MailingLongitude": -122.5276392,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Olive Elementary School",
+		"LastName": "Olive Elementary School",
+		"MailingLatitude": 38.1097318,
+		"MailingLongitude": -122.5575354,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bessie Carmichael Middle School",
+		"LastName": "Bessie Carmichael Middle School",
+		"MailingLatitude": 37.7806662,
+		"MailingLongitude": -122.4004441,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Richard & Rhoda Goldman School",
+		"LastName": "Richard & Rhoda Goldman School",
+		"MailingLatitude": 37.8757268,
+		"MailingLongitude": -122.2578583,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Information",
+		"LastName": "School of Information",
+		"MailingLatitude": 37.8713583,
+		"MailingLongitude": -122.2585206,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Haas School of Business",
+		"LastName": "Haas School of Business",
+		"MailingLatitude": 37.871558,
+		"MailingLongitude": -122.2537809,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "California School of Professional Psych",
+		"LastName": "California School of Professional Psych",
+		"MailingLatitude": 37.8046962,
+		"MailingLongitude": -122.2704719,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Realm High School",
+		"LastName": "Realm High School",
+		"MailingLatitude": 37.8674317,
+		"MailingLongitude": -122.2949175,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "REALM Middle School",
+		"LastName": "REALM Middle School",
+		"MailingLatitude": 37.8693662,
+		"MailingLongitude": -122.2881049,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Matsuyama Elementary School",
+		"LastName": "Matsuyama Elementary School",
+		"MailingLatitude": 38.48229549999999,
+		"MailingLongitude": -121.5369557,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brookfield School",
+		"LastName": "Brookfield School",
+		"MailingLatitude": 38.5162055,
+		"MailingLongitude": -121.5260237,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Francis of Assisi Elementary School",
+		"LastName": "St. Francis of Assisi Elementary School",
+		"MailingLatitude": 38.5734629,
+		"MailingLongitude": -121.4736949,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Jefferson Elementary School",
+		"LastName": "Jefferson Elementary School",
+		"MailingLatitude": 38.621583,
+		"MailingLongitude": -121.507109,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Westmore Oaks Elementary School",
+		"LastName": "Westmore Oaks Elementary School",
+		"MailingLatitude": 38.57289000000001,
+		"MailingLongitude": -121.5361481,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Engineering & Sciences",
+		"LastName": "School of Engineering & Sciences",
+		"MailingLatitude": 38.4946188,
+		"MailingLongitude": -121.5362867,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Rosa Parks Middle School",
+		"LastName": "Rosa Parks Middle School",
+		"MailingLatitude": 38.48986790000001,
+		"MailingLongitude": -121.4861464,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John H Still Middle School",
+		"LastName": "John H Still Middle School",
+		"MailingLatitude": 38.47591209999999,
+		"MailingLongitude": -121.4866776,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Los Angeles Unified School",
+		"LastName": "Los Angeles Unified School",
+		"MailingLatitude": 38.5783217,
+		"MailingLongitude": -121.4918877,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Washington Elementary School",
+		"LastName": "Washington Elementary School",
+		"MailingLatitude": 38.5825583,
+		"MailingLongitude": -121.4809296,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hazel Strauch Elementary School",
+		"LastName": "Hazel Strauch Elementary School",
+		"MailingLatitude": 38.6242222,
+		"MailingLongitude": -121.4810982,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Merryhill Elementary & Middle School",
+		"LastName": "Merryhill Elementary & Middle School",
+		"MailingLatitude": 38.560885,
+		"MailingLongitude": -121.477225,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Edward Kemble Elementary School",
+		"LastName": "Edward Kemble Elementary School",
+		"MailingLatitude": 38.4866638,
+		"MailingLongitude": -121.4739059,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Camellia Waldorf School",
+		"LastName": "Camellia Waldorf School",
+		"MailingLatitude": 38.486066,
+		"MailingLongitude": -121.5479582,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Natomas High School",
+		"LastName": "Natomas High School",
+		"MailingLatitude": 38.62968279999999,
+		"MailingLongitude": -121.4958767,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Elkhorn Village Elementary School",
+		"LastName": "Elkhorn Village Elementary School",
+		"MailingLatitude": 38.5945091,
+		"MailingLongitude": -121.5205631,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pioneer Elementary School",
+		"LastName": "Pioneer Elementary School",
+		"MailingLatitude": 38.5512278,
+		"MailingLongitude": -121.6858696,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fortune School of Education",
+		"LastName": "Fortune School of Education",
+		"MailingLatitude": 38.6205815,
+		"MailingLongitude": -121.5227985,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "River City High School",
+		"LastName": "River City High School",
+		"MailingLatitude": 38.5450985,
+		"MailingLongitude": -121.5403962,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "C.K. McClatchy High School",
+		"LastName": "C.K. McClatchy High School",
+		"MailingLatitude": 38.5485617,
+		"MailingLongitude": -121.4907436,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bridgeway Island Elementary School",
+		"LastName": "Bridgeway Island Elementary School",
+		"MailingLatitude": 38.5411801,
+		"MailingLongitude": -121.5674329,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Southport Elementary School",
+		"LastName": "Southport Elementary School",
+		"MailingLatitude": 38.5516519,
+		"MailingLongitude": -121.5487748,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Stonegate Elementary School",
+		"LastName": "Stonegate Elementary School",
+		"MailingLatitude": 38.5526096,
+		"MailingLongitude": -121.5246447,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "American Lakes Elementary School",
+		"LastName": "American Lakes Elementary School",
+		"MailingLatitude": 38.6169646,
+		"MailingLongitude": -121.4935492,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bannon Creek Elementary School",
+		"LastName": "Bannon Creek Elementary School",
+		"MailingLatitude": 38.6161566,
+		"MailingLongitude": -121.5028369,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Westfield Village Elementary School",
+		"LastName": "Westfield Village Elementary School",
+		"MailingLatitude": 38.5849142,
+		"MailingLongitude": -121.5360844,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pacific McGeorge School of Law",
+		"LastName": "Pacific McGeorge School of Law",
+		"MailingLatitude": 38.5492423,
+		"MailingLongitude": -121.4726698,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Evergreen Elementary School",
+		"LastName": "Evergreen Elementary School",
+		"MailingLatitude": 38.5975963,
+		"MailingLongitude": -121.5341903,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John F Kennedy High School",
+		"LastName": "John F Kennedy High School",
+		"MailingLatitude": 38.503188,
+		"MailingLongitude": -121.5345057,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Two Rivers Elementary School",
+		"LastName": "Two Rivers Elementary School",
+		"MailingLatitude": 38.6104413,
+		"MailingLongitude": -121.5335659,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sacramento City Unified School",
+		"LastName": "Sacramento City Unified School",
+		"MailingLatitude": 38.52896339999999,
+		"MailingLongitude": -121.501178,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sacramento Charter High School",
+		"LastName": "Sacramento Charter High School",
+		"MailingLatitude": 38.5560246,
+		"MailingLongitude": -121.4666851,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Morey Avenue Early Childhood Developmen",
+		"LastName": "Morey Avenue Early Childhood Developmen",
+		"MailingLatitude": 38.6351934,
+		"MailingLongitude": -121.4648553,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Father Keith B Kenny K-8 School",
+		"LastName": "Father Keith B Kenny K-8 School",
+		"MailingLatitude": 38.5423893,
+		"MailingLongitude": -121.4638586,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fairbanks Elementary School",
+		"LastName": "Fairbanks Elementary School",
+		"MailingLatitude": 38.6265995,
+		"MailingLongitude": -121.4617757,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Natomas Charter School",
+		"LastName": "Natomas Charter School",
+		"MailingLatitude": 38.6572133,
+		"MailingLongitude": -121.4940846,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Inderkum High School",
+		"LastName": "Inderkum High School",
+		"MailingLatitude": 38.658358,
+		"MailingLongitude": -121.517287,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pacific Elementary School",
+		"LastName": "Pacific Elementary School",
+		"MailingLatitude": 38.5133878,
+		"MailingLongitude": -121.4590085,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Natomas Park Elementary School",
+		"LastName": "Natomas Park Elementary School",
+		"MailingLatitude": 38.6606598,
+		"MailingLongitude": -121.5030973,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fred T. Korematsu Elementary School & G",
+		"LastName": "Fred T. Korematsu Elementary School & G",
+		"MailingLatitude": 38.5588211,
+		"MailingLongitude": -121.7090695,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Del Paso Heights Elementary School",
+		"LastName": "Del Paso Heights Elementary School",
+		"MailingLatitude": 38.6342396,
+		"MailingLongitude": -121.4532371,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marguerite Montgomery Elementary School",
+		"LastName": "Marguerite Montgomery Elementary School",
+		"MailingLatitude": 38.5413839,
+		"MailingLongitude": -121.7163011,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Natomas Middle School",
+		"LastName": "Natomas Middle School",
+		"MailingLatitude": 38.666504,
+		"MailingLongitude": -121.5322723,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Heron School",
+		"LastName": "Heron School",
+		"MailingLatitude": 38.66773619999999,
+		"MailingLongitude": -121.5114176,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Charles E. Mack Elementary School",
+		"LastName": "Charles E. Mack Elementary School",
+		"MailingLatitude": 38.481236,
+		"MailingLongitude": -121.4452181,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Kit Carson International Academy",
+		"LastName": "Kit Carson International Academy",
+		"MailingLatitude": 38.5609353,
+		"MailingLongitude": -121.4403951,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Northwood Elementary School",
+		"LastName": "Northwood Elementary School",
+		"MailingLatitude": 38.6137665,
+		"MailingLongitude": -121.4368456,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Westlake Charter School",
+		"LastName": "Westlake Charter School",
+		"MailingLatitude": 38.6761866,
+		"MailingLongitude": -121.526699,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Tahoe Elementary School",
+		"LastName": "Tahoe Elementary School",
+		"MailingLatitude": 38.5458208,
+		"MailingLongitude": -121.4354406,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Phoebe A. Hearst Elementary School",
+		"LastName": "Phoebe A. Hearst Elementary School",
+		"MailingLatitude": 38.5572714,
+		"MailingLongitude": -121.432843,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hagginwood Elementary School",
+		"LastName": "Hagginwood Elementary School",
+		"MailingLatitude": 38.6224798,
+		"MailingLongitude": -121.4334967,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Regency Park Elementary School",
+		"LastName": "Regency Park Elementary School",
+		"MailingLatitude": 38.6810429,
+		"MailingLongitude": -121.5007013,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fortune School",
+		"LastName": "Fortune School",
+		"MailingLatitude": 38.5023041,
+		"MailingLongitude": -121.4288044,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Herman Leimbach Elementary School",
+		"LastName": "Herman Leimbach Elementary School",
+		"MailingLatitude": 38.4633132,
+		"MailingLongitude": -121.4229842,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Rio Linda High School",
+		"LastName": "Rio Linda High School",
+		"MailingLatitude": 38.682135,
+		"MailingLongitude": -121.440522,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "North Davis Elementary School",
+		"LastName": "North Davis Elementary School",
+		"MailingLatitude": 38.55678200000001,
+		"MailingLongitude": -121.745465,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Leo A. Palmiter Jr./Sr. High School",
+		"LastName": "Leo A. Palmiter Jr./Sr. High School",
+		"MailingLatitude": 38.6031845,
+		"MailingLongitude": -121.4193359,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Earl Warren Elementary School",
+		"LastName": "Earl Warren Elementary School",
+		"MailingLatitude": 38.5261545,
+		"MailingLongitude": -121.4172693,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "James Rutter Middle School",
+		"LastName": "James Rutter Middle School",
+		"MailingLatitude": 38.4908705,
+		"MailingLongitude": -121.415503,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Encina Preparatory High",
+		"LastName": "Encina Preparatory High",
+		"MailingLatitude": 38.5929083,
+		"MailingLongitude": -121.4103734,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John Adams Elementary School",
+		"LastName": "John Adams Elementary School",
+		"MailingLatitude": 38.0093756,
+		"MailingLongitude": -121.3147751,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Don Riggio School",
+		"LastName": "Don Riggio School",
+		"MailingLatitude": 37.9786624,
+		"MailingLongitude": -121.3520857,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Elkhorn Elementary School",
+		"LastName": "Elkhorn Elementary School",
+		"MailingLatitude": 38.0503877,
+		"MailingLongitude": -121.3334825,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Christa Mcauliffe Middle School",
+		"LastName": "Christa Mcauliffe Middle School",
+		"MailingLatitude": 38.045822,
+		"MailingLongitude": -121.366939,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Rio Calaveras Elementary School",
+		"LastName": "Rio Calaveras Elementary School",
+		"MailingLatitude": 38.0007512,
+		"MailingLongitude": -121.2853014,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "French Camp Elementary School",
+		"LastName": "French Camp Elementary School",
+		"MailingLatitude": 37.8858871,
+		"MailingLongitude": -121.2695215,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Taylor Elementary School",
+		"LastName": "Taylor Elementary School",
+		"MailingLatitude": 37.9238887,
+		"MailingLongitude": -121.3017386,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cesar Chavez High School",
+		"LastName": "Cesar Chavez High School",
+		"MailingLatitude": 38.0123478,
+		"MailingLongitude": -121.2697505,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Great Valley Elementary School",
+		"LastName": "Great Valley Elementary School",
+		"MailingLatitude": 37.9030359,
+		"MailingLongitude": -121.2966164,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "George Lincoln Mosher Elementary School",
+		"LastName": "George Lincoln Mosher Elementary School",
+		"MailingLatitude": 38.0460258,
+		"MailingLongitude": -121.2728788,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "McKinley Elementary School",
+		"LastName": "McKinley Elementary School",
+		"MailingLatitude": 37.92594589999999,
+		"MailingLongitude": -121.2819996,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "George W. Bush Elementary School",
+		"LastName": "George W. Bush Elementary School",
+		"MailingLatitude": 38.0088973,
+		"MailingLongitude": -121.2745595,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Van Buren Elementary School",
+		"LastName": "Van Buren Elementary School",
+		"MailingLatitude": 37.9305679,
+		"MailingLongitude": -121.2596021,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cleveland Elementary School",
+		"LastName": "Cleveland Elementary School",
+		"MailingLatitude": 37.98257099999999,
+		"MailingLongitude": -121.3013269,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Saint Mary's High School",
+		"LastName": "Saint Mary's High School",
+		"MailingLatitude": 38.0037648,
+		"MailingLongitude": -121.3063772,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Delta Charter Schools",
+		"LastName": "Delta Charter Schools",
+		"MailingLatitude": 37.990127,
+		"MailingLongitude": -121.314305,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Delta Bridges K-8 Charter School",
+		"LastName": "Delta Bridges K-8 Charter School",
+		"MailingLatitude": 38.009208,
+		"MailingLongitude": -121.3020179,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lincoln Unified School District",
+		"LastName": "Lincoln Unified School District",
+		"MailingLatitude": 37.999811,
+		"MailingLongitude": -121.334832,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "UOP Thomas J. Long School of Health Sci",
+		"LastName": "UOP Thomas J. Long School of Health Sci",
+		"MailingLatitude": 37.9847984,
+		"MailingLongitude": -121.3124621,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lincoln High School",
+		"LastName": "Lincoln High School",
+		"MailingLatitude": 38.010634,
+		"MailingLongitude": -121.3379457,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mable Barron School",
+		"LastName": "Mable Barron School",
+		"MailingLatitude": 38.00775689999999,
+		"MailingLongitude": -121.3642588,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Middle College High School",
+		"LastName": "Middle College High School",
+		"MailingLatitude": 37.995364,
+		"MailingLongitude": -121.319324,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Aspire River Oaks Charter School",
+		"LastName": "Aspire River Oaks Charter School",
+		"MailingLatitude": 38.02725569999999,
+		"MailingLongitude": -121.2922205,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sierra Middle School",
+		"LastName": "Sierra Middle School",
+		"MailingLatitude": 38.0087004,
+		"MailingLongitude": -121.3375757,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bear Creek High School",
+		"LastName": "Bear Creek High School",
+		"MailingLatitude": 38.0510271,
+		"MailingLongitude": -121.3531404,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ronald E. McNair High School",
+		"LastName": "Ronald E. McNair High School",
+		"MailingLatitude": 38.0389387,
+		"MailingLongitude": -121.2995709,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "New Vision High School",
+		"LastName": "New Vision High School",
+		"MailingLatitude": 37.8980633,
+		"MailingLongitude": -121.3067747,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brookside School",
+		"LastName": "Brookside School",
+		"MailingLatitude": 37.9761418,
+		"MailingLongitude": -121.3495885,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Weston Ranch High School",
+		"LastName": "Weston Ranch High School",
+		"MailingLatitude": 37.899752,
+		"MailingLongitude": -121.305971,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Stockton Adult School",
+		"LastName": "Stockton Adult School",
+		"MailingLatitude": 37.9672172,
+		"MailingLongitude": -121.299116,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Stagg High School",
+		"LastName": "Stagg High School",
+		"MailingLatitude": 37.984705,
+		"MailingLongitude": -121.322968,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Delta Sierra Middle School",
+		"LastName": "Delta Sierra Middle School",
+		"MailingLatitude": 38.0357512,
+		"MailingLongitude": -121.3426572,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cathedral of the Annunciation School",
+		"LastName": "Cathedral of the Annunciation School",
+		"MailingLatitude": 37.96277550000001,
+		"MailingLongitude": -121.3002325,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Oakwood Elementary School",
+		"LastName": "Oakwood Elementary School",
+		"MailingLatitude": 38.03468699999999,
+		"MailingLongitude": -121.3286519,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Plaza Robles High School",
+		"LastName": "Plaza Robles High School",
+		"MailingLatitude": 38.0364292,
+		"MailingLongitude": -121.3391967,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pacific School",
+		"LastName": "Pacific School",
+		"MailingLatitude": 38.0074226,
+		"MailingLongitude": -121.3382815,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Gladys L. Bernerd School of Education",
+		"LastName": "Gladys L. Bernerd School of Education",
+		"MailingLatitude": 37.9783674,
+		"MailingLongitude": -121.3113663,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "August Knodt Jr School",
+		"LastName": "August Knodt Jr School",
+		"MailingLatitude": 37.90601590000001,
+		"MailingLongitude": -121.305191,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Eberhardt School of Business",
+		"LastName": "Eberhardt School of Business",
+		"MailingLatitude": 37.9810715,
+		"MailingLongitude": -121.3092079,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lincoln Unified School",
+		"LastName": "Lincoln Unified School",
+		"MailingLatitude": 37.9983748,
+		"MailingLongitude": -121.3198491,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Creekside Elementary School",
+		"LastName": "Creekside Elementary School",
+		"MailingLatitude": 38.041912,
+		"MailingLongitude": -121.348775,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "George Y. Komure Elementary School",
+		"LastName": "George Y. Komure Elementary School",
+		"MailingLatitude": 37.9034917,
+		"MailingLongitude": -121.3185775,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Fillmore Elementary School",
+		"LastName": "Fillmore Elementary School",
+		"MailingLatitude": 37.9686773,
+		"MailingLongitude": -121.2551254,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "King Elementary School",
+		"LastName": "King Elementary School",
+		"MailingLatitude": 37.9583926,
+		"MailingLongitude": -121.2504265,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Morada Middle School",
+		"LastName": "Morada Middle School",
+		"MailingLatitude": 38.04645379999999,
+		"MailingLongitude": -121.2499835,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Franklin High School",
+		"LastName": "Franklin High School",
+		"MailingLatitude": 37.968342,
+		"MailingLongitude": -121.2373629,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Heritage High School",
+		"LastName": "Heritage High School",
+		"MailingLatitude": 37.92175599999999,
+		"MailingLongitude": -121.7551606,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Delta Charter Schools",
+		"LastName": "Delta Charter Schools",
+		"MailingLatitude": 37.668659,
+		"MailingLongitude": -121.324424,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Deer Valley High School",
+		"LastName": "Deer Valley High School",
+		"MailingLatitude": 37.963683,
+		"MailingLongitude": -121.775139,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "University Charter School",
+		"LastName": "University Charter School",
+		"MailingLatitude": 37.6861414,
+		"MailingLongitude": -120.97626,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mount Diablo High School",
+		"LastName": "Mount Diablo High School",
+		"MailingLatitude": 37.9826834,
+		"MailingLongitude": -122.0368058,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Diablo Community Day School",
+		"LastName": "Diablo Community Day School",
+		"MailingLatitude": 37.9443137,
+		"MailingLongitude": -122.0434616,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Venture Academy Family Of Schools",
+		"LastName": "Venture Academy Family Of Schools",
+		"MailingLatitude": 37.908281,
+		"MailingLongitude": -121.230594,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Stockton Unified Sch District",
+		"LastName": "Stockton Unified Sch District",
+		"MailingLatitude": 37.9891692,
+		"MailingLongitude": -121.3241875,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "East Union High School",
+		"LastName": "East Union High School",
+		"MailingLatitude": 37.8225061,
+		"MailingLongitude": -121.2344232,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School",
+		"LastName": "School",
+		"MailingLatitude": 37.90297839999999,
+		"MailingLongitude": -121.2961077,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Webster Elementary School",
+		"LastName": "Webster Elementary School",
+		"MailingLatitude": 34.0388147,
+		"MailingLongitude": -118.6990723,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Wagon Wheel School",
+		"LastName": "Wagon Wheel School",
+		"MailingLatitude": 34.0240581,
+		"MailingLongitude": -118.7884108,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Colin McEwen High School",
+		"LastName": "Colin McEwen High School",
+		"MailingLatitude": 34.0365659,
+		"MailingLongitude": -118.6860021,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Topanga Elementary Charter School",
+		"LastName": "Topanga Elementary Charter School",
+		"MailingLatitude": 34.0921449,
+		"MailingLongitude": -118.6039338,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Sycamore School",
+		"LastName": "The Sycamore School",
+		"MailingLatitude": 34.045629,
+		"MailingLongitude": -118.638816,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "David Gonzales Camp School",
+		"LastName": "David Gonzales Camp School",
+		"MailingLatitude": 34.0875958,
+		"MailingLongitude": -118.7078323,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cornell School",
+		"LastName": "Cornell School",
+		"MailingLatitude": 34.11056169999999,
+		"MailingLongitude": -118.7862014,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "MUSE School, CA",
+		"LastName": "MUSE School, CA",
+		"MailingLatitude": 34.093742,
+		"MailingLongitude": -118.7035599,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Graziadio School of Business and Manage",
+		"LastName": "Graziadio School of Business and Manage",
+		"MailingLatitude": 34.0347921,
+		"MailingLongitude": -118.7034373,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pepperdine University School of Public ",
+		"LastName": "Pepperdine University School of Public ",
+		"MailingLatitude": 34.0468019,
+		"MailingLongitude": -118.71459,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Graduate School of Education and Psycho",
+		"LastName": "Graduate School of Education and Psycho",
+		"MailingLatitude": 34.0390053,
+		"MailingLongitude": -118.7057065,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Our Lady of Malibu School",
+		"LastName": "Our Lady of Malibu School",
+		"MailingLatitude": 34.03887,
+		"MailingLongitude": -118.700345,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Point Dume Elementary School",
+		"LastName": "Point Dume Elementary School",
+		"MailingLatitude": 34.0126167,
+		"MailingLongitude": -118.8017763,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Manzanita School",
+		"LastName": "Manzanita School",
+		"MailingLatitude": 34.1119635,
+		"MailingLongitude": -118.6343702,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Malibu Methodist Nursery School",
+		"LastName": "Malibu Methodist Nursery School",
+		"MailingLatitude": 34.02190199999999,
+		"MailingLongitude": -118.826965,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Malibu High School",
+		"LastName": "Malibu High School",
+		"MailingLatitude": 34.023893,
+		"MailingLongitude": -118.8270494,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Juan Cabrillo Elementary School",
+		"LastName": "Juan Cabrillo Elementary School",
+		"MailingLatitude": 34.0248651,
+		"MailingLongitude": -118.8286825,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Viewpoint School",
+		"LastName": "Viewpoint School",
+		"MailingLatitude": 34.1354613,
+		"MailingLongitude": -118.6430238,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Calvary Christian School",
+		"LastName": "Calvary Christian School",
+		"MailingLatitude": 34.04854,
+		"MailingLongitude": -118.552952,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Calabasas High School",
+		"LastName": "Calabasas High School",
+		"MailingLatitude": 34.1388886,
+		"MailingLongitude": -118.6278605,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "White Oak Elementary",
+		"LastName": "White Oak Elementary",
+		"MailingLatitude": 34.14406100000001,
+		"MailingLongitude": -118.8136196,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Oaks Christian School",
+		"LastName": "Oaks Christian School",
+		"MailingLatitude": 34.153225,
+		"MailingLongitude": -118.810362,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Palisades Charter High School",
+		"LastName": "Palisades Charter High School",
+		"MailingLatitude": 34.0477547,
+		"MailingLongitude": -118.5309147,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Woodland Hills Elementary School",
+		"LastName": "Woodland Hills Elementary School",
+		"MailingLatitude": 34.159728,
+		"MailingLongitude": -118.60951,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Carden Conejo School",
+		"LastName": "Carden Conejo School",
+		"MailingLatitude": 34.1537481,
+		"MailingLongitude": -118.8351255,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Taft Charter High School",
+		"LastName": "Taft Charter High School",
+		"MailingLatitude": 34.169657,
+		"MailingLongitude": -118.5713076,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Carlthorp School",
+		"LastName": "Carlthorp School",
+		"MailingLatitude": 34.0297926,
+		"MailingLongitude": -118.5095092,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Woodland Hills Private School",
+		"LastName": "Woodland Hills Private School",
+		"MailingLatitude": 34.1733209,
+		"MailingLongitude": -118.6126833,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St. Monica Catholic Elementary School",
+		"LastName": "St. Monica Catholic Elementary School",
+		"MailingLatitude": 34.02365899999999,
+		"MailingLongitude": -118.49772,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Paul Revere Charter Middle School",
+		"LastName": "Paul Revere Charter Middle School",
+		"MailingLatitude": 34.05494979999999,
+		"MailingLongitude": -118.4951759,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Calvert Street Elementary School",
+		"LastName": "Calvert Street Elementary School",
+		"MailingLatitude": 34.181774,
+		"MailingLongitude": -118.5651649,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lincoln Middle School",
+		"LastName": "Lincoln Middle School",
+		"MailingLatitude": 34.02950360000001,
+		"MailingLongitude": -118.4904107,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Los Encinos School",
+		"LastName": "Los Encinos School",
+		"MailingLatitude": 34.1600469,
+		"MailingLongitude": -118.505626,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Westside Waldorf School",
+		"LastName": "Westside Waldorf School",
+		"MailingLatitude": 34.02422259999999,
+		"MailingLongitude": -118.4835865,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Magic Years Nursery School",
+		"LastName": "The Magic Years Nursery School",
+		"MailingLatitude": 34.185001,
+		"MailingLongitude": -118.536501,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Brockton Avenue Elementary School",
+		"LastName": "Brockton Avenue Elementary School",
+		"MailingLatitude": 34.043952,
+		"MailingLongitude": -118.4628551,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "New Roads Upper School",
+		"LastName": "New Roads Upper School",
+		"MailingLatitude": 34.03109169999999,
+		"MailingLongitude": -118.4616065,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "UCLA Anderson School of Management",
+		"LastName": "UCLA Anderson School of Management",
+		"MailingLatitude": 34.0738081,
+		"MailingLongitude": -118.4436508,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "David Geffen School of Medicine",
+		"LastName": "David Geffen School of Medicine",
+		"MailingLatitude": 34.06589400000001,
+		"MailingLongitude": -118.443361,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Plummer Elementary School",
+		"LastName": "Plummer Elementary School",
+		"MailingLatitude": 34.24006499999999,
+		"MailingLongitude": -118.459904,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Phoenix School",
+		"LastName": "Phoenix School",
+		"MailingLatitude": 34.2800918,
+		"MailingLongitude": -118.8808817,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cathedral High School",
+		"LastName": "Cathedral High School",
+		"MailingLatitude": 34.0698258,
+		"MailingLongitude": -118.2345963,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lockwood Avenue Elementary School",
+		"LastName": "Lockwood Avenue Elementary School",
+		"MailingLatitude": 34.0893047,
+		"MailingLongitude": -118.2882911,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Conejo Jewish Day School",
+		"LastName": "Conejo Jewish Day School",
+		"MailingLatitude": 34.14387,
+		"MailingLongitude": -118.777352,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Manchester Avenue Elementary School",
+		"LastName": "Manchester Avenue Elementary School",
+		"MailingLatitude": 33.959498,
+		"MailingLongitude": -118.2855724,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "El Camino Real Charter High School",
+		"LastName": "El Camino Real Charter High School",
+		"MailingLatitude": 34.1701774,
+		"MailingLongitude": -118.6426395,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Roosevelt Elementary School",
+		"LastName": "Roosevelt Elementary School",
+		"MailingLatitude": 34.0290632,
+		"MailingLongitude": -118.5017426,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Graham Elementary School",
+		"LastName": "Graham Elementary School",
+		"MailingLatitude": 33.961479,
+		"MailingLongitude": -118.2378897,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "USC School of Cinematic Arts",
+		"LastName": "USC School of Cinematic Arts",
+		"MailingLatitude": 34.0234463,
+		"MailingLongitude": -118.2871493,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "USC Annenberg School for Communication ",
+		"LastName": "USC Annenberg School for Communication ",
+		"MailingLatitude": 34.02211450000001,
+		"MailingLongitude": -118.2861272,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Chaminade College Preparatory High Scho",
+		"LastName": "Chaminade College Preparatory High Scho",
+		"MailingLatitude": 34.20677669999999,
+		"MailingLongitude": -118.6355948,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Encino Charter Elementary School",
+		"LastName": "Encino Charter Elementary School",
+		"MailingLatitude": 34.1618809,
+		"MailingLongitude": -118.5025759,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lanai Road Elementary School",
+		"LastName": "Lanai Road Elementary School",
+		"MailingLatitude": 34.1482078,
+		"MailingLongitude": -118.4928472,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bay Laurel Elementary School",
+		"LastName": "Bay Laurel Elementary School",
+		"MailingLatitude": 34.1407141,
+		"MailingLongitude": -118.653254,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ernest Lawrence Middle School",
+		"LastName": "Ernest Lawrence Middle School",
+		"MailingLatitude": 34.2539446,
+		"MailingLongitude": -118.5926549,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Granada Hills Charter High School",
+		"LastName": "Granada Hills Charter High School",
+		"MailingLatitude": 34.2610952,
+		"MailingLongitude": -118.5258523,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Alfred Bernhard Nobel Charter Middle Sc",
+		"LastName": "Alfred Bernhard Nobel Charter Middle Sc",
+		"MailingLatitude": 34.2513156,
+		"MailingLongitude": -118.5529566,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Alice C Stelle Middle School",
+		"LastName": "Alice C Stelle Middle School",
+		"MailingLatitude": 34.1422875,
+		"MailingLongitude": -118.6132638,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marquez Charter School",
+		"LastName": "Marquez Charter School",
+		"MailingLatitude": 34.045783,
+		"MailingLongitude": -118.547759,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John F. Kennedy High School",
+		"LastName": "John F. Kennedy High School",
+		"MailingLatitude": 34.2757507,
+		"MailingLongitude": -118.4875824,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Bishop’s School",
+		"LastName": "The Bishop’s School",
+		"MailingLatitude": 32.8412922,
+		"MailingLongitude": -117.2783382,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Gillispie School",
+		"LastName": "Gillispie School",
+		"MailingLatitude": 32.83871249999999,
+		"MailingLongitude": -117.2722871,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "La Jolla High School",
+		"LastName": "La Jolla High School",
+		"MailingLatitude": 32.8334353,
+		"MailingLongitude": -117.2727577,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "La Jolla Elementary School",
+		"LastName": "La Jolla Elementary School",
+		"MailingLatitude": 32.839237,
+		"MailingLongitude": -117.2717034,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Kalabash School of Music and the Arts",
+		"LastName": "Kalabash School of Music and the Arts",
+		"MailingLatitude": 32.81628749999999,
+		"MailingLongitude": -117.2706816,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bird Rock Elementary School",
+		"LastName": "Bird Rock Elementary School",
+		"MailingLatitude": 32.8110371,
+		"MailingLongitude": -117.2640771,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "ocean experience surf school",
+		"LastName": "ocean experience surf school",
+		"MailingLatitude": 32.7464187,
+		"MailingLongitude": -117.2495616,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Montessori School of La Jolla",
+		"LastName": "Montessori School of La Jolla",
+		"MailingLatitude": 32.8346157,
+		"MailingLongitude": -117.2468006,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Silver Gate Elementary School",
+		"LastName": "Silver Gate Elementary School",
+		"MailingLatitude": 32.7321181,
+		"MailingLongitude": -117.243912,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Diego Unified School District",
+		"LastName": "San Diego Unified School District",
+		"MailingLatitude": 32.8008428,
+		"MailingLongitude": -117.241301,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Crown Point Elementary School",
+		"LastName": "Crown Point Elementary School",
+		"MailingLatitude": 32.7936272,
+		"MailingLongitude": -117.2387954,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Dana Middle School",
+		"LastName": "Dana Middle School",
+		"MailingLatitude": 32.733171,
+		"MailingLongitude": -117.2335584,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Correia Middle School",
+		"LastName": "Correia Middle School",
+		"MailingLatitude": 32.74866250000001,
+		"MailingLongitude": -117.2313933,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Torrey Hills School",
+		"LastName": "Torrey Hills School",
+		"MailingLatitude": 32.9144402,
+		"MailingLongitude": -117.2232845,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Del Mar Hills Elementary School",
+		"LastName": "Del Mar Hills Elementary School",
+		"MailingLatitude": 32.9538748,
+		"MailingLongitude": -117.2463038,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Loma Portal Elementary School",
+		"LastName": "Loma Portal Elementary School",
+		"MailingLatitude": 32.7401595,
+		"MailingLongitude": -117.2224452,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Preuss School UCSD",
+		"LastName": "Preuss School UCSD",
+		"MailingLatitude": 32.8827123,
+		"MailingLongitude": -117.222117,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Doyle Elementary School",
+		"LastName": "Doyle Elementary School",
+		"MailingLatitude": 32.86365149999999,
+		"MailingLongitude": -117.2215237,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Carmel Del Mar School",
+		"LastName": "Carmel Del Mar School",
+		"MailingLatitude": 32.9407517,
+		"MailingLongitude": -117.2285845,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Carmel Valley Middle School",
+		"LastName": "Carmel Valley Middle School",
+		"MailingLatitude": 32.9472213,
+		"MailingLongitude": -117.2309393,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Solana Pacific Elementary School",
+		"LastName": "Solana Pacific Elementary School",
+		"MailingLatitude": 32.9515399,
+		"MailingLongitude": -117.2312802,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Carmel Creek Elementary School",
+		"LastName": "Carmel Creek Elementary School",
+		"MailingLatitude": 32.95134899999999,
+		"MailingLongitude": -117.225725,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Del Mar Pines School",
+		"LastName": "Del Mar Pines School",
+		"MailingLatitude": 32.9574503,
+		"MailingLongitude": -117.2284782,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Torrey Pines High School",
+		"LastName": "Torrey Pines High School",
+		"MailingLatitude": 32.9574372,
+		"MailingLongitude": -117.2261884,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Altus Schools",
+		"LastName": "Altus Schools",
+		"MailingLatitude": 32.9027782,
+		"MailingLongitude": -117.1841964,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Charter School of San Diego",
+		"LastName": "The Charter School of San Diego",
+		"MailingLatitude": 32.7139633,
+		"MailingLongitude": -117.1626283,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Perkins Elementary School",
+		"LastName": "Perkins Elementary School",
+		"MailingLatitude": 32.701186,
+		"MailingLongitude": -117.148736,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Central Elementary School",
+		"LastName": "Central Elementary School",
+		"MailingLatitude": 32.75054779999999,
+		"MailingLongitude": -117.1069879,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "De Portola Middle School",
+		"LastName": "De Portola Middle School",
+		"MailingLatitude": 32.828709,
+		"MailingLongitude": -117.0908654,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The O'Farrell Charter School",
+		"LastName": "The O'Farrell Charter School",
+		"MailingLatitude": 32.7020437,
+		"MailingLongitude": -117.0646477,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Aviara Oaks Middle School",
+		"LastName": "Aviara Oaks Middle School",
+		"MailingLatitude": 33.1040258,
+		"MailingLongitude": -117.2774193,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Rady School of Management",
+		"LastName": "Rady School of Management",
+		"MailingLatitude": 32.88661370000001,
+		"MailingLongitude": -117.2412796,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "La Jolla Country Day School",
+		"LastName": "La Jolla Country Day School",
+		"MailingLatitude": 32.878598,
+		"MailingLongitude": -117.216727,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "UC San Diego School of Medicine",
+		"LastName": "UC San Diego School of Medicine",
+		"MailingLatitude": 32.8752008,
+		"MailingLongitude": -117.2358106,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "UC San Diego Jacobs School of Engineeri",
+		"LastName": "UC San Diego Jacobs School of Engineeri",
+		"MailingLatitude": 32.8814678,
+		"MailingLongitude": -117.2354827,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Clairemont High School",
+		"LastName": "Clairemont High School",
+		"MailingLatitude": 32.8093502,
+		"MailingLongitude": -117.2035795,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Muirlands Middle School",
+		"LastName": "Muirlands Middle School",
+		"MailingLatitude": 32.8323834,
+		"MailingLongitude": -117.2688734,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Diego Unified School District",
+		"LastName": "San Diego Unified School District",
+		"MailingLatitude": 32.8205951,
+		"MailingLongitude": -117.1866601,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Law",
+		"LastName": "School of Law",
+		"MailingLatitude": 32.771661,
+		"MailingLongitude": -117.188859,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Thomas Jefferson School of Law",
+		"LastName": "Thomas Jefferson School of Law",
+		"MailingLatitude": 32.710317,
+		"MailingLongitude": -117.1543204,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Point Loma High School",
+		"LastName": "Point Loma High School",
+		"MailingLatitude": 32.7393334,
+		"MailingLongitude": -117.226232,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Children's School",
+		"LastName": "The Children's School",
+		"MailingLatitude": 32.8496835,
+		"MailingLongitude": -117.2536723,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pacific Beach Middle School",
+		"LastName": "Pacific Beach Middle School",
+		"MailingLatitude": 32.8013159,
+		"MailingLongitude": -117.241857,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Kate Sessions Elementary School",
+		"LastName": "Kate Sessions Elementary School",
+		"MailingLatitude": 32.80901329999999,
+		"MailingLongitude": -117.2320861,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Poway High School",
+		"LastName": "Poway High School",
+		"MailingLatitude": 32.9984023,
+		"MailingLongitude": -117.0253875,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Grossmont Union High School District Sp",
+		"LastName": "Grossmont Union High School District Sp",
+		"MailingLatitude": 32.78061669999999,
+		"MailingLongitude": -116.9862923,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mission Bay Senior High School",
+		"LastName": "Mission Bay Senior High School",
+		"MailingLatitude": 32.79956639999999,
+		"MailingLongitude": -117.2238659,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Charter School of San Diego",
+		"LastName": "Charter School of San Diego",
+		"MailingLatitude": 32.8716147,
+		"MailingLongitude": -117.2110419,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "University City High School",
+		"LastName": "University City High School",
+		"MailingLatitude": 32.8610159,
+		"MailingLongitude": -117.2057846,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Barnett",
+		"LastName": "Barnett",
+		"MailingLatitude": 32.8628174,
+		"MailingLongitude": -117.2243624,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Rock Encinitas",
+		"LastName": "School of Rock Encinitas",
+		"MailingLatitude": 33.043892,
+		"MailingLongitude": -117.2588976,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Nightingale Music",
+		"LastName": "Nightingale Music",
+		"MailingLatitude": 32.814599,
+		"MailingLongitude": -117.269718,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Diego French American School",
+		"LastName": "San Diego French American School",
+		"MailingLatitude": 32.834545,
+		"MailingLongitude": -117.247662,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Euclid Child Development Center",
+		"LastName": "Euclid Child Development Center",
+		"MailingLatitude": 32.7519179,
+		"MailingLongitude": -117.0942373,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Warren-Walker School ( La Mesa Campus)",
+		"LastName": "Warren-Walker School ( La Mesa Campus)",
+		"MailingLatitude": 32.7728053,
+		"MailingLongitude": -117.006565,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Scripps Ranch High School",
+		"LastName": "Scripps Ranch High School",
+		"MailingLatitude": 32.9085225,
+		"MailingLongitude": -117.1118393,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Rock",
+		"LastName": "School of Rock",
+		"MailingLatitude": 33.16777059999999,
+		"MailingLongitude": -117.2203316,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ocean Beach Child Development Center",
+		"LastName": "Ocean Beach Child Development Center",
+		"MailingLatitude": 32.74478010000001,
+		"MailingLongitude": -117.2468057,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Rock Oceanside",
+		"LastName": "School of Rock Oceanside",
+		"MailingLatitude": 33.20513400000001,
+		"MailingLongitude": -117.2899616,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School of Rock San Diego",
+		"LastName": "School of Rock San Diego",
+		"MailingLatitude": 32.7355032,
+		"MailingLongitude": -117.2166212,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Willow Elementary School",
+		"LastName": "Willow Elementary School",
+		"MailingLatitude": 32.5480231,
+		"MailingLongitude": -117.04194,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Silver Wing Elementary School",
+		"LastName": "Silver Wing Elementary School",
+		"MailingLatitude": 32.5795735,
+		"MailingLongitude": -117.0531768,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Central Elementary School",
+		"LastName": "Central Elementary School",
+		"MailingLatitude": 32.5779098,
+		"MailingLongitude": -117.1067153,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "South Bay Union School District",
+		"LastName": "South Bay Union School District",
+		"MailingLatitude": 32.58012110000001,
+		"MailingLongitude": -117.120244,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Juarez Lincoln Elementary School",
+		"LastName": "Juarez Lincoln Elementary School",
+		"MailingLatitude": 32.5806356,
+		"MailingLongitude": -117.0441877,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mar Vista High School",
+		"LastName": "Mar Vista High School",
+		"MailingLatitude": 32.57922589999999,
+		"MailingLongitude": -117.1218334,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Ysidro Elementary School District",
+		"LastName": "San Ysidro Elementary School District",
+		"MailingLatitude": 32.5619634,
+		"MailingLongitude": -117.0398641,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "St Charles Catholic School",
+		"LastName": "St Charles Catholic School",
+		"MailingLatitude": 32.5803617,
+		"MailingLongitude": -117.0946048,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Montgomery Middle School",
+		"LastName": "Montgomery Middle School",
+		"MailingLatitude": 32.57692720000001,
+		"MailingLongitude": -117.0561465,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Finney, Myrtle S. Elementary School",
+		"LastName": "Finney, Myrtle S. Elementary School",
+		"MailingLatitude": 32.5850797,
+		"MailingLongitude": -117.0493636,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ocean View Hills School",
+		"LastName": "Ocean View Hills School",
+		"MailingLatitude": 32.5716874,
+		"MailingLongitude": -117.0248879,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Southwest High School",
+		"LastName": "Southwest High School",
+		"MailingLatitude": 32.5677672,
+		"MailingLongitude": -117.0832828,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Southwest Middle School",
+		"LastName": "Southwest Middle School",
+		"MailingLatitude": 32.5693876,
+		"MailingLongitude": -117.0744287,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Our Lady of Mt. Carmel School",
+		"LastName": "Our Lady of Mt. Carmel School",
+		"MailingLatitude": 32.55804789999999,
+		"MailingLongitude": -117.0451295,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "San Ysidro High School",
+		"LastName": "San Ysidro High School",
+		"MailingLatitude": 32.5645135,
+		"MailingLongitude": -117.0172748,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Los Altos Elementary School",
+		"LastName": "Los Altos Elementary School",
+		"MailingLatitude": 32.5721162,
+		"MailingLongitude": -117.0500778,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Montgomery High School",
+		"LastName": "Montgomery High School",
+		"MailingLatitude": 32.5855988,
+		"MailingLongitude": -117.0647042,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Otay Elementary School",
+		"LastName": "Otay Elementary School",
+		"MailingLatitude": 32.5963547,
+		"MailingLongitude": -117.0571482,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Palomar High School",
+		"LastName": "Palomar High School",
+		"MailingLatitude": 32.60510049999999,
+		"MailingLongitude": -117.073616,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lauderbach Elementary School",
+		"LastName": "Lauderbach Elementary School",
+		"MailingLatitude": 32.6061172,
+		"MailingLongitude": -117.0699384,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Castle Park High School",
+		"LastName": "Castle Park High School",
+		"MailingLatitude": 32.6067294,
+		"MailingLongitude": -117.0504426,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Olympian High School",
+		"LastName": "Olympian High School",
+		"MailingLatitude": 32.6080915,
+		"MailingLongitude": -116.9746793,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Wolf Canyon Elementary School",
+		"LastName": "Wolf Canyon Elementary School",
+		"MailingLatitude": 32.611751,
+		"MailingLongitude": -116.974545,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Palomar Elementary School",
+		"LastName": "Palomar Elementary School",
+		"MailingLatitude": 32.61323240000001,
+		"MailingLongitude": -117.0435138,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Options Secondary School",
+		"LastName": "Options Secondary School",
+		"MailingLatitude": 32.6143233,
+		"MailingLongitude": -117.0758916,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Chula Vista Adult School",
+		"LastName": "Chula Vista Adult School",
+		"MailingLatitude": 32.6147687,
+		"MailingLongitude": -117.0750069,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hedenkamp Elementary School",
+		"LastName": "Hedenkamp Elementary School",
+		"MailingLatitude": 32.6165399,
+		"MailingLongitude": -117.0149035,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bayfront Charter High School",
+		"LastName": "Bayfront Charter High School",
+		"MailingLatitude": 32.6173906,
+		"MailingLongitude": -117.0927515,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mater Dei Catholic High School",
+		"LastName": "Mater Dei Catholic High School",
+		"MailingLatitude": 32.62045879999999,
+		"MailingLongitude": -116.9763305,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Chula Vista Learning Community Charter ",
+		"LastName": "Chula Vista Learning Community Charter ",
+		"MailingLatitude": 32.6206498,
+		"MailingLongitude": -117.0833777,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Joseph Casillas Elementary School",
+		"LastName": "Joseph Casillas Elementary School",
+		"MailingLatitude": 32.629375,
+		"MailingLongitude": -117.0110409,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hilltop Middle School",
+		"LastName": "Hilltop Middle School",
+		"MailingLatitude": 32.6305872,
+		"MailingLongitude": -117.0608303,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Chula Vista Elementary School District",
+		"LastName": "Chula Vista Elementary School District",
+		"MailingLatitude": 32.6316742,
+		"MailingLongitude": -117.0584038,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Chula Vista Middle School",
+		"LastName": "Chula Vista Middle School",
+		"MailingLatitude": 32.6346655,
+		"MailingLongitude": -117.0855655,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Vista Square Elementary School",
+		"LastName": "Vista Square Elementary School",
+		"MailingLatitude": 32.6343694,
+		"MailingLongitude": -117.0872546,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bonita Vista High School",
+		"LastName": "Bonita Vista High School",
+		"MailingLatitude": 32.6471172,
+		"MailingLongitude": -116.9992226,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Rosebank Elementary School",
+		"LastName": "Rosebank Elementary School",
+		"MailingLatitude": 32.6497519,
+		"MailingLongitude": -117.0727161,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Montessori American School",
+		"LastName": "Montessori American School",
+		"MailingLatitude": 32.651742,
+		"MailingLongitude": -117.047988,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sweetwater Union High School",
+		"LastName": "Sweetwater Union High School",
+		"MailingLatitude": 32.6600724,
+		"MailingLongitude": -117.0941586,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Pacific View Leadership Elementary",
+		"LastName": "Pacific View Leadership Elementary",
+		"MailingLatitude": 32.67102740000001,
+		"MailingLongitude": -117.0574943,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sunnyside Elementary School",
+		"LastName": "Sunnyside Elementary School",
+		"MailingLatitude": 32.673459,
+		"MailingLongitude": -117.0141678,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Chula Vista High School",
+		"LastName": "Chula Vista High School",
+		"MailingLatitude": 32.6215088,
+		"MailingLongitude": -117.0775152,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Castle Park Middle School",
+		"LastName": "Castle Park Middle School",
+		"MailingLatitude": 32.605381,
+		"MailingLongitude": -117.0595786,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Harborside Elementary School",
+		"LastName": "Harborside Elementary School",
+		"MailingLatitude": 32.6080385,
+		"MailingLongitude": -117.085483,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mueller Charter School",
+		"LastName": "Mueller Charter School",
+		"MailingLatitude": 32.6269185,
+		"MailingLongitude": -117.0932619,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Museum School",
+		"LastName": "Museum School",
+		"MailingLatitude": 32.7322638,
+		"MailingLongitude": -117.1624371,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "National University Virtual High School",
+		"LastName": "National University Virtual High School",
+		"MailingLatitude": 32.6234044,
+		"MailingLongitude": -117.094995,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "MAAC Community Charter School",
+		"LastName": "MAAC Community Charter School",
+		"MailingLatitude": 32.6046592,
+		"MailingLongitude": -117.0642379,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Feaster Charter School",
+		"LastName": "Feaster Charter School",
+		"MailingLatitude": 32.6418889,
+		"MailingLongitude": -117.0973814,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mar Vista Academy",
+		"LastName": "Mar Vista Academy",
+		"MailingLatitude": 32.5732897,
+		"MailingLongitude": -117.0956347,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "School Specialty Inc",
+		"LastName": "School Specialty Inc",
+		"MailingLatitude": 32.76169059999999,
+		"MailingLongitude": -117.160665,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Southwestern College, Chula Vista",
+		"LastName": "Southwestern College, Chula Vista",
+		"MailingLatitude": 32.600598,
+		"MailingLongitude": -117.044752,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Linda Rankin Givens Elementary School",
+		"LastName": "Linda Rankin Givens Elementary School",
+		"MailingLatitude": 36.1673789,
+		"MailingLongitude": -115.3441442,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Odyssey Charter Schools",
+		"LastName": "Odyssey Charter Schools",
+		"MailingLatitude": 36.146894,
+		"MailingLongitude": -115.226358,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Canarelli Middle School",
+		"LastName": "Canarelli Middle School",
+		"MailingLatitude": 36.0464176,
+		"MailingLongitude": -115.2332003,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Herbert A Derfelt Elementary School",
+		"LastName": "Herbert A Derfelt Elementary School",
+		"MailingLatitude": 36.1504347,
+		"MailingLongitude": -115.2767199,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Sierra Vista High School",
+		"LastName": "Sierra Vista High School",
+		"MailingLatitude": 36.0499075,
+		"MailingLongitude": -115.268229,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cimarron-Memorial High School",
+		"LastName": "Cimarron-Memorial High School",
+		"MailingLatitude": 36.2016198,
+		"MailingLongitude": -115.2533601,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Grant Sawyer Middle School",
+		"LastName": "Grant Sawyer Middle School",
+		"MailingLatitude": 36.0894679,
+		"MailingLongitude": -115.2374303,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Dondero Elementary School",
+		"LastName": "Dondero Elementary School",
+		"MailingLatitude": 36.1081325,
+		"MailingLongitude": -115.2283438,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Helen Jydstrup Elementary School",
+		"LastName": "Helen Jydstrup Elementary School",
+		"MailingLatitude": 36.09553669999999,
+		"MailingLongitude": -115.2202427,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "James B McMillan Elementary School",
+		"LastName": "James B McMillan Elementary School",
+		"MailingLatitude": 36.19326799999999,
+		"MailingLongitude": -115.24791,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Staton Elementary School",
+		"LastName": "Staton Elementary School",
+		"MailingLatitude": 36.1902481,
+		"MailingLongitude": -115.3353818,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bertha Ronzone Elementary School",
+		"LastName": "Bertha Ronzone Elementary School",
+		"MailingLatitude": 36.1969725,
+		"MailingLongitude": -115.2179553,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Victoria Fertitta Middle School",
+		"LastName": "Victoria Fertitta Middle School",
+		"MailingLatitude": 36.0897468,
+		"MailingLongitude": -115.3095236,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Spring Valley Montessori School",
+		"LastName": "Spring Valley Montessori School",
+		"MailingLatitude": 36.1372941,
+		"MailingLongitude": -115.2435651,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Edythe & Lloyd Katz Elementary School",
+		"LastName": "Edythe & Lloyd Katz Elementary School",
+		"MailingLatitude": 36.1914696,
+		"MailingLongitude": -115.2475285,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "spring valley high school",
+		"LastName": "spring valley high school",
+		"MailingLatitude": 36.107571,
+		"MailingLongitude": -115.271558,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Meadows School",
+		"LastName": "The Meadows School",
+		"MailingLatitude": 36.195211,
+		"MailingLongitude": -115.2822021,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "The Alexander Dawson School at Rainbow ",
+		"LastName": "The Alexander Dawson School at Rainbow ",
+		"MailingLatitude": 36.127547,
+		"MailingLongitude": -115.331192,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Spring Valley High School",
+		"LastName": "Spring Valley High School",
+		"MailingLatitude": 36.1196045,
+		"MailingLongitude": -115.2593097,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Western High School",
+		"LastName": "Western High School",
+		"MailingLatitude": 36.1759926,
+		"MailingLongitude": -115.2035757,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Merryhill Elementary School",
+		"LastName": "Merryhill Elementary School",
+		"MailingLatitude": 36.0972392,
+		"MailingLongitude": -115.2799088,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bonanza High School",
+		"LastName": "Bonanza High School",
+		"MailingLatitude": 36.1550407,
+		"MailingLongitude": -115.2381562,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Patricia A. Bendorf Elementary School",
+		"LastName": "Patricia A. Bendorf Elementary School",
+		"MailingLatitude": 36.12526179999999,
+		"MailingLongitude": -115.2893148,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Paul E. Culley Elementary School",
+		"LastName": "Paul E. Culley Elementary School",
+		"MailingLatitude": 36.1835923,
+		"MailingLongitude": -115.221682,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Doris M Reed Elementary School",
+		"LastName": "Doris M Reed Elementary School",
+		"MailingLatitude": 36.205621,
+		"MailingLongitude": -115.218445,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Warren Elementary School",
+		"LastName": "Warren Elementary School",
+		"MailingLatitude": 36.164284,
+		"MailingLongitude": -115.234392,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Dr C Owen Roundy Elementary School",
+		"LastName": "Dr C Owen Roundy Elementary School",
+		"MailingLatitude": 36.13972400000001,
+		"MailingLongitude": -115.215559,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Faith Lutheran Middle School & High Sch",
+		"LastName": "Faith Lutheran Middle School & High Sch",
+		"MailingLatitude": 36.15389,
+		"MailingLongitude": -115.316797,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Wayne N Tanaka Elementary School",
+		"LastName": "Wayne N Tanaka Elementary School",
+		"MailingLatitude": 36.06238690000001,
+		"MailingLongitude": -115.2915812,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Judith D. Steele Elementary School",
+		"LastName": "Judith D. Steele Elementary School",
+		"MailingLatitude": 36.051406,
+		"MailingLongitude": -115.245359,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "J T McWilliams Elementary School",
+		"LastName": "J T McWilliams Elementary School",
+		"MailingLatitude": 36.185629,
+		"MailingLongitude": -115.210716,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lawrence Junior High School",
+		"LastName": "Lawrence Junior High School",
+		"MailingLatitude": 36.1094002,
+		"MailingLongitude": -115.284743,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Elaine Wynn Elementary School",
+		"LastName": "Elaine Wynn Elementary School",
+		"MailingLatitude": 36.1359807,
+		"MailingLongitude": -115.2192834,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Walter Johnson Junior High School",
+		"LastName": "Walter Johnson Junior High School",
+		"MailingLatitude": 36.168542,
+		"MailingLongitude": -115.2622733,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Berkeley L Bunker Elementary",
+		"LastName": "Berkeley L Bunker Elementary",
+		"MailingLatitude": 36.21118120000001,
+		"MailingLongitude": -115.2319877,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "O. K. Adcock Elementary School",
+		"LastName": "O. K. Adcock Elementary School",
+		"MailingLatitude": 36.1723933,
+		"MailingLongitude": -115.2352294,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "E W Griffith Elementary School",
+		"LastName": "E W Griffith Elementary School",
+		"MailingLatitude": 36.1692632,
+		"MailingLongitude": -115.1999392,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Mark L. Fine Elementary School",
+		"LastName": "Mark L. Fine Elementary School",
+		"MailingLatitude": 36.0316451,
+		"MailingLongitude": -115.2366253,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Robert L. Forbuss Elementary School",
+		"LastName": "Robert L. Forbuss Elementary School",
+		"MailingLatitude": 36.0309093,
+		"MailingLongitude": -115.3082784,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ed W. Clark High School",
+		"LastName": "Ed W. Clark High School",
+		"MailingLatitude": 36.13581140000001,
+		"MailingLongitude": -115.197714,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "clark high school epod",
+		"LastName": "clark high school epod",
+		"MailingLatitude": 36.135475,
+		"MailingLongitude": -115.197115,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Robert O. Gibson Middle School",
+		"LastName": "Robert O. Gibson Middle School",
+		"MailingLatitude": 36.1820258,
+		"MailingLongitude": -115.1971972,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ruth Fyfe Elementary School",
+		"LastName": "Ruth Fyfe Elementary School",
+		"MailingLatitude": 36.1768718,
+		"MailingLongitude": -115.1962015,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hyde Park Middle School",
+		"LastName": "Hyde Park Middle School",
+		"MailingLatitude": 36.1618229,
+		"MailingLongitude": -115.1944739,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Eileen Conners Elementary School",
+		"LastName": "Eileen Conners Elementary School",
+		"MailingLatitude": 36.230098,
+		"MailingLongitude": -115.321377,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Edith Garehime Elementary School",
+		"LastName": "Edith Garehime Elementary School",
+		"MailingLatitude": 36.2309782,
+		"MailingLongitude": -115.2925861,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Rex Bell Elementary School",
+		"LastName": "Rex Bell Elementary School",
+		"MailingLatitude": 36.1406364,
+		"MailingLongitude": -115.1802546,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Swainston MIddle School",
+		"LastName": "Swainston MIddle School",
+		"MailingLatitude": 36.2292513,
+		"MailingLongitude": -115.1867916,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "William V. Wright Elementary School",
+		"LastName": "William V. Wright Elementary School",
+		"MailingLatitude": 36.0138539,
+		"MailingLongitude": -115.2750998,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Univ of Nevada School-Medicine",
+		"LastName": "Univ of Nevada School-Medicine",
+		"MailingLatitude": 36.15928,
+		"MailingLongitude": -115.177507,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Ernest May Elementary School",
+		"LastName": "Ernest May Elementary School",
+		"MailingLatitude": 36.255439,
+		"MailingLongitude": -115.232876,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Desert Oasis High School",
+		"LastName": "Desert Oasis High School",
+		"MailingLatitude": 35.992321,
+		"MailingLongitude": -115.2374346,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Marvin M Sedway Middle School",
+		"LastName": "Marvin M Sedway Middle School",
+		"MailingLatitude": 36.223108,
+		"MailingLongitude": -115.148949,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Paradise Elementary School",
+		"LastName": "Paradise Elementary School",
+		"MailingLatitude": 36.1117162,
+		"MailingLongitude": -115.1449531,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Evelyn Stuckey Elementary School",
+		"LastName": "Evelyn Stuckey Elementary School",
+		"MailingLatitude": 35.986867,
+		"MailingLongitude": -115.2080982,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lied Middle School",
+		"LastName": "Lied Middle School",
+		"MailingLatitude": 36.26949,
+		"MailingLongitude": -115.2136872,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Eva G Simmons Elementary School",
+		"LastName": "Eva G Simmons Elementary School",
+		"MailingLatitude": 36.2680052,
+		"MailingLongitude": -115.1743164,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Robert E Lake Elementary School",
+		"LastName": "Robert E Lake Elementary School",
+		"MailingLatitude": 36.1384731,
+		"MailingLongitude": -115.1290017,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Innovations International Charter Schoo",
+		"LastName": "Innovations International Charter Schoo",
+		"MailingLatitude": 36.1522647,
+		"MailingLongitude": -115.1292878,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Clifford O Findlay Middle School",
+		"LastName": "Clifford O Findlay Middle School",
+		"MailingLatitude": 36.2679763,
+		"MailingLongitude": -115.1453125,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Shirley and Bill Wallin Elementary Scho",
+		"LastName": "Shirley and Bill Wallin Elementary Scho",
+		"MailingLatitude": 35.93131700000001,
+		"MailingLongitude": -115.088482,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Gene Ward Elementary School",
+		"LastName": "Gene Ward Elementary School",
+		"MailingLatitude": 36.0928654,
+		"MailingLongitude": -115.132097,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Elise L. Wolff Elementary",
+		"LastName": "Elise L. Wolff Elementary",
+		"MailingLatitude": 35.99065989999999,
+		"MailingLongitude": -115.1220738,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Charles Silvestri Junior High School",
+		"LastName": "Charles Silvestri Junior High School",
+		"MailingLatitude": 36.0123978,
+		"MailingLongitude": -115.1409672,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Doris French Elementary School",
+		"LastName": "Doris French Elementary School",
+		"MailingLatitude": 36.0926986,
+		"MailingLongitude": -115.1051467,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Aggie Roberts Elementary School",
+		"LastName": "Aggie Roberts Elementary School",
+		"MailingLatitude": 36.0450482,
+		"MailingLongitude": -115.1052522,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Silverado High School",
+		"LastName": "Silverado High School",
+		"MailingLatitude": 36.023344,
+		"MailingLongitude": -115.129657,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John R Hummel Elementary School",
+		"LastName": "John R Hummel Elementary School",
+		"MailingLatitude": 36.0110169,
+		"MailingLongitude": -115.1582618,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Charles And Phyllis Frias Elementary Sc",
+		"LastName": "Charles And Phyllis Frias Elementary Sc",
+		"MailingLatitude": 35.9893023,
+		"MailingLongitude": -115.2214501,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Clark County School District",
+		"LastName": "Clark County School District",
+		"MailingLatitude": 36.0119245,
+		"MailingLongitude": -115.217956,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John Bass Elementary School",
+		"LastName": "John Bass Elementary School",
+		"MailingLatitude": 36.00136850000001,
+		"MailingLongitude": -115.1664398,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Cannon Junior High School",
+		"LastName": "Cannon Junior High School",
+		"MailingLatitude": 36.0835683,
+		"MailingLongitude": -115.1161675,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Jack L. Schofield Middle School",
+		"LastName": "Jack L. Schofield Middle School",
+		"MailingLatitude": 36.0326124,
+		"MailingLongitude": -115.1283727,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Aldeane Comito Ries Elementary School",
+		"LastName": "Aldeane Comito Ries Elementary School",
+		"MailingLatitude": 36.01136880000001,
+		"MailingLongitude": -115.2181868,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Bob Miller Middle School",
+		"LastName": "Bob Miller Middle School",
+		"MailingLatitude": 36.013182,
+		"MailingLongitude": -115.092922,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Roger D Gehring Elementary School",
+		"LastName": "Roger D Gehring Elementary School",
+		"MailingLatitude": 36.0160468,
+		"MailingLongitude": -115.1375697,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Wilbur & Theresa Faiss Middle School",
+		"LastName": "Wilbur & Theresa Faiss Middle School",
+		"MailingLatitude": 36.0619187,
+		"MailingLongitude": -115.3007974,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lucille S Rogers Elementary School",
+		"LastName": "Lucille S Rogers Elementary School",
+		"MailingLatitude": 36.08815970000001,
+		"MailingLongitude": -115.2851013,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Kathy L. Batterman Elementary School",
+		"LastName": "Kathy L. Batterman Elementary School",
+		"MailingLatitude": 36.0823952,
+		"MailingLongitude": -115.3130205,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "BISHOP GORMAN HIGH SCHOOL",
+		"LastName": "BISHOP GORMAN HIGH SCHOOL",
+		"MailingLatitude": 36.0819255,
+		"MailingLongitude": -115.3182083,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lewis E Rowe Elementary School",
+		"LastName": "Lewis E Rowe Elementary School",
+		"MailingLatitude": 36.1103195,
+		"MailingLongitude": -115.1251313,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Crescent School of Gaming and Bartendin",
+		"LastName": "Crescent School of Gaming and Bartendin",
+		"MailingLatitude": 36.113472,
+		"MailingLongitude": -115.091162,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "J M Ullom Elementary School",
+		"LastName": "J M Ullom Elementary School",
+		"MailingLatitude": 36.1042385,
+		"MailingLongitude": -115.0672649,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "William E. Ferron Elementary School",
+		"LastName": "William E. Ferron Elementary School",
+		"MailingLatitude": 36.1126839,
+		"MailingLongitude": -115.0725785,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Greenspun Junior High School",
+		"LastName": "Greenspun Junior High School",
+		"MailingLatitude": 36.03543999999999,
+		"MailingLongitude": -115.0655704,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Petersen Dean ES Elementary School",
+		"LastName": "Petersen Dean ES Elementary School",
+		"MailingLatitude": 36.123449,
+		"MailingLongitude": -115.140843,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Will Beckley Elementary School",
+		"LastName": "Will Beckley Elementary School",
+		"MailingLatitude": 36.13119,
+		"MailingLongitude": -115.100058,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Whitney Elementary School",
+		"LastName": "Whitney Elementary School",
+		"MailingLatitude": 36.09976669999999,
+		"MailingLongitude": -115.0446066,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Hal Smith Elementary School",
+		"LastName": "Hal Smith Elementary School",
+		"MailingLatitude": 36.1302065,
+		"MailingLongitude": -115.0625387,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Lorna Kesterson Elementary",
+		"LastName": "Lorna Kesterson Elementary",
+		"MailingLatitude": 36.04497789999999,
+		"MailingLongitude": -115.0364038,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "John C Fremont Middle School",
+		"LastName": "John C Fremont Middle School",
+		"MailingLatitude": 36.146954,
+		"MailingLongitude": -115.138954,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Las Vegas High School",
+		"LastName": "Las Vegas High School",
+		"MailingLatitude": 36.1463756,
+		"MailingLongitude": -115.0325767,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Neil C Twitchell Elementary School",
+		"LastName": "Neil C Twitchell Elementary School",
+		"MailingLatitude": 36.0235606,
+		"MailingLongitude": -115.078251,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Coronado High School",
+		"LastName": "Coronado High School",
+		"MailingLatitude": 35.9940955,
+		"MailingLongitude": -115.1118687,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Calvary Chapel Christian School",
+		"LastName": "Calvary Chapel Christian School",
+		"MailingLatitude": 36.0810769,
+		"MailingLongitude": -115.2458179,
+		"MailingCountry": "USA"
+	}]
+}
