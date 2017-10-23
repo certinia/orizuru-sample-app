@@ -8,9 +8,12 @@
 
 ## Getting Started
 
-Deploy the Salesforce component of the app using the button below.
+Deploy the Salesforce and Heroku components of the app using the buttons below.
+
+*Important! Remember to change the Named Credential endpoint to match your newly created Heroku app (e.g. https://my-app-123.herokuapp.com).*
 
 [![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### Connected App
 
