@@ -1,0 +1,14 @@
+.checkstyle
+.classpath
+.nyc_output
+.project
+.sfdx
+
+node_modules
+coverage
+target
+
+local.run.properties
+
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.m2e.core.prefs
