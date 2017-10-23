@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+	<flexiPageRegions>
+		<componentInstances>
+			<componentName>RouteCalculationContainer</componentName>
+		</componentInstances>
+		<componentInstances>
+			<componentInstanceProperties>
+				<name>entityName</name>
+				<value>DeliveryRoute__c</value>
+			</componentInstanceProperties>
+			<componentInstanceProperties>
+				<name>filterName</name>
+				<value>All</value>
+			</componentInstanceProperties>
+			<componentInstanceProperties>
+				<name>hideActionBar</name>
+				<value>true</value>
+			</componentInstanceProperties>
+			<componentInstanceProperties>
+				<name>pageSize</name>
+				<value>20</value>
+			</componentInstanceProperties>
+			<componentName>flexipage:filterListCard</componentName>
+		</componentInstances>
+		<name>main</name>
+		<type>Region</type>
+	</flexiPageRegions>
+	<masterLabel>Calculate Route</masterLabel>
+	<template>
+		<name>flexipage:defaultAppHomeTemplate</name>
+	</template>
+	<type>AppPage</type>
+</FlexiPage>
