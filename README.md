@@ -12,6 +12,44 @@ Deploy the Salesforce component of the app using the button below.
 
 [![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
 
+### Connected App
+
+When communicating between Force.com and Heroku, we use a Connected App with a certificate to verify user identity.
+
+A certificate can be generated using the following steps:
+
+1. Run `openssl version` to check that you have OpenSSL installed
+	* If you don't have OpenSSL then it can be installed via brew:
+
+		* `brew install openssl`
+
+1. Run the following OpenSSL command to generate your private key and public certificate. Answer the questions when prompted.
+	
+	`openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem`
+
+1. Review the created certificate:
+	
+	`openssl x509 -text -noout -in certificate.pem`
+
+This will have generated two files:
+
+* key.pem - the private key
+* certificate.pem - the public key
+	
+The private key is used as the `JWT_SIGNING_KEY` environment variable on Heroku and the public key is used as the certificate of the Connected App.
+
+1. The `Deploy to SFDX` button will have deployed a Connected App without a certificate. To update the app:
+	1. Log in the the Salesforce organisation into which you deployed the components.
+	1. Go to `Setup`.
+	1. Select `Apps` > `App Manager`.
+	1. Select the dropdown for the `Orizuru` connected app and then `Edit`.
+	1. In the `API (Enable OAuth Settings)`section:
+		* Select `Use digital signatures`
+		* Select `Choose File` and select the `certificate.pem` file that you generated earlier.
+ 	1. Save the connected app.
+
+## Local Development Environment
+
 ## Deploying to Force.com
 This project is built using [Salesforce DX](https://www.salesforce.com/products/platform/products/salesforce-dx/).
 
@@ -61,8 +99,6 @@ This project is built using [Salesforce DX](https://www.salesforce.com/products/
 	1. `Save`.
 	1. Select `Manage Assignments`.
 	1. Add the permission set to your user.
-
-## Local Development Environment
 
 ### RabbitMQ Setup
 
