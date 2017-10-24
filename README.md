@@ -128,3 +128,29 @@ The policies of the Connected app also need to be changed. This can be done by f
 1. Select `Orizuru` then `Edit Policies`.
 1. In the `OAuth policies` section, update the `Permitted Users` to `Admin approved users are pre-authorized`.
 1. Select `Save`.
+
+## Code Overview
+
+This project builds upon the [Orizuru framework](https://www.npmjs.com/package/@financialforcedev/orizuru), a Node.js library that streamlines strongly typed communication between Heroku dynos, and [Force.com](https://www.salesforce.com/products/platform/products/force/).
+
+One of our requirements was that the project should be  deployed from one GitHub repository, hence the `src` folder contains all the code.
+
+The code has been structured in the following way:
+
+* __src__
+	* __apex__
+		* Contains the Force.com application code that can be deployed via SFDX.
+	* __java__
+		* Contains the Java code used within the Route Solver dyno.
+	* __node__
+		* Contains the Node.js code used for the web and worker dynos.
+		* This is further split into:
+			* _lib_
+				* The Node.js code that builds upon the Orizuru framework.
+				* Each file in the root folder constructs a new dyno.
+				* Each sub-folder contains the service files for the associated dyno.
+				* The shared folder contains shared resources.
+			* _res_
+				* The resources for the Node.js code.
+			* _spec_
+				* The test files.
