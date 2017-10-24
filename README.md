@@ -66,10 +66,36 @@ After the routes are saved in Salesforce, each driver is able to view their deli
 
 ## Getting Started
 
-Deploy the Salesforce and Heroku components of the app using the buttons below.
+### Deploying to Heroku
 
-[![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
+Deploy the Heroku components of the app using the button below.
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+### Deploying to Force.com
+
+This project is built using [Salesforce DX](https://www.salesforce.com/products/platform/products/salesforce-dx/).
+
+1. If you don't have the SFDX CLI...
+	* Download it [here](https://developer.salesforce.com/tools/sfdxcli)
+	* Or alternatively, install via brew:
+		* `brew cask install sfdx`
+1. Sign up for a Dev Hub trial
+	1. Complete the form on the [sign up page](https://developer.salesforce.com/promotions/orgs/dx-signup)
+	1. Note. The org will expire in 30 days
+1. Open the command line and navigate to the root folder of this project
+	* Authorize the Dev Hub:
+		* `sfdx force:auth:web:login`
+		* Enter username and password
+		* Press allow when prompted to allow access to 'Global Connected App'
+1. Create a scratch org:
+	* `sfdx force:org:create -f src/apex/config/project-scratch-def.json -a orizuru-sample-app`
+1. Push source to scratch org:
+	* `sfdx force:source:push -u orizuru-sample-app`
+1. Assign yourself the Primes permission set:
+	1. `sfdx force:user:permset:assign -n OrizuruAdmin -u orizuru-sample-app`
+1. Launch the scratch org in a browser:
+	1. `sfdx force:org:open -u orizuru-sample-app`
 
 ### Update Named Credential
 
@@ -139,18 +165,18 @@ The code has been structured in the following way:
 
 * __src__
 	* __apex__
-		* Contains the Force.com application code that can be deployed via SFDX.
+		* contains the Force.com application code that can be deployed via SFDX.
 	* __java__
-		* Contains the Java code used within the Route Solver dyno.
+		* contains the Java code used within the Route Solver dyno.
 	* __node__
-		* Contains the Node.js code used for the web and worker dynos.
+		* contains the Node.js code used for the web and worker dynos.
 		* This is further split into:
 			* _lib_
-				* The Node.js code that builds upon the Orizuru framework.
+				* the Node.js code that builds upon the Orizuru framework.
 				* Each file in the root folder constructs a new dyno.
 				* Each sub-folder contains the service files for the associated dyno.
 				* The shared folder contains shared resources.
 			* _res_
-				* The resources for the Node.js code.
+				* the resources for the Node.js code.
 			* _spec_
-				* The test files.
+				* the test files.
