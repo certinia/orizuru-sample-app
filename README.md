@@ -1,10 +1,68 @@
 # Orizuru Sample App
 
-<img src="./docs/readme/logo.svg" width="200" align="right"/>
+<img src="./docs/readme/logo.png" width="200" align="right"/>
 
-## Architecture
+For [Dreamforce '17](https://www.salesforce.com/dreamforce/), [FinancialForce](https://www.financialforce.com/) has been prototyping a Force-Heroku application with the aim of demonstrating the best features of both [Force.com](https://www.salesforce.com/products/platform/products/force/) and [Heroku](https://www.heroku.com/home).
+
+We are part of two Dreamforce sessions in which we will share our experiences: 
+
+* [Scale Your Business Application with Heroku](https://success.salesforce.com/sessions?eventId=a1Q3A00000stRRuUAM#/session/a2q3A000001yt8PQAQ)
+* [Beat Governor Limits By Taking Your Compute Processes to Heroku](https://success.salesforce.com/Sessions#/session/a2q3A000001yuLtQAI)
+
+The latter includes a simple application, also available on [GitHub](https://github.com/financialforcedev/df17-heroku-compute), that contains the basic principles of the Force-Heroku architecture.
+
+__Orizuru__ aims to build upon these principles, making a more substantial step forward. This sample app implements the [Orizuru framework](https://www.npmjs.com/package/@financialforcedev/orizuru) to solve a real world business problem.
+
+## Use Case
+
+### The Problem
+Our organization has invested in the Salesforce (Force.com) platform as it's CRM. We deliver paper products (copier paper, paper cups, gift wrapping, Orizuru Origami kits) to shops, schools, businesses and homes in the Bay area. We have multiple drivers to make deliveries. 
+
+Our problem is that we want to create efficient delivery routes - dividing our deliveries among our drivers in the most cost effective way - and make best use of the CRM capabilities of Force.com.
+
+In essence, this is a generalization of the well known [Travelling Salesman Problem (TSP)](https://en.wikipedia.org/wiki/Travelling_salesman_problem): the [Vehicle Routing Problem](https://en.wikipedia.org/wiki/Vehicle_routing_problem). A difficult problem to solve, which is potentially computationally demanding.
+
+### Architecture
 
 ![Architecture](./docs/readme/Architecture.gif "Architecture")
+
+#### Implementation
+The solution uses some of the standard Salesforce objects:
+* _Orders_
+	- To define what we have to deliver and to whom.
+* _Contacts_
+	- To represent the delivery points.
+	- These have delivery addresses (for which Salesforce can [automatically calculate geolocations](https://help.salesforce.com/articleView?id=data_dot_com_clean_admin_standard_clean_rules_reference.htm&type=0)).
+* _Users_
+	- to represent our drivers. 
+
+To calculate the routes we have created a number of custom objects:
+* _Vehicle Type_
+	- The type of a vehicle, defining its attributes including the capacity.
+* _Vehicle_
+	- A single vehicle with a given vehicle type.
+* _Delivery Route_
+	- The route a driver in a vehicle needs to take, including a number of:
+	* _Delivery waypoints_
+		- Relating to the location and the sequence each item will be delivered; and the
+	* _Warehouse_
+		- the start and end point of the route.
+
+It is assumed that we need to deliver all orders in a single delivery day, using multiple drivers, each of which is designated a warehouse contact.
+
+Delivery routes for drivers are calculated on demand via a button click in a Lightning component. This causes a process to be kicked off on Heroku by a trivial Apex callout. 
+
+The Apex call is "trivial" in the sense that it simply tells our Heroku application that work needs to be done - it does not send the details of the work (delivery points and drivers).
+
+The Heroku application then queries the delivery point and driver data and construct the problem to be solved. 
+
+The problem is passed to a Java worker which uses the [Jsprit](https://jsprit.github.io/) toolkit to solve the problem. 
+
+The delivery routes are then saved back to Salesforce with a separate set of records being produced for each driver / route.
+
+Task progress is visible in a Lightning page via a [progress indicator](https://www.lightningdesignsystem.com/components/progress-indicator/).
+
+After the routes are saved in Salesforce, each driver is able to view their deliveries on a Google Maps. We have used the [Google Maps Embed API](https://developers.google.com/maps/documentation/embed/) to do this.
 
 ## Getting Started
 
@@ -50,87 +108,4 @@ The private key is used as the `JWT_SIGNING_KEY` environment variable on Heroku 
 		* Select `Use digital signatures`
 		* Select `Choose File` and select the `certificate.pem` file that you generated earlier.
  	1. Save the connected app.
-
-## Local Development Environment
-
-## Deploying to Force.com
-This project is built using [Salesforce DX](https://www.salesforce.com/products/platform/products/salesforce-dx/).
-
-1. If you don't have the SFDX CLI...
-	1. Download it [here](https://developer.salesforce.com/tools/sfdxcli)
-	1. Alternatively, install via brew
-		* `brew cask install caskroom/cask/sfdx`
-
-1. Sign up for a Dev Hub trial.
-	1. Complete the form on the [sign up page](https://developer.salesforce.com/promotions/orgs/dx-signup)
-	1. Note. The org will expire in 30 days
-
-1. Open the command line in the root folder of this project.
-
-1. Authorize the Dev Hub.
-	* `sfdx force:auth:web:login -d`
-	* Enter username and password
-	* Press allow when prompted to allow access to 'Global Connected App'
-
-1. Setup a scratch org.
-	1. Create a scratch org: 
-		* `sfdx force:org:create -f src/apex/config/project-scratch-def.json -s`
-	1. Push source to scratch org:
-		* `sfdx force:source:push`
-	1. Assign yourself the OrizuruAdmin permission set:
-		* `sfdx force:user:permset:assign -n OrizuruAdmin`
-	1. Launch the scratch org in a browser:
-		* `sfdx force:org:open`
-
-1. Set up the Connected App.
-	1. Go to `Setup`.
-	1. Select `Apps` > `Connected Apps` > `Manage Connected Apps`.
-	1. Select `Orizuru`.
-	1. Select `Edit Policies` and change the permitted users to `Admin approved users are pre-authorized`.
-	1. If you are developing locally then you need to update your `local.run.properties` file with the new Connected App Consumer Key.
-		* Go to `Setup`.
-		* Select `Apps` > `App Manager`.
-		* Select `View` from the drop down on the `Orizuru` Connected App.
-		* In the `local.run.properties` file, update `OPENID_CLIENT_ID` with the `Consumer Key`.
-
-1. Add the Connected App to the Permission Set and assign it to your user.
-	1. Go to `Permission Sets`.
-	1. Select `Orizuru Admin`.
-	1. Select `Assigned Connected Apps`.
-	1. Select `Edit`.
-	1. Add `Orizuru` to the `Enabled Apps`.
-	1. `Save`.
-	1. Select `Manage Assignments`.
-	1. Add the permission set to your user.
-
-### RabbitMQ Setup
-
-This project uses [RabbitMQ](https://www.rabbitmq.com/) as the messaging framework to communicate between Heroku dynos. 
-
-To debug the project locally, RabbitMQ need to be running with the required queues, follow these steps to get up and running.
-
-1. Install [RabbitMQ](https://www.rabbitmq.com/)
-	* Download it [here](https://www.rabbitmq.com/download.html)
-	* Alternatively, install via brew
-		* `brew install rabbitmq`
-
-1. After the installation is complete, start the RabbitMQ server
-	* `rabbitmq-server -detached`
-
-1. Navigate to [http://localhost:15672/#/](http://localhost:15672/#/) and login.
-	* The default username is `guest` with the password `guest`.
-	
-		![RabbitMQ Login](./docs/readme/RabbitMQLogin.png "RabbitMQ Login")
-1. Add the required queues.
-	* Select the `Queues` tab.
-	* Expand the `Add a new queue` section.
-	* Add the queue name `/api/initialize`.
-	* Select `Add queue`.
-	* Repeat the last two steps for the queues `/api/calculateRoute` and `/routeWriter`.
-	* You should end up with something like this:
-
-		![RabbitMQ Queues](./docs/readme/RabbitMQQueues.png "RabbitMQ Queues")
-
-1. Configure the project to use the local instance of RabbitMQ.
-	* Open `local.run.properties`
-	* Add `CLOUDAMQP_URL=amqp://localhost`
+	 
