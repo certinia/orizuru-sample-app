@@ -68,12 +68,23 @@ After the routes are saved in Salesforce, each driver is able to view their deli
 
 Deploy the Salesforce and Heroku components of the app using the buttons below.
 
-*Important! Remember to change the Named Credential endpoint to match your newly created Heroku app (e.g. https://my-app-123.herokuapp.com).*
-
 [![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-### Connected App
+### Update Named Credential
+
+When communicating between Force.com and Heroku, we use a Named Credential. The URL of this credential needs to be updated for the sample app to work.
+
+This can be done by following these steps:
+
+1. Log in the the Salesforce organization into which you deployed the components.
+1. Go to `Setup`.
+1. Select `Security` > `Named Credentials`.
+1. Select `Orizuru` and then `Edit`.
+1. Update the URL to your Heroku app URL e.g. _https://my-app-123.herokuapp.com_
+1. Select `Save`.
+
+### Update Connected App
 
 When communicating between Force.com and Heroku, we use a Connected App with a certificate to verify user identity.
 
@@ -99,13 +110,21 @@ This will have generated two files:
 	
 The private key is used as the `JWT_SIGNING_KEY` environment variable on Heroku and the public key is used as the certificate of the Connected App.
 
-1. The `Deploy to SFDX` button will have deployed a Connected App without a certificate. To update the app:
-	1. Log in the the Salesforce organisation into which you deployed the components.
-	1. Go to `Setup`.
-	1. Select `Apps` > `App Manager`.
-	1. Select the dropdown for the `Orizuru` connected app and then `Edit`.
-	1. In the `API (Enable OAuth Settings)`section:
-		* Select `Use digital signatures`
-		* Select `Choose File` and select the `certificate.pem` file that you generated earlier.
- 	1. Save the connected app.
-	 
+The `Deploy to SFDX` button will have deployed a Connected App without a certificate. 
+
+To update the app:
+1. Log in the the Salesforce organization into which you deployed the components.
+1. Go to `Setup`.
+1. Select `Apps` > `App Manager`.
+1. Select the dropdown for the `Orizuru` connected app and then `Edit`.
+1. In the `API (Enable OAuth Settings)`section:
+	* Select `Use digital signatures`
+	* Select `Choose File` and select the `certificate.pem` file that you generated earlier.
+1. Select `Save`.
+
+The policies of the Connected app also need to be changed. This can be done by following these steps:
+1. Go to `Setup`.
+1. Select `Apps` > `Connected Apps` > `Manage Connected Apps`.
+1. Select `Orizuru` then `Edit Policies`.
+1. In the `OAuth policies` section, update the `Permitted Users` to `Admin approved users are pre-authorized`.
+1. Select `Save`.
