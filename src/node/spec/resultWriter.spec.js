@@ -41,7 +41,7 @@ const
 
 	incomingSchema = require(root + '/src/node/res/schema/answer'),
 
-	ResultWriterService = require(root + '/src/node/lib/resultWriter/service'),
+	service = require(root + '/src/node/lib/resultWriter/service'),
 
 	sandbox = sinon.sandbox.create(),
 	restore = sandbox.restore.bind(sandbox);
@@ -53,6 +53,7 @@ describe('resultWriter.js', () => {
 	let handlerMock;
 
 	beforeEach(() => {
+
 		delete require.cache[require.resolve(resultWriterPath)];
 
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
@@ -96,27 +97,23 @@ describe('resultWriter.js', () => {
 
 	describe('internal handler', () => {
 
-		let handler;
-
-		beforeEach(() => {
-			sandbox.stub(ResultWriterService, 'writeResponse').resolves('result');
-			require(resultWriterPath);
-			handler = handlerMock.handle.getCall(0).args[0].callback;
-		});
-
 		it('should call service', () => {
 
 			// given
+			sandbox.stub(service, 'writeResults').resolves('result');
+
+			require(resultWriterPath);
+
 			const
+				handler = handlerMock.handle.getCall(0).args[0].callback,
 				message = 'messageTest',
 				context = 'contextTest';
 
-			// when
+			// when/then
 			return handler({ message, context })
 				.then(() => {
-					// then
-					expect(ResultWriterService.writeResponse).to.have.been.calledOnce;
-					expect(ResultWriterService.writeResponse).to.have.been.calledWith(message, context);
+					expect(service.writeResults).to.have.been.calledOnce;
+					expect(service.writeResults).to.have.been.calledWith(message, context);
 				});
 
 		});

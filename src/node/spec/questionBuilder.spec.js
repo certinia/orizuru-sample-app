@@ -53,6 +53,7 @@ describe('questionBuilder.js', () => {
 	let handlerMock, publisherMock;
 
 	beforeEach(() => {
+
 		delete require.cache[require.resolve(questionBuilderPath)];
 
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
@@ -123,14 +124,16 @@ describe('questionBuilder.js', () => {
 		it('should call service and publish result on event', () => {
 
 			// given
-			const context = 'contextTest';
+			const
+				context = 'contextTest',
+				message = 'messageTest';
 
 			// when
-			return handler({ context })
+			return handler({ context, message })
 				.then(() => {
 					// then
 					expect(QuestionBuilderService.buildQuestion).to.have.been.calledOnce;
-					expect(QuestionBuilderService.buildQuestion).to.have.been.calledWith(context);
+					expect(QuestionBuilderService.buildQuestion).to.have.been.calledWith({ context, message });
 
 					expect(publisherMock.publish).to.have.been.calledOnce;
 					expect(publisherMock.publish).to.have.been.calledWith({

@@ -87,14 +87,24 @@ describe('shared/sfWriter.js', () => {
 
 		it('should return the result of conn.sobject called with the correct arguments', () => {
 
-			expect(sfWriter.sendPlatformEvent('RouteCalculationStep__e', conn, 'test', 'test')).to.eql('conn.sobject');
+			// given
+			const expectedEvent = {
+				eventType: 'RouteCalculationStep__e',
+				message: 'messageTest',
+				status: 'statusTest',
+				id: 'testId'
+			};
+
+			// when/then
+			expect(sfWriter.sendPlatformEvent(conn, expectedEvent)).to.eql('conn.sobject');
 			expect(conn.sobject).to.have.been.calledOnce;
 			expect(conn.sobject).to.have.been.calledWith('RouteCalculationStep__e');
 			expect(connSobjectCreate).to.have.been.calledOnce;
 			expect(connSobjectCreate).to.have.been.calledWith({
 				['Severity__c']: 'Info',
-				['Messages__c']: 'test',
-				['Status__c']: 'test'
+				['Messages__c']: 'messageTest',
+				['Status__c']: 'statusTest',
+				['SObjectId__c']: 'testId'
 			});
 
 		});

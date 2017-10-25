@@ -44,43 +44,37 @@ chai.use(sinonChai);
 chai.use(chaiAsPromised);
 
 describe('resultWriter/service.js', () => {
-	let mocks;
-
-	beforeEach(() => {
-
-		mocks = {};
-		mocks.conn = sandbox.stub();
-
-		sandbox.stub(jsForceConnection, 'fromContext').resolves(mocks.conn);
-		sandbox.stub(sfWriter, 'sendPlatformEvent').resolves();
-		sandbox.stub(sfWriter, 'bulkCreateObject').resolves([{ id: 'myFakeId' }, { id: 'anotherFakeId' }]);
-	});
 
 	afterEach(() => {
 		sandbox.restore();
 	});
 
 	it('should call the appropriate methods when writing a successful response', () => {
-		//Given
+
+		// given
 		const
-			config = {
-				conn: sandbox.stub(),
-				solution: {
-					routes: [{
-						vehicleId: 'V1',
-						actions: [{
-							serviceId: 'S1'
+			conn = sandbox.stub(),
+			expectedInput = {
+				conn,
+				incomingMessage: {
+					deliveryPlanId: 'testId',
+					solution: {
+						routes: [{
+							vehicleId: 'V1',
+							actions: [{
+								serviceId: 'S1'
+							}, {
+								serviceId: 'S2'
+							}]
 						}, {
-							serviceId: 'S2'
+							vehicleId: 'V2',
+							actions: [{
+								serviceId: 'S3'
+							}, {
+								serviceId: 'S4'
+							}]
 						}]
-					}, {
-						vehicleId: 'V2',
-						actions: [{
-							serviceId: 'S3'
-						}, {
-							serviceId: 'S4'
-						}]
-					}]
+					}
 				}
 			},
 			expectedWaypoints = [{
@@ -110,18 +104,36 @@ describe('resultWriter/service.js', () => {
 			}, {
 				Name: 'Route 2',
 				['Vehicle__c']: 'V2'
-			}];
+			}],
+			expectedWritingPlatformEvent = {
+				eventType: 'RouteCalculationStep__e',
+				id: 'testId',
+				message: 'Delivery Route(s) calculated',
+				status: 'WRITING_DATA'
+			},
+			expectedCompletedPlatformEvent = {
+				eventType: 'RouteCalculationStep__e',
+				id: 'testId',
+				message: 'Route(s) created',
+				status: 'COMPLETED'
+			};
+
+		sandbox.stub(jsForceConnection, 'fromContext').resolves(conn);
+		sandbox.stub(sfWriter, 'sendPlatformEvent').resolves();
+		sandbox.stub(sfWriter, 'bulkCreateObject').resolves([{ id: 'myFakeId' }, { id: 'anotherFakeId' }]);
 
 		// when / then
-		return expect(service.writeResponse(config, 'context'))
+		return expect(service.writeResults(expectedInput))
 			.to.eventually.be.fulfilled
 			.then(() => {
-				expect(sfWriter.sendPlatformEvent).to.have.been.calledTwice;
-				expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('RouteCalculationStep__e', mocks.conn, 'Delivery Route(s) calculated');
-				expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('RouteCalculationStep__e', mocks.conn, 'Route(s) created');
 				expect(sfWriter.bulkCreateObject).to.have.been.calledTwice;
-				expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'DeliveryRoute__c', expectedRoutes);
-				expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'DeliveryWaypoint__c', expectedWaypoints);
+				expect(sfWriter.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryRoute__c', expectedRoutes);
+				expect(sfWriter.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryWaypoint__c', expectedWaypoints);
+				expect(sfWriter.sendPlatformEvent).to.have.been.calledTwice;
+				expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(conn, expectedWritingPlatformEvent);
+				expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(conn, expectedCompletedPlatformEvent);
 			});
+
 	});
+
 });
