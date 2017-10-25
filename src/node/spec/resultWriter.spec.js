@@ -113,7 +113,7 @@ describe('resultWriter.js', () => {
 			return handler({ message, context })
 				.then(() => {
 					expect(service.writeResults).to.have.been.calledOnce;
-					expect(service.writeResults).to.have.been.calledWith(message, context);
+					expect(service.writeResults).to.have.been.calledWith({ message, context });
 				});
 
 		});

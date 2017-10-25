@@ -122,9 +122,9 @@ const
 
 	returnQuestion = ({ question }) => question,
 
-	buildQuestion = ({ context, incomingMessage }) => {
+	buildQuestion = ({ context, message }) => {
 		return jsForceConnection.fromContext(context)
-			.then(conn => ({ conn, incomingMessage }))
+			.then(conn => ({ conn, incomingMessage: message }))
 			.then(sendEvent({ message: 'Retrieving delivery records', status: 'READING_DATA' }))
 			.then(runQueries)
 			.then(mapVehicles)

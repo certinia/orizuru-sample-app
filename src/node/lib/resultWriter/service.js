@@ -34,7 +34,7 @@ const
 	sendEvent = event => config => {
 
 		event.eventType = 'RouteCalculationStep__e';
-		event.id = config.incomingMessage.deliveryPlanId;
+		event.id = config.incomingMessage.question.deliveryPlanId;
 
 		return sfWriter.sendPlatformEvent(config.conn, event)
 			.then(() => config);
@@ -48,6 +48,7 @@ const
 		results.routes = _.map(routes, (route, i) => {
 			return {
 				Name: 'Route ' + (i + 1),
+				['DeliveryPlan__c']: results.incomingMessage.question.deliveryPlanId,
 				['Vehicle__c']: route.vehicleId
 			};
 		});
@@ -109,10 +110,10 @@ const
 
 	},
 
-	writeResults = ({ context, incomingMessage }) => {
+	writeResults = ({ context, message }) => {
 
 		return jsForceConnection.fromContext(context)
-			.then(conn => ({ conn, incomingMessage }))
+			.then(conn => ({ conn, incomingMessage: message }))
 			.then(sendEvent({ message: 'Delivery Route(s) calculated', status: 'WRITING_DATA' }))
 			.then(createRoutes)
 			.then(writeRoutes)

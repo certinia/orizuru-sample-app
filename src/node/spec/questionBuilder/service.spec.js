@@ -84,7 +84,7 @@ describe('questionBuilder/service.js', () => {
 
 				// given
 				const expectedInput = {
-					incomingMessage: {
+					message: {
 						deliveryPlanId: 'testPlanId'
 					}
 				};
@@ -107,7 +107,7 @@ describe('questionBuilder/service.js', () => {
 				const
 					query = context.conn.query,
 					expectedInput = {
-						incomingMessage: {
+						message: {
 							deliveryPlanId: 'testPlanId'
 						}
 					},

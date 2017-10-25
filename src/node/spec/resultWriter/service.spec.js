@@ -56,8 +56,10 @@ describe('resultWriter/service.js', () => {
 			conn = sandbox.stub(),
 			expectedInput = {
 				conn,
-				incomingMessage: {
-					deliveryPlanId: 'testId',
+				message: {
+					question: {
+						deliveryPlanId: 'testId'
+					},
 					solution: {
 						routes: [{
 							vehicleId: 'V1',
@@ -100,9 +102,11 @@ describe('resultWriter/service.js', () => {
 			}],
 			expectedRoutes = [{
 				Name: 'Route 1',
+				['DeliveryPlan__c']: 'testId',
 				['Vehicle__c']: 'V1'
 			}, {
 				Name: 'Route 2',
+				['DeliveryPlan__c']: 'testId',
 				['Vehicle__c']: 'V2'
 			}],
 			expectedWritingPlatformEvent = {
