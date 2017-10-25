@@ -55,10 +55,10 @@ const
 	publisherInstance = new Publisher(orizuruConfig),
 
 	// callback
-	onHandleIncomingEvent = ({ context }) => {
+	onHandleIncomingEvent = ({ context, message }) => {
 
 		return QuestionBuilderService
-			.buildQuestion(context)
+			.buildQuestion(context, message)
 			.then(result => {
 
 				// publish
