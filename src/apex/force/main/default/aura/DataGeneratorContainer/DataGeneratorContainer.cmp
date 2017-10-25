@@ -1,6 +1,0 @@
-<aura:component implements="flexipage:availableForAllPageTypes">
-	<c:DataGeneratorStepEventEmitter />
-	<c:DataGeneratorRefresh />
-	<c:DataGeneratorStepMonitor />
-	<c:DataGeneratorButton />
-</aura:component>
