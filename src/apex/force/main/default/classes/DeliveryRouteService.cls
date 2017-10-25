@@ -26,10 +26,9 @@
 
 public with sharing class DeliveryRouteService
 {
-	private static final String GOOGLE_TOKEN = 'AIzaSyChljtsXudctIGY-25z5osOqyx-qdRWAyI';
-    private static final String GOOGLE_API = 'https://www.google.com/maps/embed/v1/directions?key=' + GOOGLE_TOKEN + '&';
+	private static final String GOOGLE_API = 'https://www.google.com/maps/embed/v1/directions?key=';
     
-    private static final String START_TOKEN= 'origin=';
+    private static final String START_TOKEN= '&origin=';
     private static final String WAYPOINT_TOKEN = '&waypoints=';
     private static final String END_TOKEN ='&destination=';
 
@@ -94,6 +93,7 @@ public with sharing class DeliveryRouteService
 
 			List<String> components = new List<String>();
 			components.add(GOOGLE_API);
+			components.add(OrizuruSettings__c.getInstance().GoogleMapsApiKey__c);
 			components.add(START_TOKEN);
 			components.add(startPoint.asGeolocation());
 			components.add(END_TOKEN);
