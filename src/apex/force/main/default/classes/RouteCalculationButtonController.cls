@@ -27,8 +27,8 @@
 public with sharing class RouteCalculationButtonController
 {
     @AuraEnabled
-    public static void calculateRoute()
+    public static void calculateRoute(String id)
     {
-		HerokuConnector.newInstance().calculateRoute();
+		HerokuConnector.newInstance().calculateRoute(id);
     }
 }

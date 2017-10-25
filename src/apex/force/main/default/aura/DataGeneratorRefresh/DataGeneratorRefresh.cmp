@@ -1,0 +1,3 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+	<aura:handler event="c:DataGeneratorStepEvent" action="{!c.handleStepEvent}" />
+</aura:component>

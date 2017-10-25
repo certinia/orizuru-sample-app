@@ -1,20 +1,28 @@
 ({
 	handleClick: function (component, event, handler) {
 		var action = component.get('c.calculateRoute'),
-			routeCalculationStepEvent = $A.get("e.c:RouteCalculationStepEvent");
+			objectId = component.get("v.recordId");
 
 		component.set('v.show', false);
 
-		routeCalculationStepEvent.setParams({
-			messages: '',
-			severity: '',
-			status: 'STARTED'
+		action.setParams({
+			id: objectId
 		});
-		routeCalculationStepEvent.fire();
-
 		action.setCallback(this, function (data) {
 			console.log('called calculateRoute: ' + data.getReturnValue());
 		});
 		$A.enqueueAction(action);
+	},
+
+	handleStepEvent: function (component, event, handler) {
+		var status = event.getParam('status'),
+			eventId = event.getParam('id'),
+			objectId = component.get("v.recordId");
+
+		// if status field is set completed, hide the button too
+
+		if (eventId == objectId && status != 'STARTED') {
+			component.set('v.show', false);
+		}
 	}
 })

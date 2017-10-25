@@ -94,6 +94,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DeliveryPlan__c.PlanComplete__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DeliveryRoute__c.Driver__c</field>
         <readable>false</readable>
@@ -174,6 +179,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <layoutAssignments>
+        <layout>DeliveryPlan__c-Delivery Plan Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>DeliveryRoute__c-Delivery Route Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -204,6 +212,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>DataGeneratorStep__e</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>DeliveryPlan__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>

@@ -38,24 +38,30 @@ public class HerokuConnector
 		return instance;
 	}
 
-	public HttpResponse calculateRoute()
-	{			
-		return makeRequest('initialize');
+	public HttpResponse calculateRoute(String id)
+	{
+		return makeRequest('calculateRoutesForPlan', '{ "deliveryPlanId": "' + id + '"}');
 	}
 
 	public HttpResponse generateData()
-	{			
+	{
 		return makeRequest('createData');
 	}
 
-	private static HttpResponse makeRequest(String api)
+	private static HttpResponse makeRequest(String api, String body)
 	{
 		Http http = new Http();
 		HttpRequest request = new HttpRequest();
 		request.setEndpoint('callout:Orizuru/api/' + api);
 		request.setMethod('POST');
 		populateHeader(request);
+		request.setBody(body);
 		return http.send(request);
+	}
+
+	private static HttpResponse makeRequest(String api)
+	{
+		return makeRequest(api, '{}');
 	}
 
 	private static void populateHeader(HttpRequest request)

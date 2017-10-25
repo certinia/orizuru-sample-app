@@ -4,6 +4,7 @@
 			payload = event.getParam('payload');
 
 		stepEvent.setParams({
+			id: payload.SObjectId__c,
 			messages: payload.Messages__c,
 			severity: payload.Severity__c,
 			status: payload.Status__c

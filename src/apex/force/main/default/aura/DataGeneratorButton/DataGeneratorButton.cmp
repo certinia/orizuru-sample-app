@@ -1,6 +1,6 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="DataGeneratorButtonController">
 	<aura:attribute name="show" type="Boolean" default="true" access="private" />
-	<aura:registerEvent name="dataGeneratorStepEvent" type="c:DataGeneratorStepEvent" />
+	<aura:handler event="c:DataGeneratorStepEvent" action="{!c.handleStepEvent}" />
 	<aura:if isTrue="{! v.show }">
 		<lightning:card>
 			<div class="slds-p-around_small" align="center">

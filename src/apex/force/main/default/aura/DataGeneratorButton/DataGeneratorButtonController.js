@@ -1,16 +1,16 @@
 ({
 	handleClick: function (component, event, handler) {
-		var action = component.get('c.generateData'),
-			dataGeneratorStepEvent = $A.get("e.c:DataGeneratorStepEvent");
+		var action = component.get('c.generateData');
 
 		component.set('v.show', false);
 
-		dataGeneratorStepEvent.setParams({
-			messages: '',
-			severity: '',
-			status: 'STARTED'
-		});
-		dataGeneratorStepEvent.fire();
 		$A.enqueueAction(action);
+	},
+
+	handleStepEvent: function (component, event, handler) {
+		var status = event.getParam('status');
+		if (status != 'STARTED') {
+			component.set('v.show', false);
+		}
 	}
 })
