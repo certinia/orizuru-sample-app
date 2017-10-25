@@ -30,7 +30,7 @@ private class RouteCalculationButtonControllerTest
 	@IsTest
 	private static void calculateRoute_ShouldCallTheHerokuConnectorCalculateRouteMethod()
 	{
-		//Given
+		// given
 		StubProvider mocks = new StubProvider();
 
 		HerokuConnector mockConnector = (HerokuConnector)mocks.mock(HerokuConnector.class);
@@ -38,10 +38,10 @@ private class RouteCalculationButtonControllerTest
 
 		mocks.stub(mockConnector, 'calculateRoute', new Type[]{}, new Object[]{}, null);
 
-		//When
-		RouteCalculationButtonController.calculateRoute();
+		// when
+		RouteCalculationButtonController.calculateRoute('Test');
 
-		//Then
+		// then
 		System.assertEquals(1, mocks.getCallCount(mockConnector, 'calculateRoute', new Type[]{}, new Object[]{}));
 	}
 }

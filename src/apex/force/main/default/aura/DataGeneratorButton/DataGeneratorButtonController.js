@@ -8,9 +8,17 @@
 	},
 
 	handleStepEvent: function (component, event, handler) {
-		var status = event.getParam('status');
-		if (status != 'STARTED') {
+
+		var status = event.getParam('status'),
+			eventId = event.getParam('id'),
+			objectId = component.get("v.recordId");
+
+		// if status field is set completed, hide the button too
+
+		if (eventId != null && eventId === objectId && status !== 'STARTED') {
 			component.set('v.show', false);
 		}
+
 	}
+
 })
