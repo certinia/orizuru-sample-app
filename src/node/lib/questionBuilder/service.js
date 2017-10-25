@@ -40,7 +40,7 @@ const
 			.then(() => config);
 	},
 
-	runQueries = ({ conn }) => {
+	runQueries = ({ conn, message }) => {
 		const queries = [
 			conn.query(vehicleQuery),
 			conn.query(typeQuery),
@@ -52,7 +52,9 @@ const
 			vehicles,
 			types,
 			orders,
-			question: {}
+			question: {
+				deliveryPlanId: message.deliveryPlanId
+			}
 		}));
 	},
 
@@ -107,9 +109,9 @@ const
 
 	returnQuestion = ({ question }) => question,
 
-	buildQuestion = context => {
+	buildQuestion = (context, message) => {
 		return jsForceConnection.fromContext(context)
-			.then(conn => ({ conn }))
+			.then(conn => ({ conn, message }))
 			.then(sendEvent({ message: 'Retrieving delivery records', status: 'READING_DATA' }))
 			.then(runQueries)
 			.then(mapVehicles)
