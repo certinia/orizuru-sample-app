@@ -40,7 +40,7 @@ const
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
 	QuestionBuilderService = require(root + '/src/node/lib/questionBuilder/service'),
-	incomingSchema = require(root + '/src/node/res/schema/initialize'),
+	incomingSchema = require(root + '/src/node/res/schema/calculateRoutesForPlan'),
 	outgoingSchema = require(root + '/src/node/res/schema/question'),
 
 	sandbox = sinon.sandbox.create(),
