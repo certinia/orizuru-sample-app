@@ -36,30 +36,40 @@ const
 	orderQuery = 'SELECT Id, Weight__c, ShipToContact.MailingLatitude, ShipToContact.MailingLongitude FROM Order',
 
 	sendEvent = event => config => {
-		return sfWriter.sendPlatformEvent('RouteCalculationStep__e', config.conn, event.message, event.status)
+
+		event.eventType = 'RouteCalculationStep__e';
+		event.id = config.incomingMessage.deliveryPlanId;
+
+		return sfWriter.sendPlatformEvent(config.conn, event)
 			.then(() => config);
+
 	},
 
-	runQueries = ({ conn, message }) => {
-		const queries = [
-			conn.query(vehicleQuery),
-			conn.query(typeQuery),
-			conn.query(orderQuery)
-		];
+	runQueries = (results) => {
 
-		return Promise.all(queries).then(([vehicles, types, orders]) => ({
-			conn,
-			vehicles,
-			types,
-			orders,
-			question: {
-				deliveryPlanId: message.deliveryPlanId
-			}
-		}));
+		const
+			conn = results.conn,
+			incomingMessage = results.incomingMessage,
+			queries = [
+				conn.query(vehicleQuery),
+				conn.query(typeQuery),
+				conn.query(orderQuery)
+			];
+
+		return Promise.all(queries)
+			.then(([vehicles, types, orders]) => {
+				results.vehicles = vehicles;
+				results.types = types;
+				results.orders = orders;
+				results.question = { deliveryPlanId: incomingMessage.deliveryPlanId };
+				return results;
+			});
+
 	},
 
-	mapVehicles = ({ conn, vehicles, types, orders, question }) => {
-		question.vehicles = _.map(vehicles.records, vehicle => {
+	mapVehicles = (results) => {
+
+		results.question.vehicles = _.map(results.vehicles.records, vehicle => {
 			return {
 				id: vehicle.Id,
 				typeId: vehicle.VehicleType__c,
@@ -69,11 +79,14 @@ const
 				}
 			};
 		});
-		return { conn, types, orders, question };
+
+		return results;
+
 	},
 
-	mapVehicleTypes = ({ conn, types, orders, question }) => {
-		question.vehicleTypes = _.map(types.records, type => {
+	mapVehicleTypes = (results) => {
+
+		results.question.vehicleTypes = _.map(results.types.records, type => {
 			return {
 				id: type.Id,
 				capacity: type.MaximumPayloadCapacity__c,
@@ -84,11 +97,14 @@ const
 				}
 			};
 		});
-		return { conn, orders, question };
+
+		return results;
+
 	},
 
-	mapOrders = ({ conn, orders, question }) => {
-		question.deliveries = _.map(orders.records, order => {
+	mapOrders = (results) => {
+
+		results.question.deliveries = _.map(results.orders.records, order => {
 			return {
 				id: order.Id,
 				type: 'Delivery', //delivery.Type__c,
@@ -99,25 +115,21 @@ const
 				capacity: 1 //order.Weight__c
 			};
 		});
-		return { conn, question };
-	},
 
-	setId = ({ conn, question }) => {
-		question.id = '';
-		return { conn, question };
+		return results;
+
 	},
 
 	returnQuestion = ({ question }) => question,
 
-	buildQuestion = (context, message) => {
+	buildQuestion = ({ context, incomingMessage }) => {
 		return jsForceConnection.fromContext(context)
-			.then(conn => ({ conn, message }))
+			.then(conn => ({ conn, incomingMessage }))
 			.then(sendEvent({ message: 'Retrieving delivery records', status: 'READING_DATA' }))
 			.then(runQueries)
 			.then(mapVehicles)
 			.then(mapVehicleTypes)
 			.then(mapOrders)
-			.then(setId)
 			.then(sendEvent({ message: 'Delivery records retrieved', status: 'CALCULATING_ROUTES' }))
 			.then(returnQuestion);
 	};

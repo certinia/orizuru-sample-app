@@ -34,7 +34,7 @@ const
 	{ Handler, Publisher } = require('@financialforcedev/orizuru'),
 
 	// get the handling service
-	QuestionBuilderService = require('./questionBuilder/service'),
+	service = require('./questionBuilder/service'),
 
 	// build transport
 	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
@@ -57,8 +57,7 @@ const
 	// callback
 	onHandleIncomingEvent = ({ context, message }) => {
 
-		return QuestionBuilderService
-			.buildQuestion(context, message)
+		return service.buildQuestion({ context, message })
 			.then(result => {
 
 				// publish

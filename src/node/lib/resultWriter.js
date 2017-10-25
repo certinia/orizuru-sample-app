@@ -34,7 +34,7 @@ const
 	{ Handler } = require('@financialforcedev/orizuru'),
 
 	// get the handling service
-	ResultWriterService = require('./resultWriter/service'),
+	service = require('./resultWriter/service'),
 
 	// build transport
 	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
@@ -54,7 +54,7 @@ const
 
 	// callback
 	onHandleIncomingEvent = ({ message, context }) => {
-		return ResultWriterService.writeResponse(message, context);
+		return service.writeResults(message, context);
 	};
 
 // listen and log error events on the handler
