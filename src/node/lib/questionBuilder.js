@@ -47,7 +47,7 @@ const
 	},
 
 	// define event schemas
-	incomingSchema = require('../res/schema/initialize'),
+	incomingSchema = require('../res/schema/calculateRoutesForPlan'),
 	outgoingSchema = require('../res/schema/question'),
 
 	// get handler and publisher
