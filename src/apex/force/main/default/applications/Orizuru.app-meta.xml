@@ -26,12 +26,12 @@
 	</profileActionOverrides>
 	<tab>GenerateData</tab>
 	<tab>DeliveryPlan__c</tab>
+	<tab>DeliveryRoute__c</tab>
 	<tab>standard-Account</tab>
 	<tab>standard-Contact</tab>
 	<tab>standard-Order</tab>
 	<tab>VehicleType__c</tab>
 	<tab>Vehicle__c</tab>
-	<tab>DeliveryRoute__c</tab>
 	<uiType>Lightning</uiType>
 	<utilityBar>OrizuruUtilityBar</utilityBar>
 </CustomApplication>
