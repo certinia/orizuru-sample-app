@@ -4,7 +4,7 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>collapsed</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>numVisibleActions</name>
@@ -20,22 +20,18 @@
         </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
-                <name>entityName</name>
-                <value>DeliveryRoute__c</value>
+                <name>parentFieldApiName</name>
+                <value>DeliveryPlan__c.Id</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>filterName</name>
-                <value>All</value>
+                <name>relatedListApiName</name>
+                <value>DeliveryRoutes__r</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>hideActionBar</name>
-                <value>true</value>
+                <name>relatedListComponentOverride</name>
+                <value>GRID</value>
             </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>pageSize</name>
-                <value>20</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:filterListCard</componentName>
+            <componentName>force:relatedListSingleContainer</componentName>
         </componentInstances>
         <componentInstances>
             <componentName>RouteCalculationStepEventEmitter</componentName>
