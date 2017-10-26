@@ -29,7 +29,6 @@
 					return cometd.subscribe('/event/' + eventSubscription, function (platformEvent) {
 						var monitoredEvent = component.getEvent("streamingEvent");
 						if (monitoredEvent) {
-							console.log(JSON.stringify(platformEvent));
 							monitoredEvent.setParams({
 								payload: platformEvent.data.payload
 							});
