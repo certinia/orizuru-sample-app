@@ -1,8 +1,29 @@
 ({
+	doInit: function (component) {
+		var action = component.get('c.getPlanComplete'),
+			objectId = component.get('v.recordId');
+
+		action.setParams({
+			id: objectId
+		});
+
+		action.setCallback(this, function (data) {
+			var planComplete = data.getReturnValue()
+			component.set('v.planComplete', planComplete);
+			if (planComplete) {
+				component.set('v.show', false);
+			} else {
+				component.set('v.show', true);
+			}
+		});
+
+		$A.enqueueAction(action);
+	},
+
 	handleClick: function (component, event, handler) {
 
 		var action = component.get('c.calculateRoute'),
-			objectId = component.get("v.recordId");
+			objectId = component.get('v.recordId');
 
 		console.log('ObjectId: ' + objectId);
 
@@ -22,13 +43,11 @@
 
 		var status = event.getParam('status'),
 			eventId = event.getParam('id'),
-			objectId = component.get("v.recordId");
+			objectId = component.get('v.recordId'),
+			planComplete = component.get('v.planComplete');
 
-		// if status field is set completed, hide the button too
-
-		if (eventId != null && eventId === objectId && status !== 'STARTED') {
+		if (!planComplete && eventId != null && eventId === objectId && status !== 'STARTED') {
 			component.set('v.show', false);
 		}
-
 	}
 })
