@@ -31,7 +31,10 @@ private class DeliveryRouteServiceTest
 	private static void generateUrl_shouldReturnTheUrl_whenThereIsADeliveryWaypoint()
 	{
 		//Given
-		String expected = 'https://www.google.com/maps/embed/v1/directions?key=AIzaSyChljtsXudctIGY-25z5osOqyx-qdRWAyI&origin=5.000000000000000,5.000000000000000&destination=5.000000000000000,5.000000000000000&waypoints=1.000000000000000,1.000000000000000';
+		OrizuruSettings__c settings = new OrizuruSettings__c(GoogleMapsApiKey__c='testingApiKey');
+		insert settings;
+
+		String expected = 'https://www.google.com/maps/embed/v1/directions?key=' + settings.GoogleMapsApiKey__c + '&origin=5.000000000000000,5.000000000000000&destination=5.000000000000000,5.000000000000000&waypoints=1.000000000000000,1.000000000000000';
 		
 		Account account = new Account(Name = 'Account One');
 		insert account;
@@ -73,7 +76,10 @@ private class DeliveryRouteServiceTest
 	private static void generateUrl_ShouldReturnTheUrl_WithMultipleDeliveries()
 	{
 		//Given
-		String expected = 'https://www.google.com/maps/embed/v1/directions?key=AIzaSyChljtsXudctIGY-25z5osOqyx-qdRWAyI&origin=5.000000000000000,5.000000000000000&destination=5.000000000000000,5.000000000000000&waypoints=1.000000000000000,1.000000000000000|2.000000000000000,2.000000000000000|3.000000000000000,3.000000000000000';
+		OrizuruSettings__c settings = new OrizuruSettings__c(GoogleMapsApiKey__c='testingApiKey');
+		insert settings;
+
+		String expected = 'https://www.google.com/maps/embed/v1/directions?key=' + settings.GoogleMapsApiKey__c + '&origin=5.000000000000000,5.000000000000000&destination=5.000000000000000,5.000000000000000&waypoints=1.000000000000000,1.000000000000000|2.000000000000000,2.000000000000000|3.000000000000000,3.000000000000000';
 		
 		Account[] accounts = new Account[]{
 			new Account(Name = 'Account One'),
