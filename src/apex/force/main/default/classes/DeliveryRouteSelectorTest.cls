@@ -59,7 +59,9 @@ private class DeliveryRouteSelectorTest {
 	private static void selectByIds_setWithIdAndResults_resultsReturned()
 	{
 		//Given
-		DeliveryRoute__c parent = new DeliveryRoute__c();
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+		DeliveryRoute__c parent = new DeliveryRoute__c(DeliveryPlan__c = plan.Id);
         insert parent;
 
 		DeliveryRouteSelector selector = DeliveryRouteSelector.newInstance();

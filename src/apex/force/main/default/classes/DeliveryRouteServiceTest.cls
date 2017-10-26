@@ -57,7 +57,10 @@ private class DeliveryRouteServiceTest
 		Order order = new Order(AccountId = account.Id, ShipToContactId = contacts[0].Id, EffectiveDate = Date.newInstance(2017, 10, 1), Status = 'Draft');
 		insert order;
 
-		DeliveryRoute__c deliveryRoute = new DeliveryRoute__c(Vehicle__c = vehicle.Id);
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+
+		DeliveryRoute__c deliveryRoute = new DeliveryRoute__c(DeliveryPlan__c = plan.Id, Vehicle__c = vehicle.Id);
         insert deliveryRoute;
 
 		DeliveryWaypoint__c waypoint = new DeliveryWaypoint__c(DeliveryRoute__c = deliveryRoute.Id, Order__c = order.Id, WaypointNumber__c = 1);
@@ -112,7 +115,10 @@ private class DeliveryRouteServiceTest
 		};
 		insert orders;
 
-		DeliveryRoute__c deliveryRoute = new DeliveryRoute__c(Vehicle__c = vehicle.Id);
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+
+		DeliveryRoute__c deliveryRoute = new DeliveryRoute__c(DeliveryPlan__c = plan.Id, Vehicle__c = vehicle.Id);
         insert deliveryRoute;
 		
 		DeliveryWaypoint__c[] waypoints = new DeliveryWaypoint__c[]{

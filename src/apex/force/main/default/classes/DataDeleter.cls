@@ -33,6 +33,7 @@ public class DataDeleter
         delete [SELECT Id FROM VehicleType__c];
 		delete [SELECT Id FROM DeliveryWaypoint__c];
 		delete [SELECT Id FROM DeliveryRoute__c];
+		delete [SELECT Id FROM DeliveryPlan__c];
         delete [SELECT Id FROM Order];
         delete [SELECT Id FROM Warehouse__c];
 		delete [SELECT Id FROM Product2];
