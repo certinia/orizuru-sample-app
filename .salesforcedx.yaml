@@ -1,0 +1,6 @@
+scratch-org-def: src/apex/config/project-scratch-def.json
+assign-permset: true
+permset-name: OrizuruAdmin
+run-apex-tests: true
+delete-scratch-org: false
+show-scratch-org-url: true

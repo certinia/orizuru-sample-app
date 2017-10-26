@@ -1,0 +1,15 @@
+{
+	"totalSize": 1,
+	"done": true,
+	"records": [{
+		"attributes": {
+			"type": "VehicleType__c",
+			"url": "/services/data/v39.0/sobjects/VehicleType__c/a049E00000313NjQAI"
+		},
+		"Id": "a049E00000313NjQAI",
+		"MaximumPayloadCapacity__c": 80,
+		"Distance__c": 1,
+		"Fixed__c": 0,
+		"Time__c": 0
+	}]
+}

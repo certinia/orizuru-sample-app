@@ -1,0 +1,152 @@
+{
+	"namespace": "com.financialforce.routesolver.problem.avro",
+	"name": "Answer",
+	"type": "record",
+	"fields": [{
+		"name": "question",
+		"type": {
+			"name": "Question",
+			"type": "record",
+			"fields": [{
+				"name": "id",
+				"type": "string"
+			}, {
+				"name": "vehicleTypes",
+				"type": {
+					"type": "array",
+					"items": {
+						"type": "record",
+						"name": "VehicleType",
+						"fields": [{
+							"name": "id",
+							"type": "string"
+						}, {
+							"name": "capacity",
+							"type": "int"
+						}, {
+							"name": "costs",
+							"type": {
+								"type": "record",
+								"name": "Cost",
+								"fields": [{
+										"name": "fixed",
+										"type": "double"
+									},
+									{
+										"name": "distance",
+										"type": "double"
+									},
+									{
+										"name": "time",
+										"type": "double"
+									}
+								]
+							}
+						}]
+					}
+				}
+			}, {
+				"name": "vehicles",
+				"type": {
+					"type": "array",
+					"items": {
+						"type": "record",
+						"name": "Vehicle",
+						"fields": [{
+							"name": "id",
+							"type": "string"
+						}, {
+							"name": "typeId",
+							"type": "string"
+						}, {
+							"name": "location",
+							"type": {
+								"type": "record",
+								"name": "Location",
+								"fields": [{
+										"name": "lat",
+										"type": "double"
+									},
+									{
+										"name": "lng",
+										"type": "double"
+									}
+								]
+							}
+						}]
+					}
+				}
+			}, {
+				"name": "deliveries",
+				"type": {
+					"type": "array",
+					"items": {
+						"type": "record",
+						"name": "Delivery",
+						"fields": [{
+							"name": "id",
+							"type": "string"
+						}, {
+							"name": "type",
+							"type": "string"
+						}, {
+							"name": "capacity",
+							"type": "int"
+						}, {
+							"name": "location",
+							"type": "Location"
+						}]
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "solution",
+		"type": {
+			"name": "Solution",
+			"type": "record",
+			"fields": [{
+				"name": "cost",
+				"type": "double"
+			}, {
+				"name": "routes",
+				"type": {
+					"type": "array",
+					"items": {
+						"type": "record",
+						"name": "Route",
+						"fields": [{
+							"name": "driverId",
+							"type": "string"
+						}, {
+							"name": "vehicleId",
+							"type": "string"
+						}, {
+							"name": "actions",
+							"type": {
+								"type": "array",
+								"items": {
+									"type": "record",
+									"name": "Action",
+									"fields": [{
+										"name": "type",
+										"type": "string"
+									}, {
+										"name": "serviceId",
+										"type": "string"
+									}, {
+										"name": "arrivalTime",
+										"type": "double"
+									}, {
+										"name": "endTime",
+										"type": "double"
+									}]
+								}
+							}
+						}]
+					}
+				}
+			}]
+		}
+	}]
+}

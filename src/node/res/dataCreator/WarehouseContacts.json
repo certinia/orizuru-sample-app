@@ -1,0 +1,21 @@
+{
+	"records": [{
+		"FirstName": "Port Of San Francisco",
+		"LastName": "Port Of San Francisco",
+		"MailingLatitude": 37.7759551,
+		"MailingLongitude": -122.4477363,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Las Vegas Airport",
+		"LastName": "Las Vegas Airport",
+		"MailingLatitude": 36.0840213,
+		"MailingLongitude": -115.1563357,
+		"MailingCountry": "USA"
+	}, {
+		"FirstName": "Port of Los Angeles",
+		"LastName": "Port of Los Angeles",
+		"MailingLatitude": 33.7396123,
+		"MailingLongitude": -118.2949882,
+		"MailingCountry": "USA"
+	}]
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+	<brand>
+		<headerColor>#0070D2</headerColor>
+		<logo>FFdisclightblueRGB</logo>
+		<logoVersion>1</logoVersion>
+	</brand>
+	<formFactors>Large</formFactors>
+	<label>Orizuru</label>
+	<navType>Standard</navType>
+	<profileActionOverrides>
+		<actionName>View</actionName>
+		<content>DeliveryRouteMap</content>
+		<formFactor>Large</formFactor>
+		<pageOrSobjectType>DeliveryRoute__c</pageOrSobjectType>
+		<type>Flexipage</type>
+		<profile>Admin</profile>
+	</profileActionOverrides>
+	<tab>GenerateData</tab>
+	<tab>CalculateRoute</tab>
+	<tab>standard-Account</tab>
+	<tab>standard-Contact</tab>
+	<tab>standard-Order</tab>
+	<tab>VehicleType__c</tab>
+	<tab>Vehicle__c</tab>
+	<tab>DeliveryRoute__c</tab>
+	<uiType>Lightning</uiType>
+	<utilityBar>OrizuruUtilityBar</utilityBar>
+</CustomApplication>

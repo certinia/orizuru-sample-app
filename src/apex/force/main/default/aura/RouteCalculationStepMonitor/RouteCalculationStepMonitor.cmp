@@ -1,0 +1,22 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+
+	<aura:attribute name="show" type="Boolean" default="false" access="private" />
+	<aura:attribute name="progress" type="String" default="STARTED" />
+
+	<aura:handler event="c:RouteCalculationStepEvent" action="{!c.handleStepEvent}" />
+
+	<aura:if isTrue="{! v.show }">
+		<lightning:card>
+			<div class="slds-p-around_large">
+				<lightning:progressIndicator currentStep="{!v.progress}">
+					<lightning:progressStep label="Start" value="STARTED" />
+					<lightning:progressStep label="Retrieving delivery records" value="READING_DATA" />
+					<lightning:progressStep label="Delivery records retrieved" value="CALCULATING_ROUTES" />
+					<lightning:progressStep label="Delivery Route(s) calculated" value="WRITING_DATA" />
+					<lightning:progressStep label="Route(s) created" value="COMPLETED" />
+				</lightning:progressIndicator>
+			</div>
+		</lightning:card>
+	</aura:if>
+
+</aura:component>

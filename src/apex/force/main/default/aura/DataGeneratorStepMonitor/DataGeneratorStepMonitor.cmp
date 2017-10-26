@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+
+	<aura:attribute name="show" type="Boolean" default="false" access="private" />
+	<aura:attribute name="progress" type="String" default="STARTED" />
+
+	<aura:handler event="c:DataGeneratorStepEvent" action="{!c.handleStepEvent}" />
+
+	<aura:if isTrue="{! v.show }">
+		<lightning:card>
+			<div class="slds-p-around_large">
+				<lightning:progressIndicator currentStep="{!v.progress}">
+					<lightning:progressStep label="Start" value="STARTED" />
+					<lightning:progressStep label="Created Accounts" value="CREATED_ACCOUNTS" />
+					<lightning:progressStep label="Created Contacts" value="CREATED_CONTACTS" />
+					<lightning:progressStep label="Created Warehouse Contacts" value="CREATED_WAREHOUSE_CONTACTS" />
+					<lightning:progressStep label="Created Vehicle Types" value="CREATED_VEHICLE_TYPE" />
+					<lightning:progressStep label="Created Warehouses" value="CREATED_WAREHOUSES" />
+					<lightning:progressStep label="Created Vehicles" value="CREATED_VEHICLES" />
+					<lightning:progressStep label="Created Orders" value="CREATED_ORDERS" />
+				</lightning:progressIndicator>
+			</div>
+		</lightning:card>
+	</aura:if>
+
+</aura:component>

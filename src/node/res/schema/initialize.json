@@ -1,0 +1,6 @@
+{
+	"namespace": "com.financialforce.orizuru.problem.avro",
+	"name": "Initialize",
+	"type": "record",
+	"fields": []
+}
