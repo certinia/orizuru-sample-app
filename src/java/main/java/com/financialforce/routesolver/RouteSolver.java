@@ -26,6 +26,8 @@
 
 package com.financialforce.routesolver;
 
+import java.io.IOException;
+
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.ConnectionFactory;
 
@@ -52,9 +54,10 @@ public class RouteSolver implements Runnable {
 		try {
 
 			/**
-			 * Create the connection to RabbitMQ
+			 * Create the connection to RabbitMQ and the Question queue
 			 */
 			Channel channel = messageQueue.createChannel();
+			channel.queueDeclare(Question.class.getName(), true, false, false, null);
 
 			/** 
 			 * Consume the RabbitMQ queue
@@ -62,6 +65,9 @@ public class RouteSolver implements Runnable {
 			DefaultConsumer<Question, Answer> consumer = new QuestionConsumer(channel);
 			messageQueue.consume(CONSUMER_TAG, channel, consumer);
 
+		} catch (IOException iex) {
+			
+			iex.printStackTrace();
 		} catch (MessagingException ex) {
 
 			// For now log out the exception

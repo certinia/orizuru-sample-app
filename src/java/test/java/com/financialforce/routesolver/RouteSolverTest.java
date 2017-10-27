@@ -35,8 +35,11 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 
+import com.rabbitmq.client.Channel;
+
 import com.financialforce.orizuru.transport.rabbitmq.exception.MessagingException;
 import com.financialforce.orizuru.transport.rabbitmq.interfaces.IMessageQueue;
+import com.financialforce.routesolver.problem.avro.Question;
 
 public class RouteSolverTest {
 
@@ -45,6 +48,8 @@ public class RouteSolverTest {
 
 		// given
 		IMessageQueue messageQueue = mock(IMessageQueue.class);
+		Channel channel = mock(Channel.class);
+		when(messageQueue.createChannel()).thenReturn(channel);
 
 		RouteSolver routeSolver = new RouteSolver(messageQueue);
 
@@ -53,6 +58,7 @@ public class RouteSolverTest {
 
 		// then
 		verify(messageQueue, times(1)).createChannel();
+		verify(channel, times(1)).queueDeclare(Question.class.getName(), true, false, false, null);
 		verify(messageQueue, times(1)).consume(any(), any(), any());
 
 	}
