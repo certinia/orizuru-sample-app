@@ -31,7 +31,6 @@ import com.rabbitmq.client.ConnectionFactory;
 
 import com.financialforce.orizuru.transport.rabbitmq.DefaultConsumer;
 import com.financialforce.orizuru.transport.rabbitmq.MessageQueue;
-import com.financialforce.orizuru.transport.rabbitmq.exception.MessagingException;
 import com.financialforce.orizuru.transport.rabbitmq.interfaces.IMessageQueue;
 import com.financialforce.routesolver.problem.avro.Answer;
 import com.financialforce.routesolver.problem.avro.Question;
@@ -52,9 +51,10 @@ public class RouteSolver implements Runnable {
 		try {
 
 			/**
-			 * Create the connection to RabbitMQ
+			 * Create the connection to RabbitMQ and the Question queue
 			 */
 			Channel channel = messageQueue.createChannel();
+			channel.queueDeclare(Question.class.getName(), true, false, false, null);
 
 			/** 
 			 * Consume the RabbitMQ queue
@@ -62,7 +62,7 @@ public class RouteSolver implements Runnable {
 			DefaultConsumer<Question, Answer> consumer = new QuestionConsumer(channel);
 			messageQueue.consume(CONSUMER_TAG, channel, consumer);
 
-		} catch (MessagingException ex) {
+		} catch (Exception ex) {
 
 			// For now log out the exception
 			ex.printStackTrace();
