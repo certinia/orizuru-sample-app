@@ -28,7 +28,8 @@
 
 const
 	_ = require('lodash'),
-	debug = require('debug'),
+	debug = require('debug-plus')('financialforcedev:orizuru:deploy:shell'),
+	debugOutput = require('debug-plus')('financialforcedev:orizuru:deploy:shell:output'),
 
 	childProcess = require('child_process'),
 	spawn = childProcess.spawn,
@@ -38,15 +39,13 @@ const
 	EVENT_CLOSE = 'close',
 	EVENT_DATA = 'data',
 
-	NAMESPACE = 'shell',
-
 	shellDebug = (cmd, args) => {
 		const formattedCommand = cmd + (args ? ' ' + args.join(' ') : '');
-		debug(NAMESPACE)('Executing: ' + formattedCommand);
+		debug('Executing: ' + formattedCommand);
 		return formattedCommand;
 	},
 
-	executeCommand = (namespace, cmd, args, opts) => {
+	executeCommand = (cmd, args, opts) => {
 
 		return new Promise((resolve, reject) => {
 
@@ -65,16 +64,12 @@ const
 				stderr += data;
 			});
 
-			child.on('error', (error) => {
-				return reject(error);
-			});
-
 			child.on(EVENT_CLOSE, (exitCode) => {
 				if (exitCode !== 0 && opts && opts.exitOnError) {
 					return reject(new Error('Command failed'));
 				}
 				const retval = { formattedCommand, exitCode, stdout: _.trim(stdout), stderr: _.trim(stderr) };
-				debug(namespace)(retval);
+				debugOutput(retval);
 				return resolve(retval);
 			});
 
@@ -82,11 +77,11 @@ const
 
 	},
 
-	executeCommands = (namespace, commands, opts) => {
+	executeCommands = (commands, opts) => {
 
 		return Promise.reduce(commands, (results, command) => {
 
-			return executeCommand(namespace, command.cmd, command.args)
+			return executeCommand(command.cmd, command.args)
 				.then((result) => {
 					results[result.formattedCommand] = result;
 					return results;
@@ -94,15 +89,9 @@ const
 
 		}, {});
 
-	},
-
-	stdout = (namespace, cmd, args, opts) => {
-		return executeCommand(namespace, cmd, args, opts)
-			.then(result => result.stdout);
 	};
 
 module.exports = {
 	executeCommand,
-	executeCommands,
-	stdout
+	executeCommands
 };
