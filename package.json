@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Dreamforce sample app for google maps integration",
   "scripts": {
+	"deploy": "DEBUG='financialforcedev:orizuru:deploy:log,financialforcedev:orizuru:deploy:shell:log' node src/node/lib/deploy.js",
     "pretest": "eslint src/node",
     "single-test": "nyc --all=false mocha",
     "test": "nyc mocha --recursive src/node/spec"
@@ -24,6 +25,7 @@
     "@financialforcedev/orizuru": "^5.0.2",
     "@financialforcedev/orizuru-auth": "^3.0.3",
     "@financialforcedev/orizuru-transport-rabbitmq": "^3.0.3",
+    "bluebird": "3.5.1",
     "debug-plus": "1.2.2",
     "jsforce": "1.8.0",
     "lodash": "4.17.4"
