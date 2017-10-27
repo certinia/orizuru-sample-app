@@ -49,17 +49,19 @@
 	<enableFeeds>false</enableFeeds>
 	<enableHistory>false</enableHistory>
 	<enableReports>false</enableReports>
-	<enableSearch>true</enableSearch>
+	<enableSearch>false</enableSearch>
 	<enableSharing>true</enableSharing>
 	<enableStreamingApi>true</enableStreamingApi>
-	<externalSharingModel>ControlledByParent</externalSharingModel>
-	<label>Delivery Route</label>
+	<externalSharingModel>ReadWrite</externalSharingModel>
+	<label>Delivery Plan</label>
 	<nameField>
-		<label>Delivery Route Name</label>
-		<type>Text</type>
+		<displayFormat>Delivery Plan {0}</displayFormat>
+		<label>Delivery Plan Name</label>
+		<type>AutoNumber</type>
+		<startingNumber>1</startingNumber>
 	</nameField>
-	<pluralLabel>Delivery Routes</pluralLabel>
+	<pluralLabel>Delivery Plans</pluralLabel>
 	<searchLayouts/>
-	<sharingModel>ControlledByParent</sharingModel>
+	<sharingModel>ReadWrite</sharingModel>
 	<visibility>Public</visibility>
 </CustomObject>

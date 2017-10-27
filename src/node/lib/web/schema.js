@@ -27,7 +27,7 @@
 'use strict';
 
 const schema = {
-	initialize: require('../../res/schema/initialize'),
+	calculateRoutesForPlan: require('../../res/schema/calculateRoutesForPlan'),
 	createData: require('../../res/schema/createData')
 };
 

@@ -2,7 +2,10 @@
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <flexiPageRegions>
         <componentInstances>
-            <componentName>DataGeneratorContainer</componentName>
+            <componentName>DataGeneratorButton</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>DataGeneratorStepMonitor</componentName>
         </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
@@ -22,6 +25,9 @@
                 <value>10</value>
             </componentInstanceProperties>
             <componentName>flexipage:filterListCard</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>DataGeneratorStepEventEmitter</componentName>
         </componentInstances>
         <name>main</name>
         <type>Region</type>

@@ -31,23 +31,44 @@ const
 	jsForceConnection = require('../shared/jsForceConnection'),
 	sfWriter = require('../shared/sfWriter'),
 
-	getConnection = (context) => {
-		return jsForceConnection.fromContext(context);
+	sendEvent = event => config => {
+
+		event.eventType = 'RouteCalculationStep__e';
+		event.id = config.incomingMessage.question.deliveryPlanId;
+
+		return sfWriter.sendPlatformEvent(config.conn, event)
+			.then(() => config);
+
 	},
 
-	createRoutes = (message) => {
-		const routes = message.solution.routes;
+	createRoutes = (results) => {
 
-		return _.map(routes, (route, i) => {
+		const routes = results.incomingMessage.solution.routes;
+
+		results.routes = _.map(routes, (route, i) => {
 			return {
 				Name: 'Route ' + (i + 1),
+				['DeliveryPlan__c']: results.incomingMessage.question.deliveryPlanId,
 				['Vehicle__c']: route.vehicleId
 			};
 		});
+
+		return results;
+
 	},
 
-	writeRoutes = (conn, routes) => {
-		return sfWriter.bulkCreateObject(conn, 'DeliveryRoute__c', routes);
+	writeRoutes = (results) => {
+
+		const
+			conn = results.conn,
+			routes = results.routes;
+
+		return sfWriter.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
+			.then(sobjects => {
+				results.savedRoutes = sobjects;
+				return results;
+			});
+
 	},
 
 	createAWayPoint = (deliveryRouteId, deliveryId, waypointNumber) => {
@@ -59,33 +80,48 @@ const
 		};
 	},
 
-	createWaypoints = (message, deliveryRoutes) => {
-		return _.flatten(_.map(message.solution.routes, (solutionRoute, sobjectCount) => {
+	createWaypoints = (results) => {
+
+		const
+			solution = results.incomingMessage.solution,
+			savedRoutes = results.savedRoutes;
+
+		results.waypoints = _.flatten(_.map(solution.routes, (solutionRoute, index) => {
 			return _.map(solutionRoute.actions, (action, i) => {
-				return createAWayPoint(deliveryRoutes[sobjectCount].id, action.serviceId, i + 1);
+				return createAWayPoint(savedRoutes[index].id, action.serviceId, i + 1);
 			});
 		}));
+
+		return results;
+
 	},
 
-	writeWaypoints = (conn, waypoints) => {
-		return sfWriter.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints);
+	writeWaypoints = (results) => {
+
+		const
+			conn = results.conn,
+			waypoints = results.waypoints;
+
+		return sfWriter.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
+			.then(sobjects => {
+				results.savedWaypoints = sobjects;
+				return results;
+			});
+
 	},
 
-	writeResponse = (conn, message) => {
-		return sfWriter.sendPlatformEvent('RouteCalculationStep__e', conn, 'Delivery Route(s) calculated', 'WRITING_DATA')
-			.then(() => createRoutes(message))
-			.then(routesToBeSaved => writeRoutes(conn, routesToBeSaved))
-			.then(routeSobjects => createWaypoints(message, routeSobjects))
-			.then(waypoints => writeWaypoints(conn, waypoints))
-			.then(() => sfWriter.sendPlatformEvent('RouteCalculationStep__e', conn, 'Route(s) created', 'COMPLETED'));
+	writeResults = ({ context, message }) => {
+
+		return jsForceConnection.fromContext(context)
+			.then(conn => ({ conn, incomingMessage: message }))
+			.then(sendEvent({ message: 'Delivery Route(s) calculated', status: 'WRITING_DATA' }))
+			.then(createRoutes)
+			.then(writeRoutes)
+			.then(createWaypoints)
+			.then(writeWaypoints)
+			.then(sendEvent({ message: 'Route(s) created', status: 'COMPLETED' }));
 	};
 
-class Service {
-
-	static writeResponse(message, context) {
-		return getConnection(context)
-			.then(conn => writeResponse(conn, message));
-	}
-}
-
-module.exports = Service;
+module.exports = {
+	writeResults
+};

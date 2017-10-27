@@ -8,6 +8,7 @@
 
 	<aura:attribute name="sessionId" type="String" access="private" />
 	<aura:attribute name="cometd" type="Object" access="private" />
+	<aura:attribute name="cometdReplayExtension" type="Object" access="private" />
 	<aura:attribute name="cometdSubscriptions" type="Object[]" default="[]" access="private" />
 
 </aura:component>

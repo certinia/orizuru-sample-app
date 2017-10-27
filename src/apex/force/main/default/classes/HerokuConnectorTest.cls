@@ -36,7 +36,7 @@ private class HerokuConnectorTest
 		Test.setMock(HttpCalloutMock.class, mock);
 
 		// when
-		connector.calculateRoute();
+		connector.calculateRoute('Test');
 
 		// then
 		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));

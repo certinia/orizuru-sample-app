@@ -1,8 +1,10 @@
 ({
 	onCometdLoaded: function (component, event, helper) {
 		var cometd = new org.cometd.CometD(),
+			replayExtension = new helper.cometdReplayExtension(),
 			sessionId = component.get('v.sessionId');
 
+		component.set('v.cometdReplayExtension', replayExtension);
 		component.set('v.cometd', cometd);
 
 		if (sessionId != null) {
@@ -24,5 +26,4 @@
 
 		$A.enqueueAction(action);
 	}
-
 });

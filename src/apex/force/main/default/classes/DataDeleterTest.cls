@@ -60,7 +60,10 @@ private class DataDeleterTest
         Vehicle__c vehicle = new Vehicle__c(VehicleType__c = vtype.id, Warehouse__c = warehouse.id);
         insert vehicle;
 
-		DeliveryRoute__c route = new DeliveryRoute__c(Vehicle__c = vehicle.Id);
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+		
+		DeliveryRoute__c route = new DeliveryRoute__c(DeliveryPlan__c = plan.Id, Vehicle__c = vehicle.Id);
         insert route;
 
 		DeliveryWaypoint__c waypoint = new DeliveryWaypoint__c(DeliveryRoute__c = route.Id, Order__c = order.Id, WaypointNumber__c = 1);

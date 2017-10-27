@@ -55,7 +55,6 @@ describe('questionBuilder/service.js', () => {
 
 	describe('executeQuery', () => {
 
-		let question;
 		const context = {},
 			queries = [
 				'SELECT Id, VehicleType__c, Warehouse__r.Contact__r.MailingLatitude, Warehouse__r.Contact__r.MailingLongitude FROM Vehicle__c',
@@ -64,7 +63,7 @@ describe('questionBuilder/service.js', () => {
 			],
 			queryResult = {},
 			expectedResult = {
-				id: '',
+				deliveryPlanId: 'testPlanId',
 				vehicles: [],
 				vehicleTypes: [],
 				deliveries: []
@@ -82,28 +81,65 @@ describe('questionBuilder/service.js', () => {
 		describe('resolve', () => {
 
 			it('should return a question', () => {
+
+				// given
+				const expectedInput = {
+					message: {
+						deliveryPlanId: 'testPlanId'
+					}
+				};
+
 				context.conn.query.resolves(queryResult);
 
-				question = service.buildQuestion();
+				// when/then
+				return expect(service.buildQuestion(expectedInput))
+					.to.eventually.eql(expectedResult)
+					.then(() => {
+						expect(sfWriter.sendPlatformEvent).to.be.calledTwice;
+						expect(context.conn.query).to.be.calledThrice;
+					});
 
-				return expect(question).to.eventually.eql(expectedResult).then(() => {
-					expect(sfWriter.sendPlatformEvent).to.be.calledTwice;
-					expect(context.conn.query).to.be.calledThrice;
-				});
 			});
 
 			it('should convert the query result correctly', () => {
-				context.conn.query.withArgs(queries[0]).resolves(vehicleQuery);
-				context.conn.query.withArgs(queries[1]).resolves(vehicleTypeQuery);
-				context.conn.query.withArgs(queries[2]).resolves(orderQuery);
 
-				return expect(service.buildQuestion())
+				// given
+				const
+					query = context.conn.query,
+					expectedInput = {
+						message: {
+							deliveryPlanId: 'testPlanId'
+						}
+					},
+					expectedReadPlatformEvent = {
+						eventType: 'RouteCalculationStep__e',
+						id: 'testPlanId',
+						message: 'Retrieving delivery records',
+						status: 'READING_DATA'
+					},
+					expectedCalculatePlatformEvent = {
+						eventType: 'RouteCalculationStep__e',
+						id: 'testPlanId',
+						message: 'Delivery records retrieved',
+						status: 'CALCULATING_ROUTES'
+					};
+
+				query.withArgs(queries[0]).resolves(vehicleQuery);
+				query.withArgs(queries[1]).resolves(vehicleTypeQuery);
+				query.withArgs(queries[2]).resolves(orderQuery);
+
+				// when/then
+				return expect(service.buildQuestion(expectedInput))
 					.to.eventually.eql(convertedResult)
 					.then(() => {
-						expect(context.conn.query).to.be.calledWith(queries[0]);
-						expect(context.conn.query).to.be.calledWith(queries[1]);
-						expect(context.conn.query).to.be.calledWith(queries[2]);
+						expect(query).to.be.calledWith(queries[0]);
+						expect(query).to.be.calledWith(queries[1]);
+						expect(query).to.be.calledWith(queries[2]);
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledTwice;
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(context.conn, expectedReadPlatformEvent);
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(context.conn, expectedCalculatePlatformEvent);
 					});
+
 			});
 		});
 

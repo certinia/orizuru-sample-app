@@ -1,5 +1,5 @@
 {
-	"id": "",
+	"deliveryPlanId": "testPlanId",
 	"vehicles": [{
 		"id": "a059E000003UIBEQA4",
 		"typeId": "a049E00000313NjQAI",

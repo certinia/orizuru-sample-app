@@ -27,8 +27,15 @@
 public with sharing class RouteCalculationButtonController
 {
     @AuraEnabled
-    public static void calculateRoute()
+    public static void calculateRoute(String id)
     {
-		HerokuConnector.newInstance().calculateRoute();
+		HerokuConnector.newInstance().calculateRoute(id);
+    }
+
+	@AuraEnabled
+    public static Boolean getPlanComplete(String id)
+    {
+		DeliveryPlan__c dpc = [SELECT Id, PlanComplete__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
+		return dpc.PlanComplete__c;
     }
 }

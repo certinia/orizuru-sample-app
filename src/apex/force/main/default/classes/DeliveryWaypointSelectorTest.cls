@@ -59,7 +59,9 @@ private class DeliveryWaypointSelectorTest
 	private static void selectByDeliveryRouteIds_setWithIdButNoResults_emptyList()
 	{
 		//Given
-		DeliveryRoute__c parent = new DeliveryRoute__c();
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+		DeliveryRoute__c parent = new DeliveryRoute__c(DeliveryPlan__c = plan.Id);
         insert parent;
 		DeliveryWaypoint__c[] expected = new DeliveryWaypoint__c[]{};
 		DeliveryWaypointSelector selector = DeliveryWaypointSelector.newInstance();
@@ -95,7 +97,10 @@ private class DeliveryWaypointSelectorTest
 		};
 		insert orders;
 
-		DeliveryRoute__c parent = new DeliveryRoute__c();
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+		
+		DeliveryRoute__c parent = new DeliveryRoute__c(DeliveryPlan__c = plan.Id);
         insert parent;
 
 		DeliveryWaypoint__c[] expected = new DeliveryWaypoint__c[]{

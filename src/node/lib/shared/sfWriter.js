@@ -11,11 +11,12 @@ const
 		return conn.bulk.load(objName, 'insert', data);
 	},
 
-	sendPlatformEvent = (eventType, conn, message, status) => {
+	sendPlatformEvent = (conn, { eventType, message, status, id }) => {
 		return createObject(conn, eventType, {
 			['Severity__c']: 'Info',
 			['Messages__c']: message,
-			['Status__c']: status
+			['Status__c']: status,
+			['SObjectId__c']: id
 		});
 	};
 

@@ -167,6 +167,15 @@
 		<allowEdit>true</allowEdit>
 		<allowRead>true</allowRead>
 		<modifyAllRecords>true</modifyAllRecords>
+		<object>DeliveryPlan__c</object>
+		<viewAllRecords>true</viewAllRecords>
+	</objectPermissions>
+	<objectPermissions>
+		<allowCreate>true</allowCreate>
+		<allowDelete>true</allowDelete>
+		<allowEdit>true</allowEdit>
+		<allowRead>true</allowRead>
+		<modifyAllRecords>true</modifyAllRecords>
 		<object>DeliveryRoute__c</object>
 		<viewAllRecords>true</viewAllRecords>
 	</objectPermissions>
@@ -216,7 +225,7 @@
 		<viewAllRecords>true</viewAllRecords>
 	</objectPermissions>
 	<tabSettings>
-		<tab>CalculateRoute</tab>
+		<tab>DeliveryPlan__c</tab>
 		<visibility>Visible</visibility>
 	</tabSettings>
 	<tabSettings>

@@ -24,20 +24,22 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public class DataDeleter 
+@isTest(SeeAllData=false)
+private class RouteCalculationStepMonitorConTest
 {
-    public static void deleteData()
-    {
-        Id userId = UserInfo.getUserId();
-        delete [SELECT Id FROM Vehicle__c];
-        delete [SELECT Id FROM VehicleType__c];
-		delete [SELECT Id FROM DeliveryWaypoint__c];
-		delete [SELECT Id FROM DeliveryRoute__c];
-		delete [SELECT Id FROM DeliveryPlan__c];
-        delete [SELECT Id FROM Order];
-        delete [SELECT Id FROM Warehouse__c];
-		delete [SELECT Id FROM Product2];
-        delete [SELECT Id FROM Contact];
-		delete [SELECT Id FROM Account];
-    }
+	@IsTest
+	private static void getPlanComplete_withId_shouldReturnPlanComplete()
+	{
+		// given
+		Boolean expectedResult = false;
+		
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+
+		// when
+		Boolean result = RouteCalculationStepMonitorController.getPlanComplete(plan.id);
+
+		// then
+		System.assertEquals(expectedResult, result);
+	}
 }

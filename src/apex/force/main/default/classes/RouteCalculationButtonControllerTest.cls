@@ -30,18 +30,34 @@ private class RouteCalculationButtonControllerTest
 	@IsTest
 	private static void calculateRoute_ShouldCallTheHerokuConnectorCalculateRouteMethod()
 	{
-		//Given
+		// given
 		StubProvider mocks = new StubProvider();
 
 		HerokuConnector mockConnector = (HerokuConnector)mocks.mock(HerokuConnector.class);
 		HerokuConnector.instance = mockConnector;
 
-		mocks.stub(mockConnector, 'calculateRoute', new Type[]{}, new Object[]{}, null);
+		mocks.stub(mockConnector, 'calculateRoute', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
 
-		//When
-		RouteCalculationButtonController.calculateRoute();
+		// when
+		RouteCalculationButtonController.calculateRoute('Test');
 
-		//Then
-		System.assertEquals(1, mocks.getCallCount(mockConnector, 'calculateRoute', new Type[]{}, new Object[]{}));
+		// then
+		System.assertEquals(1, mocks.getCallCount(mockConnector, 'calculateRoute', new Type[]{ String.class }, new Object[]{ 'Test' }));
+	}
+
+	@IsTest
+	private static void getPlanComplete_withId_shouldReturnPlanComplete()
+	{
+		// given
+		Boolean expectedResult = false;
+		
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+
+		// when
+		Boolean result = RouteCalculationButtonController.getPlanComplete(plan.id);
+
+		// then
+		System.assertEquals(expectedResult, result);
 	}
 }

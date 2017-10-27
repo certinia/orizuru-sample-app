@@ -43,7 +43,7 @@ const
 
 	CREATED_ACCOUNTS = { message: 'Created Accounts', status: 'CREATED_ACCOUNTS' },
 	CREATED_CONTACTS = { message: 'Created Contacts', status: 'CREATED_CONTACTS' },
-	CREATED_WAREHOUSE_CONTACTS = { message: 'Created Warehosue Contacts', status: 'CREATED_WAREHOUSE_CONTACTS' },
+	CREATED_WAREHOUSE_CONTACTS = { message: 'Created Warehouse Contacts', status: 'CREATED_WAREHOUSE_CONTACTS' },
 	CREATED_VEHICLE_TYPE = { message: 'Created Vehicle Types', status: 'CREATED_VEHICLE_TYPE' },
 	CREATED_WAREHOUSES = { message: 'Created Warehouses', status: 'CREATED_WAREHOUSES' },
 	CREATED_VEHICLES = { message: 'Created Vehicles', status: 'CREATED_VEHICLES' },
@@ -59,7 +59,7 @@ const
 	},
 
 	sendDataGeneratorStepEvent = (conn, status) => {
-		return sfWriter.sendPlatformEvent('DataGeneratorStep__e', conn, status.message, status.status);
+		return sfWriter.sendPlatformEvent(conn, { eventType: 'DataGeneratorStep__e', message: status.message, status: status.status });
 	},
 
 	createAccounts = (result) => {

@@ -161,13 +161,13 @@ describe('dataCreator/service.js', () => {
 							EffectiveDate: '2017-10-01'
 						}]);
 						expect(sfWriter.sendPlatformEvent).to.have.been.callCount(7);
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('DataGeneratorStep__e', mocks.conn, 'Created Accounts', 'CREATED_ACCOUNTS');
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('DataGeneratorStep__e', mocks.conn, 'Created Contacts', 'CREATED_CONTACTS');
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('DataGeneratorStep__e', mocks.conn, 'Created Warehosue Contacts', 'CREATED_WAREHOUSE_CONTACTS');
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('DataGeneratorStep__e', mocks.conn, 'Created Vehicle Types', 'CREATED_VEHICLE_TYPE');
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('DataGeneratorStep__e', mocks.conn, 'Created Warehouses', 'CREATED_WAREHOUSES');
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('DataGeneratorStep__e', mocks.conn, 'Created Vehicles', 'CREATED_VEHICLES');
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith('DataGeneratorStep__e', mocks.conn, 'Created Orders', 'CREATED_ORDERS');
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Accounts', status: 'CREATED_ACCOUNTS' });
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Contacts', status: 'CREATED_CONTACTS' });
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Warehouse Contacts', status: 'CREATED_WAREHOUSE_CONTACTS' });
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Vehicle Types', status: 'CREATED_VEHICLE_TYPE' });
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Warehouses', status: 'CREATED_WAREHOUSES' });
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Vehicles', status: 'CREATED_VEHICLES' });
+						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Orders', status: 'CREATED_ORDERS' });
 
 					});
 			});

@@ -34,7 +34,7 @@ const
 	{ Handler, Publisher } = require('@financialforcedev/orizuru'),
 
 	// get the handling service
-	QuestionBuilderService = require('./questionBuilder/service'),
+	service = require('./questionBuilder/service'),
 
 	// build transport
 	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
@@ -47,7 +47,7 @@ const
 	},
 
 	// define event schemas
-	incomingSchema = require('../res/schema/initialize'),
+	incomingSchema = require('../res/schema/calculateRoutesForPlan'),
 	outgoingSchema = require('../res/schema/question'),
 
 	// get handler and publisher
@@ -55,10 +55,9 @@ const
 	publisherInstance = new Publisher(orizuruConfig),
 
 	// callback
-	onHandleIncomingEvent = ({ context }) => {
+	onHandleIncomingEvent = ({ context, message }) => {
 
-		return QuestionBuilderService
-			.buildQuestion(context)
+		return service.buildQuestion({ context, message })
 			.then(result => {
 
 				// publish
