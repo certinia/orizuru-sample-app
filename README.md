@@ -27,42 +27,7 @@ In essence, this is a generalization of the well known [Travelling Salesman Prob
 ![Architecture](./docs/readme/Architecture.gif "Architecture")
 
 #### Implementation
-The solution uses some of the standard Salesforce objects:
-* _Orders_
-	- To define what we have to deliver and to whom.
-* _Contacts_
-	- To represent the delivery points.
-	- These have delivery addresses (for which Salesforce can [automatically calculate geolocations](https://help.salesforce.com/articleView?id=data_dot_com_clean_admin_standard_clean_rules_reference.htm&type=0)).
-* _Users_
-	- to represent our drivers. 
-
-To calculate the routes we have created a number of custom objects:
-* _Vehicle Type_
-	- The type of a vehicle, defining its attributes including the capacity.
-* _Vehicle_
-	- A single vehicle with a given vehicle type.
-* _Delivery Route_
-	- The route a driver in a vehicle needs to take, including a number of:
-	* _Delivery waypoints_
-		- Relating to the location and the sequence each item will be delivered; and the
-	* _Warehouse_
-		- the start and end point of the route.
-
-It is assumed that we need to deliver all orders in a single delivery day, using multiple drivers, each of which is designated a warehouse contact.
-
-Delivery routes for drivers are calculated on demand via a button click in a Lightning component. This causes a process to be kicked off on Heroku by a trivial Apex callout. 
-
-The Apex call is "trivial" in the sense that it simply tells our Heroku application that work needs to be done - it does not send the details of the work (delivery points and drivers).
-
-The Heroku application then queries the delivery point and driver data and construct the problem to be solved. 
-
-The problem is passed to a Java worker which uses the [Jsprit](https://jsprit.github.io/) toolkit to solve the problem. 
-
-The delivery routes are then saved back to Salesforce with a separate set of records being produced for each driver / route.
-
-Task progress is visible in a Lightning page via a [progress indicator](https://www.lightningdesignsystem.com/components/progress-indicator/).
-
-After the routes are saved in Salesforce, each driver is able to view their deliveries on a Google Maps. We have used the [Google Maps Embed API](https://developers.google.com/maps/documentation/embed/) to do this.
+Full details of the implementation can be found in the [Implementation](https://github.com/financialforcedev/orizuru-sample-app/wiki/Implementation) section of the Wiki.
 
 ## Getting Started
 
