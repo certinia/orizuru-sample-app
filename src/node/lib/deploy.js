@@ -42,18 +42,28 @@ const
 				name: 'Orizuru'
 			}
 		}
+	},
+
+	deploy = () => {
+
+		return Promise.resolve(config)
+			.then(deployFunctions.deployToHeroku)
+			.then(deployFunctions.openSsl)
+			.then(deployFunctions.deployToSalesforce)
+			.then(deployFunctions.createConnection)
+			.then(deployFunctions.readCertificateFiles)
+			.then(deployFunctions.createConnectedApp)
+			.then(deployFunctions.updateClientIdOnHeroku)
+			.then(deployFunctions.createNamedCredential)
+			.then(deployFunctions.updateJwtSigningKeyOnHeroku)
+			.then(deployFunctions.openOrg)
+			.then(deployFunctions.exit)
+			.catch(deployFunctions.exitWithError);
+
 	};
 
-return Promise.resolve(config)
-	.then(deployFunctions.deployToHeroku)
-	.then(deployFunctions.openSsl)
-	.then(deployFunctions.deployToSalesforce)
-	.then(deployFunctions.createConnection)
-	.then(deployFunctions.readCertificateFiles)
-	.then(deployFunctions.createConnectedApp)
-	.then(deployFunctions.updateClientIdOnHeroku)
-	.then(deployFunctions.createNamedCredential)
-	.then(deployFunctions.updateJwtSigningKeyOnHeroku)
-	.then(deployFunctions.openOrg)
-	.then(deployFunctions.exit)
-	.catch(deployFunctions.exitWithError);
+module.exports = {
+	deploy
+};
+
+deploy();
