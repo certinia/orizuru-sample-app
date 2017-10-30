@@ -46,18 +46,34 @@ private class RouteCalculationButtonControllerTest
 	}
 
 	@IsTest
-	private static void getPlanComplete_withId_shouldReturnPlanComplete()
+	private static void getPlanStatus_withId_shouldReturnPlanStatus()
 	{
 		// given
-		Boolean expectedResult = false;
+		String expectedResult = 'NOT STARTED';
 		
 		DeliveryPlan__c plan = new DeliveryPlan__c();
 		insert plan;
 
 		// when
-		Boolean result = RouteCalculationButtonController.getPlanComplete(plan.id);
+		String result = RouteCalculationButtonController.getPlanStatus(plan.id);
 
 		// then
 		System.assertEquals(expectedResult, result);
+	}
+
+	@IsTest
+	private static void sendInitialPlatformEvent_withId_shouldReturnSuccess()
+	{
+		// given
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+
+		// when
+		Test.startTest();
+		Boolean result = RouteCalculationButtonController.sendInitialPlatformEvent(plan.id);
+		Test.stopTest();
+
+		// then
+		System.assertEquals(true, result);
 	}
 }

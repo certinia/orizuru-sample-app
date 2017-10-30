@@ -28,16 +28,16 @@
 private class RouteCalculationStepMonitorConTest
 {
 	@IsTest
-	private static void getPlanComplete_withId_shouldReturnPlanComplete()
+	private static void getPlanStatus_withId_shouldReturnPlanStatus()
 	{
 		// given
-		Boolean expectedResult = false;
+		String expectedResult = 'NOT STARTED';
 		
 		DeliveryPlan__c plan = new DeliveryPlan__c();
 		insert plan;
 
 		// when
-		Boolean result = RouteCalculationStepMonitorController.getPlanComplete(plan.id);
+		String result = RouteCalculationStepMonitorController.getPlanStatus(plan.id);
 
 		// then
 		System.assertEquals(expectedResult, result);
