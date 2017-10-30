@@ -49,23 +49,23 @@ const
 	CREATED_VEHICLES = { message: 'Created Vehicles', status: 'CREATED_VEHICLES' },
 	CREATED_ORDERS = { message: 'Created Orders', status: 'CREATED_ORDERS' },
 
-	getConnection = (context) => {
+	getConnection = ({ context, incomingMessage }) => {
 		return jsForceConnection.fromContext(context)
-			.then(conn => ({ Conn: conn }));
+			.then(conn => ({ incomingMessage, Conn: conn }));
 	},
 
 	createObjects = (Conn, objName, data) => {
 		return sfWriter.bulkCreateObject(Conn, objName, data);
 	},
 
-	sendDataGeneratorStepEvent = (conn, status) => {
-		return sfWriter.sendPlatformEvent(conn, { eventType: 'DataGeneratorStep__e', message: status.message, status: status.status });
+	sendDataGeneratorStepEvent = ({ conn, status, incomingMessage }) => {
+		return sfWriter.sendPlatformEvent(conn, { eventType: 'DataGeneratorStep__e', message: status.message, status: status.status, id: incomingMessage.generateDataTaskId });
 	},
 
 	createAccounts = (result) => {
 		return createObjects(result.Conn, 'Account', dataToCreate.accounts)
 			.then(accounts => {
-				return sendDataGeneratorStepEvent(result.Conn, CREATED_ACCOUNTS)
+				return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_ACCOUNTS, incomingMessage: result.incomingMessage })
 					.then(() => {
 						result.Accounts = accounts;
 						return result;
@@ -83,7 +83,7 @@ const
 			});
 
 		return createObjects(Conn, 'Contact', contactsToCreate).then(contacts => {
-			return sendDataGeneratorStepEvent(result.Conn, CREATED_CONTACTS)
+			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_CONTACTS, incomingMessage: result.incomingMessage })
 				.then(() => {
 					result.Contacts = contacts;
 					return result;
@@ -101,7 +101,7 @@ const
 			});
 
 		return createObjects(Conn, 'Contact', contactsToCreate).then(contacts => {
-			return sendDataGeneratorStepEvent(result.Conn, CREATED_WAREHOUSE_CONTACTS)
+			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_WAREHOUSE_CONTACTS, incomingMessage: result.incomingMessage })
 				.then(() => {
 					result.WarehouseContacts = contacts;
 					return result;
@@ -114,7 +114,7 @@ const
 			Conn = result.Conn;
 
 		return createObjects(Conn, 'VehicleType__c', dataToCreate.vehicleTypes).then(vehicleTypes => {
-			return sendDataGeneratorStepEvent(result.Conn, CREATED_VEHICLE_TYPE)
+			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_VEHICLE_TYPE, incomingMessage: result.incomingMessage })
 				.then(() => {
 					result.VehicleTypes__c = vehicleTypes;
 					return result;
@@ -133,7 +133,7 @@ const
 			});
 
 		return createObjects(Conn, 'Warehouse__c', warehousesToCreate).then(warehouses => {
-			return sendDataGeneratorStepEvent(result.Conn, CREATED_WAREHOUSES)
+			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_WAREHOUSES, incomingMessage: result.incomingMessage })
 				.then(() => {
 					result.Warehouses__c = warehouses;
 					return result;
@@ -156,7 +156,7 @@ const
 			});
 
 		return createObjects(Conn, 'Vehicle__c', vehiclesToCreate).then(vehicles => {
-			return sendDataGeneratorStepEvent(result.Conn, CREATED_VEHICLES)
+			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_VEHICLES, incomingMessage: result.incomingMessage })
 				.then(() => {
 					result.Vehicles__c = vehicles;
 					return result;
@@ -178,7 +178,7 @@ const
 			});
 
 		return createObjects(Conn, 'Order', vehiclesToCreate).then(orders => {
-			return sendDataGeneratorStepEvent(result.Conn, CREATED_ORDERS)
+			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_ORDERS, incomingMessage: result.incomingMessage })
 				.then(() => {
 					result.orders = orders;
 					return result;
@@ -186,8 +186,8 @@ const
 		});
 	},
 
-	createAllData = (context) => {
-		return getConnection(context)
+	createAllData = ({ message, context }) => {
+		return getConnection({ context, incomingMessage: message })
 			.then(createAccounts)
 			.then(createContacts)
 			.then(createWarehouseContacts)
