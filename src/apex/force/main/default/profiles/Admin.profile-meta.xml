@@ -70,6 +70,18 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>RouteCalculationStepMonitorConTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>RouteCalculationStepMonitorController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>RouteCalculationStepTriggerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SessionController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -134,8 +146,18 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>GenerateDataTask__c.TaskComplete__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>RouteCalculationStep__e.Messages__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>RouteCalculationStep__e.SObjectId__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -186,6 +208,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>DeliveryWaypoint__c-Delivery Waypoint Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>GenerateDataTask__c-Generate Data Task Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Order-Order Layout</layout>
@@ -247,6 +272,15 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>GenerateDataTask__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>RouteCalculationStep__e</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
@@ -277,6 +311,10 @@
         <object>Warehouse__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <tabVisibilities>
+        <tab>GenerateDataTask__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
         <enabled>true</enabled>
