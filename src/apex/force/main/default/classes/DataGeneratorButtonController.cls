@@ -33,9 +33,21 @@ public with sharing class DataGeneratorButtonController
     }
 
 	@AuraEnabled
-    public static Boolean getTaskComplete(String id)
+    public static String getTaskStatus(String id)
     {
-		GenerateDataTask__c gdt = [SELECT Id, TaskComplete__c FROM GenerateDataTask__c WHERE Id=:id LIMIT 1];
-		return gdt.TaskComplete__c;
+		GenerateDataTask__c gdt = [SELECT Id, TaskStatus__c FROM GenerateDataTask__c WHERE Id=:id LIMIT 1];
+		return gdt.TaskStatus__c;
+    }
+
+	@AuraEnabled
+    public static Boolean sendInitialPlatformEvent(String id)
+    {
+		DataGeneratorStep__e stepEvent = new DataGeneratorStep__e(SObjectId__c = id, 
+                                             Severity__c = 'Info',
+                                             Messages__c = 'Start',
+											 Status__c = 'STARTED');
+											 
+		Database.SaveResult sr = Eventbus.publish(stepEvent);
+		return sr.isSuccess();
     }
 }

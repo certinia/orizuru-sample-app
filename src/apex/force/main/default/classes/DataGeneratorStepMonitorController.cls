@@ -27,9 +27,9 @@
 public with sharing class DataGeneratorStepMonitorController
 {
 	@AuraEnabled
-    public static Boolean getTaskComplete(String id)
+    public static String getTaskStatus(String id)
     {
-		GenerateDataTask__c gdt = [SELECT Id, TaskComplete__c FROM GenerateDataTask__c WHERE Id=:id LIMIT 1];
-		return gdt.TaskComplete__c;
+		GenerateDataTask__c gdt = [SELECT Id, TaskStatus__c FROM GenerateDataTask__c WHERE Id=:id LIMIT 1];
+		return gdt.TaskStatus__c;
     }
 }

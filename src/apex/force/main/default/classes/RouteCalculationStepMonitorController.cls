@@ -27,9 +27,9 @@
 public with sharing class RouteCalculationStepMonitorController
 {
 	@AuraEnabled
-    public static Boolean getPlanComplete(String id)
+    public static String getPlanStatus(String id)
     {
-		DeliveryPlan__c dpc = [SELECT Id, PlanComplete__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
-		return dpc.PlanComplete__c;
+		DeliveryPlan__c dpc = [SELECT Id, PlanStatus__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
+		return dpc.PlanStatus__c;
     }
 }
