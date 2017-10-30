@@ -39,5 +39,6 @@ public class DataDeleter
 		delete [SELECT Id FROM Product2];
         delete [SELECT Id FROM Contact];
 		delete [SELECT Id FROM Account];
+		delete [SELECT Id FROM GenerateDataTask__c];
     }
 }

@@ -24,12 +24,28 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class RouteCalculationStepMonitorController
+@isTest(SeeAllData=false)
+private class DataGeneratorStepTriggerTest 
 {
-	@AuraEnabled
-    public static String getPlanStatus(String id)
-    {
-		DeliveryPlan__c dpc = [SELECT Id, PlanStatus__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
-		return dpc.PlanStatus__c;
+    @isTest static void dataGeneratorStepTrigger_shouldUpdateGenerateDataTask() 
+	{
+        GenerateDataTask__c task = new GenerateDataTask__c();
+		insert task;
+        DataGeneratorStep__e stepEvent = new DataGeneratorStep__e(SObjectId__c = task.Id, 
+                                             Severity__c = 'Info', 
+                                             Messages__c = 'Created Orders',
+											 Status__c = 'CREATED_ORDERS');
+        
+        Test.startTest();
+        
+        Database.SaveResult sr = EventBus.publish(stepEvent);
+            
+        Test.stopTest();
+
+        System.assertEquals(true, sr.isSuccess());
+        
+        GenerateDataTask__c updatedTask = [SELECT Id, TaskStatus__c FROM GenerateDataTask__c WHERE Id=:task.Id LIMIT 1];
+
+        System.assertEquals('CREATED_ORDERS', updatedTask.TaskStatus__c);
     }
 }

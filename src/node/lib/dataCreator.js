@@ -53,8 +53,8 @@ const
 	handlerInstance = new Handler(orizuruConfig),
 
 	// callback
-	onHandleIncomingEvent = ({ message, context }) => {
-		return dataCreator.createData(context);
+	onHandleIncomingEvent = (event) => {
+		return dataCreator.createData(event);
 	};
 
 // listen and log error events on the handler

@@ -24,12 +24,22 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class RouteCalculationStepMonitorController
+@isTest(SeeAllData=false)
+private class DataGeneratorStepMonitorConTest
 {
-	@AuraEnabled
-    public static String getPlanStatus(String id)
-    {
-		DeliveryPlan__c dpc = [SELECT Id, PlanStatus__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
-		return dpc.PlanStatus__c;
-    }
+	@IsTest
+	private static void getTaskStatus_withId_shouldReturnTaskStatus()
+	{
+		// given
+		String expectedResult = 'NOT STARTED';
+		
+		GenerateDataTask__c task = new GenerateDataTask__c();
+		insert task;
+
+		// when
+		String result = DataGeneratorStepMonitorController.getTaskStatus(task.id);
+
+		// then
+		System.assertEquals(expectedResult, result);
+	}
 }

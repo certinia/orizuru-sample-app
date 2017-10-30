@@ -36,12 +36,44 @@ private class DataGeneratorButtonControllerTest
 		HerokuConnector mockConnector = (HerokuConnector)mocks.mock(HerokuConnector.class);
 		HerokuConnector.instance = mockConnector;
 
-		mocks.stub(mockConnector, 'generateData', new Type[]{}, new Object[]{}, null);
+		mocks.stub(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
 
 		//When
-		DataGeneratorButtonController.generateData();
+		DataGeneratorButtonController.generateData('Test');
 
 		//Then
-		System.assertEquals(1, mocks.getCallCount(mockConnector, 'generateData', new Type[]{}, new Object[]{}));
+		System.assertEquals(1, mocks.getCallCount(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }));
+	}
+
+	@IsTest
+	private static void getTaskStatus_withId_shouldReturnTaskComplete()
+	{
+		// given
+		String expectedResult = 'NOT STARTED';
+		
+		GenerateDataTask__c task = new GenerateDataTask__c();
+		insert task;
+
+		// when
+		String result = DataGeneratorButtonController.getTaskStatus(task.id);
+
+		// then
+		System.assertEquals(expectedResult, result);
+	}
+
+	@IsTest
+	private static void sendInitialPlatformEvent_withId_shouldReturnSuccess()
+	{
+		// given
+		GenerateDataTask__c task = new GenerateDataTask__c();
+		insert task;
+
+		// when
+		Test.startTest();
+		Boolean result = DataGeneratorButtonController.sendInitialPlatformEvent(task.id);
+		Test.stopTest();
+
+		// then
+		System.assertEquals(true, result);
 	}
 }

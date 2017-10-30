@@ -24,7 +24,15 @@
 		<type>Flexipage</type>
 		<profile>Admin</profile>
 	</profileActionOverrides>
-	<tab>GenerateData</tab>
+	<profileActionOverrides>
+		<actionName>View</actionName>
+		<content>GenerateDataTasks</content>
+		<formFactor>Large</formFactor>
+		<pageOrSobjectType>GenerateDataTask__c</pageOrSobjectType>
+		<type>Flexipage</type>
+		<profile>Admin</profile>
+	</profileActionOverrides>
+	<tab>GenerateDataTask__c</tab>
 	<tab>DeliveryPlan__c</tab>
 	<tab>DeliveryRoute__c</tab>
 	<tab>standard-Account</tab>

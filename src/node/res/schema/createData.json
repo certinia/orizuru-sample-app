@@ -2,5 +2,8 @@
 	"namespace": "com.ffdc.orizuru.problem.avro",
 	"name": "createData",
 	"type": "record",
-	"fields": []
+	"fields": [{
+		"name": "generateDataTaskId",
+		"type": "string"
+	}]
 }

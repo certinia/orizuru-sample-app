@@ -44,30 +44,8 @@ private class RouteCalculationStepTriggerTest
 
         System.assertEquals(true, sr.isSuccess());
         
-        DeliveryPlan__c updatedPlan = [SELECT Id, PlanComplete__c FROM DeliveryPlan__c WHERE Id=:plan.Id LIMIT 1];
+        DeliveryPlan__c updatedPlan = [SELECT Id, PlanStatus__c FROM DeliveryPlan__c WHERE Id=:plan.Id LIMIT 1];
 
-        System.assertEquals(true, updatedPlan.PlanComplete__c);
-    }
-    
-    @isTest static void routeCalculationStepTrigger_shouldNotUpdateDeliveryPlan() 
-	{
-        DeliveryPlan__c plan = new DeliveryPlan__c();
-		insert plan;
-        RouteCalculationStep__e stepEvent = new RouteCalculationStep__e(SObjectId__c = plan.Id, 
-                                             Severity__c = 'Info', 
-                                             Messages__c = 'Start',
-											 Status__c = 'STARTED');
-        
-        Test.startTest();
-        
-        Database.SaveResult sr = EventBus.publish(stepEvent);
-            
-        Test.stopTest();
-
-        System.assertEquals(true, sr.isSuccess());
-        
-        DeliveryPlan__c updatedPlan = [SELECT Id, PlanComplete__c FROM DeliveryPlan__c WHERE Id=:plan.Id LIMIT 1];
-
-        System.assertEquals(false, updatedPlan.PlanComplete__c);
+        System.assertEquals('COMPLETED', updatedPlan.PlanStatus__c);
     }
 }

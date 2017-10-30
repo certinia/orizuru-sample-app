@@ -1,6 +1,6 @@
 ({
 	doInit: function (component) {
-		var action = component.get('c.getPlanComplete'),
+		var action = component.get('c.getPlanStatus'),
 			objectId = component.get('v.recordId');
 
 		action.setParams({
@@ -8,11 +8,16 @@
 		});
 
 		action.setCallback(this, function (data) {
-			var planComplete = data.getReturnValue();
-			component.set('v.planComplete', planComplete);
-			if (planComplete) {
+			var planStatus = data.getReturnValue();
+
+
+			if (planStatus === 'COMPLETED') {
+				component.set('v.planComplete', true);
+			}
+
+			if (planStatus !== 'NOT STARTED') {
 				component.set('v.show', true);
-				component.set('v.progress', 'COMPLETED');
+				component.set('v.progress', planStatus);
 			}
 		});
 

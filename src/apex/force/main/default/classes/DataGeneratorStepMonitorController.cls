@@ -24,12 +24,12 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class RouteCalculationStepMonitorController
+public with sharing class DataGeneratorStepMonitorController
 {
 	@AuraEnabled
-    public static String getPlanStatus(String id)
+    public static String getTaskStatus(String id)
     {
-		DeliveryPlan__c dpc = [SELECT Id, PlanStatus__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
-		return dpc.PlanStatus__c;
+		GenerateDataTask__c gdt = [SELECT Id, TaskStatus__c FROM GenerateDataTask__c WHERE Id=:id LIMIT 1];
+		return gdt.TaskStatus__c;
     }
 }
