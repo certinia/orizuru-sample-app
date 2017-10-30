@@ -29,6 +29,7 @@
 const
 	_ = require('lodash'),
 	jsForceConnection = require('../shared/jsForceConnection'),
+	reader = require('../shared/reader'),
 	sfWriter = require('../shared/sfWriter'),
 
 	vehicleQuery = 'SELECT Id, VehicleType__c, Warehouse__r.Contact__r.MailingLatitude, Warehouse__r.Contact__r.MailingLongitude FROM Vehicle__c',
@@ -51,9 +52,9 @@ const
 			conn = results.conn,
 			incomingMessage = results.incomingMessage,
 			queries = [
-				conn.query(vehicleQuery),
-				conn.query(typeQuery),
-				conn.query(orderQuery)
+				reader.query({ conn, query: vehicleQuery }),
+				reader.query({ conn, query: typeQuery }),
+				reader.query({ conn, query: orderQuery })
 			];
 
 		return Promise.all(queries)
