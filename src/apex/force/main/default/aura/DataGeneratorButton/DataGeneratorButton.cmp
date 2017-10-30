@@ -1,6 +1,5 @@
 <aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="DataGeneratorButtonController">
 	<aura:attribute name="show" type="Boolean" default="false" access="private" />
-	<aura:attribute name="taskComplete" type="Boolean" default="false" access="private" />
 
 	<aura:registerEvent name="dataGeneratorStepEvent" type="c:DataGeneratorStepEvent" />
 

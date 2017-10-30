@@ -1,6 +1,5 @@
 <aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="RouteCalculationButtonController">
 	<aura:attribute name="show" type="Boolean" default="false" access="private" />
-	<aura:attribute name="planComplete" type="Boolean" default="false" access="private" />
 
 	<aura:registerEvent name="routeCalculationStepEvent" type="c:RouteCalculationStepEvent" />
 

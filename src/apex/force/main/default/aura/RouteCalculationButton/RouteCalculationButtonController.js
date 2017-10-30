@@ -1,6 +1,6 @@
 ({
 	doInit: function (component) {
-		var action = component.get('c.getPlanComplete'),
+		var action = component.get('c.getPlanStatus'),
 			objectId = component.get('v.recordId');
 
 		action.setParams({
@@ -8,11 +8,8 @@
 		});
 
 		action.setCallback(this, function (data) {
-			var planComplete = data.getReturnValue()
-			component.set('v.planComplete', planComplete);
-			if (planComplete) {
-				component.set('v.show', false);
-			} else {
+			var planStatus = data.getReturnValue()
+			if (planStatus === 'NOT STARTED') {
 				component.set('v.show', true);
 			}
 		});
@@ -21,39 +18,32 @@
 	},
 
 	handleClick: function (component, event, handler) {
-
 		var action = component.get('c.calculateRoute'),
-			objectId = component.get('v.recordId'),
-			stepEvent = $A.get('e.c:RouteCalculationStepEvent');
-
-		stepEvent.setParams({
-			id: objectId,
-			messages: '',
-			severity: '',
-			status: 'STARTED'
-		});
-		stepEvent.fire();
+			stepEvent = component.get('c.sendInitialPlatformEvent'),
+			objectId = component.get('v.recordId');
 
 		console.log('ObjectId: ' + objectId);
 
 		action.setParams({
 			id: objectId
 		});
+		stepEvent.setParams({
+			id: objectId
+		});
 		action.setCallback(this, function (data) {
 			console.log('called calculateRoute: ' + data.getReturnValue());
 		});
 		$A.enqueueAction(action);
-
+		$A.enqueueAction(stepEvent);
 	},
 
 	handleStepEvent: function (component, event, handler) {
 
 		var status = event.getParam('status'),
 			eventId = event.getParam('id'),
-			objectId = component.get('v.recordId'),
-			planComplete = component.get('v.planComplete');
+			objectId = component.get('v.recordId');
 
-		if (!planComplete && eventId != null && eventId === objectId) {
+		if (eventId != null && eventId === objectId) {
 			component.set('v.show', false);
 		}
 	}

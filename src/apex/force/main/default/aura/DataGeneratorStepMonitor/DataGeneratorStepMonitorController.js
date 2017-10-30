@@ -1,6 +1,6 @@
 ({
 	doInit: function (component) {
-		var action = component.get('c.getTaskComplete'),
+		var action = component.get('c.getTaskStatus'),
 			objectId = component.get('v.recordId');
 
 		action.setParams({
@@ -8,11 +8,14 @@
 		});
 
 		action.setCallback(this, function (data) {
-			var taskComplete = data.getReturnValue();
-			component.set('v.taskComplete', taskComplete);
-			if (taskComplete) {
+			var taskStatus = data.getReturnValue();
+
+			if (taskStatus === 'CREATED_ORDERS') {
+				component.set('v.taskComplete', true);
+			}
+			if (taskStatus !== 'NOT STARTED') {
 				component.set('v.show', true);
-				component.set('v.progress', 'CREATED_ORDERS');
+				component.set('v.progress', taskStatus);
 			}
 		});
 

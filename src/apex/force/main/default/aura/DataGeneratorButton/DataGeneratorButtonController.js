@@ -1,6 +1,6 @@
 ({
 	doInit: function (component) {
-		var action = component.get('c.getTaskComplete'),
+		var action = component.get('c.getTaskStatus'),
 			objectId = component.get('v.recordId');
 
 		action.setParams({
@@ -8,11 +8,8 @@
 		});
 
 		action.setCallback(this, function (data) {
-			var taskComplete = data.getReturnValue()
-			component.set('v.taskComplete', taskComplete);
-			if (taskComplete) {
-				component.set('v.show', false);
-			} else {
+			var taskStatus = data.getReturnValue();
+			if (taskStatus === 'NOT STARTED') {
 				component.set('v.show', true);
 			}
 		});
@@ -22,33 +19,28 @@
 
 	handleClick: function (component, event, handler) {
 		var action = component.get('c.generateData'),
-			objectId = component.get('v.recordId'),
-			stepEvent = $A.get('e.c:DataGeneratorStepEvent');
-
-		stepEvent.setParams({
-			id: objectId,
-			messages: '',
-			severity: '',
-			status: 'STARTED'
-		});
-		stepEvent.fire();
+			stepEvent = component.get('c.sendInitialPlatformEvent'),
+			objectId = component.get('v.recordId');
 
 		console.log('ObjectId: ' + objectId);
 
 		action.setParams({
 			id: objectId
 		});
+		stepEvent.setParams({
+			id: objectId
+		});
 		$A.enqueueAction(action);
+		$A.enqueueAction(stepEvent);
 	},
 
 	handleStepEvent: function (component, event, handler) {
 
 		var status = event.getParam('status'),
 			eventId = event.getParam('id'),
-			objectId = component.get('v.recordId'),
-			taskComplete = component.get('v.taskComplete');
+			objectId = component.get('v.recordId');
 
-		if (!taskComplete && eventId != null && eventId === objectId) {
+		if (eventId != null && eventId === objectId) {
 			component.set('v.show', false);
 		}
 
