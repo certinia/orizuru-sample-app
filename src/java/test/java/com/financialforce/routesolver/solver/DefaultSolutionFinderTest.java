@@ -57,7 +57,7 @@ public class DefaultSolutionFinderTest {
 		VehicleRoutingProblemSolution solution = solutionFinder.transform(inputXml);
 
 		// then
-		assertEquals(solution.getRoutes().size(), 8);
+		assertEquals(solution.getRoutes().size(), 9);
 
 	}
 
