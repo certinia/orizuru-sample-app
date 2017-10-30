@@ -36,7 +36,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>GenerateDataTask__c.TaskComplete__c</field>
+        <field>GenerateDataTask__c.TaskStatus__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -244,6 +244,10 @@
     </tabSettings>
     <tabSettings>
         <tab>DeliveryRoute__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>GenerateDataTask__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
