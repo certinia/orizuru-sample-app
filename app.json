@@ -23,9 +23,9 @@
 			"size": "standard-1x"
 		}
 	},
-	"addons": [
-		"cloudamqp"
-	],
+	"addons": [{
+		"plan": "cloudamqp:lemur"
+	}],
 	"buildpacks": [{
 		"url": "heroku/nodejs"
 	}, {
