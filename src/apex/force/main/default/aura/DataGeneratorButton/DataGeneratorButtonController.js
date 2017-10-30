@@ -35,8 +35,6 @@
 
 		console.log('ObjectId: ' + objectId);
 
-		component.set('v.show', false);
-
 		action.setParams({
 			id: objectId
 		});
@@ -50,7 +48,7 @@
 			objectId = component.get('v.recordId'),
 			taskComplete = component.get('v.taskComplete');
 
-		if (!taskComplete && eventId != null && eventId === objectId && status !== 'STARTED') {
+		if (!taskComplete && eventId != null && eventId === objectId) {
 			component.set('v.show', false);
 		}
 
