@@ -51,11 +51,11 @@ const
 
 	getConnection = ({ context, incomingMessage }) => {
 		return connection.fromContext(context)
-			.then(conn => ({ incomingMessage, Conn: conn }));
+			.then(conn => ({ incomingMessage, conn }));
 	},
 
-	createObjects = (Conn, objName, data) => {
-		return writer.bulkCreateObject(Conn, objName, data);
+	createObjects = ({ conn, objName, data }) => {
+		return writer.bulkCreateObject(conn, objName, data);
 	},
 
 	sendDataGeneratorStepEvent = ({ conn, status, incomingMessage }) => {
@@ -63,68 +63,81 @@ const
 	},
 
 	createAccounts = (result) => {
-		return createObjects(result.Conn, 'Account', dataToCreate.accounts)
+
+		const conn = result.conn;
+
+		return createObjects({ conn, objName: 'Account', data: dataToCreate.accounts })
 			.then(accounts => {
-				return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_ACCOUNTS, incomingMessage: result.incomingMessage })
+				return sendDataGeneratorStepEvent({ conn, status: CREATED_ACCOUNTS, incomingMessage: result.incomingMessage })
 					.then(() => {
 						result.Accounts = accounts;
 						return result;
 					});
 			});
+
 	},
 
 	createContacts = (result) => {
+
 		const
-			Conn = result.Conn,
+			conn = result.conn,
 
 			contactsToCreate = _.map(dataToCreate.contacts, (record, count) => {
 				record.AccountId = result.Accounts[count].id;
 				return record;
 			});
 
-		return createObjects(Conn, 'Contact', contactsToCreate).then(contacts => {
-			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_CONTACTS, incomingMessage: result.incomingMessage })
-				.then(() => {
-					result.Contacts = contacts;
-					return result;
-				});
-		});
+		return createObjects({ conn, objName: 'Contact', data: contactsToCreate })
+			.then(contacts => {
+				return sendDataGeneratorStepEvent({ conn, status: CREATED_CONTACTS, incomingMessage: result.incomingMessage })
+					.then(() => {
+						result.Contacts = contacts;
+						return result;
+					});
+			});
+
 	},
 
 	createWarehouseContacts = (result) => {
+
 		const
-			Conn = result.Conn,
+			conn = result.conn,
 
 			contactsToCreate = _.map(dataToCreate.warehouseContacts, (record, count) => {
 				record.AccountId = result.Accounts[count].id;
 				return record;
 			});
 
-		return createObjects(Conn, 'Contact', contactsToCreate).then(contacts => {
-			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_WAREHOUSE_CONTACTS, incomingMessage: result.incomingMessage })
-				.then(() => {
-					result.WarehouseContacts = contacts;
-					return result;
-				});
-		});
+		return createObjects({ conn, objName: 'Contact', data: contactsToCreate })
+			.then(contacts => {
+				return sendDataGeneratorStepEvent({ conn, status: CREATED_WAREHOUSE_CONTACTS, incomingMessage: result.incomingMessage })
+					.then(() => {
+						result.WarehouseContacts = contacts;
+						return result;
+					});
+			});
+
 	},
 
 	createVehicleTypes = (result) => {
-		const
-			Conn = result.Conn;
 
-		return createObjects(Conn, 'VehicleType__c', dataToCreate.vehicleTypes).then(vehicleTypes => {
-			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_VEHICLE_TYPE, incomingMessage: result.incomingMessage })
-				.then(() => {
-					result.VehicleTypes__c = vehicleTypes;
-					return result;
-				});
-		});
+		const conn = result.conn;
+
+		return createObjects({ conn, objName: 'VehicleType__c', data: dataToCreate.vehicleTypes })
+			.then(vehicleTypes => {
+				return sendDataGeneratorStepEvent({ conn, status: CREATED_VEHICLE_TYPE, incomingMessage: result.incomingMessage })
+					.then(() => {
+						result.VehicleTypes__c = vehicleTypes;
+						return result;
+					});
+			});
+
 	},
 
 	createWarehouses = (result) => {
+
 		const
-			Conn = result.Conn,
+			conn = result.conn,
 			WarehouseContacts = result.WarehouseContacts,
 
 			warehousesToCreate = _.map(dataToCreate.warehouses, (record, count) => {
@@ -132,18 +145,21 @@ const
 				return record;
 			});
 
-		return createObjects(Conn, 'Warehouse__c', warehousesToCreate).then(warehouses => {
-			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_WAREHOUSES, incomingMessage: result.incomingMessage })
-				.then(() => {
-					result.Warehouses__c = warehouses;
-					return result;
-				});
-		});
+		return createObjects({ conn, objName: 'Warehouse__c', data: warehousesToCreate })
+			.then(warehouses => {
+				return sendDataGeneratorStepEvent({ conn, status: CREATED_WAREHOUSES, incomingMessage: result.incomingMessage })
+					.then(() => {
+						result.Warehouses__c = warehouses;
+						return result;
+					});
+			});
+
 	},
 
 	createVehicles = (result) => {
+
 		const
-			Conn = result.Conn,
+			conn = result.conn,
 			VehicleTypes__c = result.VehicleTypes__c,
 			Warehouses__c = result.Warehouses__c,
 			WarehouseContacts = result.WarehouseContacts,
@@ -155,18 +171,20 @@ const
 				return record;
 			});
 
-		return createObjects(Conn, 'Vehicle__c', vehiclesToCreate).then(vehicles => {
-			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_VEHICLES, incomingMessage: result.incomingMessage })
-				.then(() => {
-					result.Vehicles__c = vehicles;
-					return result;
-				});
-		});
+		return createObjects({ conn, objName: 'Vehicle__c', data: vehiclesToCreate })
+			.then(vehicles => {
+				return sendDataGeneratorStepEvent({ conn, status: CREATED_VEHICLES, incomingMessage: result.incomingMessage })
+					.then(() => {
+						result.Vehicles__c = vehicles;
+						return result;
+					});
+			});
+
 	},
 
 	createOrders = (result) => {
 		const
-			Conn = result.Conn,
+			conn = result.conn,
 			Accounts = result.Accounts,
 			Contacts = result.Contacts,
 
@@ -177,13 +195,14 @@ const
 				return record;
 			});
 
-		return createObjects(Conn, 'Order', vehiclesToCreate).then(orders => {
-			return sendDataGeneratorStepEvent({ conn: result.Conn, status: CREATED_ORDERS, incomingMessage: result.incomingMessage })
-				.then(() => {
-					result.orders = orders;
-					return result;
-				});
-		});
+		return createObjects({ conn, objName: 'Order', data: vehiclesToCreate })
+			.then(orders => {
+				return sendDataGeneratorStepEvent({ conn: result.conn, status: CREATED_ORDERS, incomingMessage: result.incomingMessage })
+					.then(() => {
+						result.orders = orders;
+						return result;
+					});
+			});
 	},
 
 	createAllData = ({ message, context }) => {
