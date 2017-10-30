@@ -34,6 +34,7 @@ import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
 import com.graphhopper.jsprit.core.algorithm.box.Jsprit;
 import com.graphhopper.jsprit.core.algorithm.termination.IterationWithoutImprovementTermination;
 import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem;
+import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem.FleetSize;
 import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolution;
 import com.graphhopper.jsprit.core.util.Solutions;
 import com.graphhopper.jsprit.io.problem.VrpXMLReader;
@@ -67,6 +68,8 @@ public class DefaultSolutionFinder implements ITransform<String, VehicleRoutingP
 			VrpXMLReader reader = new VrpXMLReader(vrpBuilder);
 			reader.setSchemaValidation(false);
 			reader.read(is);
+
+			vrpBuilder.setFleetSize(FleetSize.FINITE);
 
 			/*
 			* Build the problem. 
