@@ -45,10 +45,10 @@ const
 		return granter;
 	},
 
-	getJsforceConnection = (credentials) => {
+	getConnection = (credentials) => {
 		return new jsforce.Connection(credentials);
 	};
 
 module.exports = {
-	fromContext: context => getTokenGranter()(context.user).then(getJsforceConnection)
+	fromContext: context => getTokenGranter()(context.user).then(getConnection)
 };

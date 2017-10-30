@@ -28,15 +28,15 @@
 
 const
 	_ = require('lodash'),
-	jsForceConnection = require('../shared/jsForceConnection'),
-	sfWriter = require('../shared/sfWriter'),
+	connection = require('../salesforce/connection'),
+	writer = require('../salesforce/writer'),
 
 	sendEvent = event => config => {
 
 		event.eventType = 'RouteCalculationStep__e';
 		event.id = config.incomingMessage.question.deliveryPlanId;
 
-		return sfWriter.sendPlatformEvent(config.conn, event)
+		return writer.sendPlatformEvent(config.conn, event)
 			.then(() => config);
 
 	},
@@ -63,7 +63,7 @@ const
 			conn = results.conn,
 			routes = results.routes;
 
-		return sfWriter.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
+		return writer.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
 			.then(sobjects => {
 				results.savedRoutes = sobjects;
 				return results;
@@ -102,7 +102,7 @@ const
 			conn = results.conn,
 			waypoints = results.waypoints;
 
-		return sfWriter.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
+		return writer.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
 			.then(sobjects => {
 				results.savedWaypoints = sobjects;
 				return results;
@@ -112,7 +112,7 @@ const
 
 	writeResults = ({ context, message }) => {
 
-		return jsForceConnection.fromContext(context)
+		return connection.fromContext(context)
 			.then(conn => ({ conn, incomingMessage: message }))
 			.then(sendEvent({ message: 'Delivery Route(s) calculated', status: 'WRITING_DATA' }))
 			.then(createRoutes)

@@ -36,9 +36,9 @@ const
 
 	sandbox = sinon.sandbox.create(),
 
-	jsForceConnection = require(root + '/src/node/lib/shared/jsForceConnection'),
-	reader = require(root + '/src/node/lib/shared/reader'),
-	sfWriter = require(root + '/src/node/lib/shared/sfWriter'),
+	connection = require(root + '/src/node/lib/salesforce/connection'),
+	reader = require(root + '/src/node/lib/salesforce/reader'),
+	writer = require(root + '/src/node/lib/salesforce/writer'),
 	service = require(root + '/src/node/lib/questionBuilder/service'),
 	vehicleQuery = require(root + '/src/node/res/spec/questionBuilder/vehicleQuery.json'),
 	vehicleTypeQuery = require(root + '/src/node/res/spec/questionBuilder/vehicleTypeQuery.json'),
@@ -77,10 +77,10 @@ describe('questionBuilder/service.js', () => {
 
 			mocks.conn = sandbox.stub();
 
-			sandbox.stub(jsForceConnection, 'fromContext').resolves(mocks.conn);
+			sandbox.stub(connection, 'fromContext').resolves(mocks.conn);
 			sandbox.stub(reader, 'query').resolves();
-			sandbox.stub(sfWriter, 'createObject').resolves();
-			sandbox.stub(sfWriter, 'sendPlatformEvent').resolves();
+			sandbox.stub(writer, 'createObject').resolves();
+			sandbox.stub(writer, 'sendPlatformEvent').resolves();
 
 		});
 
@@ -101,7 +101,7 @@ describe('questionBuilder/service.js', () => {
 				return expect(service.buildQuestion(expectedInput))
 					.to.eventually.eql(mocks.expectedResult)
 					.then(() => {
-						expect(sfWriter.sendPlatformEvent).to.be.calledTwice;
+						expect(writer.sendPlatformEvent).to.be.calledTwice;
 						expect(reader.query).to.be.calledThrice;
 					});
 
@@ -140,9 +140,9 @@ describe('questionBuilder/service.js', () => {
 						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[0] });
 						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[1] });
 						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[2] });
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledTwice;
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedReadPlatformEvent);
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedCalculatePlatformEvent);
+						expect(writer.sendPlatformEvent).to.have.been.calledTwice;
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedReadPlatformEvent);
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedCalculatePlatformEvent);
 					});
 
 			});

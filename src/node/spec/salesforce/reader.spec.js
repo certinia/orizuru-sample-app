@@ -35,14 +35,14 @@ const
 
 	expect = chai.expect,
 
-	reader = require(root + '/src/node/lib/shared/reader'),
+	reader = require(root + '/src/node/lib/salesforce/reader'),
 
 	sandbox = sinon.sandbox.create();
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-describe('shared/reader.js', () => {
+describe('salesforce/reader.js', () => {
 
 	let mocks;
 

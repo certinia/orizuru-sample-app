@@ -37,8 +37,8 @@ const
 
 	sandbox = sinon.sandbox.create(),
 
-	jsForceConnection = require(root + '/src/node/lib/shared/jsForceConnection'),
-	sfWriter = require(root + '/src/node/lib/shared/sfWriter');
+	connection = require(root + '/src/node/lib/salesforce/connection'),
+	writer = require(root + '/src/node/lib/salesforce/writer');
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
@@ -58,9 +58,9 @@ describe('dataCreator/service.js', () => {
 			fakeReturnedSobjects = [sandbox.stub()];
 			fakeReturnedSobjects[0].id = mocks.mockId;
 
-			sandbox.stub(jsForceConnection, 'fromContext').resolves(mocks.conn);
-			sandbox.stub(sfWriter, 'bulkCreateObject').resolves(fakeReturnedSobjects);
-			sandbox.stub(sfWriter, 'sendPlatformEvent').resolves();
+			sandbox.stub(connection, 'fromContext').resolves(mocks.conn);
+			sandbox.stub(writer, 'bulkCreateObject').resolves(fakeReturnedSobjects);
+			sandbox.stub(writer, 'sendPlatformEvent').resolves();
 
 			service = proxyquire(root + '/src/node/lib/dataCreator/service', {
 				'../../res/dataCreator/Account.json': {
@@ -128,11 +128,11 @@ describe('dataCreator/service.js', () => {
 				// when - then
 				return expect(service.createData({ context, message })).to.eventually.be.fulfilled
 					.then(() => {
-						expect(sfWriter.bulkCreateObject).to.have.been.callCount(7);
-						expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Account', [{
+						expect(writer.bulkCreateObject).to.have.been.callCount(7);
+						expect(writer.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Account', [{
 							Name: 'Mission High School'
 						}]);
-						expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Contact', [{
+						expect(writer.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Contact', [{
 							FirstName: 'Mission High School',
 							LastName: 'Mission High School',
 							MailingLatitude: 37.76171660000001,
@@ -140,7 +140,7 @@ describe('dataCreator/service.js', () => {
 							MailingCountry: 'USA',
 							AccountId: mocks.mockId
 						}]);
-						expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Contact', [{
+						expect(writer.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Contact', [{
 							FirstName: 'Warehouse 1',
 							LastName: 'Warehouse 1',
 							MailingLatitude: 37.76171660000001,
@@ -148,36 +148,36 @@ describe('dataCreator/service.js', () => {
 							MailingCountry: 'USA',
 							AccountId: mocks.mockId
 						}]);
-						expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'VehicleType__c', [{
+						expect(writer.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'VehicleType__c', [{
 							name: 'Mercedes-Benz 2018 Sprinter Cargo Van 3500 High Roof V6 170',
 							MaximumPayloadCapacity__c: 10,
 							Fixed__c: 0.0,
 							Distance__c: 1.0,
 							Time__c: 0.0
 						}]);
-						expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Warehouse__c', [{
+						expect(writer.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Warehouse__c', [{
 							Name: 'Port of San Francisco',
 							Contact__c: mocks.mockId
 						}]);
-						expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Vehicle__c', [{
+						expect(writer.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Vehicle__c', [{
 							Name: 'Van 1',
 							VehicleType__c: mocks.mockId,
 							Warehouse__c: mocks.mockId
 						}]);
-						expect(sfWriter.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Order', [{
+						expect(writer.bulkCreateObject).to.have.been.calledWith(mocks.conn, 'Order', [{
 							AccountId: mocks.mockId,
 							ShipToContactId: mocks.mockId,
 							Status: 'Draft',
 							EffectiveDate: '2017-10-01'
 						}]);
-						expect(sfWriter.sendPlatformEvent).to.have.been.callCount(7);
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Accounts', status: 'CREATED_ACCOUNTS', id: 'testId' });
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Contacts', status: 'CREATED_CONTACTS', id: 'testId' });
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Warehouse Contacts', status: 'CREATED_WAREHOUSE_CONTACTS', id: 'testId' });
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Vehicle Types', status: 'CREATED_VEHICLE_TYPE', id: 'testId' });
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Warehouses', status: 'CREATED_WAREHOUSES', id: 'testId' });
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Vehicles', status: 'CREATED_VEHICLES', id: 'testId' });
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Orders', status: 'CREATED_ORDERS', id: 'testId' });
+						expect(writer.sendPlatformEvent).to.have.been.callCount(7);
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Accounts', status: 'CREATED_ACCOUNTS', id: 'testId' });
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Contacts', status: 'CREATED_CONTACTS', id: 'testId' });
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Warehouse Contacts', status: 'CREATED_WAREHOUSE_CONTACTS', id: 'testId' });
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Vehicle Types', status: 'CREATED_VEHICLE_TYPE', id: 'testId' });
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Warehouses', status: 'CREATED_WAREHOUSES', id: 'testId' });
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Vehicles', status: 'CREATED_VEHICLES', id: 'testId' });
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, { eventType: 'DataGeneratorStep__e', message: 'Created Orders', status: 'CREATED_ORDERS', id: 'testId' });
 
 					});
 

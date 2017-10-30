@@ -33,8 +33,8 @@ const
 	sinonChai = require('sinon-chai'),
 	chaiAsPromised = require('chai-as-promised'),
 	service = require(root + '/src/node/lib/resultWriter/service'),
-	jsForceConnection = require(root + '/src/node/lib/shared/jsForceConnection'),
-	sfWriter = require(root + '/src/node/lib/shared/sfWriter'),
+	connection = require(root + '/src/node/lib/salesforce/connection'),
+	writer = require(root + '/src/node/lib/salesforce/writer'),
 
 	expect = chai.expect,
 
@@ -122,20 +122,20 @@ describe('resultWriter/service.js', () => {
 				status: 'COMPLETED'
 			};
 
-		sandbox.stub(jsForceConnection, 'fromContext').resolves(conn);
-		sandbox.stub(sfWriter, 'sendPlatformEvent').resolves();
-		sandbox.stub(sfWriter, 'bulkCreateObject').resolves([{ id: 'myFakeId' }, { id: 'anotherFakeId' }]);
+		sandbox.stub(connection, 'fromContext').resolves(conn);
+		sandbox.stub(writer, 'sendPlatformEvent').resolves();
+		sandbox.stub(writer, 'bulkCreateObject').resolves([{ id: 'myFakeId' }, { id: 'anotherFakeId' }]);
 
 		// when / then
 		return expect(service.writeResults(expectedInput))
 			.to.eventually.be.fulfilled
 			.then(() => {
-				expect(sfWriter.bulkCreateObject).to.have.been.calledTwice;
-				expect(sfWriter.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryRoute__c', expectedRoutes);
-				expect(sfWriter.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryWaypoint__c', expectedWaypoints);
-				expect(sfWriter.sendPlatformEvent).to.have.been.calledTwice;
-				expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(conn, expectedWritingPlatformEvent);
-				expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(conn, expectedCompletedPlatformEvent);
+				expect(writer.bulkCreateObject).to.have.been.calledTwice;
+				expect(writer.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryRoute__c', expectedRoutes);
+				expect(writer.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryWaypoint__c', expectedWaypoints);
+				expect(writer.sendPlatformEvent).to.have.been.calledTwice;
+				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedWritingPlatformEvent);
+				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedCompletedPlatformEvent);
 			});
 
 	});

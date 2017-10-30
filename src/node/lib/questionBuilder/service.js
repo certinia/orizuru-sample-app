@@ -28,9 +28,9 @@
 
 const
 	_ = require('lodash'),
-	jsForceConnection = require('../shared/jsForceConnection'),
-	reader = require('../shared/reader'),
-	sfWriter = require('../shared/sfWriter'),
+	connection = require('../salesforce/connection'),
+	reader = require('../salesforce/reader'),
+	writer = require('../salesforce/writer'),
 
 	vehicleQuery = 'SELECT Id, VehicleType__c, Warehouse__r.Contact__r.MailingLatitude, Warehouse__r.Contact__r.MailingLongitude FROM Vehicle__c',
 	typeQuery = 'SELECT Id, MaximumPayloadCapacity__c, Distance__c, Fixed__c, Time__c from VehicleType__c',
@@ -41,7 +41,7 @@ const
 		event.eventType = 'RouteCalculationStep__e';
 		event.id = config.incomingMessage.deliveryPlanId;
 
-		return sfWriter.sendPlatformEvent(config.conn, event)
+		return writer.sendPlatformEvent(config.conn, event)
 			.then(() => config);
 
 	},
@@ -124,7 +124,7 @@ const
 	returnQuestion = ({ question }) => question,
 
 	buildQuestion = ({ context, message }) => {
-		return jsForceConnection.fromContext(context)
+		return connection.fromContext(context)
 			.then(conn => ({ conn, incomingMessage: message }))
 			.then(sendEvent({ message: 'Retrieving delivery records', status: 'READING_DATA' }))
 			.then(runQueries)

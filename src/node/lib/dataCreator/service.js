@@ -28,8 +28,8 @@
 
 const
 	_ = require('lodash'),
-	jsForceConnection = require('../shared/jsForceConnection'),
-	sfWriter = require('../shared/sfWriter'),
+	connection = require('../salesforce/connection'),
+	writer = require('../salesforce/writer'),
 
 	dataToCreate = {
 		accounts: require('../../res/dataCreator/Account.json').records,
@@ -50,16 +50,16 @@ const
 	CREATED_ORDERS = { message: 'Created Orders', status: 'CREATED_ORDERS' },
 
 	getConnection = ({ context, incomingMessage }) => {
-		return jsForceConnection.fromContext(context)
+		return connection.fromContext(context)
 			.then(conn => ({ incomingMessage, Conn: conn }));
 	},
 
 	createObjects = (Conn, objName, data) => {
-		return sfWriter.bulkCreateObject(Conn, objName, data);
+		return writer.bulkCreateObject(Conn, objName, data);
 	},
 
 	sendDataGeneratorStepEvent = ({ conn, status, incomingMessage }) => {
-		return sfWriter.sendPlatformEvent(conn, { eventType: 'DataGeneratorStep__e', message: status.message, status: status.status, id: incomingMessage.generateDataTaskId });
+		return writer.sendPlatformEvent(conn, { eventType: 'DataGeneratorStep__e', message: status.message, status: status.status, id: incomingMessage.generateDataTaskId });
 	},
 
 	createAccounts = (result) => {
