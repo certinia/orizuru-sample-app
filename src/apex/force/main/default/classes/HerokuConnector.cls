@@ -43,9 +43,9 @@ public class HerokuConnector
 		return makeRequest('calculateRoutesForPlan', '{ "deliveryPlanId": "' + id + '"}');
 	}
 
-	public HttpResponse generateData()
+	public HttpResponse generateData(String id)
 	{
-		return makeRequest('createData');
+		return makeRequest('createData', '{ "generateDataTaskId": "' + id + '"}');
 	}
 
 	private static HttpResponse makeRequest(String api, String body)
@@ -57,11 +57,6 @@ public class HerokuConnector
 		populateHeader(request);
 		request.setBody(body);
 		return http.send(request);
-	}
-
-	private static HttpResponse makeRequest(String api)
-	{
-		return makeRequest(api, '{}');
 	}
 
 	private static void populateHeader(HttpRequest request)

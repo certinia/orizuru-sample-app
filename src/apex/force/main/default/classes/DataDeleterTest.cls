@@ -68,7 +68,9 @@ private class DataDeleterTest
 
 		DeliveryWaypoint__c waypoint = new DeliveryWaypoint__c(DeliveryRoute__c = route.Id, Order__c = order.Id, WaypointNumber__c = 1);
         insert waypoint;
-		
+
+		GenerateDataTask__c task = new GenerateDataTask__c();
+		insert task;
     }
     
     private static void assertNoCreatedDataInOrg()
@@ -77,18 +79,22 @@ private class DataDeleterTest
         List<VehicleType__c> types = (List<VehicleType__c>)[SELECT Id FROM VehicleType__c];
 		List<DeliveryWaypoint__c> waypoints = (List<DeliveryWaypoint__c>)[SELECT Id FROM DeliveryWaypoint__c];
 		List<DeliveryRoute__c> routes = (List<DeliveryRoute__c>)[SELECT Id FROM DeliveryRoute__c];
-        List<Order> orders = (List<Order>)[SELECT Id FROM Order];
+        List<DeliveryPlan__c> plans = (List<DeliveryPlan__c>)[SELECT Id FROM DeliveryPlan__c];
+		List<Order> orders = (List<Order>)[SELECT Id FROM Order];
         List<Warehouse__c> warehouses = (List<Warehouse__c>)[SELECT Id FROM Warehouse__c];
         List<Contact> contact = (List<Contact>)[SELECT Id FROM Contact];
         List<Account> accounts = (List<Account>)[SELECT Id FROM Account];
+		List<GenerateDataTask__c> tasks = (List<GenerateDataTask__c>)[SELECT Id FROM GenerateDataTask__c];
 
         System.assertEquals(0, vehicles.size());
         System.assertEquals(0, types.size());
 		System.assertEquals(0, waypoints.size());
         System.assertEquals(0, routes.size());
+		System.assertEquals(0, plans.size());
         System.assertEquals(0, orders.size());
         System.assertEquals(0, warehouses.size());
         System.assertEquals(0, contact.size());
 		System.assertEquals(0, accounts.size());
+		System.assertEquals(0, tasks.size());
     }
 }

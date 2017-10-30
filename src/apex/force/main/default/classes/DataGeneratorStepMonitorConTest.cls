@@ -24,18 +24,22 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class DataGeneratorButtonController
+@isTest(SeeAllData=false)
+private class DataGeneratorStepMonitorConTest
 {
-    @AuraEnabled
-    public static void generateData(String id)
-    {
-		HerokuConnector.newInstance().generateData(id);
-    }
+	@IsTest
+	private static void getTaskComplete_withId_shouldReturnTaskComplete()
+	{
+		// given
+		Boolean expectedResult = false;
+		
+		GenerateDataTask__c task = new GenerateDataTask__c();
+		insert task;
 
-	@AuraEnabled
-    public static Boolean getTaskComplete(String id)
-    {
-		GenerateDataTask__c gdt = [SELECT Id, TaskComplete__c FROM GenerateDataTask__c WHERE Id=:id LIMIT 1];
-		return gdt.TaskComplete__c;
-    }
+		// when
+		Boolean result = DataGeneratorStepMonitorController.getTaskComplete(task.id);
+
+		// then
+		System.assertEquals(expectedResult, result);
+	}
 }

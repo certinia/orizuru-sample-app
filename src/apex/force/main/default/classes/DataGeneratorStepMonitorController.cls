@@ -24,14 +24,8 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class DataGeneratorButtonController
+public with sharing class DataGeneratorStepMonitorController
 {
-    @AuraEnabled
-    public static void generateData(String id)
-    {
-		HerokuConnector.newInstance().generateData(id);
-    }
-
 	@AuraEnabled
     public static Boolean getTaskComplete(String id)
     {
