@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PlanStatus__c</fullName>
+    <externalId>false</externalId>
+    <label>Plan Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NOT STARTED</fullName>
+                <default>true</default>
+                <label>NOT STARTED</label>
+            </value>
+            <value>
+                <fullName>STARTED</fullName>
+                <default>false</default>
+                <label>STARTED</label>
+            </value>
+            <value>
+                <fullName>READING_DATA</fullName>
+                <default>false</default>
+                <label>READING_DATA</label>
+            </value>
+            <value>
+                <fullName>CALCULATING_ROUTES</fullName>
+                <default>false</default>
+                <label>CALCULATING_ROUTES</label>
+            </value>
+            <value>
+                <fullName>WRITING_DATA</fullName>
+                <default>false</default>
+                <label>WRITING_DATA</label>
+            </value>
+            <value>
+                <fullName>COMPLETED</fullName>
+                <default>false</default>
+                <label>COMPLETED</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

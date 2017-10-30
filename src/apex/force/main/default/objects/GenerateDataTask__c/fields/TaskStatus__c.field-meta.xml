@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TaskStatus__c</fullName>
+    <externalId>false</externalId>
+    <label>Task Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NOT STARTED</fullName>
+                <default>true</default>
+                <label>NOT STARTED</label>
+            </value>
+            <value>
+                <fullName>STARTED</fullName>
+                <default>false</default>
+                <label>STARTED</label>
+            </value>
+            <value>
+                <fullName>CREATED_ACCOUNTS</fullName>
+                <default>false</default>
+                <label>CREATED_ACCOUNTS</label>
+            </value>
+            <value>
+                <fullName>CREATED_CONTACTS</fullName>
+                <default>false</default>
+                <label>CREATED_CONTACTS</label>
+            </value>
+            <value>
+                <fullName>CREATED_WAREHOUSE_CONTACTS</fullName>
+                <default>false</default>
+                <label>CREATED_WAREHOUSE_CONTACTS</label>
+            </value>
+            <value>
+                <fullName>CREATED_VEHICLE_TYPE</fullName>
+                <default>false</default>
+                <label>CREATED_VEHICLE_TYPE</label>
+            </value>
+            <value>
+                <fullName>CREATED_WAREHOUSES</fullName>
+                <default>false</default>
+                <label>CREATED_WAREHOUSES</label>
+            </value>
+            <value>
+                <fullName>CREATED_VEHICLES</fullName>
+                <default>false</default>
+                <label>CREATED_VEHICLES</label>
+            </value>
+            <value>
+                <fullName>CREATED_ORDERS</fullName>
+                <default>false</default>
+                <label>CREATED_ORDERS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

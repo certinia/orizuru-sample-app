@@ -22,6 +22,18 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DataGeneratorStepMonitorConTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DataGeneratorStepMonitorController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DataGeneratorStepTriggerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DeliveryRouteSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -97,6 +109,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DataGeneratorStep__e.SObjectId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DataGeneratorStep__e.Severity__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -108,6 +125,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>DeliveryPlan__c.PlanComplete__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DeliveryPlan__c.PlanStatus__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -148,6 +170,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>GenerateDataTask__c.TaskComplete__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>GenerateDataTask__c.Task_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -311,10 +338,6 @@
         <object>Warehouse__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <tabVisibilities>
-        <tab>GenerateDataTask__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
         <enabled>true</enabled>
