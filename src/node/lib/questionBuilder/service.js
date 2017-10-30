@@ -70,7 +70,7 @@ const
 
 	mapVehicles = (results) => {
 
-		results.question.vehicles = _.map(results.vehicles.records, vehicle => {
+		results.question.vehicles = _.map(results.vehicles, vehicle => {
 			return {
 				id: vehicle.Id,
 				typeId: vehicle.VehicleType__c,
@@ -87,7 +87,7 @@ const
 
 	mapVehicleTypes = (results) => {
 
-		results.question.vehicleTypes = _.map(results.types.records, type => {
+		results.question.vehicleTypes = _.map(results.types, type => {
 			return {
 				id: type.Id,
 				capacity: type.MaximumPayloadCapacity__c,
@@ -105,7 +105,7 @@ const
 
 	mapOrders = (results) => {
 
-		results.question.deliveries = _.map(results.orders.records, order => {
+		results.question.deliveries = _.map(results.orders, order => {
 			return {
 				id: order.Id,
 				type: 'Delivery', //delivery.Type__c,
