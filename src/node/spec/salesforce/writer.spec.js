@@ -32,16 +32,16 @@ const
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
-	sfWriter = require(root + '/src/node/lib/shared/sfWriter'),
+	writer = require(root + '/src/node/lib/salesforce/writer'),
 
 	sandbox = sinon.sandbox.create(),
 	restore = sandbox.restore.bind(sandbox);
 
 chai.use(sinonChai);
 
-describe('shared/sfWriter.js', () => {
+describe('salesforce/writer.js', () => {
 
 	let conn, connSobjectCreate;
 
@@ -64,7 +64,7 @@ describe('shared/sfWriter.js', () => {
 		it('should return the result of conn.sobject called with the correct arguments', () => {
 
 			// given - when - then
-			expect(sfWriter.createObject(conn, 'a', 'b')).to.eql('conn.sobject');
+			expect(writer.createObject(conn, 'a', 'b')).to.eql('conn.sobject');
 
 		});
 
@@ -75,7 +75,7 @@ describe('shared/sfWriter.js', () => {
 		it('should return the result of conn.bulk.load called with the correct arguments', () => {
 
 			// given - when - then
-			expect(sfWriter.bulkCreateObject(conn, 'a', 'b')).to.eql('conn.bulk.load');
+			expect(writer.bulkCreateObject(conn, 'a', 'b')).to.eql('conn.bulk.load');
 			expect(conn.bulk.load).to.have.been.calledOnce;
 			expect(conn.bulk.load).to.have.been.calledWith('a', 'insert', 'b');
 
@@ -95,8 +95,8 @@ describe('shared/sfWriter.js', () => {
 				id: 'testId'
 			};
 
-			// when/then
-			expect(sfWriter.sendPlatformEvent(conn, expectedEvent)).to.eql('conn.sobject');
+			// when - then
+			expect(writer.sendPlatformEvent(conn, expectedEvent)).to.eql('conn.sobject');
 			expect(conn.sobject).to.have.been.calledOnce;
 			expect(conn.sobject).to.have.been.calledWith('RouteCalculationStep__e');
 			expect(connSobjectCreate).to.have.been.calledOnce;

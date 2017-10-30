@@ -33,12 +33,12 @@ const
 	sinonChai = require('sinon-chai'),
 	chaiAsPromised = require('chai-as-promised'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
 	jsForce = require('jsforce'),
 	orizuruAuth = require('@financialforcedev/orizuru-auth'),
 
-	jsForceConnection = require(root + '/src/node/lib/shared/jsForceConnection'),
+	connection = require(root + '/src/node/lib/salesforce/connection'),
 
 	sandbox = sinon.sandbox.create(),
 	restore = sandbox.restore.bind(sandbox);
@@ -46,7 +46,7 @@ const
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-describe('shared/jsForceConnection.js', () => {
+describe('salesforce/connection.js', () => {
 
 	beforeEach(() => {
 
@@ -80,7 +80,7 @@ describe('shared/jsForceConnection.js', () => {
 			};
 
 			// when - then
-			return expect(jsForceConnection.fromContext(context)).to.eventually.eql({ test: 'test' })
+			return expect(connection.fromContext(context)).to.eventually.eql({ test: 'test' })
 				.then(() => {
 					expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;
 					expect(orizuruAuth.grant.getToken).to.have.been.calledWith({
@@ -99,15 +99,15 @@ describe('shared/jsForceConnection.js', () => {
 		it('should cache validated tokenGranter for future use', () => {
 
 			// given
-			delete require.cache[require.resolve(root + '/src/node/lib/shared/jsForceConnection')];
+			delete require.cache[require.resolve(root + '/src/node/lib/salesforce/connection')];
 			const
 				context = {
 					user: 'userTest'
 				},
-				jsForceConnectionAfterCacheClear = require(root + '/src/node/lib/shared/jsForceConnection');
+				connectionAfterCacheClear = require(root + '/src/node/lib/salesforce/connection');
 
 			// when - then
-			return expect(jsForceConnectionAfterCacheClear.fromContext(context)).to.eventually.eql({ test: 'test' })
+			return expect(connectionAfterCacheClear.fromContext(context)).to.eventually.eql({ test: 'test' })
 				.then(() => {
 					expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;
 					expect(orizuruAuth.grant.getToken).to.have.been.calledWith({
@@ -122,7 +122,7 @@ describe('shared/jsForceConnection.js', () => {
 
 				})
 				.then(() => {
-					return expect(jsForceConnectionAfterCacheClear.fromContext(context)).to.eventually.eql({ test: 'test' })
+					return expect(connectionAfterCacheClear.fromContext(context)).to.eventually.eql({ test: 'test' })
 						.then(() => {
 							expect(orizuruAuth.grant.getToken).to.have.been.calledOnce; // check not called again
 							expect(jsForce.Connection).to.have.been.calledTwice;

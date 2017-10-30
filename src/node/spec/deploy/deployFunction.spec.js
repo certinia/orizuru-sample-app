@@ -156,7 +156,7 @@ describe('deploy/shell.js', () => {
 				command0: { stdout: '{"command0Out":"testing"}' }
 			});
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.deployToHeroku({}))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -210,7 +210,7 @@ describe('deploy/shell.js', () => {
 				command4: { stdout: '{"command4Out":"testing"}' }
 			});
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.deployToSalesforce({}))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -235,7 +235,7 @@ describe('deploy/shell.js', () => {
 
 			mocks.shell.executeCommands = sandbox.stub().resolves({});
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.openSsl({}))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -268,7 +268,7 @@ describe('deploy/shell.js', () => {
 				command1: { stdout: 'privateKey' }
 			});
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.readCertificateFiles({}))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -310,7 +310,7 @@ describe('deploy/shell.js', () => {
 			expectedInput.conn.metadata.create = sandbox.stub().resolves();
 			expectedInput.conn.metadata.read = sandbox.stub().resolves();
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.createConnectedApp(expectedInput))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -343,7 +343,7 @@ describe('deploy/shell.js', () => {
 
 			mocks.shell.executeCommands = sandbox.stub().resolves({});
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.updateClientIdOnHeroku(expectedInput))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -373,7 +373,7 @@ describe('deploy/shell.js', () => {
 
 			mocks.shell.executeCommands = sandbox.stub().resolves({});
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.updateJwtSigningKeyOnHeroku(expectedInput))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -412,7 +412,7 @@ describe('deploy/shell.js', () => {
 			expectedInput.conn.metadata.create = sandbox.stub().resolves();
 			expectedInput.conn.metadata.read = sandbox.stub().resolves();
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.createNamedCredential(expectedInput))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {
@@ -437,7 +437,7 @@ describe('deploy/shell.js', () => {
 
 			mocks.shell.executeCommands = sandbox.stub().resolves({});
 
-			// when/then
+			// when -then
 			return expect(deployFunctions.openOrg({}))
 				.to.eventually.eql(expectedOutput)
 				.then(() => {

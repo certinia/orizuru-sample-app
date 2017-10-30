@@ -12,7 +12,7 @@
 		},
 		"routeSolver": {
 			"quantity": 1,
-			"size": "standard-1x"
+			"size": "performance-l"
 		},
 		"resultWriter": {
 			"quantity": 1,
@@ -23,9 +23,9 @@
 			"size": "standard-1x"
 		}
 	},
-	"addons": [
-		"cloudamqp"
-	],
+	"addons": [{
+		"plan": "cloudamqp:lemur"
+	}],
 	"buildpacks": [{
 		"url": "heroku/nodejs"
 	}, {

@@ -32,7 +32,7 @@ const
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
 	resultWriterPath = root + '/src/node/lib/resultWriter',
 
@@ -109,7 +109,7 @@ describe('resultWriter.js', () => {
 				message = 'messageTest',
 				context = 'contextTest';
 
-			// when/then
+			// when - then
 			return handler({ message, context })
 				.then(() => {
 					expect(service.writeResults).to.have.been.calledOnce;

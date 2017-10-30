@@ -34,7 +34,7 @@ const
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
 	sandbox = sinon.sandbox.create();
 
@@ -81,7 +81,7 @@ describe('deploy.js', () => {
 
 		it('should call the expected deployFunctions', () => {
 
-			// when/then
+			// when - then
 			return expect(deploy.deploy())
 				.to.eventually.be.fulfilled
 				.then(() => {

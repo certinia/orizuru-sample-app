@@ -118,7 +118,7 @@ describe('deploy/shell.js', () => {
 
 				mocks.childProcess.spawn.on = sandbox.stub().yields(1);
 
-				// when/then
+				// when -then
 				return expect(shell.executeCommand(expectedCommand, expectedArgs, expectedOptions))
 					.to.eventually.eql(expectedResult)
 					.then(() => {
@@ -137,7 +137,7 @@ describe('deploy/shell.js', () => {
 
 				mocks.childProcess.spawn.on = sandbox.stub().yields(1);
 
-				// when/then
+				// when -then
 				return expect(shell.executeCommand(expectedCommand, expectedArgs, expectedOptions))
 					.to.eventually.be.rejectedWith('Command failed')
 					.then(() => {
@@ -162,7 +162,7 @@ describe('deploy/shell.js', () => {
 
 				mocks.childProcess.spawn.on = sandbox.stub().yields(0);
 
-				// when/then
+				// when -then
 				return expect(shell.executeCommand(expectedCommand, expectedArgs, expectedOptions))
 					.to.eventually.eql(expectedResult)
 					.then(() => {
@@ -192,7 +192,7 @@ describe('deploy/shell.js', () => {
 				mocks.childProcess.spawn.on = sandbox.stub().yields(0);
 				mocks.childProcess.spawn.stdout.on.withArgs('data').yields('test');
 
-				// when/then
+				// when -then
 				return expect(shell.executeCommand(expectedCommand, expectedArgs, expectedOptions))
 					.to.eventually.eql(expectedResult);
 
@@ -215,7 +215,7 @@ describe('deploy/shell.js', () => {
 				mocks.childProcess.spawn.on = sandbox.stub().yields(0);
 				mocks.childProcess.spawn.stderr.on.withArgs('data').yields('test');
 
-				// when/then
+				// when -then
 				return expect(shell.executeCommand(expectedCommand, expectedArgs, expectedOptions))
 					.to.eventually.eql(expectedResult);
 
@@ -257,7 +257,7 @@ describe('deploy/shell.js', () => {
 				.onFirstCall().yields(0)
 				.onSecondCall().yields(1);
 
-			// when/then
+			// when -then
 			return expect(shell.executeCommands(expectedCommands, expectedOptions))
 				.to.eventually.eql(expectedResults);
 

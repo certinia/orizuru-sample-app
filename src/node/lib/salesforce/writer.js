@@ -26,29 +26,28 @@
 
 'use strict';
 
-let granter = null;
-
 const
-	grant = require('@financialforcedev/orizuru-auth').grant,
-	jsforce = require('jsforce'),
-
-	getTokenGranter = () => {
-		if (!granter) {
-			granter = grant.getToken({
-				jwtSigningKey: process.env.JWT_SIGNING_KEY,
-				openidClientId: process.env.OPENID_CLIENT_ID,
-				openidHTTPTimeout: parseInt(process.env.OPENID_HTTP_TIMEOUT, 10),
-				openidIssuerURI: process.env.OPENID_ISSUER_URI
-			});
-		}
-
-		return granter;
+	createObject = (conn, objName, obj) => {
+		return conn.sobject(objName).create(obj);
 	},
 
-	getJsforceConnection = (credentials) => {
-		return new jsforce.Connection(credentials);
+	bulkCreateObject = (conn, objName, data) => {
+		conn.bulk.pollInterval = 1000;
+		conn.bulk.pollTimeout = 120000;
+		return conn.bulk.load(objName, 'insert', data);
+	},
+
+	sendPlatformEvent = (conn, { eventType, message, status, id }) => {
+		return createObject(conn, eventType, {
+			['Severity__c']: 'Info',
+			['Messages__c']: message,
+			['Status__c']: status,
+			['SObjectId__c']: id
+		});
 	};
 
 module.exports = {
-	fromContext: context => getTokenGranter()(context.user).then(getJsforceConnection)
+	bulkCreateObject,
+	createObject,
+	sendPlatformEvent
 };

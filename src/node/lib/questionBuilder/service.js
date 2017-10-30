@@ -28,8 +28,9 @@
 
 const
 	_ = require('lodash'),
-	jsForceConnection = require('../shared/jsForceConnection'),
-	sfWriter = require('../shared/sfWriter'),
+	connection = require('../salesforce/connection'),
+	reader = require('../salesforce/reader'),
+	writer = require('../salesforce/writer'),
 
 	vehicleQuery = 'SELECT Id, VehicleType__c, Warehouse__r.Contact__r.MailingLatitude, Warehouse__r.Contact__r.MailingLongitude FROM Vehicle__c',
 	typeQuery = 'SELECT Id, MaximumPayloadCapacity__c, Distance__c, Fixed__c, Time__c from VehicleType__c',
@@ -40,7 +41,7 @@ const
 		event.eventType = 'RouteCalculationStep__e';
 		event.id = config.incomingMessage.deliveryPlanId;
 
-		return sfWriter.sendPlatformEvent(config.conn, event)
+		return writer.sendPlatformEvent(config.conn, event)
 			.then(() => config);
 
 	},
@@ -51,9 +52,9 @@ const
 			conn = results.conn,
 			incomingMessage = results.incomingMessage,
 			queries = [
-				conn.query(vehicleQuery),
-				conn.query(typeQuery),
-				conn.query(orderQuery)
+				reader.query({ conn, query: vehicleQuery }),
+				reader.query({ conn, query: typeQuery }),
+				reader.query({ conn, query: orderQuery })
 			];
 
 		return Promise.all(queries)
@@ -69,7 +70,7 @@ const
 
 	mapVehicles = (results) => {
 
-		results.question.vehicles = _.map(results.vehicles.records, vehicle => {
+		results.question.vehicles = _.map(results.vehicles, vehicle => {
 			return {
 				id: vehicle.Id,
 				typeId: vehicle.VehicleType__c,
@@ -86,7 +87,7 @@ const
 
 	mapVehicleTypes = (results) => {
 
-		results.question.vehicleTypes = _.map(results.types.records, type => {
+		results.question.vehicleTypes = _.map(results.types, type => {
 			return {
 				id: type.Id,
 				capacity: type.MaximumPayloadCapacity__c,
@@ -104,7 +105,7 @@ const
 
 	mapOrders = (results) => {
 
-		results.question.deliveries = _.map(results.orders.records, order => {
+		results.question.deliveries = _.map(results.orders, order => {
 			return {
 				id: order.Id,
 				type: 'Delivery', //delivery.Type__c,
@@ -123,7 +124,7 @@ const
 	returnQuestion = ({ question }) => question,
 
 	buildQuestion = ({ context, message }) => {
-		return jsForceConnection.fromContext(context)
+		return connection.fromContext(context)
 			.then(conn => ({ conn, incomingMessage: message }))
 			.then(sendEvent({ message: 'Retrieving delivery records', status: 'READING_DATA' }))
 			.then(runQueries)

@@ -36,8 +36,9 @@ const
 
 	sandbox = sinon.sandbox.create(),
 
-	jsForceConnection = require(root + '/src/node/lib/shared/jsForceConnection'),
-	sfWriter = require(root + '/src/node/lib/shared/sfWriter'),
+	connection = require(root + '/src/node/lib/salesforce/connection'),
+	reader = require(root + '/src/node/lib/salesforce/reader'),
+	writer = require(root + '/src/node/lib/salesforce/writer'),
 	service = require(root + '/src/node/lib/questionBuilder/service'),
 	vehicleQuery = require(root + '/src/node/res/spec/questionBuilder/vehicleQuery.json'),
 	vehicleTypeQuery = require(root + '/src/node/res/spec/questionBuilder/vehicleTypeQuery.json'),
@@ -49,33 +50,38 @@ chai.use(sinonChai);
 
 describe('questionBuilder/service.js', () => {
 
+	let mocks;
+
 	afterEach(() => {
 		sandbox.restore();
 	});
 
 	describe('executeQuery', () => {
 
-		const context = {},
-			queries = [
-				'SELECT Id, VehicleType__c, Warehouse__r.Contact__r.MailingLatitude, Warehouse__r.Contact__r.MailingLongitude FROM Vehicle__c',
-				'SELECT Id, MaximumPayloadCapacity__c, Distance__c, Fixed__c, Time__c from VehicleType__c',
-				'SELECT Id, Weight__c, ShipToContact.MailingLatitude, ShipToContact.MailingLongitude FROM Order'
-			],
-			queryResult = {},
-			expectedResult = {
-				deliveryPlanId: 'testPlanId',
-				vehicles: [],
-				vehicleTypes: [],
-				deliveries: []
+		beforeEach(() => {
+
+			mocks = {
+				queries: [
+					'SELECT Id, VehicleType__c, Warehouse__r.Contact__r.MailingLatitude, Warehouse__r.Contact__r.MailingLongitude FROM Vehicle__c',
+					'SELECT Id, MaximumPayloadCapacity__c, Distance__c, Fixed__c, Time__c from VehicleType__c',
+					'SELECT Id, Weight__c, ShipToContact.MailingLatitude, ShipToContact.MailingLongitude FROM Order'
+				],
+				queryResult: {},
+				expectedResult: {
+					deliveryPlanId: 'testPlanId',
+					vehicles: [],
+					vehicleTypes: [],
+					deliveries: []
+				}
 			};
 
-		beforeEach(() => {
-			context.conn = sandbox.stub();
-			context.conn.query = sandbox.stub();
+			mocks.conn = sandbox.stub();
 
-			sandbox.stub(jsForceConnection, 'fromContext').resolves(context.conn);
-			sandbox.stub(sfWriter, 'createObject').resolves(sandbox.stub());
-			sandbox.stub(sfWriter, 'sendPlatformEvent').resolves(sandbox.stub());
+			sandbox.stub(connection, 'fromContext').resolves(mocks.conn);
+			sandbox.stub(reader, 'query').resolves();
+			sandbox.stub(writer, 'createObject').resolves();
+			sandbox.stub(writer, 'sendPlatformEvent').resolves();
+
 		});
 
 		describe('resolve', () => {
@@ -89,14 +95,14 @@ describe('questionBuilder/service.js', () => {
 					}
 				};
 
-				context.conn.query.resolves(queryResult);
+				reader.query.resolves(mocks.queryResult);
 
-				// when/then
+				// when - then
 				return expect(service.buildQuestion(expectedInput))
-					.to.eventually.eql(expectedResult)
+					.to.eventually.eql(mocks.expectedResult)
 					.then(() => {
-						expect(sfWriter.sendPlatformEvent).to.be.calledTwice;
-						expect(context.conn.query).to.be.calledThrice;
+						expect(writer.sendPlatformEvent).to.be.calledTwice;
+						expect(reader.query).to.be.calledThrice;
 					});
 
 			});
@@ -105,7 +111,6 @@ describe('questionBuilder/service.js', () => {
 
 				// given
 				const
-					query = context.conn.query,
 					expectedInput = {
 						message: {
 							deliveryPlanId: 'testPlanId'
@@ -124,20 +129,20 @@ describe('questionBuilder/service.js', () => {
 						status: 'CALCULATING_ROUTES'
 					};
 
-				query.withArgs(queries[0]).resolves(vehicleQuery);
-				query.withArgs(queries[1]).resolves(vehicleTypeQuery);
-				query.withArgs(queries[2]).resolves(orderQuery);
+				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[0] }).resolves(vehicleQuery);
+				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[1] }).resolves(vehicleTypeQuery);
+				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[2] }).resolves(orderQuery);
 
-				// when/then
+				// when - then
 				return expect(service.buildQuestion(expectedInput))
 					.to.eventually.eql(convertedResult)
 					.then(() => {
-						expect(query).to.be.calledWith(queries[0]);
-						expect(query).to.be.calledWith(queries[1]);
-						expect(query).to.be.calledWith(queries[2]);
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledTwice;
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(context.conn, expectedReadPlatformEvent);
-						expect(sfWriter.sendPlatformEvent).to.have.been.calledWith(context.conn, expectedCalculatePlatformEvent);
+						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[0] });
+						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[1] });
+						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[2] });
+						expect(writer.sendPlatformEvent).to.have.been.calledTwice;
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedReadPlatformEvent);
+						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedCalculatePlatformEvent);
 					});
 
 			});
