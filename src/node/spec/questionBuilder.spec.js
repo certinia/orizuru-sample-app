@@ -32,7 +32,7 @@ const
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
 	questionBuilderPath = root + '/src/node/lib/questionBuilder',
 

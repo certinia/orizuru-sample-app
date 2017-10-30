@@ -91,7 +91,7 @@ describe('questionBuilder/service.js', () => {
 
 				context.conn.query.resolves(queryResult);
 
-				// when/then
+				// when - then
 				return expect(service.buildQuestion(expectedInput))
 					.to.eventually.eql(expectedResult)
 					.then(() => {
@@ -128,7 +128,7 @@ describe('questionBuilder/service.js', () => {
 				query.withArgs(queries[1]).resolves(vehicleTypeQuery);
 				query.withArgs(queries[2]).resolves(orderQuery);
 
-				// when/then
+				// when - then
 				return expect(service.buildQuestion(expectedInput))
 					.to.eventually.eql(convertedResult)
 					.then(() => {

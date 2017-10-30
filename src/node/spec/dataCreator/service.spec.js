@@ -125,7 +125,7 @@ describe('dataCreator/service.js', () => {
 						generateDataTaskId: 'testId'
 					};
 
-				// when/then
+				// when - then
 				return expect(service.createData({ context, message })).to.eventually.be.fulfilled
 					.then(() => {
 						expect(sfWriter.bulkCreateObject).to.have.been.callCount(7);

@@ -33,7 +33,7 @@ const
 	sinonChai = require('sinon-chai'),
 	chaiAsPromised = require('chai-as-promised'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
 	jsForce = require('jsforce'),
 	orizuruAuth = require('@financialforcedev/orizuru-auth'),

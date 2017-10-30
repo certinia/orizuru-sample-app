@@ -32,7 +32,7 @@ const
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
 	sfWriter = require(root + '/src/node/lib/shared/sfWriter'),
 
@@ -95,7 +95,7 @@ describe('shared/sfWriter.js', () => {
 				id: 'testId'
 			};
 
-			// when/then
+			// when - then
 			expect(sfWriter.sendPlatformEvent(conn, expectedEvent)).to.eql('conn.sobject');
 			expect(conn.sobject).to.have.been.calledOnce;
 			expect(conn.sobject).to.have.been.calledWith('RouteCalculationStep__e');

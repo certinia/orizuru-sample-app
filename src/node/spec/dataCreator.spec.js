@@ -32,7 +32,7 @@ const
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
-	{ expect } = chai,
+	expect = chai.expect,
 
 	dataCreatorPath = root + '/src/node/lib/dataCreator',
 
