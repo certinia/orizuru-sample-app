@@ -31,12 +31,16 @@ import java.io.InputStream;
 import java.util.Collection;
 
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
-import com.graphhopper.jsprit.core.algorithm.box.SchrimpfFactory;
+import com.graphhopper.jsprit.core.algorithm.box.Jsprit;
 import com.graphhopper.jsprit.core.algorithm.termination.IterationWithoutImprovementTermination;
 import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem;
+import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem.FleetSize;
 import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolution;
 import com.graphhopper.jsprit.core.util.Solutions;
 import com.graphhopper.jsprit.io.problem.VrpXMLReader;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.financialforce.routesolver.exception.SolverException;
 import com.financialforce.routesolver.interfaces.ITransform;
@@ -47,6 +51,8 @@ import com.financialforce.routesolver.interfaces.ITransform;
  * The input must be in XML form.
  */
 public class DefaultSolutionFinder implements ITransform<String, VehicleRoutingProblemSolution> {
+
+	private static final Logger logger = LoggerFactory.getLogger(DefaultSolutionFinder.class);
 
 	@Override
 	public VehicleRoutingProblemSolution transform(String inputXml) throws SolverException {
@@ -68,6 +74,8 @@ public class DefaultSolutionFinder implements ITransform<String, VehicleRoutingP
 			reader.setSchemaValidation(false);
 			reader.read(is);
 
+			vrpBuilder.setFleetSize(FleetSize.FINITE);
+
 			/*
 			* Build the problem. 
 			* By default, transportCosts are crowFlyDistances (as usually used for vrp-instances).
@@ -77,7 +85,25 @@ public class DefaultSolutionFinder implements ITransform<String, VehicleRoutingP
 			/*
 			* Create the Schrimpf algorithm
 			*/
-			VehicleRoutingAlgorithm algorithm = new SchrimpfFactory().createAlgorithm(problem);
+			int radialShare = (int) (problem.getJobs().size() * 0.3);
+			int randomShare = (int) (problem.getJobs().size() * 0.5);
+			Jsprit.Builder builder = Jsprit.Builder.newInstance(problem);
+			builder.setProperty(Jsprit.Parameter.THRESHOLD_ALPHA, "0.0");
+			builder.setProperty(Jsprit.Strategy.RADIAL_BEST, "0.5");
+			builder.setProperty(Jsprit.Strategy.RADIAL_REGRET, "0.0");
+			builder.setProperty(Jsprit.Strategy.RANDOM_BEST, "0.5");
+			builder.setProperty(Jsprit.Strategy.RANDOM_REGRET, "0.0");
+			builder.setProperty(Jsprit.Strategy.WORST_BEST, "0.0");
+			builder.setProperty(Jsprit.Strategy.WORST_REGRET, "0.0");
+			builder.setProperty(Jsprit.Strategy.CLUSTER_BEST, "0.0");
+			builder.setProperty(Jsprit.Strategy.CLUSTER_REGRET, "0.0");
+			builder.setProperty(Jsprit.Parameter.RADIAL_MIN_SHARE, String.valueOf(radialShare));
+			builder.setProperty(Jsprit.Parameter.RADIAL_MAX_SHARE, String.valueOf(radialShare));
+			builder.setProperty(Jsprit.Parameter.RANDOM_BEST_MIN_SHARE, String.valueOf(randomShare));
+			builder.setProperty(Jsprit.Parameter.RANDOM_BEST_MAX_SHARE, String.valueOf(randomShare));
+			builder.setProperty(Jsprit.Parameter.THREADS, "10");
+
+			VehicleRoutingAlgorithm algorithm = builder.buildAlgorithm();
 			algorithm.setPrematureAlgorithmTermination(new IterationWithoutImprovementTermination(50));
 
 			/*
@@ -85,6 +111,8 @@ public class DefaultSolutionFinder implements ITransform<String, VehicleRoutingP
 			*/
 			Collection<VehicleRoutingProblemSolution> solutions = algorithm.searchSolutions();
 			solution = Solutions.bestOf(solutions);
+
+			logger.info(solution.toString());
 
 		} catch (Exception ex) {
 			throw new SolverException("Failed to find solution", ex);
