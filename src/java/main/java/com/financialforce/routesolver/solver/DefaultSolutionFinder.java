@@ -39,6 +39,9 @@ import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolutio
 import com.graphhopper.jsprit.core.util.Solutions;
 import com.graphhopper.jsprit.io.problem.VrpXMLReader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.financialforce.routesolver.exception.SolverException;
 import com.financialforce.routesolver.interfaces.ITransform;
 
@@ -48,6 +51,8 @@ import com.financialforce.routesolver.interfaces.ITransform;
  * The input must be in XML form.
  */
 public class DefaultSolutionFinder implements ITransform<String, VehicleRoutingProblemSolution> {
+
+	private static final Logger logger = LoggerFactory.getLogger(DefaultSolutionFinder.class);
 
 	@Override
 	public VehicleRoutingProblemSolution transform(String inputXml) throws SolverException {
@@ -106,6 +111,8 @@ public class DefaultSolutionFinder implements ITransform<String, VehicleRoutingP
 			*/
 			Collection<VehicleRoutingProblemSolution> solutions = algorithm.searchSolutions();
 			solution = Solutions.bestOf(solutions);
+
+			logger.info(solution.toString());
 
 		} catch (Exception ex) {
 			throw new SolverException("Failed to find solution", ex);
