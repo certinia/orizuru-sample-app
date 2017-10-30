@@ -23,7 +23,16 @@
 	handleClick: function (component, event, handler) {
 
 		var action = component.get('c.calculateRoute'),
-			objectId = component.get('v.recordId');
+			objectId = component.get('v.recordId'),
+			stepEvent = $A.get('e.c:RouteCalculationStepEvent');
+
+		stepEvent.setParams({
+			id: objectId,
+			messages: '',
+			severity: '',
+			status: 'STARTED'
+		});
+		stepEvent.fire();
 
 		console.log('ObjectId: ' + objectId);
 

@@ -2,6 +2,8 @@
 	<aura:attribute name="show" type="Boolean" default="false" access="private" />
 	<aura:attribute name="taskComplete" type="Boolean" default="false" access="private" />
 
+	<aura:registerEvent name="dataGeneratorStepEvent" type="c:DataGeneratorStepEvent" />
+
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	<aura:handler event="c:DataGeneratorStepEvent" action="{!c.handleStepEvent}" />
 
