@@ -11,6 +11,14 @@
 	}, {
 		"type": "node",
 		"request": "launch",
+		"name": "Debug deploy",
+		"runtimeArgs": [
+			"src/node/lib/deploy.js"
+		],
+		"envFile": "${workspaceRoot}/local.run.properties"
+	}, {
+		"type": "node",
+		"request": "launch",
 		"name": "Debug dataCreator",
 		"runtimeArgs": [
 			"src/node/lib/dataCreator.js"
