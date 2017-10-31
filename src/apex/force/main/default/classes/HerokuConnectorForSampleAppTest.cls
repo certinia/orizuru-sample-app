@@ -24,56 +24,50 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-@isTest(SeeAllData=false)
-private class DataGeneratorButtonControllerTest
+@IsTest(SeeAllData=false)
+private class HerokuConnectorForSampleAppTest
 {
 	@IsTest
-	private static void generateData_ShouldCallTheHerokuConnectorGenerateDataMethod()
+	private static void requestCalculateRoute_CreatesExpectedHttpRequest()
 	{
-		//Given
-		StubProvider mocks = new StubProvider();
+		// given
+		HerokuConnectorForSampleApp connector = HerokuConnectorForSampleApp.newInstance();
+		CalloutMock mock = new CalloutMock();
+		Test.setMock(HttpCalloutMock.class, mock);
 
-		HerokuConnectorForSampleApp mockConnector = (HerokuConnectorForSampleApp)mocks.mock(HerokuConnectorForSampleApp.class);
-		HerokuConnectorForSampleApp.instance = mockConnector;
+		// when
+		connector.calculateRoute('Test');
 
-		mocks.stub(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
-
-		//When
-		DataGeneratorButtonController.generateData('Test');
-
-		//Then
-		System.assertEquals(1, mocks.getCallCount(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }));
+		// then
+		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));
+		System.assertEquals(Url.getSalesforceBaseUrl().toExternalForm(), mock.Request.getHeader('Referer'));
+		System.assertEquals('application/json', mock.Request.getHeader('Content-Type'));
 	}
 
 	@IsTest
-	private static void getTaskStatus_withId_shouldReturnTaskComplete()
+	private static void requestGenerateData_CreatesExpectedHttpRequest()
 	{
 		// given
-		String expectedResult = 'NOT STARTED';
-		
-		GenerateDataTask__c task = new GenerateDataTask__c();
-		insert task;
+		HerokuConnectorForSampleApp connector = HerokuConnectorForSampleApp.newInstance();
+		CalloutMock mock = new CalloutMock();
+		Test.setMock(HttpCalloutMock.class, mock);
 
 		// when
-		String result = DataGeneratorButtonController.getTaskStatus(task.id);
+		connector.generateData('Test');
 
 		// then
-		System.assertEquals(expectedResult, result);
+		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));
+		System.assertEquals(Url.getSalesforceBaseUrl().toExternalForm(), mock.Request.getHeader('Referer'));
+		System.assertEquals('application/json', mock.Request.getHeader('Content-Type'));
 	}
 
-	@IsTest
-	private static void sendInitialPlatformEvent_withId_shouldReturnSuccess()
+	private class CalloutMock implements HttpCalloutMock
 	{
-		// given
-		GenerateDataTask__c task = new GenerateDataTask__c();
-		insert task;
-
-		// when
-		Test.startTest();
-		Boolean result = DataGeneratorButtonController.sendInitialPlatformEvent(task.id);
-		Test.stopTest();
-
-		// then
-		System.assertEquals(true, result);
+		public HttpRequest Request {get; private set;}
+		public HTTPResponse respond(HTTPRequest request)
+		{
+			this.Request = request;
+			return new HttpResponse();
+		}
 	}
 }

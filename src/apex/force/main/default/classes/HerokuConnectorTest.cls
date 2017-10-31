@@ -28,37 +28,30 @@
 private class HerokuConnectorTest
 {
 	@IsTest
-	private static void requestCalculateRoute_CreatesExpectedHttpRequest()
+	private static void post_sendsExpectedHttpRequest()
 	{
 		// given
-		HerokuConnector connector = HerokuConnector.newInstance();
+		IHerokuConnector connector = HerokuConnector.newInstance();
 		CalloutMock mock = new CalloutMock();
+		ISerializable testSerialize = new SerializableMock();
 		Test.setMock(HttpCalloutMock.class, mock);
 
 		// when
-		connector.calculateRoute('Test');
+		connector.post('some/api/path', testSerialize);
 
 		// then
 		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));
 		System.assertEquals(Url.getSalesforceBaseUrl().toExternalForm(), mock.Request.getHeader('Referer'));
 		System.assertEquals('application/json', mock.Request.getHeader('Content-Type'));
+		System.assertEquals('testSerialize', mock.Request.getBody());
+		System.assertEquals('some/api/path', mock.Request.getEndpoint());
 	}
 
-	@IsTest
-	private static void requestGenerateData_CreatesExpectedHttpRequest()
+	private class SerializableMock implements ISerializable
 	{
-		// given
-		HerokuConnector connector = HerokuConnector.newInstance();
-		CalloutMock mock = new CalloutMock();
-		Test.setMock(HttpCalloutMock.class, mock);
-
-		// when
-		connector.generateData('Test');
-
-		// then
-		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));
-		System.assertEquals(Url.getSalesforceBaseUrl().toExternalForm(), mock.Request.getHeader('Referer'));
-		System.assertEquals('application/json', mock.Request.getHeader('Content-Type'));
+		public String serialize() {
+			return 'testSerialize';
+		}
 	}
 
 	private class CalloutMock implements HttpCalloutMock
@@ -70,4 +63,5 @@ private class HerokuConnectorTest
 			return new HttpResponse();
 		}
 	}
+
 }

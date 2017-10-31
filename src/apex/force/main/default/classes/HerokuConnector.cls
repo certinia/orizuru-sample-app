@@ -24,7 +24,7 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public class HerokuConnector
+public class HerokuConnector implements IHerokuConnector
 {
 
 	@TestVisible private static final String ACCOUNT_ENDPOINT = '/api/account';
@@ -35,27 +35,18 @@ public class HerokuConnector
     @TestVisible private static final String CONTENT_TYPE_HEADER = 'Content-Type';
     @TestVisible private static final String CONTENT_TYPE_VALUE = 'application/json';
 
+	private static IHerokuConnector instance = new HerokuConnector();
+
+	public static IHerokuConnector newInstance() {
+		return HerokuConnector.instance;
+	}
+
 	@TestVisible
-	private static HerokuConnector instance = null;
-
-	public static HerokuConnector newInstance()
-	{
-		if (instance == null)
-		{
-			instance = new HerokuConnector();
-		}
-		return instance;
+	private static void setMock(IHerokuConnector instance) {
+		HerokuConnector.instance = instance;
 	}
 
-	public HttpResponse calculateRoute(String id)
-	{
-		return post('callout:Orizuru/api/calculateRoutesForPlan', new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(id));
-	}
-
-	public HttpResponse generateData(String id)
-	{
-		return post('callout:Orizuru/api/createData', new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData(id));
-	}
+	private HerokuConnector() {}
 
 	public HttpResponse post(String endpoint, ISerializable transport) 
     {

@@ -24,56 +24,7 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-@isTest(SeeAllData=false)
-private class DataGeneratorButtonControllerTest
+public interface IHerokuConnector
 {
-	@IsTest
-	private static void generateData_ShouldCallTheHerokuConnectorGenerateDataMethod()
-	{
-		//Given
-		StubProvider mocks = new StubProvider();
-
-		HerokuConnectorForSampleApp mockConnector = (HerokuConnectorForSampleApp)mocks.mock(HerokuConnectorForSampleApp.class);
-		HerokuConnectorForSampleApp.instance = mockConnector;
-
-		mocks.stub(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
-
-		//When
-		DataGeneratorButtonController.generateData('Test');
-
-		//Then
-		System.assertEquals(1, mocks.getCallCount(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }));
-	}
-
-	@IsTest
-	private static void getTaskStatus_withId_shouldReturnTaskComplete()
-	{
-		// given
-		String expectedResult = 'NOT STARTED';
-		
-		GenerateDataTask__c task = new GenerateDataTask__c();
-		insert task;
-
-		// when
-		String result = DataGeneratorButtonController.getTaskStatus(task.id);
-
-		// then
-		System.assertEquals(expectedResult, result);
-	}
-
-	@IsTest
-	private static void sendInitialPlatformEvent_withId_shouldReturnSuccess()
-	{
-		// given
-		GenerateDataTask__c task = new GenerateDataTask__c();
-		insert task;
-
-		// when
-		Test.startTest();
-		Boolean result = DataGeneratorButtonController.sendInitialPlatformEvent(task.id);
-		Test.stopTest();
-
-		// then
-		System.assertEquals(true, result);
-	}
+	HttpResponse post(String endpoint, ISerializable transport); 
 }
