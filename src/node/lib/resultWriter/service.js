@@ -84,6 +84,7 @@ const
 
 		results.waypoints = _.flatten(_.map(solution.routes, (solutionRoute, index) => {
 			return _.map(solutionRoute.actions, (action, i) => {
+				console.log(JSON.stringify(action));
 				return createAWayPoint(savedRoutes[index].id, action.serviceId, i + 1);
 			});
 		}));
