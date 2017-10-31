@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Dreamforce sample app for google maps integration",
   "scripts": {
-	"deploy": "DEBUG='financialforcedev:orizuru:deploy:log,financialforcedev:orizuru:deploy:shell:log' node src/node/lib/deploy.js deploy",
+    "deploy": "DEBUG='financialforcedev:orizuru:deploy:log,financialforcedev:orizuru:deploy:shell:log' node src/node/lib/deploy.js",
     "pretest": "eslint src/node",
     "single-test": "nyc --all=false mocha",
     "test": "nyc mocha --recursive src/node/spec"
@@ -46,10 +46,10 @@
   "nyc": {
     "check-coverage": true,
     "per-file": true,
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
+    "lines": 0,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0,
     "include": [
       "src/node"
     ],

@@ -215,7 +215,7 @@ const
 		{ cmd: 'heroku', args: ['config:set', 'NODE_MODULES_CACHE=false'] },
 		{ cmd: 'heroku', args: ['config:set', 'OPENID_HTTP_TIMEOUT=4000'] },
 		{ cmd: 'heroku', args: ['config:set', 'OPENID_ISSUER_URI=https://test.salesforce.com/'] },
-		{ cmd: 'git', args: ['push', 'heroku', 'master:master'] },
+		{ cmd: 'git', args: ['push', 'heroku', 'feature/addApexAPI:master'] },
 		{ cmd: 'heroku', args: ['ps:scale', 'dataCreator=1'] },
 		{ cmd: 'heroku', args: ['ps:scale', 'questionBuilder=1'] },
 		{ cmd: 'heroku', args: ['ps:scale', 'resultWriter=1'] },
