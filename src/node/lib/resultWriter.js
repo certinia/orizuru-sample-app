@@ -46,8 +46,10 @@ const
 		transportConfig
 	},
 
+	requireAvsc = require('./util/requireAvsc'),
+
 	// define event schemas
-	incomingSchema = require('../res/schema/answer'),
+	incomingSchema = requireAvsc(__dirname, '../res/schema/answer'),
 
 	// get handler and publisher
 	handlerInstance = new Handler(orizuruConfig),

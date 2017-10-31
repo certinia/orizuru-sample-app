@@ -26,9 +26,11 @@
 
 'use strict';
 
-const schema = {
-	calculateRoutesForPlan: require('../../res/schema/calculateRoutesForPlan'),
-	createData: require('../../res/schema/createData')
-};
+const
+	requireAvsc = require('../util/requireAvsc'),
+	schema = {
+		calculateRoutesForPlan: requireAvsc(__dirname, '../../res/schema/public/calculateRoutesForPlan'),
+		createData: requireAvsc(__dirname, '../../res/schema/public/createData')
+	};
 
 module.exports = schema;

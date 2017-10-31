@@ -39,9 +39,11 @@ const
 	orizuru = require('@financialforcedev/orizuru'),
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
+	requireAvsc = require(root + '/src/node/lib/util/requireAvsc'),
+
 	QuestionBuilderService = require(root + '/src/node/lib/questionBuilder/service'),
-	incomingSchema = require(root + '/src/node/res/schema/calculateRoutesForPlan'),
-	outgoingSchema = require(root + '/src/node/res/schema/question'),
+	incomingSchema = requireAvsc(root, 'src/node/res/schema/public/calculateRoutesForPlan'),
+	outgoingSchema = requireAvsc(root, 'src/node/res/schema/question'),
 
 	sandbox = sinon.sandbox.create(),
 	restore = sandbox.restore.bind(sandbox);
