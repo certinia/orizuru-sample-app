@@ -40,34 +40,29 @@ public class HerokuConnector
 
 	public HttpResponse calculateRoute(String id)
 	{
-		return makeRequest('callout:Orizuru/api/calculateRoutesForPlan', new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(id));
+		return post('callout:Orizuru/api/calculateRoutesForPlan', new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(id));
 	}
 
 	public HttpResponse generateData(String id)
 	{
-		return makeRequest('callout:Orizuru/api/createData', new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData(id));
+		return post('callout:Orizuru/api/createData', new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData(id));
 	}
 
-	public HttpResponse postRequest(String api, ISerializable body)
-	{
-		Http http = new Http();
-		HttpRequest request = new HttpRequest();
-		request.setEndpoint(api);
-		request.setMethod('POST');
-		populateHeader(request);
-		request.setBody(body.serialize());
-		return http.send(request);
-	}
+	public HttpResponse post(String endpoint, ISerializable transport) 
+    {
+        HttpRequest req = new HttpRequest();
+		req.setEndpoint(endpoint);
+    	req.setMethod(POST_METHOD);
+		req.setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_VALUE);
+        req.setHeader(AUTHORIZATION_HEADER, AUTHORIZATION_PREFIX + UserInfo.getSessionId());
+        req.setBody(transport.serialize());
+		return postRequest(req);
+    }
+    
+    private static HttpResponse postRequest(HttpRequest req)
+    {
+        Http h = new Http();
+        return h.send(req);
+    }
 
-	private static void populateHeader(HttpRequest request)
-	{
-		request.setHeader('Authorization', 'Bearer ' + getSessionId());
-		request.setHeader('Referer', Url.getSalesforceBaseUrl().toExternalForm());
-		request.setHeader('Content-Type', 'application/json');
-	}
-
-	private static String getSessionId()
-	{
-		return UserInfo.getSessionId();
-	}
 }
