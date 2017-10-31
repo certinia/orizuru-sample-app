@@ -29,11 +29,12 @@ public class HerokuConnector
 
 	@TestVisible private static final String ACCOUNT_ENDPOINT = '/api/account';
     @TestVisible private static final String POST_METHOD = 'POST';
+    @TestVisible private static final String REFERER_HEADER = 'Referer';
     @TestVisible private static final String AUTHORIZATION_HEADER = 'Authorization';
-    @TestVisible private static final String AUTHORIZATION_PREFIX = 'bearer ';
+    @TestVisible private static final String AUTHORIZATION_PREFIX = 'Bearer ';
     @TestVisible private static final String CONTENT_TYPE_HEADER = 'Content-Type';
     @TestVisible private static final String CONTENT_TYPE_VALUE = 'application/json';
-	
+
 	@TestVisible
 	private static HerokuConnector instance = null;
 
@@ -61,6 +62,7 @@ public class HerokuConnector
         HttpRequest req = new HttpRequest();
 		req.setEndpoint(endpoint);
     	req.setMethod(POST_METHOD);
+		req.setHeader(REFERER_HEADER, Url.getSalesforceBaseUrl().toExternalForm());
 		req.setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_VALUE);
         req.setHeader(AUTHORIZATION_HEADER, AUTHORIZATION_PREFIX + UserInfo.getSessionId());
         req.setBody(transport.serialize());
