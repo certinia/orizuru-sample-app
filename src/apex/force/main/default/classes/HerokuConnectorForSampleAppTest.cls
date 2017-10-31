@@ -28,46 +28,58 @@
 private class HerokuConnectorForSampleAppTest
 {
 	@IsTest
-	private static void requestCalculateRoute_CreatesExpectedHttpRequest()
+	private static void requestCalculateRoute_callsHerokuConnectorWithCorrectInfo()
 	{
 		// given
+		HTTPResponse result = new HTTPResponse();
+		HerokuConnectorMock connMock = new HerokuConnectorMock(result);
+		HerokuConnector.setMock((IHerokuConnector) connMock);
 		HerokuConnectorForSampleApp connector = HerokuConnectorForSampleApp.newInstance();
-		CalloutMock mock = new CalloutMock();
-		Test.setMock(HttpCalloutMock.class, mock);
 
 		// when
-		connector.calculateRoute('Test');
+		HTTPResponse resultFromCall = connector.calculateRoute('Test');
 
 		// then
-		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));
-		System.assertEquals(Url.getSalesforceBaseUrl().toExternalForm(), mock.Request.getHeader('Referer'));
-		System.assertEquals('application/json', mock.Request.getHeader('Content-Type'));
+		System.assertEquals('callout:Orizuru/api/calculateRoutesForPlan', connMock.endpoint);
+		System.assertEquals(new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan('Test').serialize(), connMock.transport.serialize());
+		System.assertEquals(result, resultFromCall);
 	}
 
 	@IsTest
-	private static void requestGenerateData_CreatesExpectedHttpRequest()
+	private static void requestGenerateData_callsHerokuConnectorWithCorrectInfo()
 	{
 		// given
+		HTTPResponse result = new HTTPResponse();
+		HerokuConnectorMock connMock = new HerokuConnectorMock(result);
+		HerokuConnector.setMock((IHerokuConnector) connMock);
 		HerokuConnectorForSampleApp connector = HerokuConnectorForSampleApp.newInstance();
-		CalloutMock mock = new CalloutMock();
-		Test.setMock(HttpCalloutMock.class, mock);
 
 		// when
-		connector.generateData('Test');
+		HTTPResponse resultFromCall = connector.generateData('Test');
 
 		// then
-		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));
-		System.assertEquals(Url.getSalesforceBaseUrl().toExternalForm(), mock.Request.getHeader('Referer'));
-		System.assertEquals('application/json', mock.Request.getHeader('Content-Type'));
+		System.assertEquals('callout:Orizuru/api/createData', connMock.endpoint);
+		System.assertEquals(new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData('Test').serialize(), connMock.transport.serialize());
+		System.assertEquals(result, resultFromCall);
 	}
 
-	private class CalloutMock implements HttpCalloutMock
+	private class HerokuConnectorMock implements IHerokuConnector
 	{
-		public HttpRequest Request {get; private set;}
-		public HTTPResponse respond(HTTPRequest request)
+		public String endpoint {get; private set;}
+		public ISerializable transport {get; private set;}
+		private HTTPResponse result { get; set; }
+
+		HerokuConnectorMock(HTTPResponse result) 
 		{
-			this.Request = request;
-			return new HttpResponse();
+			this.result = result;
+		}
+
+		public HTTPResponse post(String endpoint, ISerializable transport)
+		{
+			this.endpoint = endpoint;
+			this.transport = transport;
+			return result;
 		}
 	}
+
 }
