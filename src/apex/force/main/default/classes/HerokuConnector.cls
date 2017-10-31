@@ -40,22 +40,22 @@ public class HerokuConnector
 
 	public HttpResponse calculateRoute(String id)
 	{
-		return makeRequest('calculateRoutesForPlan', '{ "deliveryPlanId": "' + id + '"}');
+		return makeRequest('callout:Orizuru/api/calculateRoutesForPlan', new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(id));
 	}
 
 	public HttpResponse generateData(String id)
 	{
-		return makeRequest('createData', '{ "generateDataTaskId": "' + id + '"}');
+		return makeRequest('callout:Orizuru/api/createData', new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData(id));
 	}
 
-	private static HttpResponse makeRequest(String api, String body)
+	public HttpResponse postRequest(String api, ISerializable body)
 	{
 		Http http = new Http();
 		HttpRequest request = new HttpRequest();
-		request.setEndpoint('callout:Orizuru/api/' + api);
+		request.setEndpoint(api);
 		request.setMethod('POST');
 		populateHeader(request);
-		request.setBody(body);
+		request.setBody(body.serialize());
 		return http.send(request);
 	}
 
