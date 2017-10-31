@@ -38,11 +38,9 @@ const
 
 		return writer.sendPlatformEvent(config.conn, event)
 			.then(() => config);
-
 	},
 
 	createRoutes = (results) => {
-
 		const routes = results.incomingMessage.solution.routes;
 
 		results.routes = _.map(routes, (route, i) => {
@@ -63,12 +61,10 @@ const
 			conn = results.conn,
 			routes = results.routes;
 
-		return writer.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
-			.then(sobjects => {
-				results.savedRoutes = sobjects;
-				return results;
-			});
-
+		return conn.apex.post('/RouteAPI/', { routes: routes }).then(sobjects => {
+			results.savedRoutes = sobjects;
+			return results;
+		});
 	},
 
 	createAWayPoint = (deliveryRouteId, deliveryId, waypointNumber) => {
@@ -102,7 +98,7 @@ const
 			conn = results.conn,
 			waypoints = results.waypoints;
 
-		return writer.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
+		return conn.apex.post('/WaypointAPI/', { waypoints })
 			.then(sobjects => {
 				results.savedWaypoints = sobjects;
 				return results;
