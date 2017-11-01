@@ -3,6 +3,7 @@
 .nyc_output
 .project
 .sfdx
+.orizuru
 
 node_modules
 coverage
