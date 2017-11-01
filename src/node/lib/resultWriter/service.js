@@ -30,7 +30,7 @@ const
 	_ = require('lodash'),
 	connection = require('../salesforce/connection'),
 	writer = require('../salesforce/writer'),
-	debug = require('debug-plus')('financialforcedev:orizuru:web'),
+	debug = require('debug-plus')('financialforcedev:orizuru:resultwriter:service'),
 
 	sendEvent = event => config => {
 
@@ -85,7 +85,7 @@ const
 
 		results.waypoints = _.flatten(_.map(solution.routes, (solutionRoute, index) => {
 			return _.map(solutionRoute.actions, (action, i) => {
-				debug(JSON.stringify(action));
+				debug.stringify(action);
 				return createAWayPoint(savedRoutes[index].id, action.serviceId, i + 1);
 			});
 		}));

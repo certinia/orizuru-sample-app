@@ -26,7 +26,7 @@
     "@financialforcedev/orizuru-auth": "^3.0.3",
     "@financialforcedev/orizuru-transport-rabbitmq": "^3.0.3",
     "bluebird": "3.5.1",
-    "debug-plus": "1.2.2",
+    "debug-plus": "^1.2.2",
     "jsforce": "1.8.0",
     "lodash": "4.17.4"
   },
