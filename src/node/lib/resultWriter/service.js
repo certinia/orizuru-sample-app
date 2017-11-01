@@ -83,9 +83,10 @@ const
 			solution = results.incomingMessage.solution,
 			savedRoutes = results.savedRoutes;
 
+		debug.stringify(savedRoutes);
+
 		results.waypoints = _.flatten(_.map(solution.routes, (solutionRoute, index) => {
 			return _.map(solutionRoute.actions, (action, i) => {
-				debug.stringify(action);
 				return createAWayPoint(savedRoutes[index].id, action.serviceId, i + 1);
 			});
 		}));
