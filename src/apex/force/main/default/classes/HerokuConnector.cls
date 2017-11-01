@@ -24,50 +24,46 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public class HerokuConnector
+public class HerokuConnector implements IHerokuConnector
 {
+
+	@TestVisible private static final String ACCOUNT_ENDPOINT = '/api/account';
+    @TestVisible private static final String POST_METHOD = 'POST';
+    @TestVisible private static final String REFERER_HEADER = 'Referer';
+    @TestVisible private static final String AUTHORIZATION_HEADER = 'Authorization';
+    @TestVisible private static final String AUTHORIZATION_PREFIX = 'Bearer ';
+    @TestVisible private static final String CONTENT_TYPE_HEADER = 'Content-Type';
+    @TestVisible private static final String CONTENT_TYPE_VALUE = 'application/json';
+
+	private static IHerokuConnector instance = new HerokuConnector();
+
+	public static IHerokuConnector newInstance() {
+		return HerokuConnector.instance;
+	}
+
 	@TestVisible
-	private static HerokuConnector instance = null;
-
-	public static HerokuConnector newInstance()
-	{
-		if (instance == null)
-		{
-			instance = new HerokuConnector();
-		}
-		return instance;
+	private static void setMock(IHerokuConnector instance) {
+		HerokuConnector.instance = instance;
 	}
 
-	public HttpResponse calculateRoute(String id)
-	{
-		return makeRequest('calculateRoutesForPlan', '{ "deliveryPlanId": "' + id + '"}');
-	}
+	private HerokuConnector() {}
 
-	public HttpResponse generateData(String id)
-	{
-		return makeRequest('createData', '{ "generateDataTaskId": "' + id + '"}');
-	}
+	public HttpResponse post(String endpoint, ISerializable transport) 
+    {
+        HttpRequest req = new HttpRequest();
+		req.setEndpoint(endpoint);
+    	req.setMethod(POST_METHOD);
+		req.setHeader(REFERER_HEADER, Url.getSalesforceBaseUrl().toExternalForm());
+		req.setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_VALUE);
+        req.setHeader(AUTHORIZATION_HEADER, AUTHORIZATION_PREFIX + UserInfo.getSessionId());
+        req.setBody(transport.serialize());
+		return postRequest(req);
+    }
+    
+    private static HttpResponse postRequest(HttpRequest req)
+    {
+        Http h = new Http();
+        return h.send(req);
+    }
 
-	private static HttpResponse makeRequest(String api, String body)
-	{
-		Http http = new Http();
-		HttpRequest request = new HttpRequest();
-		request.setEndpoint('callout:Orizuru/api/' + api);
-		request.setMethod('POST');
-		populateHeader(request);
-		request.setBody(body);
-		return http.send(request);
-	}
-
-	private static void populateHeader(HttpRequest request)
-	{
-		request.setHeader('Authorization', 'Bearer ' + getSessionId());
-		request.setHeader('Referer', Url.getSalesforceBaseUrl().toExternalForm());
-		request.setHeader('Content-Type', 'application/json');
-	}
-
-	private static String getSessionId()
-	{
-		return UserInfo.getSessionId();
-	}
 }

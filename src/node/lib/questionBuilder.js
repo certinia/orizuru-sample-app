@@ -46,9 +46,11 @@ const
 		transportConfig
 	},
 
+	requireAvsc = require('./util/requireAvsc'),
+
 	// define event schemas
-	incomingSchema = require('../res/schema/calculateRoutesForPlan'),
-	outgoingSchema = require('../res/schema/question'),
+	incomingSchema = requireAvsc(__dirname, '../res/schema/public/calculateRoutesForPlan'),
+	outgoingSchema = requireAvsc(__dirname, '../res/schema/question'),
 
 	// get handler and publisher
 	handlerInstance = new Handler(orizuruConfig),

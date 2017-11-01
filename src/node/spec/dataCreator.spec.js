@@ -36,7 +36,9 @@ const
 
 	dataCreatorPath = root + '/src/node/lib/dataCreator',
 
-	incomingSchema = require(root + '/src/node/res/schema/createData'),
+	requireAvsc = require(root + '/src/node/lib/util/requireAvsc'),
+
+	incomingSchema = requireAvsc(root, 'src/node/res/schema/public/createData'),
 
 	orizuru = require('@financialforcedev/orizuru'),
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),

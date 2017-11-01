@@ -24,46 +24,41 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-'use strict';
+public abstract class OrizuruTransport implements ISerializable
+{
 
-const
-	// get the debugger
-	debug = require('debug-plus')('financialforcedev:orizuru:dataCreator'),
+	protected OrizuruTransport() {
+		// abstract class
+	}
 
-	// get the handler
-	{ Handler } = require('@financialforcedev/orizuru'),
+	public String serialize() {
+		return Json.serialize(this);
+	}
 
-	// get the handling service
-	dataCreator = require('./dataCreator/service'),
+	public class com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan extends OrizuruTransport // Transport extension for use when sending data to Orizuru Heroku apis
+	{
 
-	// build transport
-	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
-	transportConfig = {
-		cloudamqpUrl: process.env.CLOUDAMQP_URL
-	},
-	orizuruConfig = {
-		transport,
-		transportConfig
-	},
+		public String deliveryPlanId { get; set; }
 
-	requireAvsc = require('./util/requireAvsc'),
+		public com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(String deliveryPlanId) {
+			
+			this.deliveryPlanId = deliveryPlanId;
 
-	// define event schemas
-	incomingSchema = requireAvsc(__dirname, '../res/schema/public/createData'),
+		}
 
-	// get handler and publisher
-	handlerInstance = new Handler(orizuruConfig),
+	}
 
-	// callback
-	onHandleIncomingEvent = (event) => {
-		return dataCreator.createData(event);
-	};
+	public class com_ffdc_orizuru_problem_avro_createData extends OrizuruTransport // Transport extension for use when sending data to Orizuru Heroku apis
+	{
 
-// listen and log error events on the handler
-Handler.emitter.on(Handler.emitter.ERROR, debug.error);
+		public String generateDataTaskId { get; set; }
 
-// listen
-handlerInstance.handle({
-	schema: incomingSchema,
-	callback: onHandleIncomingEvent
-});
+		public com_ffdc_orizuru_problem_avro_createData(String generateDataTaskId) {
+			
+			this.generateDataTaskId = generateDataTaskId;
+
+		}
+
+	}
+
+}

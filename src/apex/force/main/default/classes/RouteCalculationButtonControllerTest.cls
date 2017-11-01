@@ -28,13 +28,13 @@
 private class RouteCalculationButtonControllerTest
 {
 	@IsTest
-	private static void calculateRoute_ShouldCallTheHerokuConnectorCalculateRouteMethod()
+	private static void calculateRoute_ShouldCallTheHerokuConnectorForSampleAppCalculateRouteMethod()
 	{
 		// given
 		StubProvider mocks = new StubProvider();
 
-		HerokuConnector mockConnector = (HerokuConnector)mocks.mock(HerokuConnector.class);
-		HerokuConnector.instance = mockConnector;
+		HerokuConnectorForSampleApp mockConnector = (HerokuConnectorForSampleApp)mocks.mock(HerokuConnectorForSampleApp.class);
+		HerokuConnectorForSampleApp.instance = mockConnector;
 
 		mocks.stub(mockConnector, 'calculateRoute', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
 

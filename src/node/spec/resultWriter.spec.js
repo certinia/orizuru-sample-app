@@ -39,7 +39,9 @@ const
 	orizuru = require('@financialforcedev/orizuru'),
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
-	incomingSchema = require(root + '/src/node/res/schema/answer'),
+	requireAvsc = require(root + '/src/node/lib/util/requireAvsc'),
+
+	incomingSchema = requireAvsc(root, 'src/node/res/schema/answer'),
 
 	service = require(root + '/src/node/lib/resultWriter/service'),
 

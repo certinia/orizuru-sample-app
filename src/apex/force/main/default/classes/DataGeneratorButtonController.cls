@@ -29,7 +29,7 @@ public with sharing class DataGeneratorButtonController
     @AuraEnabled
     public static void generateData(String id)
     {
-		HerokuConnector.newInstance().generateData(id);
+		HerokuConnectorForSampleApp.newInstance().generateData(id);
     }
 
 	@AuraEnabled

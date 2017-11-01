@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "description": "Dreamforce sample app for google maps integration",
   "scripts": {
-	"deploy": "DEBUG='financialforcedev:orizuru:deploy:log,financialforcedev:orizuru:deploy:shell:log' node src/node/lib/deploy.js deploy",
+    "deploy": "DEBUG='financialforcedev:orizuru:deploy:log,financialforcedev:orizuru:deploy:shell:log' node src/node/lib/deploy.js deploy",
     "pretest": "eslint src/node",
     "single-test": "nyc --all=false mocha",
-    "test": "nyc mocha --recursive src/node/spec"
+    "test": "nyc mocha --recursive src/node/spec",
+    "generate-apex-transport": "orizuru s gat src/node/res/schema/public  src/apex/force/main/default/classes"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
   "author": "financialforce",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@financialforcedev/orizuru": "^5.0.2",
+    "@financialforcedev/orizuru": "^5.1.0",
     "@financialforcedev/orizuru-auth": "^3.0.3",
     "@financialforcedev/orizuru-transport-rabbitmq": "^3.0.3",
     "bluebird": "3.5.1",

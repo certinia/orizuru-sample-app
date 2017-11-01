@@ -24,56 +24,28 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-@isTest(SeeAllData=false)
-private class DataGeneratorButtonControllerTest
+public class HerokuConnectorForSampleApp
 {
-	@IsTest
-	private static void generateData_ShouldCallTheHerokuConnectorGenerateDataMethod()
+	@TestVisible
+	private static HerokuConnectorForSampleApp instance = null;
+
+	public static HerokuConnectorForSampleApp newInstance()
 	{
-		//Given
-		StubProvider mocks = new StubProvider();
-
-		HerokuConnectorForSampleApp mockConnector = (HerokuConnectorForSampleApp)mocks.mock(HerokuConnectorForSampleApp.class);
-		HerokuConnectorForSampleApp.instance = mockConnector;
-
-		mocks.stub(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
-
-		//When
-		DataGeneratorButtonController.generateData('Test');
-
-		//Then
-		System.assertEquals(1, mocks.getCallCount(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }));
+		if (instance == null)
+		{
+			instance = new HerokuConnectorForSampleApp();
+		}
+		return instance;
 	}
 
-	@IsTest
-	private static void getTaskStatus_withId_shouldReturnTaskComplete()
+	public HttpResponse calculateRoute(String id)
 	{
-		// given
-		String expectedResult = 'NOT STARTED';
-		
-		GenerateDataTask__c task = new GenerateDataTask__c();
-		insert task;
-
-		// when
-		String result = DataGeneratorButtonController.getTaskStatus(task.id);
-
-		// then
-		System.assertEquals(expectedResult, result);
+		return HerokuConnector.newInstance().post('callout:Orizuru/api/calculateRoutesForPlan', new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(id));
 	}
 
-	@IsTest
-	private static void sendInitialPlatformEvent_withId_shouldReturnSuccess()
+	public HttpResponse generateData(String id)
 	{
-		// given
-		GenerateDataTask__c task = new GenerateDataTask__c();
-		insert task;
-
-		// when
-		Test.startTest();
-		Boolean result = DataGeneratorButtonController.sendInitialPlatformEvent(task.id);
-		Test.stopTest();
-
-		// then
-		System.assertEquals(true, result);
+		return HerokuConnector.newInstance().post('callout:Orizuru/api/createData', new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData(id));
 	}
+
 }
