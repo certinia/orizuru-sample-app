@@ -18,7 +18,7 @@
 		var objectType = component.get('v.sObjectName'),
 			recordId = component.get('v.recordId');
 
-		if (objectType.includes('DeliveryRoute__c')) {
+		if (objectType && objectType.includes('DeliveryRoute__c')) {
 			component.set('v.routeId', recordId);
 		}
 	}
