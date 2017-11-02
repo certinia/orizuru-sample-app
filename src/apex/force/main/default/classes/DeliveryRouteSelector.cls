@@ -45,12 +45,12 @@ public with sharing class DeliveryRouteSelector
             return new List<DeliveryRoute__c>();
         }
         return [
-            SELECT Id, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
+            SELECT Id, Name, DeliveryPlan__c, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
             FROM DeliveryRoute__c 
             WHERE Id IN :deliveryRouteIds
         ];
     }
-	
+    
 	public DeliveryRoute__c[] selectByPlanIds(Set<Id> deliveryPlanIds)
     {
         if (deliveryPlanIds == null || deliveryPlanIds.size() == 0) {
