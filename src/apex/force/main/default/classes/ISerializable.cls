@@ -24,46 +24,7 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-'use strict';
-
-const
-	// get the debugger
-	debug = require('debug-plus')('financialforcedev:orizuru:dataCreator'),
-
-	// get the handler
-	{ Handler } = require('@financialforcedev/orizuru'),
-
-	// get the handling service
-	dataCreator = require('./dataCreator/service'),
-
-	// build transport
-	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
-	transportConfig = {
-		cloudamqpUrl: process.env.CLOUDAMQP_URL
-	},
-	orizuruConfig = {
-		transport,
-		transportConfig
-	},
-
-	requireAvsc = require('./util/requireAvsc'),
-
-	// define event schemas
-	incomingSchema = requireAvsc(__dirname, '../res/schema/public/createData'),
-
-	// get handler and publisher
-	handlerInstance = new Handler(orizuruConfig),
-
-	// callback
-	onHandleIncomingEvent = (event) => {
-		return dataCreator.createData(event);
-	};
-
-// listen and log error events on the handler
-Handler.emitter.on(Handler.emitter.ERROR, debug.error);
-
-// listen
-handlerInstance.handle({
-	schema: incomingSchema,
-	callback: onHandleIncomingEvent
-});
+public interface ISerializable
+{
+	String serialize();
+}

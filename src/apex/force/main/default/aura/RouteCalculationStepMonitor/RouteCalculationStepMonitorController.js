@@ -37,11 +37,9 @@
 			component.set('v.progress', status);
 
 			if (status == 'COMPLETED') {
-				window.setTimeout(
-					$A.getCallback(function () {
-						$A.get('e.force:refreshView').fire();
-					}), 500
-				);
+				window.setTimeout(() => {
+					$A.get('e.force:refreshView').fire();
+				}, 1000);
 			}
 		}
 
