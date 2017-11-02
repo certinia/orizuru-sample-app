@@ -24,7 +24,7 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public class DeliveryWaypointController 
+public with sharing class DeliveryWaypointController 
 {
     @auraEnabled
     public static String calculateRoute(Id routeId)
