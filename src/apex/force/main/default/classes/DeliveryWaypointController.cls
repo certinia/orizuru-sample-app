@@ -27,9 +27,9 @@
 public class DeliveryWaypointController 
 {
     @auraEnabled
-    public static String calculateRoute(Id anId)
+    public static String calculateRoute(Id routeId)
     {
-		return DeliveryRouteService.newInstance().generateUrl(anId);
+		return DeliveryRouteService.newInstance().generateUrl(routeId);
     }
 	
 }
