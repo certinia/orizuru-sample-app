@@ -5,4 +5,4 @@ jdk:
 
 node_js: "8.9.0"
 install: "npm install"
-script: "npm test"
+before_script: "npm test"
