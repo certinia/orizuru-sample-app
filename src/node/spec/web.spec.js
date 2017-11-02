@@ -28,6 +28,7 @@
 
 const
 	_ = require('lodash'),
+	express = require('express'),
 	root = require('app-root-path'),
 	sinon = require('sinon'),
 	chai = require('chai'),
@@ -60,7 +61,10 @@ describe('web.js', () => {
 		process.env.OPENID_ISSUER_URI = 'openidIssuerURITest';
 		process.env.PORT = '5555';
 
+		sandbox.stub(express, 'static');
+
 		expressMock = {
+			use: sandbox.stub().returnsThis(),
 			listen: sandbox.spy()
 		};
 
@@ -93,7 +97,10 @@ describe('web.js', () => {
 
 	it('should build a orizuru web server correctly', () => {
 
-		// given - when
+		// given
+		express.static.returns('defaultRoute');
+
+		// when
 		require(webPath);
 
 		// then
@@ -130,6 +137,12 @@ describe('web.js', () => {
 
 		expect(serverMock.getServer).to.have.been.calledOnce;
 		expect(serverMock.getServer).to.have.been.calledWith();
+
+		expect(expressMock.use).to.have.been.calledOnce;
+		expect(expressMock.use).to.have.been.calledWith('/', 'defaultRoute');
+
+		expect(express.static).to.have.been.calledOnce;
+		expect(express.static).to.have.been.calledWith(sinon.match(/web\/static$/gi));
 
 		expect(expressMock.listen).to.have.been.calledOnce;
 		expect(expressMock.listen).to.have.been.calledWith('5555');
