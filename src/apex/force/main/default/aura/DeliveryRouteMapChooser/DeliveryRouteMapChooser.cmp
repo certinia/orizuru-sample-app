@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId, force:hasSObjectName" controller="DeliveryRouteMapChooserController">
+
+	<!-- Attributes -->
+	<aura:attribute name="routeId" type="String" />
+	<aura:attribute name="routes" type="List" />
+
+	<!-- Handlers -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<lightning:card>
+
+		<!-- Route selection -->
+		<lightning:select label="Route" value="{!v.routeId}">
+			<aura:iteration items="{!v.routes}" var="route">
+				<option value="{!route.Id}" label="{!route.Name}" />
+			</aura:iteration>
+		</lightning:select>
+
+		<!-- Map for selected route -->
+		<c:DeliveryRouteMap routeId="{!v.routeId}" />
+
+	</lightning:card>
+
+</aura:component>
