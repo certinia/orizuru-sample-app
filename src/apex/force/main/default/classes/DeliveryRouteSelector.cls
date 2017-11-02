@@ -47,7 +47,7 @@ public with sharing class DeliveryRouteSelector
         return [
             SELECT Id, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
             FROM DeliveryRoute__c 
-            WHERE Id = :deliveryRouteIds
+            WHERE Id IN :deliveryRouteIds
         ];
     }
 	
