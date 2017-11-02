@@ -1,0 +1,10 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+env:
+  - NODE_VERSION="8.9.0"
+
+before_install:
+  - nvm install $NODE_VERSION
