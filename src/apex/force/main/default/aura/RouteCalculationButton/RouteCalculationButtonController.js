@@ -22,17 +22,13 @@
 			stepEvent = component.get('c.sendInitialPlatformEvent'),
 			objectId = component.get('v.recordId');
 
-		console.log('ObjectId: ' + objectId);
-
 		action.setParams({
 			id: objectId
 		});
 		stepEvent.setParams({
 			id: objectId
 		});
-		action.setCallback(this, function (data) {
-			console.log('called calculateRoute: ' + data.getReturnValue());
-		});
+
 		$A.enqueueAction(action);
 		$A.enqueueAction(stepEvent);
 	},

@@ -10,15 +10,16 @@
 		action.setCallback(this, function (data) {
 			var planStatus = data.getReturnValue();
 
-
-			if (planStatus === 'COMPLETED') {
-				component.set('v.planComplete', true);
-			}
-
 			if (planStatus !== 'NOT STARTED') {
 				component.set('v.show', true);
 				component.set('v.progress', planStatus);
 			}
+
+			if (planStatus === 'COMPLETED') {
+				component.set('v.show', false);
+				component.set('v.planComplete', true);
+			}
+
 		});
 
 		$A.enqueueAction(action);
@@ -28,18 +29,15 @@
 
 		var status = event.getParam('status'),
 			eventId = event.getParam('id'),
-			objectId = component.get('v.recordId'),
-			planComplete = component.get('v.planComplete');
+			objectId = component.get('v.recordId');
 
-		if (!planComplete && eventId != null && eventId === objectId) {
-			console.log('Status: ' + status);
+		if (eventId != null && eventId === objectId) {
 			component.set('v.show', true);
 			component.set('v.progress', status);
 
 			if (status == 'COMPLETED') {
-				window.setTimeout(() => {
-					$A.get('e.force:refreshView').fire();
-				}, 1000);
+				component.set('v.show', false);
+				component.set('v.planComplete', true);
 			}
 		}
 

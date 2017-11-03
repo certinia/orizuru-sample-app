@@ -1,24 +1,42 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId, force:hasSObjectName" controller="DeliveryRouteMapChooserController">
 
 	<!-- Attributes -->
+	<aura:attribute name="show" type="Boolean" default="false" access="private" />
+	<aura:attribute name="planComplete" type="Boolean" default="false" access="private" />
 	<aura:attribute name="routeId" type="String" />
 	<aura:attribute name="routes" type="List" />
 
 	<!-- Handlers -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="c:RouteCalculationStepEvent" action="{!c.handleStepEvent}" />
 
-	<lightning:card>
+	<aura:if isTrue="{! v.show }">
 
-		<!-- Route selection -->
-		<lightning:select label="Route" value="{!v.routeId}">
-			<aura:iteration items="{!v.routes}" var="route">
-				<option value="{!route.Id}" label="{!route.Name}" />
-			</aura:iteration>
-		</lightning:select>
+		<lightning:card>
 
-		<!-- Map for selected route -->
-		<c:DeliveryRouteMap routeId="{!v.routeId}" />
+			<aura:set attribute="iconName" value="standard:location"></aura:set>
+			<aura:set attribute="title">Delivery Routes</aura:set>
 
-	</lightning:card>
+			<aura:set attribute="actions">
+				<!-- View Route button -->
+				<lightning:button label="View Route" onclick="{! c.viewRoute }" />
+			</aura:set>
+
+			<div class="map">
+
+				<!-- Route selection -->
+				<lightning:select label="Route" value="{!v.routeId}">
+					<aura:iteration items="{!v.routes}" var="route">
+						<option value="{!route.Id}" label="{!route.Name}" />
+					</aura:iteration>
+				</lightning:select>
+
+				<c:DeliveryRouteMap routeId="{!v.routeId}" />
+
+			</div>
+
+		</lightning:card>
+
+	</aura:if>
 
 </aura:component>

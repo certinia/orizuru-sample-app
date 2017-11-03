@@ -1,13 +1,17 @@
 <aura:component controller="SessionController">
 
+	<!-- Attributes -->
 	<aura:attribute name="eventSubscriptions" type="String[]" required="true" description="Array of platform event SObjectTypes you want to monitor" />
-	<aura:registerEvent name="streamingEvent" type="c:StreamingEvent" />
-
-	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
-	<ltng:require scripts="{!$Resource.cometd}" afterScriptsLoaded="{!c.onCometdLoaded}" />
-
 	<aura:attribute name="sessionId" type="String" access="private" />
 	<aura:attribute name="cometd" type="Object" access="private" />
 	<aura:attribute name="cometdSubscriptions" type="Object[]" default="[]" access="private" />
+
+	<!-- Events -->
+	<aura:registerEvent name="streamingEvent" type="c:StreamingEvent" />
+
+	<!-- Handlers -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+	<ltng:require scripts="{!$Resource.cometd}" afterScriptsLoaded="{!c.onCometdLoaded}" />
 
 </aura:component>

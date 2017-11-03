@@ -50,4 +50,20 @@ private class DeliveryRouteMapChooserControllerTest
         // Then
         System.assertEquals(actual, routes);
     }  
+
+	@IsTest
+	private static void getPlanStatus_withId_shouldReturnPlanStatus()
+	{
+		// given
+		String expectedResult = 'NOT STARTED';
+		
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+
+		// when
+		String result = DeliveryRouteMapChooserController.getPlanStatus(plan.id);
+
+		// then
+		System.assertEquals(expectedResult, result);
+	}
 }

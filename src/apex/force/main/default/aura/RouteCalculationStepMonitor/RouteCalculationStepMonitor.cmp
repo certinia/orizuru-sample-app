@@ -1,13 +1,18 @@
 <aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" controller="RouteCalculationStepMonitorController">
+
+	<!-- Attributes -->
 	<aura:attribute name="show" type="Boolean" default="false" access="private" />
 	<aura:attribute name="planComplete" type="Boolean" default="false" access="private" />
 	<aura:attribute name="progress" type="String" default="STARTED" />
 
+	<!-- Handlers -->
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	<aura:handler event="c:RouteCalculationStepEvent" action="{!c.handleStepEvent}" />
 
 	<aura:if isTrue="{! v.show }">
+
 		<lightning:card>
+
 			<div class="slds-p-around_large">
 				<lightning:progressIndicator currentStep="{!v.progress}">
 					<lightning:progressStep label="Start" value="STARTED" />
@@ -17,7 +22,9 @@
 					<lightning:progressStep label="Route(s) created" value="COMPLETED" />
 				</lightning:progressIndicator>
 			</div>
+
 		</lightning:card>
+
 	</aura:if>
 
 </aura:component>

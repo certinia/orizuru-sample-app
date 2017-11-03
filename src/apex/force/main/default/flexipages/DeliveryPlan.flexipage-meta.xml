@@ -19,21 +19,6 @@
             <componentName>RouteCalculationStepMonitor</componentName>
         </componentInstances>
         <componentInstances>
-            <componentInstanceProperties>
-                <name>parentFieldApiName</name>
-                <value>DeliveryPlan__c.Id</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>relatedListApiName</name>
-                <value>DeliveryRoutes__r</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>relatedListComponentOverride</name>
-                <value>GRID</value>
-            </componentInstanceProperties>
-            <componentName>force:relatedListSingleContainer</componentName>
-        </componentInstances>
-        <componentInstances>
             <componentName>DeliveryRouteMapChooser</componentName>
         </componentInstances>
         <componentInstances>
