@@ -123,7 +123,7 @@ describe('resultWriter/service.js', () => {
 			};
 
 		conn.apex = sandbox.stub();
-		conn.apex.post = sandbox.stub().resolves([{ id: 'myFakeId' }, { id: 'anotherFakeId' }]);
+		conn.apex.post = sandbox.stub().resolves([{ Id: 'myFakeId' }, { Id: 'anotherFakeId' }]);
 
 		sandbox.stub(connection, 'fromContext').resolves(conn);
 		sandbox.stub(writer, 'sendPlatformEvent').resolves();
@@ -133,8 +133,8 @@ describe('resultWriter/service.js', () => {
 			.to.eventually.be.fulfilled
 			.then(() => {
 				expect(conn.apex.post).to.have.been.calledTwice;
-				expect(conn.apex.post).to.have.been.calledWith('/WaypointAPI/', { waypoints: expectedWaypoints });
 				expect(conn.apex.post).to.have.been.calledWith('/RouteAPI/', { routes: expectedRoutes });
+				expect(conn.apex.post).to.have.been.calledWith('/WaypointAPI/', { waypoints: expectedWaypoints });
 				expect(writer.sendPlatformEvent).to.have.been.calledTwice;
 				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedWritingPlatformEvent);
 				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedCompletedPlatformEvent);
