@@ -27,7 +27,7 @@
     "@financialforcedev/orizuru-auth": "^3.0.3",
     "@financialforcedev/orizuru-transport-rabbitmq": "^3.0.3",
     "bluebird": "3.5.1",
-    "debug-plus": "^1.2.2",
+    "debug-plus": "1.2.2",
     "jsforce": "1.8.0",
     "lodash": "4.17.4"
   },
@@ -48,10 +48,10 @@
   "nyc": {
     "check-coverage": true,
     "per-file": true,
-    "lines": 0,
-    "statements": 0,
-    "functions": 0,
-    "branches": 0,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
     "include": [
       "src/node"
     ],
