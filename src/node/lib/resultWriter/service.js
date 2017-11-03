@@ -38,11 +38,9 @@ const
 
 		return writer.sendPlatformEvent(config.conn, event)
 			.then(() => config);
-
 	},
 
 	createRoutes = (results) => {
-
 		const routes = results.incomingMessage.solution.routes;
 
 		results.routes = _.map(routes, (route, i) => {
@@ -63,12 +61,20 @@ const
 			conn = results.conn,
 			routes = results.routes;
 
-		return writer.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
+		return conn.apex.post('/RouteAPI/', { routes: routes })
 			.then(sobjects => {
 				results.savedRoutes = sobjects;
 				return results;
 			});
 
+		/*
+		NOTE: We could also use the bulk API:
+
+		return writer.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
+			.then(sobjects => {
+				results.savedRoutes = sobjects;
+				return results;
+			});*/
 	},
 
 	createAWayPoint = (deliveryRouteId, deliveryId, waypointNumber) => {
@@ -88,12 +94,11 @@ const
 
 		results.waypoints = _.flatten(_.map(solution.routes, (solutionRoute, index) => {
 			return _.map(solutionRoute.actions, (action, i) => {
-				return createAWayPoint(savedRoutes[index].id, action.serviceId, i + 1);
+				return createAWayPoint(savedRoutes[index].Id, action.serviceId, i + 1);
 			});
 		}));
 
 		return results;
-
 	},
 
 	writeWaypoints = (results) => {
@@ -102,11 +107,19 @@ const
 			conn = results.conn,
 			waypoints = results.waypoints;
 
-		return writer.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
+		return conn.apex.post('/WaypointAPI/', { waypoints })
 			.then(sobjects => {
 				results.savedWaypoints = sobjects;
 				return results;
 			});
+
+		/* 
+		NOTE: We could also use the bulk API: 
+		return writer.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
+			.then(sobjects => {
+				results.savedWaypoints = sobjects;
+				return results;
+			});*/
 
 	},
 
@@ -120,6 +133,7 @@ const
 			.then(createWaypoints)
 			.then(writeWaypoints)
 			.then(sendEvent({ message: 'Route(s) created', status: 'COMPLETED' }));
+
 	};
 
 module.exports = {

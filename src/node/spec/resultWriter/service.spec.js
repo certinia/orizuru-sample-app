@@ -122,22 +122,22 @@ describe('resultWriter/service.js', () => {
 				status: 'COMPLETED'
 			};
 
+		conn.apex = sandbox.stub();
+		conn.apex.post = sandbox.stub().resolves([{ Id: 'myFakeId' }, { Id: 'anotherFakeId' }]);
+
 		sandbox.stub(connection, 'fromContext').resolves(conn);
 		sandbox.stub(writer, 'sendPlatformEvent').resolves();
-		sandbox.stub(writer, 'bulkCreateObject').resolves([{ id: 'myFakeId' }, { id: 'anotherFakeId' }]);
 
 		// when / then
 		return expect(service.writeResults(expectedInput))
 			.to.eventually.be.fulfilled
 			.then(() => {
-				expect(writer.bulkCreateObject).to.have.been.calledTwice;
-				expect(writer.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryRoute__c', expectedRoutes);
-				expect(writer.bulkCreateObject).to.have.been.calledWith(conn, 'DeliveryWaypoint__c', expectedWaypoints);
+				expect(conn.apex.post).to.have.been.calledTwice;
+				expect(conn.apex.post).to.have.been.calledWith('/RouteAPI/', { routes: expectedRoutes });
+				expect(conn.apex.post).to.have.been.calledWith('/WaypointAPI/', { waypoints: expectedWaypoints });
 				expect(writer.sendPlatformEvent).to.have.been.calledTwice;
 				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedWritingPlatformEvent);
 				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedCompletedPlatformEvent);
 			});
-
 	});
-
 });
