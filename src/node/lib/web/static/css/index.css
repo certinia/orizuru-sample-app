@@ -5,17 +5,6 @@ body {
     margin: 0;
 }
 
-html {
-    box-sizing: border-box;
-}
-
-*,
-::after,
-::before {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
-
 body {
     font-family: "Roboto", Arial, sans-serif;
     font-size: 16px;
