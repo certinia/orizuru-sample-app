@@ -38,3 +38,8 @@ h1 {
     -webkit-flex-direction: column;
     flex-direction: column;
 }
+
+.logo {
+    width: 20%;
+    height: auto;
+}
