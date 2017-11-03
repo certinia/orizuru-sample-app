@@ -30,6 +30,13 @@ const
 	// get the debugger
 	debug = require('debug-plus')('financialforcedev:orizuru:web'),
 
+	// add modules for including static default route
+	path = require('path'),
+	express = require('express'),
+
+	// get default route
+	DEFAULT_ROUTE = express.static(path.join(__dirname, 'web/static')),
+
 	// get the server
 	{ Server } = require('@financialforcedev/orizuru'),
 
@@ -73,4 +80,5 @@ auth.emitter.on('denied', debug.error);
 new Server({ transport, transportConfig })
 	.addRoute({ schemaNameToDefinition, apiEndpoint, middlewares })
 	.getServer()
+	.use('/', DEFAULT_ROUTE)
 	.listen(port);
