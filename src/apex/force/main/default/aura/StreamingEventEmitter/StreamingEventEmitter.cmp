@@ -12,6 +12,7 @@
 	<!-- Handlers -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 
+	<!-- Body -->
 	<ltng:require scripts="{!$Resource.cometd}" afterScriptsLoaded="{!c.onCometdLoaded}" />
 
 </aura:component>

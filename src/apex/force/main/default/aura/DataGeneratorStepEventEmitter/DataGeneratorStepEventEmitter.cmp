@@ -6,6 +6,7 @@
 	<!-- Handlers -->
 	<aura:handler name="streamingEvent" event="c:StreamingEvent" action="{!c.handleIncomingStreamingMessage}" />
 
+	<!-- Body -->
 	<c:StreamingEventEmitter eventSubscriptions="['DataGeneratorStep__e']" />
 
 </aura:component>

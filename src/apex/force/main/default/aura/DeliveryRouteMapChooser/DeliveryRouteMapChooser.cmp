@@ -10,6 +10,7 @@
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
 	<aura:handler event="c:RouteCalculationStepEvent" action="{!c.handleStepEvent}" />
 
+	<!-- Body -->
 	<aura:if isTrue="{! v.show }">
 
 		<lightning:card>

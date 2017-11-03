@@ -10,6 +10,7 @@
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	<aura:handler event="c:DataGeneratorStepEvent" action="{!c.handleStepEvent}" />
 
+	<!-- Body -->
 	<aura:if isTrue="{! v.show }">
 
 		<lightning:card>
