@@ -2,3 +2,7 @@
     margin-left: 16px;
     margin-right: 16px;
 }
+
+.THIS .selectRoute>div {
+    width: 400px;
+}
