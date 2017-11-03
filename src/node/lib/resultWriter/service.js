@@ -109,13 +109,20 @@ const
 	writeResults = ({ context, message }) => {
 
 		return connection.fromContext(context)
+			.then(conn => {
+				debug(Date.now());
+				return conn;
+			})
 			.then(conn => ({ conn, incomingMessage: message }))
 			.then(sendEvent({ message: 'Delivery Route(s) calculated', status: 'WRITING_DATA' }))
 			.then(createRoutes)
 			.then(writeRoutes)
 			.then(createWaypoints)
 			.then(writeWaypoints)
-			.then(sendEvent({ message: 'Route(s) created', status: 'COMPLETED' }));
+			.then(sendEvent({ message: 'Route(s) created', status: 'COMPLETED' }))
+			.then(() => {
+				debug(Date.now());
+			});
 	};
 
 module.exports = {
