@@ -2,5 +2,5 @@
 <CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
     <customObject>true</customObject>
     <mobileReady>false</mobileReady>
-    <motif>Custom73: Highway Sign</motif>
+    <motif>Custom78: Map</motif>
 </CustomTab>

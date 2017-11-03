@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Dreamforce sample app for google maps integration",
   "scripts": {
-    "deploy": "DEBUG='financialforcedev:orizuru:deploy:log,financialforcedev:orizuru:deploy:shell:log' node src/node/lib/deploy.js",
+    "deploy": "orizuru d",
     "pretest": "eslint src/node",
     "single-test": "nyc --all=false mocha",
     "test": "nyc mocha --recursive src/node/spec",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@financialforcedev/eslint-config": "^3.0.1",
+    "@financialforcedev/orizuru-tools": "^1.0.0",
     "app-root-path": "2.0.1",
     "chai": "4.1.2",
     "chai-as-promised": "7.1.1",

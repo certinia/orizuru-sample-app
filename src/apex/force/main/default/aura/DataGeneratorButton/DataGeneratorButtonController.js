@@ -22,8 +22,6 @@
 			stepEvent = component.get('c.sendInitialPlatformEvent'),
 			objectId = component.get('v.recordId');
 
-		console.log('ObjectId: ' + objectId);
-
 		action.setParams({
 			id: objectId
 		});

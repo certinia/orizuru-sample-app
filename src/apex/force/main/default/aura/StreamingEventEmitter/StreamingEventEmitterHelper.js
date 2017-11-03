@@ -28,8 +28,6 @@
 								payload: platformEvent.data.payload
 							});
 							monitoredEvent.fire()
-						} else {
-							console.log('Null monitoredEvent');
 						}
 					});
 				});

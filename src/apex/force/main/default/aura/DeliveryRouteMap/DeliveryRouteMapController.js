@@ -1,13 +1,12 @@
 ({
-    doInit : function(component, event, handler)
-    {
-        var action = component.get('c.calculateRoute');
-		action.setParams({ anId : component.get("v.recordId") });
+	onInit: function (component, event, helper) {
+		helper.initRouteId(component);
+	},
 
-        action.setCallback(this, function(data){
-            console.log(data.getReturnValue());
-            component.set('v.url', data.getReturnValue());
-        });
-        $A.enqueueAction(action);
-    }
+	onRouteIdChanged: function (component, event, helper) {
+		var routeId = event.getParam('value');
+		component.set('v.routeId', routeId);
+
+		helper.calculateRoute(component);
+	}
 })
