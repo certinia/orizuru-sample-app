@@ -24,44 +24,19 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class DeliveryRouteSelector
+public with sharing class DeliveryRouteMapChooserController 
 {
-    @testVisible
-    private static DeliveryRouteSelector instance = null;
-
-    public static DeliveryRouteSelector newInstance()
+    @auraEnabled
+    public static List<DeliveryRoute__c> getRoutes(List<Id> planIds)
     {
-        if (instance == null)
-        {
-            instance = new DeliveryRouteSelector();
-        }
-
-        return instance;
+		return DeliveryRouteSelector.newInstance().selectByPlanIds(new Set<Id>(planIds));
     }
-
-    public DeliveryRoute__c[] selectByIds(Set<Id> deliveryRouteIds)
+	
+	@AuraEnabled
+    public static String getPlanStatus(String id)
     {
-        if (deliveryRouteIds == null || deliveryRouteIds.size() == 0) {
-            return new List<DeliveryRoute__c>();
-        }
-        return [
-            SELECT Id, Name, DeliveryPlan__c, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
-            FROM DeliveryRoute__c 
-            WHERE Id IN :deliveryRouteIds
-        ];
-    }
-    
-	public DeliveryRoute__c[] selectByPlanIds(Set<Id> deliveryPlanIds)
-    {
-        if (deliveryPlanIds == null || deliveryPlanIds.size() == 0) {
-            return new List<DeliveryRoute__c>();
-        }
-        return [
-            SELECT Id, Name, DeliveryPlan__c, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
-            FROM DeliveryRoute__c 
-            WHERE DeliveryPlan__c IN :deliveryPlanIds
-			ORDER BY Name
-        ];
+		DeliveryPlan__c dpc = [SELECT Id, PlanStatus__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
+		return dpc.PlanStatus__c;
     }
 	
 }

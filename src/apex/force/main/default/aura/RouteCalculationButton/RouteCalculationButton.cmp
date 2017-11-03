@@ -1,16 +1,26 @@
 <aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="RouteCalculationButtonController">
+
+	<!-- Attributes -->
 	<aura:attribute name="show" type="Boolean" default="false" access="private" />
 
+	<!-- Events -->
 	<aura:registerEvent name="routeCalculationStepEvent" type="c:RouteCalculationStepEvent" />
 
+	<!-- Handlers -->
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	<aura:handler event="c:RouteCalculationStepEvent" action="{!c.handleStepEvent}" />
 
+	<!-- Body -->
 	<aura:if isTrue="{! v.show }">
+
 		<lightning:card>
+
 			<div class="slds-p-around_small" align="center">
 				<lightning:button label="Calculate" onclick="{! c.handleClick }" />
 			</div>
+
 		</lightning:card>
+
 	</aura:if>
+
 </aura:component>

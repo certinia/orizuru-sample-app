@@ -24,44 +24,46 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class DeliveryRouteSelector
+@isTest(SeeAllData=false)
+private class DeliveryRouteMapChooserControllerTest
 {
-    @testVisible
-    private static DeliveryRouteSelector instance = null;
-
-    public static DeliveryRouteSelector newInstance()
+    @isTest
+    static void getRoutes_withPlanId_callsSelector()
     {
-        if (instance == null)
-        {
-            instance = new DeliveryRouteSelector();
-        }
+        // Given
+		Id planId = 'a009E000006Fi28';
+		Set<Id> planIds = new Set<Id>{ planId };
+		DeliveryRoute__c[] routes = new DeliveryRoute__c[]{
+			new DeliveryRoute__c(Name = 'Route1', DeliveryPlan__c = planId),
+			new DeliveryRoute__c(Name = 'Route2', DeliveryPlan__c = planId)
+		};
 
-        return instance;
-    }
+		StubProvider mocks = new StubProvider();
+        DeliveryRouteSelector mockSelector = (DeliveryRouteSelector) mocks.mock(DeliveryRouteSelector.class);
+        DeliveryRouteSelector.instance = mockSelector;
 
-    public DeliveryRoute__c[] selectByIds(Set<Id> deliveryRouteIds)
-    {
-        if (deliveryRouteIds == null || deliveryRouteIds.size() == 0) {
-            return new List<DeliveryRoute__c>();
-        }
-        return [
-            SELECT Id, Name, DeliveryPlan__c, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
-            FROM DeliveryRoute__c 
-            WHERE Id IN :deliveryRouteIds
-        ];
-    }
-    
-	public DeliveryRoute__c[] selectByPlanIds(Set<Id> deliveryPlanIds)
-    {
-        if (deliveryPlanIds == null || deliveryPlanIds.size() == 0) {
-            return new List<DeliveryRoute__c>();
-        }
-        return [
-            SELECT Id, Name, DeliveryPlan__c, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
-            FROM DeliveryRoute__c 
-            WHERE DeliveryPlan__c IN :deliveryPlanIds
-			ORDER BY Name
-        ];
-    }
-	
+        mocks.stub(mockSelector, 'selectByPlanIds', new Type[]{ Set<Id>.class }, new Object[]{ planIds }, routes);
+        
+        // When
+        DeliveryRoute__c[] actual = DeliveryRouteMapChooserController.getRoutes(new List<Id>{ planId });
+        
+        // Then
+        System.assertEquals(actual, routes);
+    }  
+
+	@IsTest
+	private static void getPlanStatus_withId_shouldReturnPlanStatus()
+	{
+		// given
+		String expectedResult = 'NOT STARTED';
+		
+		DeliveryPlan__c plan = new DeliveryPlan__c();
+		insert plan;
+
+		// when
+		String result = DeliveryRouteMapChooserController.getPlanStatus(plan.id);
+
+		// then
+		System.assertEquals(expectedResult, result);
+	}
 }

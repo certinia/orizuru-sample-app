@@ -6,7 +6,6 @@
 		if (routeId) {
 			action.setParams({ routeId: routeId });
 			action.setCallback(this, function (data) {
-				console.log(data.getReturnValue());
 				component.set('v.url', data.getReturnValue());
 			});
 
