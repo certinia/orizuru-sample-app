@@ -1,14 +1,21 @@
 <aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" controller="DataGeneratorStepMonitorController">
+
+	<!-- Attributes -->
 	<aura:attribute name="show" type="Boolean" default="false" access="private" />
 	<aura:attribute name="taskComplete" type="Boolean" default="false" access="private" />
 	<aura:attribute name="progress" type="String" default="STARTED" />
 
+	<!-- Handlers -->
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	<aura:handler event="c:DataGeneratorStepEvent" action="{!c.handleStepEvent}" />
 
+	<!-- Body -->
 	<aura:if isTrue="{! v.show }">
+
 		<lightning:card>
+
 			<div class="slds-p-around_large">
+
 				<lightning:progressIndicator currentStep="{!v.progress}">
 					<lightning:progressStep label="Start" value="STARTED" />
 					<lightning:progressStep label="Created Accounts" value="CREATED_ACCOUNTS" />
@@ -19,8 +26,11 @@
 					<lightning:progressStep label="Created Vehicles" value="CREATED_VEHICLES" />
 					<lightning:progressStep label="Created Orders" value="CREATED_ORDERS" />
 				</lightning:progressIndicator>
+
 			</div>
+
 		</lightning:card>
+
 	</aura:if>
 
 </aura:component>

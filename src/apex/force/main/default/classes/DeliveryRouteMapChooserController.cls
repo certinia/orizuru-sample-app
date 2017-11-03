@@ -24,12 +24,19 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **/
 
-public with sharing class DeliveryWaypointController 
+public with sharing class DeliveryRouteMapChooserController 
 {
     @auraEnabled
-    public static String calculateRoute(Id routeId)
+    public static List<DeliveryRoute__c> getRoutes(List<Id> planIds)
     {
-		return DeliveryRouteService.newInstance().generateUrl(routeId);
+		return DeliveryRouteSelector.newInstance().selectByPlanIds(new Set<Id>(planIds));
+    }
+	
+	@AuraEnabled
+    public static String getPlanStatus(String id)
+    {
+		DeliveryPlan__c dpc = [SELECT Id, PlanStatus__c FROM DeliveryPlan__c WHERE Id=:id LIMIT 1];
+		return dpc.PlanStatus__c;
     }
 	
 }

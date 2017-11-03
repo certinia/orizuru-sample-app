@@ -1,5 +1,6 @@
 ({
 	doInit: function (component) {
+
 		var action = component.get('c.getTaskStatus'),
 			objectId = component.get('v.recordId');
 
@@ -20,6 +21,7 @@
 		});
 
 		$A.enqueueAction(action);
+
 	},
 
 	handleStepEvent: function (component, event, helper) {
@@ -30,7 +32,6 @@
 			taskComplete = component.get('v.taskComplete');
 
 		if (!taskComplete && eventId != null && eventId === objectId) {
-			console.log('Status: ' + status);
 			component.set('v.show', true);
 			component.set('v.progress', status);
 
@@ -40,6 +41,7 @@
 				}, 1000);
 			}
 		}
+
 	}
 
 });
