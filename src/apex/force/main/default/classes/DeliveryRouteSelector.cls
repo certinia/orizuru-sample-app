@@ -57,7 +57,7 @@ public with sharing class DeliveryRouteSelector
             return new List<DeliveryRoute__c>();
         }
         return [
-            SELECT Id, Name, DeliveryPlan__c, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude 
+            SELECT Id, Name, DeliveryPlan__c, Vehicle__r.Id, Vehicle__r.Warehouse__r.Contact__r.MailingLatitude, Vehicle__r.Warehouse__r.Contact__r.MailingLongitude, Vehicle__r.Name, Vehicle__r.Warehouse__r.Name 
             FROM DeliveryRoute__c 
             WHERE DeliveryPlan__c IN :deliveryPlanIds
 			ORDER BY Name

@@ -4,7 +4,7 @@
 	<aura:attribute name="show" type="Boolean" default="false" access="private" />
 	<aura:attribute name="planComplete" type="Boolean" default="false" access="private" />
 	<aura:attribute name="routeId" type="String" />
-	<aura:attribute name="routes" type="List" />
+	<aura:attribute name="routeOptions" type="List" default="[]" />
 
 	<!-- Handlers -->
 	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
@@ -26,11 +26,7 @@
 			<div class="map">
 
 				<!-- Route selection -->
-				<lightning:select label="Route" value="{!v.routeId}">
-					<aura:iteration items="{!v.routes}" var="route">
-						<option value="{!route.Id}" label="{!route.Name}" />
-					</aura:iteration>
-				</lightning:select>
+				<lightning:combobox class="selectRoute" name="route" label="Route" placeholder="Select Route" value="{!v.routeId}" options="{!v.routeOptions}" />
 
 				<c:DeliveryRouteMap routeId="{!v.routeId}" />
 

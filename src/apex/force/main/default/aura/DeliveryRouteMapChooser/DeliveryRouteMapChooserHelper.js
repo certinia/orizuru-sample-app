@@ -37,9 +37,18 @@
 		if (recordId && objectType && objectType.includes('DeliveryPlan__c')) {
 			action.setParams({ planIds: [recordId] });
 			action.setCallback(this, function (data) {
-				var routes = data.getReturnValue();
+				var routes = data.getReturnValue(),
+					options = [],
+					i;
 
-				component.set('v.routes', routes);
+				for (i = 0; i < routes.length; i++) {
+					options.push({
+						label: routes[i].Name + ' - ' + routes[i].Vehicle__r.Warehouse__r.Name + ' - ' + routes[i].Vehicle__r.Name,
+						value: routes[i].Id
+					});
+				}
+
+				component.set('v.routeOptions', options);
 				if (routes && routes[0] && routes[0].Id) {
 					component.set('v.routeId', routes[0].Id);
 				}
