@@ -62,16 +62,20 @@ const
 			conn = results.conn,
 			routes = results.routes;
 
-		/*return conn.apex.post('/RouteAPI/', { routes: routes })
-		.then(sobjects => {
-			results.savedRoutes = sobjects;
-			return results;
-		});*/
-		return writer.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
+		return conn.apex.post('/RouteAPI/', { routes: routes })
 			.then(sobjects => {
 				results.savedRoutes = sobjects;
 				return results;
 			});
+
+		/*
+		NOTE: We could also use the bulk API:
+
+		return writer.bulkCreateObject(conn, 'DeliveryRoute__c', routes)
+			.then(sobjects => {
+				results.savedRoutes = sobjects;
+				return results;
+			});*/
 	},
 
 	createAWayPoint = (deliveryRouteId, deliveryId, waypointNumber) => {
@@ -104,13 +108,19 @@ const
 			conn = results.conn,
 			waypoints = results.waypoints;
 
-		//return conn.apex.post('/WaypointAPI/', { waypoints })
-
-		return writer.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
+		return conn.apex.post('/WaypointAPI/', { waypoints })
 			.then(sobjects => {
 				results.savedWaypoints = sobjects;
 				return results;
 			});
+
+		/* 
+		NOTE: We could also use the bulk API: 
+		return writer.bulkCreateObject(conn, 'DeliveryWaypoint__c', waypoints)
+			.then(sobjects => {
+				results.savedWaypoints = sobjects;
+				return results;
+			});*/
 
 	},
 
