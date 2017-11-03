@@ -6,6 +6,12 @@
 		"MailingLongitude": -122.4477363,
 		"MailingCountry": "USA"
 	}, {
+		"FirstName": "Stockton Metropolitan Airport",
+		"LastName": "Stockton Metropolitan Airport",
+		"MailingLatitude": 37.9067352,
+		"MailingLongitude": -121.2837093,
+		"MailingCountry": "USA"
+	}, {
 		"FirstName": "Las Vegas Airport",
 		"LastName": "Las Vegas Airport",
 		"MailingLatitude": 36.0840213,
