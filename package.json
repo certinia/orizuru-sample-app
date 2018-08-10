@@ -29,7 +29,7 @@
     "bluebird": "3.5.1",
     "debug-plus": "1.2.2",
     "jsforce": "1.8.4",
-    "lodash": "4.17.4"
+    "lodash": "4.17.10"
   },
   "devDependencies": {
     "@financialforcedev/eslint-config": "^4.0.0",
