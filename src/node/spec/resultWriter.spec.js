@@ -43,10 +43,7 @@ const
 
 	incomingSchema = requireAvsc(root, 'src/node/res/schema/answer'),
 
-	service = require(root + '/src/node/lib/resultWriter/service'),
-
-	sandbox = sinon.sandbox.create(),
-	restore = sandbox.restore.bind(sandbox);
+	service = require(root + '/src/node/lib/resultWriter/service');
 
 chai.use(sinonChai);
 
@@ -61,10 +58,10 @@ describe('resultWriter.js', () => {
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
 
 		handlerMock = {
-			handle: sandbox.stub().resolves()
+			handle: sinon.stub().resolves()
 		};
 
-		sandbox.stub(orizuru, 'Handler').callsFake(function (config) {
+		sinon.stub(orizuru, 'Handler').callsFake(function (config) {
 			this.handle = handlerMock.handle;
 		});
 
@@ -72,7 +69,7 @@ describe('resultWriter.js', () => {
 
 	afterEach(() => {
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
-		restore();
+		sinon.restore();
 	});
 
 	it('should wire up handler', () => {
@@ -102,7 +99,7 @@ describe('resultWriter.js', () => {
 		it('should call service', () => {
 
 			// given
-			sandbox.stub(service, 'writeResults').resolves('result');
+			sinon.stub(service, 'writeResults').resolves('result');
 
 			require(resultWriterPath);
 

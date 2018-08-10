@@ -43,10 +43,7 @@ const
 	orizuru = require('@financialforcedev/orizuru'),
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
-	DataCreatorService = require(root + '/src/node/lib/dataCreator/service'),
-
-	sandbox = sinon.sandbox.create(),
-	restore = sandbox.restore.bind(sandbox);
+	DataCreatorService = require(root + '/src/node/lib/dataCreator/service');
 
 chai.use(sinonChai);
 
@@ -55,15 +52,16 @@ describe('dataCreator.js', () => {
 	let handlerMock;
 
 	beforeEach(() => {
+
 		delete require.cache[require.resolve(dataCreatorPath)];
 
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
 
 		handlerMock = {
-			handle: sandbox.stub().resolves()
+			handle: sinon.stub().resolves()
 		};
 
-		sandbox.stub(orizuru, 'Handler').callsFake(function (config) {
+		sinon.stub(orizuru, 'Handler').callsFake(function (config) {
 			this.handle = handlerMock.handle;
 		});
 
@@ -71,7 +69,7 @@ describe('dataCreator.js', () => {
 
 	afterEach(() => {
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
-		restore();
+		sinon.restore();
 	});
 
 	it('should wire up handler', () => {
@@ -101,7 +99,7 @@ describe('dataCreator.js', () => {
 		let handler;
 
 		beforeEach(() => {
-			sandbox.stub(DataCreatorService, 'createData').resolves('result');
+			sinon.stub(DataCreatorService, 'createData').resolves('result');
 			require(dataCreatorPath);
 			handler = handlerMock.handle.getCall(0).args[0].callback;
 		});

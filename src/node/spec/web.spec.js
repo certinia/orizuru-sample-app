@@ -41,10 +41,7 @@ const
 	orizuruAuth = require('@financialforcedev/orizuru-auth'),
 
 	webPath = root + '/src/node/lib/web',
-	schemaNameToDefinition = require(root + '/src/node/lib/web/schema'),
-
-	sandbox = sinon.sandbox.create(),
-	restore = sandbox.restore.bind(sandbox);
+	schemaNameToDefinition = require(root + '/src/node/lib/web/schema');
 
 chai.use(sinonChai);
 
@@ -61,27 +58,27 @@ describe('web.js', () => {
 		process.env.OPENID_ISSUER_URI = 'openidIssuerURITest';
 		process.env.PORT = '5555';
 
-		sandbox.stub(express, 'static');
+		sinon.stub(express, 'static');
 
 		expressMock = {
-			use: sandbox.stub().returnsThis(),
-			listen: sandbox.spy()
+			use: sinon.stub().returnsThis(),
+			listen: sinon.spy()
 		};
 
 		serverMock = {
-			addRoute: sandbox.stub(),
-			getServer: sandbox.stub().returns(expressMock)
+			addRoute: sinon.stub(),
+			getServer: sinon.stub().returns(expressMock)
 		};
 
 		serverMock.addRoute.returns(serverMock);
 
-		sandbox.stub(orizuru, 'Server').callsFake(function (config) {
+		sinon.stub(orizuru, 'Server').callsFake(function (config) {
 			this.addRoute = serverMock.addRoute;
 			this.getServer = serverMock.getServer;
 		});
 
-		sandbox.stub(orizuruAuth.middleware, 'tokenValidator').returns(_.noop);
-		sandbox.stub(orizuruAuth.middleware, 'grantChecker').returns(_.noop);
+		sinon.stub(orizuruAuth.middleware, 'tokenValidator').returns(_.noop);
+		sinon.stub(orizuruAuth.middleware, 'grantChecker').returns(_.noop);
 
 	});
 
@@ -92,7 +89,7 @@ describe('web.js', () => {
 		process.env.OPENID_HTTP_TIMEOUT = null;
 		process.env.OPENID_ISSUER_URI = null;
 		process.env.PORT = null;
-		restore();
+		sinon.restore();
 	});
 
 	it('should build a orizuru web server correctly', () => {

@@ -43,10 +43,7 @@ const
 
 	QuestionBuilderService = require(root + '/src/node/lib/questionBuilder/service'),
 	incomingSchema = requireAvsc(root, 'src/node/res/schema/public/calculateRoutesForPlan'),
-	outgoingSchema = requireAvsc(root, 'src/node/res/schema/question'),
-
-	sandbox = sinon.sandbox.create(),
-	restore = sandbox.restore.bind(sandbox);
+	outgoingSchema = requireAvsc(root, 'src/node/res/schema/question');
 
 chai.use(sinonChai);
 
@@ -61,18 +58,18 @@ describe('questionBuilder.js', () => {
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
 
 		handlerMock = {
-			handle: sandbox.stub().resolves()
+			handle: sinon.stub().resolves()
 		};
 
 		publisherMock = {
-			publish: sandbox.stub().resolves()
+			publish: sinon.stub().resolves()
 		};
 
-		sandbox.stub(orizuru, 'Handler').callsFake(function (config) {
+		sinon.stub(orizuru, 'Handler').callsFake(function (config) {
 			this.handle = handlerMock.handle;
 		});
 
-		sandbox.stub(orizuru, 'Publisher').callsFake(function (config) {
+		sinon.stub(orizuru, 'Publisher').callsFake(function (config) {
 			this.publish = publisherMock.publish;
 		});
 
@@ -80,7 +77,7 @@ describe('questionBuilder.js', () => {
 
 	afterEach(() => {
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
-		restore();
+		sinon.restore();
 	});
 
 	it('should wire up handler', () => {
@@ -118,7 +115,7 @@ describe('questionBuilder.js', () => {
 		let handler;
 
 		beforeEach(() => {
-			sandbox.stub(QuestionBuilderService, 'buildQuestion').resolves('result');
+			sinon.stub(QuestionBuilderService, 'buildQuestion').resolves('result');
 			require(questionBuilderPath);
 			handler = handlerMock.handle.getCall(0).args[0].callback;
 		});

@@ -38,10 +38,7 @@ const
 	jsForce = require('jsforce'),
 	orizuruAuth = require('@financialforcedev/orizuru-auth'),
 
-	connection = require(root + '/src/node/lib/salesforce/connection'),
-
-	sandbox = sinon.sandbox.create(),
-	restore = sandbox.restore.bind(sandbox);
+	connection = require(root + '/src/node/lib/salesforce/connection');
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
@@ -55,8 +52,8 @@ describe('salesforce/connection.js', () => {
 		process.env.OPENID_HTTP_TIMEOUT = '4001';
 		process.env.OPENID_ISSUER_URI = 'openidIssuerURITest';
 
-		sandbox.stub(orizuruAuth.grant, 'getToken').returns(() => Promise.resolve('credentialsTest'));
-		sandbox.stub(jsForce, 'Connection').callsFake(function () {
+		sinon.stub(orizuruAuth.grant, 'getToken').returns(() => Promise.resolve('credentialsTest'));
+		sinon.stub(jsForce, 'Connection').callsFake(function () {
 			this.test = 'test';
 		});
 
@@ -67,7 +64,7 @@ describe('salesforce/connection.js', () => {
 		process.env.OPENID_CLIENT_ID = null;
 		process.env.OPENID_HTTP_TIMEOUT = null;
 		process.env.OPENID_ISSUER_URI = null;
-		restore();
+		sinon.restore();
 	});
 
 	describe('fromContext', () => {
