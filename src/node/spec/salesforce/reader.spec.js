@@ -29,13 +29,12 @@
 const
 	chai = require('chai'),
 	chaiAsPromised = require('chai-as-promised'),
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 
 	expect = chai.expect,
 
-	reader = require(root + '/src/node/lib/salesforce/reader');
+	reader = require('../../lib/salesforce/reader');
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);

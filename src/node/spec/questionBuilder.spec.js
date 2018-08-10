@@ -27,23 +27,22 @@
 'use strict';
 
 const
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
 	expect = chai.expect,
 
-	questionBuilderPath = root + '/src/node/lib/questionBuilder',
+	questionBuilderPath = '../lib/questionBuilder',
 
 	orizuru = require('@financialforcedev/orizuru'),
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
-	requireAvsc = require(root + '/src/node/lib/util/requireAvsc'),
+	requireAvsc = require('../lib/util/requireAvsc'),
 
-	QuestionBuilderService = require(root + '/src/node/lib/questionBuilder/service'),
-	incomingSchema = requireAvsc(root, 'src/node/res/schema/public/calculateRoutesForPlan'),
-	outgoingSchema = requireAvsc(root, 'src/node/res/schema/question');
+	QuestionBuilderService = require('../lib/questionBuilder/service'),
+	incomingSchema = requireAvsc(__dirname, '../res/schema/public/calculateRoutesForPlan'),
+	outgoingSchema = requireAvsc(__dirname, '../res/schema/question');
 
 chai.use(sinonChai);
 

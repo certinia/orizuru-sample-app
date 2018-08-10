@@ -27,14 +27,13 @@
 'use strict';
 
 const
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
 	expect = chai.expect,
 
-	writer = require(root + '/src/node/lib/salesforce/writer');
+	writer = require('../../lib/salesforce/writer');
 
 chai.use(sinonChai);
 

@@ -28,20 +28,19 @@
 const
 	chai = require('chai'),
 	chaiAsPromised = require('chai-as-promised'),
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 
 	expect = chai.expect,
 
-	connection = require(root + '/src/node/lib/salesforce/connection'),
-	reader = require(root + '/src/node/lib/salesforce/reader'),
-	writer = require(root + '/src/node/lib/salesforce/writer'),
-	service = require(root + '/src/node/lib/questionBuilder/service'),
-	vehicleQuery = require(root + '/src/node/res/spec/questionBuilder/vehicleQuery.json'),
-	vehicleTypeQuery = require(root + '/src/node/res/spec/questionBuilder/vehicleTypeQuery.json'),
-	orderQuery = require(root + '/src/node/res/spec/questionBuilder/orderQuery.json'),
-	convertedResult = require(root + '/src/node/res/spec/questionBuilder/result.json');
+	connection = require('../../lib/salesforce/connection'),
+	reader = require('../../lib/salesforce/reader'),
+	writer = require('../../lib/salesforce/writer'),
+	service = require('../../lib/questionBuilder/service'),
+	vehicleQuery = require('../../res/spec/questionBuilder/vehicleQuery.json'),
+	vehicleTypeQuery = require('../../res/spec/questionBuilder/vehicleTypeQuery.json'),
+	orderQuery = require('../../res/spec/questionBuilder/orderQuery.json'),
+	convertedResult = require('../../res/spec/questionBuilder/result.json');
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);

@@ -29,7 +29,6 @@
 const
 	_ = require('lodash'),
 	express = require('express'),
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
@@ -40,8 +39,8 @@ const
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
 	orizuruAuth = require('@financialforcedev/orizuru-auth'),
 
-	webPath = root + '/src/node/lib/web',
-	schemaNameToDefinition = require(root + '/src/node/lib/web/schema');
+	webPath = '../lib/web',
+	schemaNameToDefinition = require('../lib/web/schema');
 
 chai.use(sinonChai);
 

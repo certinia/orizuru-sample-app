@@ -28,13 +28,13 @@
 
 const
 	chai = require('chai'),
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 	chaiAsPromised = require('chai-as-promised'),
-	service = require(root + '/src/node/lib/resultWriter/service'),
-	connection = require(root + '/src/node/lib/salesforce/connection'),
-	writer = require(root + '/src/node/lib/salesforce/writer'),
+
+	service = require('../../lib/resultWriter/service'),
+	connection = require('../../lib/salesforce/connection'),
+	writer = require('../../lib/salesforce/writer'),
 
 	expect = chai.expect;
 

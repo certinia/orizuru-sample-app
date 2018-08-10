@@ -27,23 +27,22 @@
 'use strict';
 
 const
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
 
 	expect = chai.expect,
 
-	dataCreatorPath = root + '/src/node/lib/dataCreator',
+	dataCreatorPath = '../lib/dataCreator',
 
-	requireAvsc = require(root + '/src/node/lib/util/requireAvsc'),
+	requireAvsc = require('../lib/util/requireAvsc'),
 
-	incomingSchema = requireAvsc(root, 'src/node/res/schema/public/createData'),
+	incomingSchema = requireAvsc(__dirname, '../res/schema/public/createData'),
 
 	orizuru = require('@financialforcedev/orizuru'),
 	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
-	DataCreatorService = require(root + '/src/node/lib/dataCreator/service');
+	DataCreatorService = require('../lib/dataCreator/service');
 
 chai.use(sinonChai);
 

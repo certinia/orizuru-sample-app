@@ -28,15 +28,14 @@
 const
 	chai = require('chai'),
 	chaiAsPromised = require('chai-as-promised'),
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 	proxyquire = require('proxyquire'),
 
 	expect = chai.expect,
 
-	connection = require(root + '/src/node/lib/salesforce/connection'),
-	writer = require(root + '/src/node/lib/salesforce/writer');
+	connection = require('../../lib/salesforce/connection'),
+	writer = require('../../lib/salesforce/writer');
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
@@ -60,7 +59,7 @@ describe('dataCreator/service.js', () => {
 			sinon.stub(writer, 'bulkCreateObject').resolves(fakeReturnedSobjects);
 			sinon.stub(writer, 'sendPlatformEvent').resolves();
 
-			service = proxyquire(root + '/src/node/lib/dataCreator/service', {
+			service = proxyquire('../../lib/dataCreator/service', {
 				'../../res/dataCreator/Account.json': {
 					records: [{
 						Name: 'Mission High School'

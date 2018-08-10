@@ -27,7 +27,6 @@
 'use strict';
 
 const
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
@@ -38,7 +37,7 @@ const
 	jsForce = require('jsforce'),
 	orizuruAuth = require('@financialforcedev/orizuru-auth'),
 
-	connection = require(root + '/src/node/lib/salesforce/connection');
+	connection = require('../../lib/salesforce/connection');
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
@@ -96,12 +95,12 @@ describe('salesforce/connection.js', () => {
 		it('should cache validated tokenGranter for future use', () => {
 
 			// given
-			delete require.cache[require.resolve(root + '/src/node/lib/salesforce/connection')];
+			delete require.cache[require.resolve('../../lib/salesforce/connection')];
 			const
 				context = {
 					user: 'userTest'
 				},
-				connectionAfterCacheClear = require(root + '/src/node/lib/salesforce/connection');
+				connectionAfterCacheClear = require('../../lib/salesforce/connection');
 
 			// when - then
 			return expect(connectionAfterCacheClear.fromContext(context)).to.eventually.eql({ test: 'test' })
