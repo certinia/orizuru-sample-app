@@ -2,22 +2,22 @@
  * Copyright (c) 2017, FinancialForce.com, inc
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, 
+ * Redistribution and use in source and binary forms, with or without modification,
  *   are permitted provided that the following conditions are met:
  *
- * - Redistributions of source code must retain the above copyright notice, 
+ * - Redistributions of source code must retain the above copyright notice,
  *      this list of conditions and the following disclaimer.
- * - Redistributions in binary form must reproduce the above copyright notice, 
- *      this list of conditions and the following disclaimer in the documentation 
+ * - Redistributions in binary form must reproduce the above copyright notice,
+ *      this list of conditions and the following disclaimer in the documentation
  *      and/or other materials provided with the distribution.
- * - Neither the name of the FinancialForce.com, inc nor the names of its contributors 
- *      may be used to endorse or promote products derived from this software without 
+ * - Neither the name of the FinancialForce.com, inc nor the names of its contributors
+ *      may be used to endorse or promote products derived from this software without
  *      specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
- *  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
- *  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
- *  THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ *  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ *  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+ *  THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
@@ -28,17 +28,14 @@
 const
 	chai = require('chai'),
 	chaiAsPromised = require('chai-as-promised'),
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 	proxyquire = require('proxyquire'),
 
 	expect = chai.expect,
 
-	sandbox = sinon.sandbox.create(),
-
-	connection = require(root + '/src/node/lib/salesforce/connection'),
-	writer = require(root + '/src/node/lib/salesforce/writer');
+	connection = require('../../lib/salesforce/connection'),
+	writer = require('../../lib/salesforce/writer');
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
@@ -47,22 +44,22 @@ describe('dataCreator/service.js', () => {
 	let mocks, fakeReturnedSobjects, service;
 
 	afterEach(() => {
-		sandbox.restore();
+		sinon.restore();
 	});
 
 	describe('createData', () => {
 		beforeEach(() => {
 			mocks = {};
-			mocks.conn = sandbox.stub();
+			mocks.conn = sinon.stub();
 			mocks.mockId = 'testId';
-			fakeReturnedSobjects = [sandbox.stub()];
+			fakeReturnedSobjects = [sinon.stub()];
 			fakeReturnedSobjects[0].id = mocks.mockId;
 
-			sandbox.stub(connection, 'fromContext').resolves(mocks.conn);
-			sandbox.stub(writer, 'bulkCreateObject').resolves(fakeReturnedSobjects);
-			sandbox.stub(writer, 'sendPlatformEvent').resolves();
+			sinon.stub(connection, 'fromContext').resolves(mocks.conn);
+			sinon.stub(writer, 'bulkCreateObject').resolves(fakeReturnedSobjects);
+			sinon.stub(writer, 'sendPlatformEvent').resolves();
 
-			service = proxyquire(root + '/src/node/lib/dataCreator/service', {
+			service = proxyquire('../../lib/dataCreator/service', {
 				'../../res/dataCreator/Account.json': {
 					records: [{
 						Name: 'Mission High School'

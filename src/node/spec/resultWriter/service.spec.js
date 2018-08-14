@@ -2,22 +2,22 @@
  * Copyright (c) 2017, FinancialForce.com, inc
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, 
+ * Redistribution and use in source and binary forms, with or without modification,
  *   are permitted provided that the following conditions are met:
  *
- * - Redistributions of source code must retain the above copyright notice, 
+ * - Redistributions of source code must retain the above copyright notice,
  *      this list of conditions and the following disclaimer.
- * - Redistributions in binary form must reproduce the above copyright notice, 
- *      this list of conditions and the following disclaimer in the documentation 
+ * - Redistributions in binary form must reproduce the above copyright notice,
+ *      this list of conditions and the following disclaimer in the documentation
  *      and/or other materials provided with the distribution.
- * - Neither the name of the FinancialForce.com, inc nor the names of its contributors 
- *      may be used to endorse or promote products derived from this software without 
+ * - Neither the name of the FinancialForce.com, inc nor the names of its contributors
+ *      may be used to endorse or promote products derived from this software without
  *      specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
- *  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
- *  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
- *  THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ *  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ *  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+ *  THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
@@ -28,17 +28,15 @@
 
 const
 	chai = require('chai'),
-	root = require('app-root-path'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 	chaiAsPromised = require('chai-as-promised'),
-	service = require(root + '/src/node/lib/resultWriter/service'),
-	connection = require(root + '/src/node/lib/salesforce/connection'),
-	writer = require(root + '/src/node/lib/salesforce/writer'),
 
-	expect = chai.expect,
+	service = require('../../lib/resultWriter/service'),
+	connection = require('../../lib/salesforce/connection'),
+	writer = require('../../lib/salesforce/writer'),
 
-	sandbox = sinon.sandbox.create();
+	expect = chai.expect;
 
 chai.use(sinonChai);
 chai.use(chaiAsPromised);
@@ -46,14 +44,14 @@ chai.use(chaiAsPromised);
 describe('resultWriter/service.js', () => {
 
 	afterEach(() => {
-		sandbox.restore();
+		sinon.restore();
 	});
 
 	it('should call the appropriate methods when writing a successful response', () => {
 
 		// given
 		const
-			conn = sandbox.stub(),
+			conn = sinon.stub(),
 			expectedInput = {
 				conn,
 				message: {
@@ -122,11 +120,11 @@ describe('resultWriter/service.js', () => {
 				status: 'COMPLETED'
 			};
 
-		conn.apex = sandbox.stub();
-		conn.apex.post = sandbox.stub().resolves([{ Id: 'myFakeId' }, { Id: 'anotherFakeId' }]);
+		conn.apex = sinon.stub();
+		conn.apex.post = sinon.stub().resolves([{ Id: 'myFakeId' }, { Id: 'anotherFakeId' }]);
 
-		sandbox.stub(connection, 'fromContext').resolves(conn);
-		sandbox.stub(writer, 'sendPlatformEvent').resolves();
+		sinon.stub(connection, 'fromContext').resolves(conn);
+		sinon.stub(writer, 'sendPlatformEvent').resolves();
 
 		// when / then
 		return expect(service.writeResults(expectedInput))
