@@ -33,54 +33,42 @@ const
 	// get orizuru classes
 	{ Handler, Publisher } = require('@financialforcedev/orizuru'),
 
-	// get the handling service
-	service = require('./questionBuilder/service'),
-
 	// build transport
-	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
-	transportConfig = {
-		cloudamqpUrl: process.env.CLOUDAMQP_URL
-	},
-	orizuruConfig = {
-		transport,
-		transportConfig
-	},
+	{ Transport } = require('@financialforcedev/orizuru-transport-rabbitmq'),
+	transport = new Transport({
+		url: process.env.CLOUDAMQP_URL
+	}),
 
 	requireAvsc = require('./util/requireAvsc'),
 
 	// define event schemas
 	incomingSchema = requireAvsc(__dirname, '../res/schema/public/calculateRoutesForPlan'),
-	outgoingSchema = requireAvsc(__dirname, '../res/schema/question'),
 
 	// get handler and publisher
-	handlerInstance = new Handler(orizuruConfig),
-	publisherInstance = new Publisher(orizuruConfig),
+	handlerInstance = new Handler({ transport }),
+	publisherInstance = new Publisher({ transport }),
 
 	// callback
-	onHandleIncomingEvent = ({ context, message }) => {
+	{ onHandleIncomingEvent } = require('./questionBuilder/handler'),
 
-		return service.buildQuestion({ context, message })
-			.then(result => {
+	handler = onHandleIncomingEvent(publisherInstance);
 
-				// publish
-				return publisherInstance.publish({
-					message: result,
-					schema: outgoingSchema,
-					context
-				});
+// listen and log error/info events on the handler
+handlerInstance.on(Handler.ERROR, debug.error);
+handlerInstance.on(Handler.INFO, debug);
 
-			});
+// // listen and log error/info events on the publisher
+publisherInstance.on(Publisher.ERROR, debug.error);
+publisherInstance.on(Publisher.INFO, debug);
 
-	};
+// Initialise handler and publisher
+async function init() {
+	await publisherInstance.init();
+	await handlerInstance.init();
+	await handlerInstance.handle({
+		schema: incomingSchema,
+		handler
+	});
+}
 
-// listen and log error events on the handler
-Handler.emitter.on(Handler.emitter.ERROR, debug.error);
-
-// listen and log error events on the publisher
-Publisher.emitter.on(Publisher.emitter.ERROR, debug.error);
-
-// listen
-handlerInstance.handle({
-	schema: incomingSchema,
-	callback: onHandleIncomingEvent
-});
+module.exports = init();

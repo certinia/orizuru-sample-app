@@ -37,14 +37,10 @@ const
 	dataCreator = require('./dataCreator/service'),
 
 	// build transport
-	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
-	transportConfig = {
-		cloudamqpUrl: process.env.CLOUDAMQP_URL
-	},
-	orizuruConfig = {
-		transport,
-		transportConfig
-	},
+	{ Transport } = require('@financialforcedev/orizuru-transport-rabbitmq'),
+	transport = new Transport({
+		url: process.env.CLOUDAMQP_URL
+	}),
 
 	requireAvsc = require('./util/requireAvsc'),
 
@@ -52,18 +48,22 @@ const
 	incomingSchema = requireAvsc(__dirname, '../res/schema/public/createData'),
 
 	// get handler and publisher
-	handlerInstance = new Handler(orizuruConfig),
+	handlerInstance = new Handler({ transport }),
 
 	// callback
-	onHandleIncomingEvent = (event) => {
-		return dataCreator.createData(event);
-	};
+	handler = dataCreator.createData;
 
-// listen and log error events on the handler
-Handler.emitter.on(Handler.emitter.ERROR, debug.error);
+// listen and log error/info events on the handler
+handlerInstance.on(Handler.ERROR, debug.error);
+handlerInstance.on(Handler.INFO, debug);
 
-// listen
-handlerInstance.handle({
-	schema: incomingSchema,
-	callback: onHandleIncomingEvent
-});
+// Initialise handler
+async function init() {
+	await handlerInstance.init();
+	await handlerInstance.handle({
+		schema: incomingSchema,
+		handler
+	});
+}
+
+module.exports = init();

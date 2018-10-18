@@ -38,7 +38,7 @@ const
 	DEFAULT_ROUTE = express.static(path.join(__dirname, 'web/static')),
 
 	// get the server
-	{ Server } = require('@financialforcedev/orizuru'),
+	{ json, Server } = require('@financialforcedev/orizuru'),
 
 	// get the auth
 	auth = require('@financialforcedev/orizuru-auth').middleware,
@@ -52,33 +52,43 @@ const
 	},
 
 	// get the transport
-	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
+	{ Transport } = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
 	// configure the transport
-	transportConfig = {
-		cloudamqpUrl: process.env.CLOUDAMQP_URL
-	},
+	transport = new Transport({
+		url: process.env.CLOUDAMQP_URL
+	}),
 
 	// get schemas
 	schemaNameToDefinition = require('./web/schema'),
 
 	// define the endpoint ( in this case: /api/{schemaname} )
-	apiEndpoint = '/api',
+	apiEndpoint = '/api/',
 
-	// define middlewares (in order of usage)
-	middlewares = [auth.tokenValidator(authenticationEnv), auth.grantChecker(authenticationEnv)],
+	// define middleware (in order of usage)
+	middleware = [json(), auth.tokenValidator(authenticationEnv), auth.grantChecker(authenticationEnv)],
 
-	// define port (should be an env var in production)
-	port = process.env.PORT;
-
-// listen and log error events on the server
-Server.emitter.on(Server.emitter.ERROR, debug.error);
+	// create the server
+	server = new Server({
+		port: parseInt(process.env.PORT, 10),
+		transport
+	});
 
 // listen and log error events on the authenticator
 auth.emitter.on('denied', debug.error);
 
-new Server({ transport, transportConfig })
-	.addRoute({ schemaNameToDefinition, apiEndpoint, middlewares })
-	.getServer()
+server
+	.on(Server.ERROR, debug.error)
+	.on(Server.INFO, debug)
+	.addRoute({
+		endpoint: apiEndpoint,
+		middleware,
+		schema: schemaNameToDefinition.calculateRoutesForPlan
+	})
+	.addRoute({
+		endpoint: apiEndpoint,
+		middleware,
+		schema: schemaNameToDefinition.createData
+	})
 	.use('/', DEFAULT_ROUTE)
-	.listen(port);
+	.listen();
