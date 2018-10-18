@@ -1,5 +1,5 @@
 {
-	"name": "orizuru",
+	"name": "orizuru-sample-app",
 	"version": "0.0.0",
 	"description": "Dreamforce sample app for google maps integration",
 	"scripts": {
@@ -11,7 +11,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://stash.dev.financialforce.com/projects/RESEARCH/repos/orizuru/browse"
+		"url": "https://github.com/financialforcedev/orizuru-sample-app"
 	},
 	"keywords": [
 		"dreamforce",
