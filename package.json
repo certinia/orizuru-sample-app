@@ -26,7 +26,6 @@
 		"@financialforcedev/orizuru": "^9.0.0-2",
 		"@financialforcedev/orizuru-auth": "^5.0.0-0",
 		"@financialforcedev/orizuru-transport-rabbitmq": "^5.0.0-0",
-		"bluebird": "^3.5.2",
 		"debug-plus": "^1.2.2",
 		"jsforce": "^1.9.1",
 		"lodash": "^4.17.11"
@@ -40,8 +39,7 @@
 		"nyc": "^13.1.0",
 		"proxyquire": "^2.1.0",
 		"sinon": "^7.0.0",
-		"sinon-chai": "^3.2.0",
-		"supertest": "^3.3.0"
+		"sinon-chai": "^3.2.0"
 	},
 	"engines": {
 		"node": "8.12.0",
