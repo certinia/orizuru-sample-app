@@ -71,10 +71,11 @@ describe('dataCreator', () => {
 
 	it('should wire up handler', async () => {
 
-		// given - when
+		// Given
+		// When
 		await require(dataCreatorPath);
 
-		// then
+		// Then
 		expect(transport.Transport).to.have.been.calledOnce;
 		expect(transport.Transport).to.have.been.calledWithNew;
 		expect(transport.Transport).to.have.been.calledWithExactly({

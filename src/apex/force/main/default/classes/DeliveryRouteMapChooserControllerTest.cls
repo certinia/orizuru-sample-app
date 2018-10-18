@@ -54,16 +54,16 @@ private class DeliveryRouteMapChooserControllerTest
 	@IsTest
 	private static void getPlanStatus_withId_shouldReturnPlanStatus()
 	{
-		// given
+		// Given
 		String expectedResult = 'NOT STARTED';
 		
 		DeliveryPlan__c plan = new DeliveryPlan__c();
 		insert plan;
 
-		// when
+		// When
 		String result = DeliveryRouteMapChooserController.getPlanStatus(plan.id);
 
-		// then
+		// Then
 		System.assertEquals(expectedResult, result);
 	}
 }

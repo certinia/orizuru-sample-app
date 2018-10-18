@@ -48,15 +48,15 @@ public class DefaultSolutionFinderTest {
 	@Test
 	public void transform_shouldFindTheSolution() throws Exception {
 
-		// given
+		// Given
 		String inputXml = getFileContents("vehicleRoutingProblem.xml");
 
 		DefaultSolutionFinder solutionFinder = new DefaultSolutionFinder();
 
-		// when
+		// When
 		VehicleRoutingProblemSolution solution = solutionFinder.transform(inputXml);
 
-		// then
+		// Then
 		assertEquals(solution.getRoutes().size(), 9);
 
 	}
@@ -64,14 +64,14 @@ public class DefaultSolutionFinderTest {
 	@Test
 	public void transform_shouldThrowASolverExceptionForNoXml() throws Exception {
 
-		// given
+		// Given
 		DefaultSolutionFinder solutionFinder = new DefaultSolutionFinder();
 
 		// expect
 		exception.expect(SolverException.class);
 		exception.expectMessage("Failed to handle message: Failed to find solution");
 
-		// when
+		// When
 		solutionFinder.transform(null);
 
 	}

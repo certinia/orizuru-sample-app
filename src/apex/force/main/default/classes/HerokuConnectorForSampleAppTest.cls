@@ -30,16 +30,16 @@ private class HerokuConnectorForSampleAppTest
 	@IsTest
 	private static void requestCalculateRoute_callsHerokuConnectorWithCorrectInfo()
 	{
-		// given
+		// Given
 		HTTPResponse result = new HTTPResponse();
 		HerokuConnectorMock connMock = new HerokuConnectorMock(result);
 		HerokuConnector.setMock((IHerokuConnector) connMock);
 		HerokuConnectorForSampleApp connector = HerokuConnectorForSampleApp.newInstance();
 
-		// when
+		// When
 		HTTPResponse resultFromCall = connector.calculateRoute('Test');
 
-		// then
+		// Then
 		System.assertEquals('callout:Orizuru/api/calculateRoutesForPlan', connMock.endpoint);
 		System.assertEquals(new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan('Test').serialize(), connMock.transport.serialize());
 		System.assertEquals(result, resultFromCall);
@@ -48,16 +48,16 @@ private class HerokuConnectorForSampleAppTest
 	@IsTest
 	private static void requestGenerateData_callsHerokuConnectorWithCorrectInfo()
 	{
-		// given
+		// Given
 		HTTPResponse result = new HTTPResponse();
 		HerokuConnectorMock connMock = new HerokuConnectorMock(result);
 		HerokuConnector.setMock((IHerokuConnector) connMock);
 		HerokuConnectorForSampleApp connector = HerokuConnectorForSampleApp.newInstance();
 
-		// when
+		// When
 		HTTPResponse resultFromCall = connector.generateData('Test');
 
-		// then
+		// Then
 		System.assertEquals('callout:Orizuru/api/createData', connMock.endpoint);
 		System.assertEquals(new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData('Test').serialize(), connMock.transport.serialize());
 		System.assertEquals(result, resultFromCall);

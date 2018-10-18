@@ -46,17 +46,17 @@ public class RouteSolverTest {
 	@Test
 	public void run_startsConsumingTheMessageQueue() throws Exception {
 
-		// given
+		// Given
 		IMessageQueue messageQueue = mock(IMessageQueue.class);
 		Channel channel = mock(Channel.class);
 		when(messageQueue.createChannel()).thenReturn(channel);
 
 		RouteSolver routeSolver = new RouteSolver(messageQueue);
 
-		// when
+		// When
 		routeSolver.run();
 
-		// then
+		// Then
 		verify(messageQueue, times(1)).createChannel();
 		verify(channel, times(1)).queueDeclare(Question.class.getName(), true, false, false, null);
 		verify(messageQueue, times(1)).consume(any(), any(), any());
@@ -66,16 +66,16 @@ public class RouteSolverTest {
 	@Test
 	public void run_catchesMessagingExceptions() throws Exception {
 
-		// given
+		// Given
 		IMessageQueue messageQueue = mock(IMessageQueue.class);
 		when(messageQueue.createChannel()).thenThrow(MessagingException.class);
 
 		RouteSolver routeSolver = new RouteSolver(messageQueue);
 
-		// when
+		// When
 		routeSolver.run();
 
-		// then
+		// Then
 		verify(messageQueue, times(1)).createChannel();
 		verify(messageQueue, never()).consume(any(), any(), any());
 

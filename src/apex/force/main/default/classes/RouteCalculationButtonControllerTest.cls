@@ -30,7 +30,7 @@ private class RouteCalculationButtonControllerTest
 	@IsTest
 	private static void calculateRoute_ShouldCallTheHerokuConnectorForSampleAppCalculateRouteMethod()
 	{
-		// given
+		// Given
 		StubProvider mocks = new StubProvider();
 
 		HerokuConnectorForSampleApp mockConnector = (HerokuConnectorForSampleApp)mocks.mock(HerokuConnectorForSampleApp.class);
@@ -38,42 +38,42 @@ private class RouteCalculationButtonControllerTest
 
 		mocks.stub(mockConnector, 'calculateRoute', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
 
-		// when
+		// When
 		RouteCalculationButtonController.calculateRoute('Test');
 
-		// then
+		// Then
 		System.assertEquals(1, mocks.getCallCount(mockConnector, 'calculateRoute', new Type[]{ String.class }, new Object[]{ 'Test' }));
 	}
 
 	@IsTest
 	private static void getPlanStatus_withId_shouldReturnPlanStatus()
 	{
-		// given
+		// Given
 		String expectedResult = 'NOT STARTED';
 		
 		DeliveryPlan__c plan = new DeliveryPlan__c();
 		insert plan;
 
-		// when
+		// When
 		String result = RouteCalculationButtonController.getPlanStatus(plan.id);
 
-		// then
+		// Then
 		System.assertEquals(expectedResult, result);
 	}
 
 	@IsTest
 	private static void sendInitialPlatformEvent_withId_shouldReturnSuccess()
 	{
-		// given
+		// Given
 		DeliveryPlan__c plan = new DeliveryPlan__c();
 		insert plan;
 
-		// when
+		// When
 		Test.startTest();
 		Boolean result = RouteCalculationButtonController.sendInitialPlatformEvent(plan.id);
 		Test.stopTest();
 
-		// then
+		// Then
 		System.assertEquals(true, result);
 	}
 }

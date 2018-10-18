@@ -30,16 +30,16 @@ private class HerokuConnectorTest
 	@IsTest
 	private static void post_sendsExpectedHttpRequest()
 	{
-		// given
+		// Given
 		IHerokuConnector connector = HerokuConnector.newInstance();
 		CalloutMock mock = new CalloutMock();
 		ISerializable testSerialize = new SerializableMock();
 		Test.setMock(HttpCalloutMock.class, mock);
 
-		// when
+		// When
 		connector.post('some/api/path', testSerialize);
 
-		// then
+		// Then
 		System.assertEquals('Bearer ' + UserInfo.getSessionId(), mock.Request.getHeader('Authorization'));
 		System.assertEquals(Url.getSalesforceBaseUrl().toExternalForm(), mock.Request.getHeader('Referer'));
 		System.assertEquals('application/json', mock.Request.getHeader('Content-Type'));

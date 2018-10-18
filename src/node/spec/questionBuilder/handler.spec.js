@@ -64,15 +64,15 @@ describe('questionBuilder/handler', () => {
 
 	it('should call service and publish result on event', async () => {
 
-		// given
+		// Given
 		const
 			context = 'contextTest',
 			message = 'messageTest';
 
-		// when
+		// When
 		await onHandleIncomingEvent(publisherStubInstance)({ context, message });
 
-		// then
+		// Then
 		expect(QuestionBuilderService.buildQuestion).to.have.been.calledOnce;
 		expect(QuestionBuilderService.buildQuestion).to.have.been.calledWithExactly({ context, message });
 

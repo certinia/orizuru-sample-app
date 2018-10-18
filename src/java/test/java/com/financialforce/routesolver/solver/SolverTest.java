@@ -46,7 +46,7 @@ public class SolverTest {
 	@Test
 	public void solve_shouldCallTheTransformationMethods() throws Exception {
 
-		// given
+		// Given
 		Question expectedQuestion = new Question();
 		Problem expectedProblem = new Problem();
 		VehicleRoutingProblemSolution expectedSolution = new VehicleRoutingProblemSolution(null, 500d);
@@ -71,10 +71,10 @@ public class SolverTest {
 		solver.setSolutionFinder(solutionFinder);
 		solver.setOutputTransform(outputTransform);
 
-		// when
+		// When
 		Answer answer = solver.solve(expectedQuestion);
 
-		// then
+		// Then
 		assertEquals(expectedAnswer, answer);
 		verify(inputTransform, times(1)).transform(expectedQuestion);
 		verify(xmlTransform, times(1)).transform(expectedProblem);

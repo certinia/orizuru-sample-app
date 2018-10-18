@@ -70,16 +70,16 @@ describe('salesforce/connection', () => {
 
 		it('should return a correctly configured connection from context', async () => {
 
-			// given
+			// Given
 			const
 				context = {
 					user: 'userTest'
 				},
 
-				// when
+				// When
 				result = await connection.fromContext(context);
 
-			// then
+			// Then
 			expect(result).to.eql({ test: 'test' });
 			expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;
 			expect(orizuruAuth.grant.getToken).to.have.been.calledWithExactly({
@@ -96,17 +96,17 @@ describe('salesforce/connection', () => {
 
 		it('should cache validated tokenGranter for future use', async () => {
 
-			// given
+			// Given
 			const
 				context = {
 					user: 'userTest'
 				},
 				connectionAfterCacheClear = require('../../lib/salesforce/connection');
 
-			// when
+			// When
 			let result = await connectionAfterCacheClear.fromContext(context);
 
-			// then
+			// Then
 			expect(result).to.eql({ test: 'test' });
 
 			expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;

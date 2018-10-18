@@ -45,7 +45,7 @@ public class DefaultConverterTest {
 	@Test
 	public void transform_shouldConvertAProblemToXml() throws Exception {
 
-		// given
+		// Given
 		ProblemType problemType = new ProblemType();
 		problemType.setFleetComposition("FINITE");
 
@@ -54,10 +54,10 @@ public class DefaultConverterTest {
 
 		DefaultConverter converter = new DefaultConverter();
 
-		// when
+		// When
 		String xml = converter.transform(problem);
 
-		// then
+		// Then
 		assertEquals(
 				"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><problem><problemType><fleetComposition>FINITE</fleetComposition></problemType></problem>",
 				xml);
@@ -67,7 +67,7 @@ public class DefaultConverterTest {
 	@Test
 	public void transform_shouldThrowAnExceptionForNullXml() throws Exception {
 
-		// given
+		// Given
 		DefaultConverter converter = new DefaultConverter();
 
 		// expect
@@ -75,7 +75,7 @@ public class DefaultConverterTest {
 		exception.expectMessage("Failed to handle message: Failed to convert problem to xml");
 		exception.expectCause(IsInstanceOf.<Throwable>instanceOf(IllegalArgumentException.class));
 
-		// when
+		// When
 		converter.transform(null);
 
 	}

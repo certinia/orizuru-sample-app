@@ -47,7 +47,7 @@ describe('resultWriter/service', () => {
 
 	it('should call the appropriate methods when writing a successful response', async () => {
 
-		// given
+		// Given
 		const
 			conn = sinon.stub(),
 			expectedInput = {
@@ -124,10 +124,10 @@ describe('resultWriter/service', () => {
 		sinon.stub(connection, 'fromContext').resolves(conn);
 		sinon.stub(writer, 'sendPlatformEvent').resolves();
 
-		// when
+		// When
 		await service.writeResults(expectedInput);
 
-		// then
+		// Then
 		expect(conn.apex.post).to.have.been.calledTwice;
 		expect(conn.apex.post).to.have.been.calledWithExactly('/RouteAPI/', { routes: expectedRoutes });
 		expect(conn.apex.post).to.have.been.calledWithExactly('/WaypointAPI/', { waypoints: expectedWaypoints });

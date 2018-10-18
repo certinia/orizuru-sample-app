@@ -48,32 +48,32 @@ private class DataGeneratorButtonControllerTest
 	@IsTest
 	private static void getTaskStatus_withId_shouldReturnTaskComplete()
 	{
-		// given
+		// Given
 		String expectedResult = 'NOT STARTED';
 		
 		GenerateDataTask__c task = new GenerateDataTask__c();
 		insert task;
 
-		// when
+		// When
 		String result = DataGeneratorButtonController.getTaskStatus(task.id);
 
-		// then
+		// Then
 		System.assertEquals(expectedResult, result);
 	}
 
 	@IsTest
 	private static void sendInitialPlatformEvent_withId_shouldReturnSuccess()
 	{
-		// given
+		// Given
 		GenerateDataTask__c task = new GenerateDataTask__c();
 		insert task;
 
-		// when
+		// When
 		Test.startTest();
 		Boolean result = DataGeneratorButtonController.sendInitialPlatformEvent(task.id);
 		Test.stopTest();
 
-		// then
+		// Then
 		System.assertEquals(true, result);
 	}
 }

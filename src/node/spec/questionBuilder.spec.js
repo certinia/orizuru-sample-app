@@ -77,10 +77,11 @@ describe('questionBuilder', () => {
 
 	it('should wire up handler', async () => {
 
-		// given - when
+		// Given
+		// When
 		await require(questionBuilderPath);
 
-		// then
+		// Then
 		expect(transport.Transport).to.have.been.calledOnce;
 		expect(transport.Transport).to.have.been.calledWithNew;
 		expect(transport.Transport).to.have.been.calledWithExactly({

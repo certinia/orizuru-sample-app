@@ -115,17 +115,17 @@ describe('dataCreator/service', () => {
 
 			it('should insertData ', async () => {
 
-				// given
+				// Given
 				const
 					context = {},
 					message = {
 						generateDataTaskId: 'testId'
 					};
 
-				// when
+				// When
 				await service.createData({ context, message });
 
-				// then
+				// Then
 				expect(writer.bulkCreateObject).to.have.been.callCount(7);
 				expect(writer.bulkCreateObject).to.have.been.calledWithExactly(mocks.conn, 'Account', [{
 					Name: 'Mission High School'

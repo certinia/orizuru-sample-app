@@ -55,7 +55,7 @@ public class DefaultInputTransformerTest {
 	@Test
 	public void transform_shouldConvertTheQuestionToAProblem() throws Exception {
 
-		// given
+		// Given
 		VehicleType vehicleType = new VehicleType();
 		vehicleType.setId("VT1");
 		vehicleType.setCapacity(80);
@@ -78,10 +78,10 @@ public class DefaultInputTransformerTest {
 
 		DefaultInputTransformer converter = new DefaultInputTransformer();
 
-		// when
+		// When
 		Problem problem = converter.transform(question);
 
-		// then
+		// Then
 		Problem.VehicleTypes.Type problemVehicleType = problem.getVehicleTypes().getType().get(0);
 		assertEquals(problemVehicleType.getId(), "VT1");
 		assertEquals(problemVehicleType.getCapacity(), BigInteger.valueOf(80));
@@ -103,7 +103,7 @@ public class DefaultInputTransformerTest {
 	@Test
 	public void transform_shouldThrowASolverExceptionIfTheMappingFails() throws Exception {
 
-		// given
+		// Given
 		ModelMapper mapper = mock(ModelMapper.class);
 		when(mapper.map(any(), any())).thenThrow(NullPointerException.class);
 
@@ -113,7 +113,7 @@ public class DefaultInputTransformerTest {
 		// expect
 		exception.expect(SolverException.class);
 
-		// when
+		// When
 		converter.transform(null);
 
 	}

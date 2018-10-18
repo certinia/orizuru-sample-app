@@ -55,7 +55,7 @@ public class DefaultOutputTransformerTest {
 	@Test
 	public void transform_shouldConvertTheVehicleRoutingProblemSolutionToAnAnswer() throws Exception {
 
-		// given
+		// Given
 		Service service = Service.Builder.newInstance("hello").addSizeDimension(0, 10)
 				.setLocation(Location.newInstance("loc")).build();
 		ServiceActivity activity = ServiceActivity.newInstance(service);
@@ -67,10 +67,10 @@ public class DefaultOutputTransformerTest {
 
 		DefaultOutputTransformer converter = new DefaultOutputTransformer();
 
-		// when
+		// When
 		Answer answer = converter.transform(solution);
 
-		// then
+		// Then
 		assertEquals(answer.getSolution().getCost(), 500d, 0d);
 
 	}
@@ -78,7 +78,7 @@ public class DefaultOutputTransformerTest {
 	@Test
 	public void transform_shouldThrowASolverExceptionIfTheMappingFails() throws Exception {
 
-		// given
+		// Given
 		ModelMapper mapper = mock(ModelMapper.class);
 		when(mapper.map(any(), any())).thenThrow(NullPointerException.class);
 
@@ -88,7 +88,7 @@ public class DefaultOutputTransformerTest {
 		// expect
 		exception.expect(SolverException.class);
 
-		// when
+		// When
 		converter.transform(null);
 
 	}

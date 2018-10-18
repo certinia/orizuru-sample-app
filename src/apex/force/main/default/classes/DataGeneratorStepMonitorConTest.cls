@@ -30,16 +30,16 @@ private class DataGeneratorStepMonitorConTest
 	@IsTest
 	private static void getTaskStatus_withId_shouldReturnTaskStatus()
 	{
-		// given
+		// Given
 		String expectedResult = 'NOT STARTED';
 		
 		GenerateDataTask__c task = new GenerateDataTask__c();
 		insert task;
 
-		// when
+		// When
 		String result = DataGeneratorStepMonitorController.getTaskStatus(task.id);
 
-		// then
+		// Then
 		System.assertEquals(expectedResult, result);
 	}
 }

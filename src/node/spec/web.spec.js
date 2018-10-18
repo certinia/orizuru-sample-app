@@ -85,13 +85,13 @@ describe('web', () => {
 
 	it('should build a orizuru web server correctly', () => {
 
-		// given
+		// Given
 		express.static.returns('defaultRoute');
 
-		// when
+		// When
 		require(webPath);
 
-		// then
+		// Then
 		expect(transport.Transport).to.have.been.calledOnce;
 		expect(transport.Transport).to.have.been.calledWithNew;
 		expect(transport.Transport).to.have.been.calledWithExactly({

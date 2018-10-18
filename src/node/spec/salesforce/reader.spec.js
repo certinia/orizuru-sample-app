@@ -61,7 +61,7 @@ describe('salesforce/reader', () => {
 
 		it('should handle errors', async () => {
 
-			// given
+			// Given
 			const
 				expectedError = 'error',
 				expectedQuery = 'SELECT Id FROM Account';
@@ -79,9 +79,10 @@ describe('salesforce/reader', () => {
 				return mocks.conn;
 			});
 
-			// when - then
+			// When
 			await expect(reader.query({ conn: mocks.conn, query: expectedQuery })).to.eventually.be.rejectedWith(expectedError);
 
+			// Then
 			expect(mocks.conn.query).to.have.been.calledOnce;
 			expect(mocks.conn.query).to.have.been.calledWithExactly(expectedQuery);
 
@@ -89,7 +90,7 @@ describe('salesforce/reader', () => {
 
 		it('should execute the query and return no records', async () => {
 
-			// given
+			// Given
 			mocks.conn = sinon.stub().returnsThis();
 			mocks.conn.query = sinon.stub().returnsThis();
 			mocks.conn.on = sinon.stub();
@@ -105,10 +106,10 @@ describe('salesforce/reader', () => {
 
 			const expectedQuery = 'SELECT Id FROM Account',
 
-				// when
+				// When
 				result = await reader.query({ conn: mocks.conn, query: expectedQuery });
 
-			// then
+			// Then
 			expect(result).to.eql([]);
 			expect(mocks.conn.query).to.have.been.calledOnce;
 			expect(mocks.conn.query).to.have.been.calledWithExactly(expectedQuery);
@@ -117,7 +118,7 @@ describe('salesforce/reader', () => {
 
 		it('should execute the query and return records', async () => {
 
-			// given
+			// Given
 			var result;
 
 			const
@@ -142,10 +143,10 @@ describe('salesforce/reader', () => {
 
 			});
 
-			// when
+			// When
 			result = await reader.query({ conn: mocks.conn, query: expectedQuery });
 
-			// then
+			// Then
 			expect(result).to.eql([expectedRecord]);
 			expect(mocks.conn.query).to.have.been.calledOnce;
 			expect(mocks.conn.query).to.have.been.calledWithExactly(expectedQuery);

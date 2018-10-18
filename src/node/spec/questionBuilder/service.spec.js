@@ -83,7 +83,7 @@ describe('questionBuilder/service', () => {
 
 			it('should return a question', async () => {
 
-				// given
+				// Given
 				reader.query.resolves(mocks.queryResult);
 
 				const
@@ -93,10 +93,10 @@ describe('questionBuilder/service', () => {
 						}
 					},
 
-					// when - then
+					// When
 					result = await service.buildQuestion(expectedInput);
 
-				// then
+				// Then
 				expect(result).to.eql(mocks.expectedResult);
 				expect(writer.sendPlatformEvent).to.be.calledTwice;
 				expect(reader.query).to.be.calledThrice;
@@ -105,7 +105,7 @@ describe('questionBuilder/service', () => {
 
 			it('should convert the query result correctly', async () => {
 
-				// given
+				// Given
 				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[0] }).resolves(vehicleQuery);
 				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[1] }).resolves(vehicleTypeQuery);
 				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[2] }).resolves(orderQuery);
@@ -129,10 +129,10 @@ describe('questionBuilder/service', () => {
 						status: 'CALCULATING_ROUTES'
 					},
 
-					// when
+					// When
 					result = await service.buildQuestion(expectedInput);
 
-				// then
+				// Then
 				expect(result).to.eql(convertedResult);
 				expect(reader.query).to.be.calledWithExactly({ conn: mocks.conn, query: mocks.queries[0] });
 				expect(reader.query).to.be.calledWithExactly({ conn: mocks.conn, query: mocks.queries[1] });
