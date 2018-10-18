@@ -36,19 +36,17 @@ const
 	resultWriterPath = '../lib/resultWriter',
 
 	orizuru = require('@financialforcedev/orizuru'),
-	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
+	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
 	requireAvsc = require('../lib/util/requireAvsc'),
 
-	incomingSchema = requireAvsc(__dirname, '../res/schema/answer'),
-
-	service = require('../lib/resultWriter/service');
+	incomingSchema = requireAvsc(__dirname, '../res/schema/answer');
 
 chai.use(sinonChai);
 
 describe('resultWriter', () => {
 
-	let handlerMock;
+	let handlerStubInstance, transportStubInstance;
 
 	beforeEach(() => {
 
@@ -56,13 +54,13 @@ describe('resultWriter', () => {
 
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
 
-		handlerMock = {
-			handle: sinon.stub().resolves()
-		};
+		transportStubInstance = sinon.createStubInstance(transport.Transport);
+		sinon.stub(transport, 'Transport').returns(transportStubInstance);
 
-		sinon.stub(orizuru, 'Handler').callsFake(function (config) {
-			this.handle = handlerMock.handle;
-		});
+		handlerStubInstance = sinon.createStubInstance(orizuru.Handler);
+		handlerStubInstance.on.returnsThis();
+		handlerStubInstance.init.resolves(handlerStubInstance);
+		sinon.stub(orizuru, 'Handler').returns(handlerStubInstance);
 
 	});
 
@@ -71,49 +69,28 @@ describe('resultWriter', () => {
 		sinon.restore();
 	});
 
-	it('should wire up handler', () => {
+	it('should wire up handler', async () => {
 
 		// given - when
-		require(resultWriterPath);
+		await require(resultWriterPath);
 
 		// then
+		expect(transport.Transport).to.have.been.calledOnce;
+		expect(transport.Transport).to.have.been.calledWithNew;
+		expect(transport.Transport).to.have.been.calledWithExactly({
+			url: 'cloudAmqpUrl'
+		});
 		expect(orizuru.Handler).to.have.been.calledOnce;
 		expect(orizuru.Handler).to.have.been.calledWithNew;
-		expect(orizuru.Handler).to.have.been.calledWith({
-			transport: orizuruTransportRabbitmq,
-			transportConfig: {
-				cloudamqpUrl: 'cloudAmqpUrl'
-			}
+		expect(orizuru.Handler).to.have.been.calledWithExactly({
+			transport: transportStubInstance
 		});
-		expect(handlerMock.handle).to.have.been.calledOnce;
-		expect(handlerMock.handle).to.have.been.calledWith({
+		expect(handlerStubInstance.init).to.have.been.calledOnce;
+		expect(handlerStubInstance.init).to.have.been.calledWithExactly();
+		expect(handlerStubInstance.handle).to.have.been.calledOnce;
+		expect(handlerStubInstance.handle).to.have.been.calledWithExactly({
 			schema: incomingSchema,
-			callback: sinon.match.func
-		});
-
-	});
-
-	describe('internal handler', () => {
-
-		it('should call service', () => {
-
-			// given
-			sinon.stub(service, 'writeResults').resolves('result');
-
-			require(resultWriterPath);
-
-			const
-				handler = handlerMock.handle.getCall(0).args[0].callback,
-				message = 'messageTest',
-				context = 'contextTest';
-
-			// when - then
-			return handler({ message, context })
-				.then(() => {
-					expect(service.writeResults).to.have.been.calledOnce;
-					expect(service.writeResults).to.have.been.calledWith({ message, context });
-				});
-
+			handler: sinon.match.func
 		});
 
 	});

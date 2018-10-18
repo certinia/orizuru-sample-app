@@ -30,7 +30,6 @@ const
 	chai = require('chai'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
-	chaiAsPromised = require('chai-as-promised'),
 
 	service = require('../../lib/resultWriter/service'),
 	connection = require('../../lib/salesforce/connection'),
@@ -39,7 +38,6 @@ const
 	expect = chai.expect;
 
 chai.use(sinonChai);
-chai.use(chaiAsPromised);
 
 describe('resultWriter/service', () => {
 
@@ -47,7 +45,7 @@ describe('resultWriter/service', () => {
 		sinon.restore();
 	});
 
-	it('should call the appropriate methods when writing a successful response', () => {
+	it('should call the appropriate methods when writing a successful response', async () => {
 
 		// given
 		const
@@ -126,16 +124,17 @@ describe('resultWriter/service', () => {
 		sinon.stub(connection, 'fromContext').resolves(conn);
 		sinon.stub(writer, 'sendPlatformEvent').resolves();
 
-		// when / then
-		return expect(service.writeResults(expectedInput))
-			.to.eventually.be.fulfilled
-			.then(() => {
-				expect(conn.apex.post).to.have.been.calledTwice;
-				expect(conn.apex.post).to.have.been.calledWith('/RouteAPI/', { routes: expectedRoutes });
-				expect(conn.apex.post).to.have.been.calledWith('/WaypointAPI/', { waypoints: expectedWaypoints });
-				expect(writer.sendPlatformEvent).to.have.been.calledTwice;
-				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedWritingPlatformEvent);
-				expect(writer.sendPlatformEvent).to.have.been.calledWith(conn, expectedCompletedPlatformEvent);
-			});
+		// when
+		await service.writeResults(expectedInput);
+
+		// then
+		expect(conn.apex.post).to.have.been.calledTwice;
+		expect(conn.apex.post).to.have.been.calledWithExactly('/RouteAPI/', { routes: expectedRoutes });
+		expect(conn.apex.post).to.have.been.calledWithExactly('/WaypointAPI/', { waypoints: expectedWaypoints });
+		expect(writer.sendPlatformEvent).to.have.been.calledTwice;
+		expect(writer.sendPlatformEvent).to.have.been.calledWithExactly(conn, expectedWritingPlatformEvent);
+		expect(writer.sendPlatformEvent).to.have.been.calledWithExactly(conn, expectedCompletedPlatformEvent);
+
 	});
+
 });

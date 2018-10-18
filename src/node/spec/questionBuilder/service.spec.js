@@ -27,7 +27,6 @@
 
 const
 	chai = require('chai'),
-	chaiAsPromised = require('chai-as-promised'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 
@@ -42,7 +41,6 @@ const
 	orderQuery = require('../../res/spec/questionBuilder/orderQuery.json'),
 	convertedResult = require('../../res/spec/questionBuilder/result.json');
 
-chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
 describe('questionBuilder/service', () => {
@@ -83,30 +81,35 @@ describe('questionBuilder/service', () => {
 
 		describe('resolve', () => {
 
-			it('should return a question', () => {
+			it('should return a question', async () => {
 
 				// given
-				const expectedInput = {
-					message: {
-						deliveryPlanId: 'testPlanId'
-					}
-				};
-
 				reader.query.resolves(mocks.queryResult);
 
-				// when - then
-				return expect(service.buildQuestion(expectedInput))
-					.to.eventually.eql(mocks.expectedResult)
-					.then(() => {
-						expect(writer.sendPlatformEvent).to.be.calledTwice;
-						expect(reader.query).to.be.calledThrice;
-					});
+				const
+					expectedInput = {
+						message: {
+							deliveryPlanId: 'testPlanId'
+						}
+					},
+
+					// when - then
+					result = await service.buildQuestion(expectedInput);
+
+				// then
+				expect(result).to.eql(mocks.expectedResult);
+				expect(writer.sendPlatformEvent).to.be.calledTwice;
+				expect(reader.query).to.be.calledThrice;
 
 			});
 
-			it('should convert the query result correctly', () => {
+			it('should convert the query result correctly', async () => {
 
 				// given
+				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[0] }).resolves(vehicleQuery);
+				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[1] }).resolves(vehicleTypeQuery);
+				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[2] }).resolves(orderQuery);
+
 				const
 					expectedInput = {
 						message: {
@@ -124,25 +127,22 @@ describe('questionBuilder/service', () => {
 						id: 'testPlanId',
 						message: 'Delivery records retrieved',
 						status: 'CALCULATING_ROUTES'
-					};
+					},
 
-				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[0] }).resolves(vehicleQuery);
-				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[1] }).resolves(vehicleTypeQuery);
-				reader.query.withArgs({ conn: mocks.conn, query: mocks.queries[2] }).resolves(orderQuery);
+					// when
+					result = await service.buildQuestion(expectedInput);
 
-				// when - then
-				return expect(service.buildQuestion(expectedInput))
-					.to.eventually.eql(convertedResult)
-					.then(() => {
-						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[0] });
-						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[1] });
-						expect(reader.query).to.be.calledWith({ conn: mocks.conn, query: mocks.queries[2] });
-						expect(writer.sendPlatformEvent).to.have.been.calledTwice;
-						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedReadPlatformEvent);
-						expect(writer.sendPlatformEvent).to.have.been.calledWith(mocks.conn, expectedCalculatePlatformEvent);
-					});
+				// then
+				expect(result).to.eql(convertedResult);
+				expect(reader.query).to.be.calledWithExactly({ conn: mocks.conn, query: mocks.queries[0] });
+				expect(reader.query).to.be.calledWithExactly({ conn: mocks.conn, query: mocks.queries[1] });
+				expect(reader.query).to.be.calledWithExactly({ conn: mocks.conn, query: mocks.queries[2] });
+				expect(writer.sendPlatformEvent).to.have.been.calledTwice;
+				expect(writer.sendPlatformEvent).to.have.been.calledWithExactly(mocks.conn, expectedReadPlatformEvent);
+				expect(writer.sendPlatformEvent).to.have.been.calledWithExactly(mocks.conn, expectedCalculatePlatformEvent);
 
 			});
+
 		});
 
 	});

@@ -36,19 +36,17 @@ const
 	questionBuilderPath = '../lib/questionBuilder',
 
 	orizuru = require('@financialforcedev/orizuru'),
-	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
+	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
 	requireAvsc = require('../lib/util/requireAvsc'),
 
-	QuestionBuilderService = require('../lib/questionBuilder/service'),
-	incomingSchema = requireAvsc(__dirname, '../res/schema/public/calculateRoutesForPlan'),
-	outgoingSchema = requireAvsc(__dirname, '../res/schema/question');
+	incomingSchema = requireAvsc(__dirname, '../res/schema/public/calculateRoutesForPlan');
 
 chai.use(sinonChai);
 
 describe('questionBuilder', () => {
 
-	let handlerMock, publisherMock;
+	let handlerStubInstance, publisherStubInstance, transportStubInstance;
 
 	beforeEach(() => {
 
@@ -56,21 +54,19 @@ describe('questionBuilder', () => {
 
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
 
-		handlerMock = {
-			handle: sinon.stub().resolves()
-		};
+		transportStubInstance = sinon.createStubInstance(transport.Transport);
+		sinon.stub(transport, 'Transport').returns(transportStubInstance);
 
-		publisherMock = {
-			publish: sinon.stub().resolves()
-		};
+		handlerStubInstance = sinon.createStubInstance(orizuru.Handler);
+		handlerStubInstance.handle.resolves();
+		handlerStubInstance.on.returnsThis();
+		handlerStubInstance.init.resolves();
+		sinon.stub(orizuru, 'Handler').returns(handlerStubInstance);
 
-		sinon.stub(orizuru, 'Handler').callsFake(function (config) {
-			this.handle = handlerMock.handle;
-		});
-
-		sinon.stub(orizuru, 'Publisher').callsFake(function (config) {
-			this.publish = publisherMock.publish;
-		});
+		publisherStubInstance = sinon.createStubInstance(orizuru.Publisher);
+		publisherStubInstance.on.returnsThis();
+		publisherStubInstance.init.resolves(publisherStubInstance);
+		sinon.stub(orizuru, 'Publisher').returns(publisherStubInstance);
 
 	});
 
@@ -79,69 +75,36 @@ describe('questionBuilder', () => {
 		sinon.restore();
 	});
 
-	it('should wire up handler', () => {
+	it('should wire up handler', async () => {
 
 		// given - when
-		require(questionBuilderPath);
+		await require(questionBuilderPath);
 
 		// then
+		expect(transport.Transport).to.have.been.calledOnce;
+		expect(transport.Transport).to.have.been.calledWithNew;
+		expect(transport.Transport).to.have.been.calledWithExactly({
+			url: 'cloudAmqpUrl'
+		});
 		expect(orizuru.Handler).to.have.been.calledOnce;
 		expect(orizuru.Handler).to.have.been.calledWithNew;
-		expect(orizuru.Handler).to.have.been.calledWith({
-			transport: orizuruTransportRabbitmq,
-			transportConfig: {
-				cloudamqpUrl: 'cloudAmqpUrl'
-			}
+		expect(orizuru.Handler).to.have.been.calledWithExactly({
+			transport: transportStubInstance
 		});
-		expect(handlerMock.handle).to.have.been.calledOnce;
-		expect(handlerMock.handle).to.have.been.calledWith({
+		expect(handlerStubInstance.init).to.have.been.calledOnce;
+		expect(handlerStubInstance.init).to.have.been.calledWithExactly();
+		expect(handlerStubInstance.handle).to.have.been.calledOnce;
+		expect(handlerStubInstance.handle).to.have.been.calledWithExactly({
 			schema: incomingSchema,
-			callback: sinon.match.func
+			handler: sinon.match.func
 		});
 		expect(orizuru.Publisher).to.have.been.calledOnce;
 		expect(orizuru.Publisher).to.have.been.calledWithNew;
-		expect(orizuru.Publisher).to.have.been.calledWith({
-			transport: orizuruTransportRabbitmq,
-			transportConfig: {
-				cloudamqpUrl: 'cloudAmqpUrl'
-			}
+		expect(orizuru.Publisher).to.have.been.calledWithExactly({
+			transport: transportStubInstance
 		});
-
-	});
-
-	describe('internal handler', () => {
-
-		let handler;
-
-		beforeEach(() => {
-			sinon.stub(QuestionBuilderService, 'buildQuestion').resolves('result');
-			require(questionBuilderPath);
-			handler = handlerMock.handle.getCall(0).args[0].callback;
-		});
-
-		it('should call service and publish result on event', () => {
-
-			// given
-			const
-				context = 'contextTest',
-				message = 'messageTest';
-
-			// when
-			return handler({ context, message })
-				.then(() => {
-					// then
-					expect(QuestionBuilderService.buildQuestion).to.have.been.calledOnce;
-					expect(QuestionBuilderService.buildQuestion).to.have.been.calledWith({ context, message });
-
-					expect(publisherMock.publish).to.have.been.calledOnce;
-					expect(publisherMock.publish).to.have.been.calledWith({
-						message: 'result',
-						schema: outgoingSchema,
-						context
-					});
-				});
-
-		});
+		expect(publisherStubInstance.init).to.have.been.calledOnce;
+		expect(publisherStubInstance.init).to.have.been.calledWithExactly();
 
 	});
 

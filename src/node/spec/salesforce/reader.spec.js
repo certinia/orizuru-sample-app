@@ -59,7 +59,7 @@ describe('salesforce/reader', () => {
 
 	describe('query', () => {
 
-		it('should handle errors', () => {
+		it('should handle errors', async () => {
 
 			// given
 			const
@@ -80,20 +80,16 @@ describe('salesforce/reader', () => {
 			});
 
 			// when - then
-			return expect(reader.query({ conn: mocks.conn, query: expectedQuery }))
-				.to.eventually.be.rejectedWith(expectedError)
-				.then(() => {
-					expect(mocks.conn.query).to.have.been.calledOnce;
-					expect(mocks.conn.query).to.have.been.calledWith(expectedQuery);
-				});
+			await expect(reader.query({ conn: mocks.conn, query: expectedQuery })).to.eventually.be.rejectedWith(expectedError);
+
+			expect(mocks.conn.query).to.have.been.calledOnce;
+			expect(mocks.conn.query).to.have.been.calledWithExactly(expectedQuery);
 
 		});
 
-		it('should execute the query and return no records', () => {
+		it('should execute the query and return no records', async () => {
 
 			// given
-			const expectedQuery = 'SELECT Id FROM Account';
-
 			mocks.conn = sinon.stub().returnsThis();
 			mocks.conn.query = sinon.stub().returnsThis();
 			mocks.conn.on = sinon.stub();
@@ -107,19 +103,23 @@ describe('salesforce/reader', () => {
 				return mocks.conn;
 			});
 
-			// when - then
-			return expect(reader.query({ conn: mocks.conn, query: expectedQuery }))
-				.to.eventually.eql([])
-				.then(() => {
-					expect(mocks.conn.query).to.have.been.calledOnce;
-					expect(mocks.conn.query).to.have.been.calledWith(expectedQuery);
-				});
+			const expectedQuery = 'SELECT Id FROM Account',
+
+				// when
+				result = await reader.query({ conn: mocks.conn, query: expectedQuery });
+
+			// then
+			expect(result).to.eql([]);
+			expect(mocks.conn.query).to.have.been.calledOnce;
+			expect(mocks.conn.query).to.have.been.calledWithExactly(expectedQuery);
 
 		});
 
-		it('should execute the query and return records', () => {
+		it('should execute the query and return records', async () => {
 
 			// given
+			var result;
+
 			const
 				expectedQuery = 'SELECT Id FROM Account',
 				expectedRecord = { name: 'Account 1' };
@@ -142,13 +142,13 @@ describe('salesforce/reader', () => {
 
 			});
 
-			// when - then
-			return expect(reader.query({ conn: mocks.conn, query: expectedQuery }))
-				.to.eventually.eql([expectedRecord])
-				.then(() => {
-					expect(mocks.conn.query).to.have.been.calledOnce;
-					expect(mocks.conn.query).to.have.been.calledWith(expectedQuery);
-				});
+			// when
+			result = await reader.query({ conn: mocks.conn, query: expectedQuery });
+
+			// then
+			expect(result).to.eql([expectedRecord]);
+			expect(mocks.conn.query).to.have.been.calledOnce;
+			expect(mocks.conn.query).to.have.been.calledWithExactly(expectedQuery);
 
 		});
 

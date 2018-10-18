@@ -36,21 +36,20 @@ const
 	expect = chai.expect,
 
 	orizuru = require('@financialforcedev/orizuru'),
-	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
+	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
 	orizuruAuth = require('@financialforcedev/orizuru-auth'),
 
-	webPath = '../lib/web',
-	schemaNameToDefinition = require('../lib/web/schema');
+	webPath = '../lib/web';
 
 chai.use(sinonChai);
 
 describe('web', () => {
 
-	let expressMock, serverMock;
+	let serverStubInstance, transportStubInstance;
 
 	beforeEach(() => {
 
-		process.env.CLOUDAMQP_URL = 'cloudamqpUrlTest';
+		process.env.CLOUDAMQP_URL = 'cloudamqpUrl';
 		process.env.JWT_SIGNING_KEY = 'jwtSigningKeyTest';
 		process.env.OPENID_CLIENT_ID = 'openidClientIdTest';
 		process.env.OPENID_HTTP_TIMEOUT = '4001';
@@ -59,22 +58,15 @@ describe('web', () => {
 
 		sinon.stub(express, 'static');
 
-		expressMock = {
-			use: sinon.stub().returnsThis(),
-			listen: sinon.spy()
-		};
+		transportStubInstance = sinon.createStubInstance(transport.Transport);
+		sinon.stub(transport, 'Transport').returns(transportStubInstance);
 
-		serverMock = {
-			addRoute: sinon.stub(),
-			getServer: sinon.stub().returns(expressMock)
-		};
-
-		serverMock.addRoute.returns(serverMock);
-
-		sinon.stub(orizuru, 'Server').callsFake(function (config) {
-			this.addRoute = serverMock.addRoute;
-			this.getServer = serverMock.getServer;
-		});
+		serverStubInstance = sinon.createStubInstance(orizuru.Server);
+		serverStubInstance.addRoute.returnsThis();
+		serverStubInstance.listen.returnsThis();
+		serverStubInstance.on.returnsThis();
+		serverStubInstance.use.returnsThis();
+		sinon.stub(orizuru, 'Server').returns(serverStubInstance);
 
 		sinon.stub(orizuruAuth.middleware, 'tokenValidator').returns(_.noop);
 		sinon.stub(orizuruAuth.middleware, 'grantChecker').returns(_.noop);
@@ -82,12 +74,12 @@ describe('web', () => {
 	});
 
 	afterEach(() => {
-		process.env.CLOUDAMQP_URL = null;
-		process.env.JWT_SIGNING_KEY = null;
-		process.env.OPENID_CLIENT_ID = null;
-		process.env.OPENID_HTTP_TIMEOUT = null;
-		process.env.OPENID_ISSUER_URI = null;
-		process.env.PORT = null;
+		delete process.env.CLOUDAMQP_URL;
+		delete process.env.JWT_SIGNING_KEY;
+		delete process.env.OPENID_CLIENT_ID;
+		delete process.env.OPENID_HTTP_TIMEOUT;
+		delete process.env.OPENID_ISSUER_URI;
+		delete process.env.PORT;
 		sinon.restore();
 	});
 
@@ -100,48 +92,64 @@ describe('web', () => {
 		require(webPath);
 
 		// then
+		expect(transport.Transport).to.have.been.calledOnce;
+		expect(transport.Transport).to.have.been.calledWithNew;
+		expect(transport.Transport).to.have.been.calledWithExactly({
+			url: 'cloudamqpUrl'
+		});
+
 		expect(orizuru.Server).to.have.been.calledOnce;
 		expect(orizuru.Server).to.have.been.calledWithNew;
-		expect(orizuru.Server).to.have.been.calledWith({
-			transport: orizuruTransportRabbitmq,
-			transportConfig: {
-				cloudamqpUrl: 'cloudamqpUrlTest'
-			}
+		expect(orizuru.Server).to.have.been.calledWithExactly({
+			port: 5555,
+			transport: transportStubInstance
 		});
 
 		expect(orizuruAuth.middleware.tokenValidator).to.have.been.calledOnce;
-		expect(orizuruAuth.middleware.tokenValidator).to.have.been.calledWith({
+		expect(orizuruAuth.middleware.tokenValidator).to.have.been.calledWithExactly({
 			jwtSigningKey: 'jwtSigningKeyTest',
 			openidClientId: 'openidClientIdTest',
 			openidHTTPTimeout: 4001,
 			openidIssuerURI: 'openidIssuerURITest'
 		});
 		expect(orizuruAuth.middleware.grantChecker).to.have.been.calledOnce;
-		expect(orizuruAuth.middleware.grantChecker).to.have.been.calledWith({
+		expect(orizuruAuth.middleware.grantChecker).to.have.been.calledWithExactly({
 			jwtSigningKey: 'jwtSigningKeyTest',
 			openidClientId: 'openidClientIdTest',
 			openidHTTPTimeout: 4001,
 			openidIssuerURI: 'openidIssuerURITest'
 		});
 
-		expect(serverMock.addRoute).to.have.been.calledOnce;
-		expect(serverMock.addRoute).to.have.been.calledWith({
-			schemaNameToDefinition,
-			apiEndpoint: '/api',
-			middlewares: [_.noop, _.noop]
+		expect(serverStubInstance.addRoute).to.have.been.calledTwice;
+		expect(serverStubInstance.addRoute).to.have.been.calledWithExactly({
+			endpoint: '/api/',
+			middleware: [sinon.match.func, sinon.match.func, sinon.match.func],
+			schema: {
+				fields: [{ name: 'deliveryPlanId', type: 'string' }],
+				name: 'calculateRoutesForPlan',
+				namespace: 'com.financialforce.orizuru.problem.avro',
+				type: 'record'
+			}
+		});
+		expect(serverStubInstance.addRoute).to.have.been.calledWithExactly({
+			endpoint: '/api/',
+			middleware: [sinon.match.func, sinon.match.func, sinon.match.func],
+			schema: {
+				fields: [{ name: 'generateDataTaskId', type: 'string' }],
+				name: 'createData',
+				namespace: 'com.ffdc.orizuru.problem.avro',
+				type: 'record'
+			}
 		});
 
-		expect(serverMock.getServer).to.have.been.calledOnce;
-		expect(serverMock.getServer).to.have.been.calledWith();
-
-		expect(expressMock.use).to.have.been.calledOnce;
-		expect(expressMock.use).to.have.been.calledWith('/', 'defaultRoute');
+		expect(serverStubInstance.use).to.have.been.calledOnce;
+		expect(serverStubInstance.use).to.have.been.calledWithExactly('/', 'defaultRoute');
 
 		expect(express.static).to.have.been.calledOnce;
-		expect(express.static).to.have.been.calledWith(sinon.match(/web\/static$/gi));
+		expect(express.static).to.have.been.calledWithExactly(sinon.match(/web\/static$/gi));
 
-		expect(expressMock.listen).to.have.been.calledOnce;
-		expect(expressMock.listen).to.have.been.calledWith('5555');
+		expect(serverStubInstance.listen).to.have.been.calledOnce;
+		expect(serverStubInstance.listen).to.have.been.calledWithExactly();
 
 	});
 

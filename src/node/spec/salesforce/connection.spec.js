@@ -30,7 +30,6 @@ const
 	sinon = require('sinon'),
 	chai = require('chai'),
 	sinonChai = require('sinon-chai'),
-	chaiAsPromised = require('chai-as-promised'),
 
 	expect = chai.expect,
 
@@ -39,12 +38,13 @@ const
 
 	connection = require('../../lib/salesforce/connection');
 
-chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
 describe('salesforce/connection', () => {
 
 	beforeEach(() => {
+
+		delete require.cache[require.resolve('../../lib/salesforce/connection')];
 
 		process.env.JWT_SIGNING_KEY = 'jwtSigningKeyTest';
 		process.env.OPENID_CLIENT_ID = 'openidClientIdTest';
@@ -66,67 +66,69 @@ describe('salesforce/connection', () => {
 		sinon.restore();
 	});
 
-	describe('fromContext', () => {
+	describe('fromContext', async () => {
 
-		it('should return a correctly configured connection from context', () => {
+		it('should return a correctly configured connection from context', async () => {
 
 			// given
-			const context = {
-				user: 'userTest'
-			};
+			const
+				context = {
+					user: 'userTest'
+				},
 
-			// when - then
-			return expect(connection.fromContext(context)).to.eventually.eql({ test: 'test' })
-				.then(() => {
-					expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;
-					expect(orizuruAuth.grant.getToken).to.have.been.calledWith({
-						jwtSigningKey: 'jwtSigningKeyTest',
-						openidClientId: 'openidClientIdTest',
-						openidHTTPTimeout: 4001,
-						openidIssuerURI: 'openidIssuerURITest'
-					});
-					expect(jsForce.Connection).to.have.been.calledOnce;
-					expect(jsForce.Connection).to.have.been.calledWithNew;
-					expect(jsForce.Connection).to.have.been.calledWith('credentialsTest');
+				// when
+				result = await connection.fromContext(context);
 
-				});
+			// then
+			expect(result).to.eql({ test: 'test' });
+			expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;
+			expect(orizuruAuth.grant.getToken).to.have.been.calledWithExactly({
+				jwtSigningKey: 'jwtSigningKeyTest',
+				openidClientId: 'openidClientIdTest',
+				openidHTTPTimeout: 4001,
+				openidIssuerURI: 'openidIssuerURITest'
+			});
+			expect(jsForce.Connection).to.have.been.calledOnce;
+			expect(jsForce.Connection).to.have.been.calledWithNew;
+			expect(jsForce.Connection).to.have.been.calledWithExactly('credentialsTest');
+
 		});
 
-		it('should cache validated tokenGranter for future use', () => {
+		it('should cache validated tokenGranter for future use', async () => {
 
 			// given
-			delete require.cache[require.resolve('../../lib/salesforce/connection')];
 			const
 				context = {
 					user: 'userTest'
 				},
 				connectionAfterCacheClear = require('../../lib/salesforce/connection');
 
-			// when - then
-			return expect(connectionAfterCacheClear.fromContext(context)).to.eventually.eql({ test: 'test' })
-				.then(() => {
-					expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;
-					expect(orizuruAuth.grant.getToken).to.have.been.calledWith({
-						jwtSigningKey: 'jwtSigningKeyTest',
-						openidClientId: 'openidClientIdTest',
-						openidHTTPTimeout: 4001,
-						openidIssuerURI: 'openidIssuerURITest'
-					});
-					expect(jsForce.Connection).to.have.been.calledOnce;
-					expect(jsForce.Connection).to.have.been.calledWithNew;
-					expect(jsForce.Connection).to.have.been.calledWith('credentialsTest');
+			// when
+			let result = await connectionAfterCacheClear.fromContext(context);
 
-				})
-				.then(() => {
-					return expect(connectionAfterCacheClear.fromContext(context)).to.eventually.eql({ test: 'test' })
-						.then(() => {
-							expect(orizuruAuth.grant.getToken).to.have.been.calledOnce; // check not called again
-							expect(jsForce.Connection).to.have.been.calledTwice;
-							expect(jsForce.Connection).to.have.been.calledWithNew;
-							expect(jsForce.Connection).to.have.been.calledWith('credentialsTest');
-							expect(jsForce.Connection).to.have.been.calledWith('credentialsTest');
-						});
-				});
+			// then
+			expect(result).to.eql({ test: 'test' });
+
+			expect(orizuruAuth.grant.getToken).to.have.been.calledOnce;
+			expect(orizuruAuth.grant.getToken).to.have.been.calledWithExactly({
+				jwtSigningKey: 'jwtSigningKeyTest',
+				openidClientId: 'openidClientIdTest',
+				openidHTTPTimeout: 4001,
+				openidIssuerURI: 'openidIssuerURITest'
+			});
+			expect(jsForce.Connection).to.have.been.calledOnce;
+			expect(jsForce.Connection).to.have.been.calledWithNew;
+			expect(jsForce.Connection).to.have.been.calledWithExactly('credentialsTest');
+
+			result = await connectionAfterCacheClear.fromContext(context);
+
+			expect(result).to.eql({ test: 'test' });
+			expect(orizuruAuth.grant.getToken).to.have.been.calledOnce; // check not called again
+			expect(jsForce.Connection).to.have.been.calledTwice;
+			expect(jsForce.Connection).to.have.been.calledWithNew;
+			expect(jsForce.Connection).to.have.been.calledWithExactly('credentialsTest');
+			expect(jsForce.Connection).to.have.been.calledWithExactly('credentialsTest');
+
 		});
 
 	});

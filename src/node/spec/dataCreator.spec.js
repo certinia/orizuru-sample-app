@@ -40,15 +40,13 @@ const
 	incomingSchema = requireAvsc(__dirname, '../res/schema/public/createData'),
 
 	orizuru = require('@financialforcedev/orizuru'),
-	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
-
-	DataCreatorService = require('../lib/dataCreator/service');
+	transport = require('@financialforcedev/orizuru-transport-rabbitmq');
 
 chai.use(sinonChai);
 
 describe('dataCreator', () => {
 
-	let handlerMock;
+	let handlerStubInstance, transportStubInstance;
 
 	beforeEach(() => {
 
@@ -56,13 +54,13 @@ describe('dataCreator', () => {
 
 		process.env.CLOUDAMQP_URL = 'cloudAmqpUrl';
 
-		handlerMock = {
-			handle: sinon.stub().resolves()
-		};
+		transportStubInstance = sinon.createStubInstance(transport.Transport);
+		sinon.stub(transport, 'Transport').returns(transportStubInstance);
 
-		sinon.stub(orizuru, 'Handler').callsFake(function (config) {
-			this.handle = handlerMock.handle;
-		});
+		handlerStubInstance = sinon.createStubInstance(orizuru.Handler);
+		handlerStubInstance.on.returnsThis();
+		handlerStubInstance.init.resolves(handlerStubInstance);
+		sinon.stub(orizuru, 'Handler').returns(handlerStubInstance);
 
 	});
 
@@ -71,51 +69,30 @@ describe('dataCreator', () => {
 		sinon.restore();
 	});
 
-	it('should wire up handler', () => {
+	it('should wire up handler', async () => {
 
 		// given - when
-		require(dataCreatorPath);
+		await require(dataCreatorPath);
 
 		// then
+		expect(transport.Transport).to.have.been.calledOnce;
+		expect(transport.Transport).to.have.been.calledWithNew;
+		expect(transport.Transport).to.have.been.calledWithExactly({
+			url: 'cloudAmqpUrl'
+		});
 		expect(orizuru.Handler).to.have.been.calledOnce;
 		expect(orizuru.Handler).to.have.been.calledWithNew;
-		expect(orizuru.Handler).to.have.been.calledWith({
-			transport: orizuruTransportRabbitmq,
-			transportConfig: {
-				cloudamqpUrl: 'cloudAmqpUrl'
-			}
+		expect(orizuru.Handler).to.have.been.calledWithExactly({
+			transport: transportStubInstance
 		});
-		expect(handlerMock.handle).to.have.been.calledOnce;
-		expect(handlerMock.handle).to.have.been.calledWith({
+		expect(handlerStubInstance.init).to.have.been.calledOnce;
+		expect(handlerStubInstance.init).to.have.been.calledWithExactly();
+		expect(handlerStubInstance.handle).to.have.been.calledOnce;
+		expect(handlerStubInstance.handle).to.have.been.calledWithExactly({
 			schema: incomingSchema,
-			callback: sinon.match.func
+			handler: sinon.match.func
 		});
 
 	});
 
-	describe('internal handler', () => {
-
-		let handler;
-
-		beforeEach(() => {
-			sinon.stub(DataCreatorService, 'createData').resolves('result');
-			require(dataCreatorPath);
-			handler = handlerMock.handle.getCall(0).args[0].callback;
-		});
-
-		it('should call service', () => {
-
-			// given
-			const
-				message = 'messageTest',
-				context = 'contextTest';
-
-			// when
-			return handler({ message, context })
-				.then(() => {
-					// then
-					expect(DataCreatorService.createData).to.have.been.calledOnce;
-				});
-		});
-	});
 });
