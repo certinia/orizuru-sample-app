@@ -34,6 +34,14 @@
 		<enabled>true</enabled>
 	</classAccesses>
 	<classAccesses>
+		<apexClass>DeliveryRouteMapChooserController</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>DeliveryRouteMapChooserControllerTest</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
 		<apexClass>DeliveryRouteSelector</apexClass>
 		<enabled>true</enabled>
 	</classAccesses>
@@ -70,7 +78,35 @@
 		<enabled>true</enabled>
 	</classAccesses>
 	<classAccesses>
+		<apexClass>HerokuConnectorForSampleApp</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>HerokuConnectorForSampleAppTest</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
 		<apexClass>HerokuConnectorTest</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>IHerokuConnector</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>ISerializable</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>OrizuruTransport</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>RouteAPI</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>RouteAPITest</apexClass>
 		<enabled>true</enabled>
 	</classAccesses>
 	<classAccesses>
@@ -99,6 +135,14 @@
 	</classAccesses>
 	<classAccesses>
 		<apexClass>StubProvider</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>WaypointAPI</apexClass>
+		<enabled>true</enabled>
+	</classAccesses>
+	<classAccesses>
+		<apexClass>WaypointAPITest</apexClass>
 		<enabled>true</enabled>
 	</classAccesses>
 	<custom>false</custom>
@@ -328,6 +372,30 @@
 		<object>Warehouse__c</object>
 		<viewAllRecords>true</viewAllRecords>
 	</objectPermissions>
+	<tabVisibilities>
+		<tab>DeliveryPlan__c</tab>
+		<visibility>DefaultOn</visibility>
+	</tabVisibilities>
+	<tabVisibilities>
+		<tab>DeliveryRoute__c</tab>
+		<visibility>DefaultOn</visibility>
+	</tabVisibilities>
+	<tabVisibilities>
+		<tab>GenerateDataTask__c</tab>
+		<visibility>DefaultOn</visibility>
+	</tabVisibilities>
+	<tabVisibilities>
+		<tab>VehicleType__c</tab>
+		<visibility>DefaultOn</visibility>
+	</tabVisibilities>
+	<tabVisibilities>
+		<tab>Vehicle__c</tab>
+		<visibility>DefaultOn</visibility>
+	</tabVisibilities>
+	<tabVisibilities>
+		<tab>Warehouse__c</tab>
+		<visibility>DefaultOn</visibility>
+	</tabVisibilities>
 	<userLicense>Salesforce</userLicense>
 	<userPermissions>
 		<enabled>true</enabled>
@@ -348,6 +416,10 @@
 	<userPermissions>
 		<enabled>true</enabled>
 		<name>AllowViewKnowledge</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
+		<name>ApexRestServices</name>
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
@@ -380,6 +452,10 @@
 	<userPermissions>
 		<enabled>true</enabled>
 		<name>CanVerifyComment</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
+		<name>ChangeDashboardColors</name>
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
@@ -459,6 +535,10 @@
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
+		<name>DataExport</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
 		<name>DelegatedTwoFactor</name>
 	</userPermissions>
 	<userPermissions>
@@ -476,10 +556,6 @@
 	<userPermissions>
 		<enabled>true</enabled>
 		<name>EditActivatedOrders</name>
-	</userPermissions>
-	<userPermissions>
-		<enabled>true</enabled>
-		<name>EditBillingInfo</name>
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
@@ -560,6 +636,10 @@
 	<userPermissions>
 		<enabled>true</enabled>
 		<name>FieldServiceAccess</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
+		<name>GiveRecognitionBadge</name>
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
@@ -771,6 +851,10 @@
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
+		<name>ModifyMetadata</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
 		<name>NewReportBuilder</name>
 	</userPermissions>
 	<userPermissions>
@@ -823,11 +907,19 @@
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
+		<name>SubscribeDashboardToOtherUsers</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
 		<name>SubscribeReportToOtherUsers</name>
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
 		<name>SubscribeReportsRunAsUser</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
+		<name>SubscribeToLightningDashboards</name>
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
@@ -892,6 +984,10 @@
 	<userPermissions>
 		<enabled>true</enabled>
 		<name>ViewPublicReports</name>
+	</userPermissions>
+	<userPermissions>
+		<enabled>true</enabled>
+		<name>ViewRoles</name>
 	</userPermissions>
 	<userPermissions>
 		<enabled>true</enabled>
