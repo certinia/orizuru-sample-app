@@ -6,7 +6,7 @@
 		"deploy": "orizuru d",
 		"pretest": "eslint src/node",
 		"single-test": "nyc --all=false mocha",
-		"test": "nyc mocha --recursive src/node/spec",
+		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --recursive src/node/spec",
 		"generate-apex-transport": "orizuru s gat src/node/res/schema/public  src/apex/force/main/default/classes"
 	},
 	"repository": {
@@ -46,25 +46,6 @@
 	"engines": {
 		"node": "8.12.0",
 		"npm": "6.4.1"
-	},
-	"nyc": {
-		"check-coverage": true,
-		"per-file": true,
-		"lines": 100,
-		"statements": 100,
-		"functions": 100,
-		"branches": 100,
-		"include": [
-			"src/node"
-		],
-		"reporter": [
-			"lcov",
-			"html",
-			"text",
-			"text-summary"
-		],
-		"cache": true,
-		"all": true
 	},
 	"private": true
 }
