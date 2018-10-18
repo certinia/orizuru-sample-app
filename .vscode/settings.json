@@ -1,28 +1,4 @@
 {
-	"beautify.language": {
-		"js": {
-			"type": [
-				"javascript",
-				"json"
-			],
-			"filename": [
-				".jsbeautifyrc"
-			]
-		},
-		"css": [
-			"css",
-			"scss"
-		],
-		"html": [
-			"htm",
-			"html",
-			"xml"
-		]
-	},
-	"beautify.ignore": [
-		"package.json",
-		"package-lock.json"
-	],
 	"editor.detectIndentation": false,
 	"editor.formatOnSave": true,
 	"editor.insertSpaces": false,
@@ -39,15 +15,17 @@
 		"**/.DS_Store": true,
 		"**/coverage": true
 	},
+	"files.insertFinalNewline": true,
 	"lcov.path": "coverage/lcov.info",
-	"lcov.watch": [{
-		"pattern": "**/*.js",
-		"command": "npm test"
-	}],
+	"lcov.watch": [
+		{
+			"pattern": "**/*.js",
+			"command": "npm test"
+		}
+	],
 	"runCurrentTest.run": "npm run single-test -- ${relativeTestPath}",
 	"terminal.integrated.scrollback": 10000,
 	"workbench.colorCustomizations": {
 		"activityBar.foreground": "#0C8EFF"
-	},
-	"java.configuration.updateBuildConfiguration": "automatic"
+	}
 }
