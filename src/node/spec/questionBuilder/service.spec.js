@@ -45,7 +45,7 @@ const
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-describe('questionBuilder/service.js', () => {
+describe('questionBuilder/service', () => {
 
 	let mocks;
 

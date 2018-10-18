@@ -46,7 +46,7 @@ const
 
 chai.use(sinonChai);
 
-describe('resultWriter.js', () => {
+describe('resultWriter', () => {
 
 	let handlerMock;
 

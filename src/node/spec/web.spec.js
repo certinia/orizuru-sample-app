@@ -44,7 +44,7 @@ const
 
 chai.use(sinonChai);
 
-describe('web.js', () => {
+describe('web', () => {
 
 	let expressMock, serverMock;
 

@@ -42,7 +42,7 @@ const
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-describe('salesforce/connection.js', () => {
+describe('salesforce/connection', () => {
 
 	beforeEach(() => {
 

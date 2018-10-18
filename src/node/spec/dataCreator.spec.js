@@ -46,7 +46,7 @@ const
 
 chai.use(sinonChai);
 
-describe('dataCreator.js', () => {
+describe('dataCreator', () => {
 
 	let handlerMock;
 

@@ -39,7 +39,7 @@ const
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-describe('salesforce/reader.js', () => {
+describe('salesforce/reader', () => {
 
 	let mocks;
 

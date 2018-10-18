@@ -41,7 +41,7 @@ const
 chai.use(sinonChai);
 chai.use(chaiAsPromised);
 
-describe('resultWriter/service.js', () => {
+describe('resultWriter/service', () => {
 
 	afterEach(() => {
 		sinon.restore();

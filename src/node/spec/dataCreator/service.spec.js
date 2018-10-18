@@ -40,7 +40,7 @@ const
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-describe('dataCreator/service.js', () => {
+describe('dataCreator/service', () => {
 	let mocks, fakeReturnedSobjects, service;
 
 	afterEach(() => {

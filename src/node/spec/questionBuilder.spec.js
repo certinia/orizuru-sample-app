@@ -46,7 +46,7 @@ const
 
 chai.use(sinonChai);
 
-describe('questionBuilder.js', () => {
+describe('questionBuilder', () => {
 
 	let handlerMock, publisherMock;
 

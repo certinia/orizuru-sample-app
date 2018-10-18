@@ -37,7 +37,7 @@ const
 
 chai.use(sinonChai);
 
-describe('salesforce/writer.js', () => {
+describe('salesforce/writer', () => {
 
 	let conn, connSobjectCreate;
 
