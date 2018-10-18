@@ -1,61 +1,58 @@
 ({
-	connectCometd: function (component) {
-		var cometd = component.get('v.cometd'),
-			location = window.location,
-			cometdUrl = location.protocol + '//' + location.hostname + '/cometd/40.0/',
-			eventSubscriptions = component.get('v.eventSubscriptions');
+	subscribe: function (component, event, helper) {
 
-		cometd.configure({
-			url: cometdUrl,
-			requestHeaders: { Authorization: 'OAuth ' + component.get('v.sessionId') },
-			appendMessageTypeToURL: false
+		// Get the empApi component.
+		const empApi = component.find('empApi');
+
+		// Get the channel from the eventSubscription attribute.
+		const channel = component.get('v.eventSubscription');
+
+		// Subscription option to get only new events.
+		const replayId = -1;
+
+		// Callback function to be passed in the subscribe call.
+		// After an event is received, this callback prints the event
+		// payload to the console. A helper method displays the message
+		// in the console app.
+		const callback = function (platformEvent) {
+			console.log('Event Received : ' + JSON.stringify(platformEvent));
+			helper.onReceiveNotification(component, platformEvent);
+		};
+
+		// Subscribe to the channel and save the returned subscription object.
+		empApi.subscribe('/event/' + channel, replayId, callback).then(function (newSubscription) {
+			console.log('Subscribed to channel ' + channel);
+			component.set('v.subscription', newSubscription);
 		});
 
-		cometd.websocketEnabled = false;
-
-		// Establish CometD connection
-		cometd.handshake(function (handshakeReply) {
-			var cometdSubscriptions;
-
-			if (handshakeReply.successful) {
-				// Create a CometD subscription for each platform event subscription
-				cometdSubscriptions = eventSubscriptions.map(function (eventSubscription) {
-
-					return cometd.subscribe('/event/' + eventSubscription, function (platformEvent) {
-						var monitoredEvent = component.getEvent("streamingEvent");
-						if (monitoredEvent) {
-							monitoredEvent.setParams({
-								payload: platformEvent.data.payload
-							});
-							monitoredEvent.fire()
-						}
-					});
-				});
-
-				// Remember subscriptions so we can unsubscribe on unload
-				component.set('v.cometdSubscriptions', cometdSubscriptions);
-			}
-		});
-
-		// Disconnect CometD when leaving page
-		window.addEventListener('unload', function (event) {
-			helper.disconnectCometd(component);
-		});
 	},
 
-	disconnectCometd: function (component) {
-		var cometd = component.get('v.cometd');
+	unsubscribe: function (component) {
 
-		// Unsubscribe all CometD subscriptions
-		cometd.batch(function () {
-			var subscriptions = component.get('v.cometdSubscriptions');
-			subscriptions.forEach(function (subscription) {
-				cometd.unsubscribe(subscription);
+		// Get the empApi component.
+		const empApi = component.find('empApi');
+
+		// Callback function to be passed in the unsubscribe call.
+		const callback = function (message) {
+			console.log('Unsubscribed from channel ' + message.subscription);
+		};
+
+		// Unsubscribe from the channel using the subscription object.        
+		const subscription = component.get('v.subscription');
+		empApi.unsubscribe(subscription, callback);
+
+	},
+
+	onReceiveNotification: function (component, platformEvent) {
+
+		var monitoredEvent = component.getEvent("streamingEvent");
+		if (monitoredEvent) {
+			monitoredEvent.setParams({
+				payload: platformEvent.data.payload
 			});
-		});
-		component.set('v.cometdSubscriptions', []);
+			monitoredEvent.fire()
+		}
 
-		// Disconnect CometD
-		cometd.disconnect();
 	}
+
 });

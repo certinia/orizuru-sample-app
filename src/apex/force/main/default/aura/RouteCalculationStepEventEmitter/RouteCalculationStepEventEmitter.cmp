@@ -7,6 +7,6 @@
 	<aura:handler name="streamingEvent" event="c:StreamingEvent" action="{!c.handleIncomingStreamingMessage}" />
 
 	<!-- Body -->
-	<c:StreamingEventEmitter eventSubscriptions="['RouteCalculationStep__e']" />
+	<c:StreamingEventEmitter eventSubscription="RouteCalculationStep__e" />
 
 </aura:component>
