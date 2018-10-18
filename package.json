@@ -23,9 +23,9 @@
 	"author": "financialforce",
 	"license": "BSD-3-Clause",
 	"dependencies": {
-		"@financialforcedev/orizuru": "^9.0.0-2",
-		"@financialforcedev/orizuru-auth": "^5.0.0-0",
-		"@financialforcedev/orizuru-transport-rabbitmq": "^5.0.0-0",
+		"@financialforcedev/orizuru": "^9.0.0",
+		"@financialforcedev/orizuru-auth": "^5.0.0",
+		"@financialforcedev/orizuru-transport-rabbitmq": "^5.0.0",
 		"debug-plus": "^1.2.2",
 		"jsforce": "^1.9.1",
 		"lodash": "^4.17.11"
