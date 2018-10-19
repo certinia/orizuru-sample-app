@@ -29,17 +29,22 @@ const
 	chai = require('chai'),
 	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
-	proxyquire = require('proxyquire'),
+
+	fs = require('fs'),
+	path = require('path'),
 
 	expect = chai.expect,
 
 	connection = require('../../lib/salesforce/connection'),
-	writer = require('../../lib/salesforce/writer');
+	writer = require('../../lib/salesforce/writer'),
+
+	service = require('../../lib/dataCreator/service');
 
 chai.use(sinonChai);
 
 describe('dataCreator/service', () => {
-	let mocks, fakeReturnedSobjects, service;
+
+	let mocks, fakeReturnedSobjects;
 
 	afterEach(() => {
 		sinon.restore();
@@ -59,13 +64,22 @@ describe('dataCreator/service', () => {
 			sinon.stub(writer, 'bulkCreateObject').resolves(fakeReturnedSobjects);
 			sinon.stub(writer, 'sendPlatformEvent').resolves();
 
-			service = proxyquire('../../lib/dataCreator/service', {
-				'../../res/dataCreator/Account.json': {
+			sinon.stub(path, 'resolve')
+				.withArgs(sinon.match.string, '../../res/dataCreator/Account.json').returns('testAccountFilePath')
+				.withArgs(sinon.match.string, '../../res/dataCreator/Contact.json').returns('testContactFilePath')
+				.withArgs(sinon.match.string, '../../res/dataCreator/Order.json').returns('testOrderFilePath')
+				.withArgs(sinon.match.string, '../../res/dataCreator/Vehicle__c.json').returns('testVehicleFilePath')
+				.withArgs(sinon.match.string, '../../res/dataCreator/VehicleType__c.json').returns('testVehicleTypeFilePath')
+				.withArgs(sinon.match.string, '../../res/dataCreator/Warehouse__c.json').returns('testWarehouseFilePath')
+				.withArgs(sinon.match.string, '../../res/dataCreator/WarehouseContacts.json').returns('testWarehouseContactsTypeFilePath');
+
+			sinon.stub(fs, 'readFileSync')
+				.withArgs('testAccountFilePath').returns(Buffer.from(JSON.stringify({
 					records: [{
 						Name: 'Mission High School'
 					}]
-				},
-				'../../res/dataCreator/Contact.json': {
+				})))
+				.withArgs('testContactFilePath').returns(Buffer.from(JSON.stringify({
 					records: [{
 						FirstName: 'Mission High School',
 						LastName: 'Mission High School',
@@ -73,19 +87,19 @@ describe('dataCreator/service', () => {
 						MailingLongitude: -122.4273151,
 						MailingCountry: 'USA'
 					}]
-				},
-				'../../res/dataCreator/Order.json': {
+				})))
+				.withArgs('testOrderFilePath').returns(Buffer.from(JSON.stringify({
 					records: [{
 						Status: 'Draft',
 						EffectiveDate: '2017-10-01'
 					}]
-				},
-				'../../res/dataCreator/Vehicle__c.json': {
+				})))
+				.withArgs('testVehicleFilePath').returns(Buffer.from(JSON.stringify({
 					records: [{
 						Name: 'Van 1'
 					}]
-				},
-				'../../res/dataCreator/VehicleType__c.json': {
+				})))
+				.withArgs('testVehicleTypeFilePath').returns(Buffer.from(JSON.stringify({
 					records: [{
 						name: 'Mercedes-Benz 2018 Sprinter Cargo Van 3500 High Roof V6 170',
 						MaximumPayloadCapacity__c: 10,
@@ -93,13 +107,13 @@ describe('dataCreator/service', () => {
 						Distance__c: 1.0,
 						Time__c: 0.0
 					}]
-				},
-				'../../res/dataCreator/Warehouse__c.json': {
+				})))
+				.withArgs('testWarehouseFilePath').returns(Buffer.from(JSON.stringify({
 					records: [{
 						Name: 'Port of San Francisco'
 					}]
-				},
-				'../../res/dataCreator/WarehouseContacts.json': {
+				})))
+				.withArgs('testWarehouseContactsTypeFilePath').returns(Buffer.from(JSON.stringify({
 					records: [{
 						FirstName: 'Warehouse 1',
 						LastName: 'Warehouse 1',
@@ -107,8 +121,8 @@ describe('dataCreator/service', () => {
 						MailingLongitude: -122.4273151,
 						MailingCountry: 'USA'
 					}]
-				}
-			});
+				})));
+
 		});
 
 		describe('resolve', () => {
@@ -126,6 +140,8 @@ describe('dataCreator/service', () => {
 				await service.createData({ context, message });
 
 				// Then
+				expect(path.resolve).to.have.been.callCount(7);
+				expect(fs.readFileSync).to.have.been.callCount(7);
 				expect(writer.bulkCreateObject).to.have.been.callCount(7);
 				expect(writer.bulkCreateObject).to.have.been.calledWithExactly(mocks.conn, 'Account', [{
 					Name: 'Mission High School'

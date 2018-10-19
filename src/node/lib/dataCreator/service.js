@@ -28,18 +28,11 @@
 
 const
 	_ = require('lodash'),
+	fs = require('fs'),
+	path = require('path'),
+
 	connection = require('../salesforce/connection'),
 	writer = require('../salesforce/writer'),
-
-	dataToCreate = {
-		accounts: require('../../res/dataCreator/Account.json').records,
-		contacts: require('../../res/dataCreator/Contact.json').records,
-		orders: require('../../res/dataCreator/Order.json').records,
-		vehicles: require('../../res/dataCreator/Vehicle__c.json').records,
-		vehicleTypes: require('../../res/dataCreator/VehicleType__c.json').records,
-		warehouses: require('../../res/dataCreator/Warehouse__c.json').records,
-		warehouseContacts: require('../../res/dataCreator/WarehouseContacts.json').records
-	},
 
 	CREATED_ACCOUNTS = { message: 'Created Accounts', status: 'CREATED_ACCOUNTS' },
 	CREATED_CONTACTS = { message: 'Created Contacts', status: 'CREATED_CONTACTS' },
@@ -48,6 +41,31 @@ const
 	CREATED_WAREHOUSES = { message: 'Created Warehouses', status: 'CREATED_WAREHOUSES' },
 	CREATED_VEHICLES = { message: 'Created Vehicles', status: 'CREATED_VEHICLES' },
 	CREATED_ORDERS = { message: 'Created Orders', status: 'CREATED_ORDERS' },
+
+	readRecords = (relativePath) => {
+		const
+			filePath = path.resolve(__dirname, relativePath),
+			buffer = fs.readFileSync(filePath),
+			contents = buffer.toString(),
+			json = JSON.parse(contents);
+		return json.records;
+	},
+
+	getDataToCreate = (result) => {
+
+		result.dataToCreate = {
+			accounts: readRecords('../../res/dataCreator/Account.json'),
+			contacts: readRecords('../../res/dataCreator/Contact.json'),
+			orders: readRecords('../../res/dataCreator/Order.json'),
+			vehicles: readRecords('../../res/dataCreator/Vehicle__c.json'),
+			vehicleTypes: readRecords('../../res/dataCreator/VehicleType__c.json'),
+			warehouses: readRecords('../../res/dataCreator/Warehouse__c.json'),
+			warehouseContacts: readRecords('../../res/dataCreator/WarehouseContacts.json')
+		};
+
+		return result;
+
+	},
 
 	getConnection = ({ context, incomingMessage }) => {
 		return connection.fromContext(context)
@@ -66,7 +84,7 @@ const
 
 		const conn = result.conn;
 
-		return createObjects({ conn, objName: 'Account', data: dataToCreate.accounts })
+		return createObjects({ conn, objName: 'Account', data: result.dataToCreate.accounts })
 			.then(accounts => {
 				return sendDataGeneratorStepEvent({ conn, status: CREATED_ACCOUNTS, incomingMessage: result.incomingMessage })
 					.then(() => {
@@ -82,7 +100,7 @@ const
 		const
 			conn = result.conn,
 
-			contactsToCreate = _.map(dataToCreate.contacts, (record, count) => {
+			contactsToCreate = _.map(result.dataToCreate.contacts, (record, count) => {
 				record.AccountId = result.Accounts[count].id;
 				return record;
 			});
@@ -103,7 +121,7 @@ const
 		const
 			conn = result.conn,
 
-			contactsToCreate = _.map(dataToCreate.warehouseContacts, (record, count) => {
+			contactsToCreate = _.map(result.dataToCreate.warehouseContacts, (record, count) => {
 				record.AccountId = result.Accounts[count].id;
 				return record;
 			});
@@ -123,7 +141,7 @@ const
 
 		const conn = result.conn;
 
-		return createObjects({ conn, objName: 'VehicleType__c', data: dataToCreate.vehicleTypes })
+		return createObjects({ conn, objName: 'VehicleType__c', data: result.dataToCreate.vehicleTypes })
 			.then(vehicleTypes => {
 				return sendDataGeneratorStepEvent({ conn, status: CREATED_VEHICLE_TYPE, incomingMessage: result.incomingMessage })
 					.then(() => {
@@ -140,7 +158,7 @@ const
 			conn = result.conn,
 			WarehouseContacts = result.WarehouseContacts,
 
-			warehousesToCreate = _.map(dataToCreate.warehouses, (record, count) => {
+			warehousesToCreate = _.map(result.dataToCreate.warehouses, (record, count) => {
 				record.Contact__c = WarehouseContacts[count].id;
 				return record;
 			});
@@ -164,7 +182,7 @@ const
 			Warehouses__c = result.Warehouses__c,
 			WarehouseContacts = result.WarehouseContacts,
 
-			vehiclesToCreate = _.map(dataToCreate.vehicles, (record, count) => {
+			vehiclesToCreate = _.map(result.dataToCreate.vehicles, (record, count) => {
 				record.VehicleType__c = VehicleTypes__c[0].id;
 				record.Warehouse__c = Warehouses__c[count % _.size(WarehouseContacts)].id;
 
@@ -188,7 +206,7 @@ const
 			Accounts = result.Accounts,
 			Contacts = result.Contacts,
 
-			vehiclesToCreate = _.map(dataToCreate.orders, (record, count) => {
+			vehiclesToCreate = _.map(result.dataToCreate.orders, (record, count) => {
 				record.AccountId = Accounts[count].id;
 				record.ShipToContactId = Contacts[count].id;
 
@@ -207,6 +225,7 @@ const
 
 	createAllData = ({ message, context }) => {
 		return getConnection({ context, incomingMessage: message })
+			.then(getDataToCreate)
 			.then(createAccounts)
 			.then(createContacts)
 			.then(createWarehouseContacts)
