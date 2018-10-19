@@ -21,7 +21,7 @@
 
 		// Subscribe to the channel and save the returned subscription object.
 		empApi.subscribe('/event/' + channel, replayId, callback).then(function (newSubscription) {
-			console.log('Subscribed to channel ' + channel);
+			console.log('Subscribed to channel /event/' + channel);
 			component.set('v.subscription', newSubscription);
 		});
 
