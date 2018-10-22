@@ -130,10 +130,6 @@
 		<enabled>true</enabled>
 	</classAccesses>
 	<classAccesses>
-		<apexClass>SessionController</apexClass>
-		<enabled>true</enabled>
-	</classAccesses>
-	<classAccesses>
 		<apexClass>StubProvider</apexClass>
 		<enabled>true</enabled>
 	</classAccesses>
