@@ -137,7 +137,7 @@ describe('web', () => {
 			schema: {
 				fields: [{ name: 'generateDataTaskId', type: 'string' }],
 				name: 'createData',
-				namespace: 'com.ffdc.orizuru.problem.avro',
+				namespace: 'com.financialforce.orizuru.problem.avro',
 				type: 'record'
 			}
 		});
