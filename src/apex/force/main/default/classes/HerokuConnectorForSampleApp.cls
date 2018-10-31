@@ -40,12 +40,12 @@ public class HerokuConnectorForSampleApp
 
 	public HttpResponse calculateRoute(String id)
 	{
-		return HerokuConnector.newInstance().post('callout:Orizuru/api/com/financialforce/orizuru/problem/avro/calculateRoutesForPlan', new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(id));
+		return HerokuConnector.newInstance().post('callout:Orizuru/api/com/financialforce/orizuru/problem/avro/calculateRoutesForPlan', new OrizuruTransport.com_financialforce_orizuru_problem_avro_calculateRoutesForPlan(id));
 	}
 
 	public HttpResponse generateData(String id)
 	{
-		return HerokuConnector.newInstance().post('callout:Orizuru/api/com/financialforce/orizuru/problem/avro/createData', new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData(id));
+		return HerokuConnector.newInstance().post('callout:Orizuru/api/com/financialforce/orizuru/problem/avro/createData', new OrizuruTransport.com_financialforce_orizuru_problem_avro_createData(id));
 	}
 
 }

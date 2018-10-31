@@ -41,7 +41,7 @@ private class HerokuConnectorForSampleAppTest
 
 		// Then
 		System.assertEquals('callout:Orizuru/api/com/financialforce/orizuru/problem/avro/calculateRoutesForPlan', connMock.endpoint);
-		System.assertEquals(new OrizuruTransport.com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan('Test').serialize(), connMock.transport.serialize());
+		System.assertEquals(new OrizuruTransport.com_financialforce_orizuru_problem_avro_calculateRoutesForPlan('Test').serialize(), connMock.transport.serialize());
 		System.assertEquals(result, resultFromCall);
 	}
 
@@ -59,7 +59,7 @@ private class HerokuConnectorForSampleAppTest
 
 		// Then
 		System.assertEquals('callout:Orizuru/api/com/financialforce/orizuru/problem/avro/createData', connMock.endpoint);
-		System.assertEquals(new OrizuruTransport.com_ffdc_orizuru_problem_avro_createData('Test').serialize(), connMock.transport.serialize());
+		System.assertEquals(new OrizuruTransport.com_financialforce_orizuru_problem_avro_createData('Test').serialize(), connMock.transport.serialize());
 		System.assertEquals(result, resultFromCall);
 	}
 
