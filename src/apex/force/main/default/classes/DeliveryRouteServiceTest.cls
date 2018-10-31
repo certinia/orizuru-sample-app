@@ -30,7 +30,7 @@ private class DeliveryRouteServiceTest
 	@IsTest
 	private static void generateUrl_shouldReturnTheUrl_whenThereIsADeliveryWaypoint()
 	{
-		//Given
+		// Given
 		OrizuruSettings__c settings = new OrizuruSettings__c(GoogleMapsApiKey__c='testingApiKey');
 		insert settings;
 
@@ -68,17 +68,17 @@ private class DeliveryRouteServiceTest
 
 		DeliveryRouteService service = DeliveryRouteService.newInstance();
 
-		//When
+		// When
 		String actual = DeliveryRouteService.newInstance().generateUrl(deliveryRoute.Id);
 
-		//Then
+		// Then
 		System.assertEquals(expected, actual);
 	}
 
 	@IsTest
 	private static void generateUrl_ShouldReturnTheUrl_WithMultipleDeliveries()
 	{
-		//Given
+		// Given
 		OrizuruSettings__c settings = new OrizuruSettings__c(GoogleMapsApiKey__c='testingApiKey');
 		insert settings;
 
@@ -130,10 +130,10 @@ private class DeliveryRouteServiceTest
 
 		DeliveryRouteService service = DeliveryRouteService.newInstance();
 
-		//When
+		// When
 		String actual = DeliveryRouteService.newInstance().generateUrl(deliveryRoute.Id);
 
-		//Then
+		// Then
 		System.assertEquals(expected, actual);
 	}
 }

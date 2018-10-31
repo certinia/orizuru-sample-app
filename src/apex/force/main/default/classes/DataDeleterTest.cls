@@ -30,13 +30,13 @@ private class DataDeleterTest
     @isTest
     static void deleteData_deletesData()
     {
-        //Given
+        // Given
 		insertData();
         
-        //When
+        // When
         DataDeleter.deleteData();
         
-        //Then
+        // Then
         assertNoCreatedDataInOrg();
     }
     

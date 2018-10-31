@@ -30,7 +30,7 @@ private class DataGeneratorButtonControllerTest
 	@IsTest
 	private static void generateData_ShouldCallTheHerokuConnectorGenerateDataMethod()
 	{
-		//Given
+		// Given
 		StubProvider mocks = new StubProvider();
 
 		HerokuConnectorForSampleApp mockConnector = (HerokuConnectorForSampleApp)mocks.mock(HerokuConnectorForSampleApp.class);
@@ -38,10 +38,10 @@ private class DataGeneratorButtonControllerTest
 
 		mocks.stub(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }, null);
 
-		//When
+		// When
 		DataGeneratorButtonController.generateData('Test');
 
-		//Then
+		// Then
 		System.assertEquals(1, mocks.getCallCount(mockConnector, 'generateData', new Type[]{ String.class }, new Object[]{ 'Test' }));
 	}
 

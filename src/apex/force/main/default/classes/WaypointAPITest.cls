@@ -47,13 +47,13 @@ public class WaypointAPITest {
 	@isTest
 	private static void saveWaypoints_validWaypoints_Saves()
     {
-	   	//Given
+	   	// Given
 		List<DeliveryWaypoint__c> routesToSave = ceateWaypointsToSave();
 
-		//when
+		// When
 		List<DeliveryWaypoint__c> response = WaypointAPI.saveWaypoints(routesToSave);
 
-		//Then
+		// Then
 		assertEquals(routesToSave, response);
     }
 
