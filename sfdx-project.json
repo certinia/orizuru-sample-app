@@ -1,6 +1,9 @@
 {
 	"packageDirectories": [
-		{ "path": "src/apex/force", "default": true }
+		{
+			"path": "src/apex/force",
+			"default": true
+		}
 	],
 	"namespace": "",
 	"sfdcLoginUrl": "https://login.salesforce.com",
