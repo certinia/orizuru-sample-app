@@ -6,7 +6,7 @@
 		"deploy": "orizuru d",
 		"pretest": "eslint src/node",
 		"single-test": "nyc --all=false mocha",
-		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --recursive src/node/spec",
+		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --opts src/node/spec/mocha.opts",
 		"generate-apex-transport": "orizuru s gat src/node/res/schema/public  src/apex/force/main/default/classes"
 	},
 	"repository": {

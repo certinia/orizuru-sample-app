@@ -1,19 +1,19 @@
 {
-	"check-coverage": true,
-	"per-file": true,
-	"lines": 100,
-	"statements": 100,
-	"functions": 100,
+	"all": true,
 	"branches": 100,
+	"cache": true,
+	"check-coverage": true,
+	"functions": 100,
 	"include": [
 		"src/node"
 	],
+	"lines": 100,
+	"per-file": true,
 	"reporter": [
 		"lcov",
 		"html",
 		"text",
 		"text-summary"
 	],
-	"cache": true,
-	"all": true
+	"statements": 100
 }
