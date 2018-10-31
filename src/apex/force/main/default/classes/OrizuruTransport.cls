@@ -35,30 +35,22 @@ public abstract class OrizuruTransport implements ISerializable
 		return Json.serialize(this);
 	}
 
-	public class com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan extends OrizuruTransport // Transport extension for use when sending data to Orizuru Heroku apis
+	public class com_financialforce_orizuru_problem_avro_calculateRoutesForPlan extends OrizuruTransport // Transport extension for use when sending data to Orizuru Heroku apis
 	{
-
 		public String deliveryPlanId { get; set; }
 
-		public com_financialforce_orizuru_problem_avro_CalculateRoutesForPlan(String deliveryPlanId) {
-			
+		public com_financialforce_orizuru_problem_avro_calculateRoutesForPlan(String deliveryPlanId) {
 			this.deliveryPlanId = deliveryPlanId;
-
 		}
-
 	}
 
-	public class com_ffdc_orizuru_problem_avro_createData extends OrizuruTransport // Transport extension for use when sending data to Orizuru Heroku apis
+	public class com_financialforce_orizuru_problem_avro_createData extends OrizuruTransport // Transport extension for use when sending data to Orizuru Heroku apis
 	{
-
 		public String generateDataTaskId { get; set; }
 
-		public com_ffdc_orizuru_problem_avro_createData(String generateDataTaskId) {
-			
+		public com_financialforce_orizuru_problem_avro_createData(String generateDataTaskId) {
 			this.generateDataTaskId = generateDataTaskId;
-
 		}
-
 	}
 
 }
