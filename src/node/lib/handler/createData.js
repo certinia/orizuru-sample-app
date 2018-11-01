@@ -221,20 +221,16 @@ const
 						return result;
 					});
 			});
-	},
-
-	createAllData = ({ message, context }) => {
-		return getConnection({ context, incomingMessage: message })
-			.then(getDataToCreate)
-			.then(createAccounts)
-			.then(createContacts)
-			.then(createWarehouseContacts)
-			.then(createVehicleTypes)
-			.then(createWarehouses)
-			.then(createVehicles)
-			.then(createOrders);
 	};
 
-module.exports = {
-	createData: createAllData
+module.exports = ({ message, context }) => {
+	return getConnection({ context, incomingMessage: message })
+		.then(getDataToCreate)
+		.then(createAccounts)
+		.then(createContacts)
+		.then(createWarehouseContacts)
+		.then(createVehicleTypes)
+		.then(createWarehouses)
+		.then(createVehicles)
+		.then(createOrders);
 };

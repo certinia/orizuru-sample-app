@@ -38,7 +38,7 @@ const
 	connection = require('../../lib/service/salesforce/connection'),
 	writer = require('../../lib/service/salesforce/writer'),
 
-	service = require('../../lib/handler/createData');
+	createData = require('../../lib/handler/createData');
 
 chai.use(sinonChai);
 
@@ -137,7 +137,7 @@ describe('handler/createData', () => {
 					};
 
 				// When
-				await service.createData({ context, message });
+				await createData({ context, message });
 
 				// Then
 				expect(path.resolve).to.have.been.callCount(7);
