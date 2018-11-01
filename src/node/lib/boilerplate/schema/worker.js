@@ -26,18 +26,63 @@
 
 'use strict';
 
-module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
+const
+	path = require('path'),
+	walk = require('../walk'),
+
+	EMPTY = '',
+	INCOMING = '_incoming',
+	OUTGOING = '_outgoing';
+
+/**
+ * @typedef Schema
+ * @property {string} incoming
+ * @property {string} outgoing
+ */
+
+/**
+ * @typedef {Object.<string, Schema>} WorkerSchema
+ */
+
+/**
+ * Gets all the schemas for a worker dyno.
+ *
+ * Worker dyno schemas are identified via the file name suffixes `_incoming` and `_outgoing`.
+ *
+ * An `_incoming` schema is always required.
+ *
+ * An `_outgoing` schema is optional. It is used for publishing onward messages to other worker dynos.
+ *
+ * @returns {WorkerSchema} - The map of names to schemas.
+ */
+function getSchemas() {
+
+	const
+		schemaDirectory = path.resolve(__dirname, '../../schema'),
+		schemas = walk.walk(schemaDirectory, '.avsc');
+
+	return Object.entries(schemas).reduce((results, entry) => {
+
+		const
+			schemaName = entry.shift(),
+			filePath = entry.shift();
+
+		if (schemaName.endsWith(INCOMING)) {
+			const incomingFileName = schemaName.replace(INCOMING, EMPTY);
+			results[incomingFileName] = results[incomingFileName] || {};
+			results[incomingFileName].incoming = filePath;
+		} else if (schemaName.endsWith(OUTGOING)) {
+			const outgoingFileName = schemaName.replace(OUTGOING, EMPTY);
+			results[outgoingFileName] = results[outgoingFileName] || {};
+			results[outgoingFileName].outgoing = filePath;
 		}
-	}]
+
+		return results;
+
+	}, {});
+
+}
+
+module.exports = {
+	getSchemas
 };

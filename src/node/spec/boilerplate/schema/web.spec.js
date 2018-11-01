@@ -26,18 +26,54 @@
 
 'use strict';
 
-module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
-		}
-	}]
-};
+const
+	chai = require('chai'),
+	sinon = require('sinon'),
+
+	path = require('path'),
+
+	walk = require('../../../lib/boilerplate/walk'),
+
+	schemas = require('../../../lib/boilerplate/schema/web'),
+
+	expect = chai.expect,
+
+	testSchemas = {
+		calculateRoutesForPlan: '/Users/Guest/GIT/test/src/node/lib/schema/api/calculateRoutesForPlan.avsc',
+		createData: '/Users/Guest/GIT/test/src/node/lib/schema/api/createData.avsc',
+		createData_incoming: '/Users/Guest/GIT/test/src/node/lib/schema/createData_incoming.avsc',
+		questionBuilder_incoming: '/Users/Guest/GIT/test/src/node/lib/schema/questionBuilder_incoming.avsc',
+		questionBuilder_outgoing: '/Users/Guest/GIT/test/src/node/lib/schema/questionBuilder_outgoing.avsc',
+		resultWriter_incoming: '/Users/Guest/GIT/test/src/node/lib/schema/resultWriter_incoming.avsc'
+	};
+
+describe('boilerplate/schema.js', () => {
+
+	beforeEach(() => {
+		sinon.stub(path, 'resolve');
+		sinon.stub(walk, 'walk').returns(testSchemas);
+	});
+
+	afterEach(() => {
+		sinon.restore();
+	});
+
+	describe('getSchemas', () => {
+
+		it('should return all the web schemas', () => {
+
+			// Given
+			const expectedOutput = {
+				calculateRoutesForPlan: '/Users/Guest/GIT/test/src/node/lib/schema/api/calculateRoutesForPlan.avsc',
+				createData: '/Users/Guest/GIT/test/src/node/lib/schema/api/createData.avsc'
+			};
+
+			// When
+			// Then
+			expect(schemas.getSchemas()).to.eql(expectedOutput);
+
+		});
+
+	});
+
+});

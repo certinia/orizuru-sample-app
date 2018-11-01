@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-2018, FinancialForce.com, inc
+ * Copyright (c) 2018, FinancialForce.com, inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -26,18 +26,41 @@
 
 'use strict';
 
-module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
+const
+	path = require('path'),
+	walk = require('../walk'),
+
+	INCOMING = '_incoming',
+	OUTGOING = '_outgoing';
+
+/**
+ * Gets all the schemas for a web dyno.
+ *
+ * Web dyno schemas are identified as any file without the suffixes `_incoming` and `_outgoing`.
+ * @returns {Object} - Map of schema name to schema object.
+ */
+function getSchemas() {
+
+	const
+		schemaDirectory = path.resolve(__dirname, '../../schema'),
+		schemas = walk.walk(schemaDirectory, '.avsc');
+
+	return Object.entries(schemas).reduce((results, entry) => {
+
+		const
+			schemaName = entry.shift(),
+			filePath = entry.shift();
+
+		if (!schemaName.endsWith(INCOMING) && !schemaName.endsWith(OUTGOING)) {
+			results[schemaName] = filePath;
 		}
-	}]
+
+		return results;
+
+	}, {});
+
+}
+
+module.exports = {
+	getSchemas
 };

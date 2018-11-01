@@ -10,4 +10,4 @@ services:
     ports:
       - "0.0.0.0:5672:5672"
       - "0.0.0.0:15672:15672"
-    container_name: ffdc-orizuru-sample-app-rabbitmq
+    container_name: ffdc-orizuru-rabbitmq

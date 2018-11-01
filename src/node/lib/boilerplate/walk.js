@@ -26,18 +26,52 @@
 
 'use strict';
 
-module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
+const
+	fs = require('fs'),
+	path = require('path');
+
+function readDirectory(dir, opts, fileList) {
+
+	const
+		results = fileList || {},
+		filePaths = fs.readdirSync(dir);
+
+	filePaths.map((filePath) => {
+
+		const
+			fp = dir + path.sep + filePath,
+			stat = fs.lstatSync(fp),
+
+			isFile = stat.isFile(),
+			isDirectory = stat.isDirectory(),
+
+			addToList = !isDirectory && (isFile && filePath.endsWith(opts.extension));
+
+		if (isDirectory) {
+			readDirectory(fp, opts, results);
 		}
-	}]
+
+		if (addToList) {
+			results[path.basename(filePath, opts.extension)] = fp;
+		}
+
+	});
+
+	return results;
+
+}
+
+/**
+ * Get all files in the given directory with the given extension.
+ * @private
+ * @param {string} directory - The directory to scan.
+ * @param {string} extension - The extension for which to search.
+ * @returns {string[]} The list of file paths.
+ */
+function walk(directory, extension) {
+	return readDirectory(directory, { extension });
+}
+
+module.exports = {
+	walk
 };

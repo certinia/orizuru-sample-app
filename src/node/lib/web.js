@@ -27,68 +27,117 @@
 'use strict';
 
 const
-	// get the debugger
-	debug = require('debug-plus')('financialforcedev:orizuru:web'),
 
-	// add modules for including static default route
+	// Get all the environmenr variables
+	CLOUDAMQP_URL = process.env.CLOUDAMQP_URL || 'amqp://localhost',
+	PORT = parseInt(process.env.PORT, 10) || 8080,
+	ADVERTISE_HOST = process.env.ADVERTISE_HOST || 'localhost:8080',
+	ADVERTISE_SCHEME = process.env.ADVERTISE_SCHEME || 'http',
+	JWT_SIGNING_KEY = process.env.JWT_SIGNING_KEY,
+	OPENID_CLIENT_ID = process.env.OPENID_CLIENT_ID,
+	OPENID_HTTP_TIMEOUT = parseInt(process.env.OPENID_HTTP_TIMEOUT, 10),
+	OPENID_ISSUER_URI = process.env.OPENID_ISSUER_URI,
+
+	OPEN_API_EXT = '.json',
+
+	// get utils
+	packageInfo = require('pkginfo'),
+
+	debug = require('debug')('web'),
 	path = require('path'),
-	express = require('express'),
 
-	// get default route
-	DEFAULT_ROUTE = express.static(path.join(__dirname, 'web/static')),
+	openApi = require('@financialforcedev/orizuru-openapi'),
 
-	// get the server
-	{ json, Server } = require('@financialforcedev/orizuru'),
+	{ readSchema } = require('./boilerplate/read'),
 
-	// get the auth
-	auth = require('@financialforcedev/orizuru-auth').middleware,
-
-	// define the environment for authentication
-	authenticationEnv = {
-		jwtSigningKey: process.env.JWT_SIGNING_KEY,
-		openidClientId: process.env.OPENID_CLIENT_ID,
-		openidHTTPTimeout: parseInt(process.env.OPENID_HTTP_TIMEOUT, 10),
-		openidIssuerURI: process.env.OPENID_ISSUER_URI
-	},
-
-	// get the transport
+	// define transport
 	{ Transport } = require('@financialforcedev/orizuru-transport-rabbitmq'),
 
-	// configure the transport
 	transport = new Transport({
-		url: process.env.CLOUDAMQP_URL
+		url: CLOUDAMQP_URL
 	}),
 
-	// get schemas
-	schemaNameToDefinition = require('./web/schema'),
+	// get server
+	{ addStaticRoute, json, Server } = require('@financialforcedev/orizuru'),
 
-	// define the endpoint ( in this case: /api/{schemaname} )
-	apiEndpoint = '/api/',
+	// get default route
+	DEFAULT_ROUTE = addStaticRoute(path.resolve(__dirname, 'web/static')),
 
-	// define middleware (in order of usage)
-	middleware = [json(), auth.tokenValidator(authenticationEnv), auth.grantChecker(authenticationEnv)],
+	// get all files in our 'schemas' directory
+	schemas = require('./boilerplate/schema/web').getSchemas(),
 
-	// create the server
-	server = new Server({
-		port: parseInt(process.env.PORT, 10),
+	// get auth middleware
+	auth = require('@financialforcedev/orizuru-auth'),
+
+	authEnv = {
+		jwtSigningKey: JWT_SIGNING_KEY,
+		openidClientId: OPENID_CLIENT_ID,
+		openidHTTPTimeout: OPENID_HTTP_TIMEOUT,
+		openidIssuerURI: OPENID_ISSUER_URI
+	},
+
+	id = require('./boilerplate/id'),
+
+	middlewares = [json()].concat(
+		auth.middleware.tokenValidator(authEnv),
+		auth.middleware.grantChecker(authEnv)
+	).concat([id.middleware]),
+
+	// read package.json properties
+	getPackageInfo = () => {
+		const resolvedPackage = packageInfo.read(module, __dirname).package;
+
+		return {
+			version: resolvedPackage.version,
+			title: resolvedPackage.name,
+			description: resolvedPackage.description
+		};
+	},
+
+	// add server routes
+	addRoutes = (serverInstance) => {
+
+		// read package.json properties
+		const info = getPackageInfo();
+
+		Object.values(schemas).map((schema) => {
+
+			const
+				fullSchema = readSchema(schema),
+				openApiEndpoint = (`.api.${fullSchema.namespace}.${fullSchema.name}`).replace(/\./g, '/').replace('_', '.') + OPEN_API_EXT;
+
+			// add the route
+			serverInstance.addRoute({
+				endpoint: '/api/',
+				middleware: middlewares,
+				schema: fullSchema
+			});
+
+			// add the Open API handler
+			serverInstance.server.get(openApiEndpoint, openApi.generator.generateV2({
+				info,
+				basePath: 'api.' + fullSchema.namespace.replace(/\./g, '/').replace('_', '.'),
+				host: ADVERTISE_HOST,
+				schemes: [ADVERTISE_SCHEME]
+			}, { [fullSchema.name]: fullSchema }));
+
+		});
+
+	},
+
+	// start the web server and start listening for connections
+	serverInstance = new Server({
+		port: PORT,
 		transport
 	});
 
-// listen and log error events on the authenticator
-auth.emitter.on('denied', debug.error);
+// debug out errors and info
+serverInstance.on(Server.ERROR, debug);
+serverInstance.on(Server.INFO, debug);
 
-server
-	.on(Server.ERROR, debug.error)
-	.on(Server.INFO, debug)
-	.addRoute({
-		endpoint: apiEndpoint,
-		middleware,
-		schema: schemaNameToDefinition.calculateRoutesForPlan
-	})
-	.addRoute({
-		endpoint: apiEndpoint,
-		middleware,
-		schema: schemaNameToDefinition.createData
-	})
-	.use('/', DEFAULT_ROUTE)
-	.listen();
+addRoutes(serverInstance);
+
+serverInstance.use('/', DEFAULT_ROUTE);
+
+// start listening to new connections
+serverInstance.listen();

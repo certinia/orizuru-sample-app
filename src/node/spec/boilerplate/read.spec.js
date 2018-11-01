@@ -26,18 +26,70 @@
 
 'use strict';
 
-module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
-		}
-	}]
-};
+const
+	chai = require('chai'),
+	proxyquire = require('proxyquire').noCallThru(),
+	sinon = require('sinon'),
+
+	fs = require('fs'),
+
+	expect = chai.expect;
+
+describe('boilerplate/read.js', () => {
+
+	let read, mocks;
+
+	beforeEach(() => {
+
+		mocks = {};
+		mocks.requiredFile = {};
+
+		mocks.path = {};
+		mocks.path.resolve = sinon.stub();
+
+		read = proxyquire('../../lib/boilerplate/read', {
+			path: mocks.path,
+			requiredFile: mocks.requiredFile
+		});
+
+		sinon.stub(fs, 'readFileSync');
+
+	});
+
+	afterEach(() => {
+		sinon.restore();
+	});
+
+	describe('readSchema', () => {
+
+		it('should read a schema file to json', () => {
+
+			// Given
+			fs.readFileSync.returns(Buffer.from(JSON.stringify({ a: 'b' })));
+
+			// When
+			// Then
+			expect(read.readSchema('blah')).to.eql({
+				a: 'b'
+			});
+
+		});
+
+	});
+
+	describe('readHandler', () => {
+
+		it('should read a handler file', () => {
+
+			// Given
+			mocks.path.resolve.returns('requiredFile');
+
+			// When
+			// Then
+			expect(read.readHandler('requiredFile')).to.eql(mocks.requiredFile);
+
+		});
+
+	});
+
+});

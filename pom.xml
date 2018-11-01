@@ -182,7 +182,7 @@
 							<goal>schema</goal>
 						</goals>
 						<configuration>
-							<sourceDirectory>${basedir}/src/java/main/resources/schema/avro</sourceDirectory>
+							<sourceDirectory>${basedir}/src/node/lib/schema</sourceDirectory>
 							<outputDirectory>target/generated-sources/avro/</outputDirectory>
 						</configuration>
 					</execution>
@@ -291,6 +291,7 @@
 										<exclude>com.financialforce.routesolver.RouteSolver</exclude>
 										<exclude>com.financialforce.routesolver.problem.avro.*</exclude>
 										<exclude>com.financialforce.routesolver.problem.jsprit.*</exclude>
+										<exclude>com.financialforce.orizuru.problem.avro.*</exclude>
 									</excludes>
 									<limits>
 										<limit>
@@ -320,8 +321,8 @@
 				</executions>
 				<configuration>
 					<additionalparam>-Xdoclint:none</additionalparam>
-					<reportOutputDirectory>docs/java</reportOutputDirectory>
-					<destDir>docs/java</destDir>
+					<reportOutputDirectory>doc/java</reportOutputDirectory>
+					<destDir>doc/java</destDir>
 					<notimestamp>true</notimestamp>
 					<includeDependencySources>true</includeDependencySources>
 					<dependencySourceIncludes>

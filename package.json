@@ -1,48 +1,36 @@
 {
-	"name": "orizuru-sample-app",
-	"version": "0.0.0",
-	"description": "Dreamforce sample app for google maps integration",
-	"scripts": {
-		"deploy": "orizuru d",
-		"pretest": "eslint src/node",
-		"single-test": "nyc --all=false mocha",
-		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --opts src/node/spec/mocha.opts",
-		"generate-apex-transport": "orizuru s gat src/node/res/schema/public  src/apex/force/main/default/classes"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/financialforcedev/orizuru-sample-app"
-	},
-	"keywords": [
-		"dreamforce",
-		"sample",
-		"google",
-		"maps",
-		"api"
-	],
-	"author": "financialforce",
+	"name": "orizuru",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/node/lib/web.js",
+	"author": "FinancialForce",
 	"license": "BSD-3-Clause",
 	"dependencies": {
 		"@financialforcedev/orizuru": "^9.0.0",
 		"@financialforcedev/orizuru-auth": "^5.0.0",
+		"@financialforcedev/orizuru-openapi": "^2.0.3",
 		"@financialforcedev/orizuru-transport-rabbitmq": "^5.0.0",
-		"debug-plus": "^1.2.2",
+		"debug": "^4.1.0",
 		"jsforce": "^1.9.1",
-		"lodash": "^4.17.11"
+		"pkginfo": "^0.4.1",
+		"uuid": "^3.3.2"
 	},
 	"devDependencies": {
 		"@financialforcedev/eslint-config": "^4.0.0",
-		"@financialforcedev/orizuru-tools": "^2.0.4",
 		"chai": "^4.2.0",
-		"chai-as-promised": "^7.1.1",
+		"jsdoc": "^3.5.5",
 		"mocha": "^5.2.0",
 		"nyc": "^13.1.0",
-		"sinon": "^7.1.0",
+		"proxyquire": "^2.1.0",
+		"sinon": "^7.0.0",
 		"sinon-chai": "^3.2.0"
 	},
-	"engines": {
-		"node": "8.12.0",
-		"npm": "6.4.1"
-	},
-	"private": true
+	"scripts": {
+		"doc": "jsdoc -c config/jsdoc.json",
+		"generate-apex-transport": "orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/force/main/default/classes",
+		"lint-fix": "eslint src/node --fix",
+		"orizuru-post-init": "mvn clean install",
+		"pretest": "eslint src/node",
+		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --opts src/node/spec/mocha.opts"
+	}
 }

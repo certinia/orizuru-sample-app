@@ -4,47 +4,20 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Debug web",
+			"name": "Debug web dyno",
 			"args": [
 				"src/node/lib/web.js"
 			],
-			"envFile": "${workspaceRoot}/.env"
+			"envFile": "${workspaceFolder}/.env"
 		},
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Debug deploy",
+			"name": "Debug worker dyno",
 			"args": [
-				"src/node/lib/deploy.js"
+				"src/node/lib/worker.js"
 			],
-			"envFile": "${workspaceRoot}/.env"
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Debug dataCreator",
-			"args": [
-				"src/node/lib/dataCreator.js"
-			],
-			"envFile": "${workspaceRoot}/.env"
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Debug questionBuilder",
-			"args": [
-				"src/node/lib/questionBuilder.js"
-			],
-			"envFile": "${workspaceRoot}/.env"
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Debug resultWriter",
-			"args": [
-				"src/node/lib/resultWriter.js"
-			],
-			"envFile": "${workspaceRoot}/.env"
+			"envFile": "${workspaceFolder}/.env"
 		},
 		{
 			"type": "node",
@@ -61,19 +34,6 @@
 				"${workspaceRoot}/src/node/spec"
 			],
 			"internalConsoleOptions": "openOnSessionStart"
-		},
-		{
-			"name": "Route Solver",
-			"type": "java",
-			"request": "launch",
-			"stopOnEntry": true,
-			"jdkPath": "${env:JAVA_HOME}/bin",
-			"cwd": "${fileDirname}",
-			"mainClass": "com.financialforce.routesolver.RouteSolver",
-			"classpath": [
-				".",
-				"${fileDirname}"
-			]
 		}
 	]
 }

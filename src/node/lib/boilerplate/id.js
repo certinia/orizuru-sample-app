@@ -26,18 +26,25 @@
 
 'use strict';
 
+const uuid = require('uuid');
+
+function middleware(req, res, next) {
+	req.orizuru = req.orizuru || {};
+	req.orizuru.id = uuid.v4();
+	next();
+}
+
+function responseWriter(err, response, orizuru) {
+	if (err) {
+		response.status(400).send(err.message);
+	} else {
+		response.json({
+			id: orizuru.id
+		});
+	}
+}
+
 module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
-		}
-	}]
+	middleware,
+	responseWriter
 };

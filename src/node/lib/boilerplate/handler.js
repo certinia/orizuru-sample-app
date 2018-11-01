@@ -26,18 +26,37 @@
 
 'use strict';
 
+const
+	path = require('path'),
+	walk = require('./walk');
+
+function getHandlers() {
+	const handlerDirectory = path.resolve(__dirname, '../handler');
+	return walk.walk(handlerDirectory, '.js');
+}
+
+function publishHandler({ schemasAndHandler, publisherInstance }) {
+
+	return function (event) {
+
+		return schemasAndHandler.handler(event)
+			.then(result => {
+
+				return publisherInstance.publish({
+					message: {
+						context: event.context,
+						message: result
+					},
+					schema: schemasAndHandler.schema.outgoing
+				});
+
+			});
+
+	};
+
+}
+
 module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
-		}
-	}]
+	getHandlers,
+	publishHandler
 };

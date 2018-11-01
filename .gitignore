@@ -2,9 +2,9 @@
 .classpath
 .env
 .nyc_output
+.orizuru
 .project
 .sfdx
-.orizuru
 
 node_modules
 coverage

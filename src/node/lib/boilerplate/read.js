@@ -26,18 +26,30 @@
 
 'use strict';
 
+const fs = require('fs');
+
+/**
+ * Reads a schema from a given path.
+ * @param {string} path - The file path.
+ * @returns {Object} - The schema object.
+ */
+function readSchema(path) {
+	const
+		buffer = fs.readFileSync(path),
+		contents = buffer.toString();
+	return JSON.parse(contents);
+}
+
+/**
+ * Reads a handler from a given path.
+ * @param {string} path - The file path.
+ * @returns {Function} - The Handler function.
+ */
+function readHandler(path) {
+	return require(path);
+}
+
 module.exports = {
-	'extends': '@financialforcedev',
-	'parserOptions': {
-		"ecmaVersion": 8
-	},
-	'rules': {
-		camelcase: 0
-	},
-	overrides: [{
-		files: ['*.spec.js'],
-		rules: {
-			'one-var': 'off'
-		}
-	}]
+	readSchema,
+	readHandler
 };

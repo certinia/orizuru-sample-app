@@ -1,0 +1,11 @@
+{
+	"namespace": "com.financialforce.orizuru.problem.avro",
+	"name": "calculateRoutesForPlan",
+	"type": "record",
+	"fields": [
+		{
+			"name": "deliveryPlanId",
+			"type": "string"
+		}
+	]
+}
