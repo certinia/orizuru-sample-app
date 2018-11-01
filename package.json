@@ -1,10 +1,18 @@
 {
-	"name": "orizuru",
-	"version": "1.0.0",
+	"name": "orizuru-sample-app",
+	"version": "0.0.0",
 	"description": "",
 	"main": "src/node/lib/web.js",
 	"author": "FinancialForce",
 	"license": "BSD-3-Clause",
+	"scripts": {
+		"doc": "jsdoc -c config/jsdoc.json",
+		"generate-apex-transport": "orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/force/main/default/classes",
+		"lint-fix": "eslint src/node --fix",
+		"orizuru-post-init": "mvn clean install",
+		"pretest": "eslint src/node",
+		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --opts src/node/spec/mocha.opts"
+	},
 	"dependencies": {
 		"@financialforcedev/orizuru": "^9.0.0",
 		"@financialforcedev/orizuru-auth": "^5.0.0",
@@ -25,12 +33,20 @@
 		"sinon": "^7.0.0",
 		"sinon-chai": "^3.2.0"
 	},
-	"scripts": {
-		"doc": "jsdoc -c config/jsdoc.json",
-		"generate-apex-transport": "orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/force/main/default/classes",
-		"lint-fix": "eslint src/node --fix",
-		"orizuru-post-init": "mvn clean install",
-		"pretest": "eslint src/node",
-		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --opts src/node/spec/mocha.opts"
-	}
+	"engines": {
+		"node": "8.12.0",
+		"npm": "6.4.1"
+	},
+	"keywords": [
+		"dreamforce",
+		"sample",
+		"google",
+		"maps",
+		"api"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/financialforcedev/orizuru-sample-app"
+	},
+	"private": true
 }
