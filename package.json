@@ -25,6 +25,7 @@
 	},
 	"devDependencies": {
 		"@financialforcedev/eslint-config": "^4.0.0",
+		"@financialforcedev/orizuru-tools": "^3.0.0",
 		"chai": "^4.2.0",
 		"jsdoc": "^3.5.5",
 		"mocha": "^5.2.0",
