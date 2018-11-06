@@ -1,7 +1,7 @@
 {
 	"packageDirectories": [
 		{
-			"path": "src/apex/force",
+			"path": "src/apex/force-app",
 			"default": true
 		}
 	],
