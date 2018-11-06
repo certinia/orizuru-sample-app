@@ -32,14 +32,14 @@
 		<type>Flexipage</type>
 		<profile>Admin</profile>
 	</profileActionOverrides>
-	<tab>GenerateDataTask__c</tab>
-	<tab>DeliveryPlan__c</tab>
-	<tab>DeliveryRoute__c</tab>
-	<tab>standard-Account</tab>
-	<tab>standard-Contact</tab>
-	<tab>standard-Order</tab>
-	<tab>VehicleType__c</tab>
-	<tab>Vehicle__c</tab>
+	<tabs>GenerateDataTask__c</tabs>
+	<tabs>DeliveryPlan__c</tabs>
+	<tabs>DeliveryRoute__c</tabs>
+	<tabs>standard-Account</tabs>
+	<tabs>standard-Contact</tabs>
+	<tabs>standard-Order</tabs>
+	<tabs>VehicleType__c</tabs>
+	<tabs>Vehicle__c</tabs>
 	<uiType>Lightning</uiType>
 	<utilityBar>OrizuruUtilityBar</utilityBar>
 </CustomApplication>
