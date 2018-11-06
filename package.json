@@ -7,7 +7,7 @@
 	"license": "BSD-3-Clause",
 	"scripts": {
 		"doc": "jsdoc -c config/jsdoc.json",
-		"generate-apex-transport": "orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/force/main/default/classes",
+		"generate-apex-transport": "orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/force-app/main/default/classes",
 		"lint-fix": "eslint src/node --fix",
 		"orizuru-post-init": "mvn clean install",
 		"pretest": "eslint src/node",
