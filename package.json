@@ -14,10 +14,10 @@
 		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --opts src/node/spec/mocha.opts"
 	},
 	"dependencies": {
-		"@financialforcedev/orizuru": "^9.0.0",
+		"@financialforcedev/orizuru": "^9.0.1",
 		"@financialforcedev/orizuru-auth": "^5.0.0",
 		"@financialforcedev/orizuru-openapi": "^2.0.3",
-		"@financialforcedev/orizuru-transport-rabbitmq": "^5.0.0",
+		"@financialforcedev/orizuru-transport-rabbitmq": "^5.0.1",
 		"debug": "^4.1.0",
 		"jsforce": "^1.9.1",
 		"pkginfo": "^0.4.1",
@@ -31,7 +31,7 @@
 		"mocha": "^5.2.0",
 		"nyc": "^13.1.0",
 		"proxyquire": "^2.1.0",
-		"sinon": "^7.0.0",
+		"sinon": "^7.1.1",
 		"sinon-chai": "^3.2.0"
 	},
 	"engines": {
