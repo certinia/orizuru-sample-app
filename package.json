@@ -1,17 +1,42 @@
 {
-	"name": "orizuru",
+	"name": "orizuru-sample-app",
 	"version": "0.0.0",
-	"description": "Dreamforce sample app for google maps integration",
+	"description": "",
+	"main": "src/node/lib/web.js",
+	"author": "FinancialForce",
+	"license": "BSD-3-Clause",
 	"scripts": {
-		"deploy": "orizuru d",
+		"doc": "jsdoc -c config/jsdoc.json",
+		"generate-apex-transport": "orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/force-app/main/default/classes",
+		"lint-fix": "eslint src/node --fix",
+		"orizuru-post-init": "mvn clean install",
 		"pretest": "eslint src/node",
-		"single-test": "nyc --all=false mocha",
-		"test": "nyc mocha --recursive src/node/spec",
-		"generate-apex-transport": "orizuru s gat src/node/res/schema/public  src/apex/force/main/default/classes"
+		"test": "nyc --nycrc-path=src/node/spec/nyc.opts mocha --opts src/node/spec/mocha.opts"
 	},
-	"repository": {
-		"type": "git",
-		"url": "https://stash.dev.financialforce.com/projects/RESEARCH/repos/orizuru/browse"
+	"dependencies": {
+		"@financialforcedev/orizuru": "^9.0.1",
+		"@financialforcedev/orizuru-auth": "^5.0.0",
+		"@financialforcedev/orizuru-openapi": "^2.0.3",
+		"@financialforcedev/orizuru-transport-rabbitmq": "^5.0.1",
+		"debug": "^4.1.0",
+		"jsforce": "^1.9.1",
+		"pkginfo": "^0.4.1",
+		"uuid": "^3.3.2"
+	},
+	"devDependencies": {
+		"@financialforcedev/eslint-config": "^4.0.0",
+		"@financialforcedev/orizuru-tools": "^3.0.0",
+		"chai": "^4.2.0",
+		"jsdoc": "^3.5.5",
+		"mocha": "^5.2.0",
+		"nyc": "^13.1.0",
+		"proxyquire": "^2.1.0",
+		"sinon": "^7.1.1",
+		"sinon-chai": "^3.2.0"
+	},
+	"engines": {
+		"node": "10.13.0",
+		"npm": "6.4.1"
 	},
 	"keywords": [
 		"dreamforce",
@@ -20,51 +45,9 @@
 		"maps",
 		"api"
 	],
-	"author": "financialforce",
-	"license": "BSD-3-Clause",
-	"dependencies": {
-		"@financialforcedev/orizuru": "^5.1.0",
-		"@financialforcedev/orizuru-auth": "^3.0.3",
-		"@financialforcedev/orizuru-transport-rabbitmq": "^3.0.3",
-		"bluebird": "3.5.1",
-		"debug-plus": "1.2.2",
-		"jsforce": "1.9.0",
-		"lodash": "4.17.10"
-	},
-	"devDependencies": {
-		"@financialforcedev/eslint-config": "^4.0.0",
-		"@financialforcedev/orizuru-tools": "^1.0.0",
-		"chai": "4.1.2",
-		"chai-as-promised": "7.1.1",
-		"mocha": "5.2.0",
-		"nyc": "12.0.2",
-		"proxyquire": "2.0.1",
-		"sinon": "6.1.5",
-		"sinon-chai": "3.2.0",
-		"supertest": "3.1.0"
-	},
-	"engines": {
-		"node": "8.11.3",
-		"npm": "6.3.0"
-	},
-	"nyc": {
-		"check-coverage": true,
-		"per-file": true,
-		"lines": 100,
-		"statements": 100,
-		"functions": 100,
-		"branches": 100,
-		"include": [
-			"src/node"
-		],
-		"reporter": [
-			"lcov",
-			"html",
-			"text",
-			"text-summary"
-		],
-		"cache": true,
-		"all": true
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/financialforcedev/orizuru-sample-app"
 	},
 	"private": true
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, FinancialForce.com, inc
+ * Copyright (c) 2017-2018, FinancialForce.com, inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -22,7 +22,7 @@
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **/
+ */
 
 package com.financialforce.routesolver;
 
@@ -46,17 +46,17 @@ public class RouteSolverTest {
 	@Test
 	public void run_startsConsumingTheMessageQueue() throws Exception {
 
-		// given
+		// Given
 		IMessageQueue messageQueue = mock(IMessageQueue.class);
 		Channel channel = mock(Channel.class);
 		when(messageQueue.createChannel()).thenReturn(channel);
 
 		RouteSolver routeSolver = new RouteSolver(messageQueue);
 
-		// when
+		// When
 		routeSolver.run();
 
-		// then
+		// Then
 		verify(messageQueue, times(1)).createChannel();
 		verify(channel, times(1)).queueDeclare(Question.class.getName(), true, false, false, null);
 		verify(messageQueue, times(1)).consume(any(), any(), any());
@@ -66,16 +66,16 @@ public class RouteSolverTest {
 	@Test
 	public void run_catchesMessagingExceptions() throws Exception {
 
-		// given
+		// Given
 		IMessageQueue messageQueue = mock(IMessageQueue.class);
 		when(messageQueue.createChannel()).thenThrow(MessagingException.class);
 
 		RouteSolver routeSolver = new RouteSolver(messageQueue);
 
-		// when
+		// When
 		routeSolver.run();
 
-		// then
+		// Then
 		verify(messageQueue, times(1)).createChannel();
 		verify(messageQueue, never()).consume(any(), any(), any());
 

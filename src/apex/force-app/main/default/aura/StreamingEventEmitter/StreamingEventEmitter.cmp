@@ -1,0 +1,17 @@
+<aura:component>
+
+	<!-- Attributes -->
+	<aura:attribute name="eventSubscription" type="String" required="true" description="Platform event type you want to monitor" />
+	<aura:attribute name="subscription" type="Map"/>
+
+	<!-- Events -->
+	<aura:registerEvent name="streamingEvent" type="c:StreamingEvent" />
+
+	<!-- Handlers -->
+	<aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+	<aura:handler event="aura:locationChange" action="{!c.onLocationChange}"/>
+
+	<!-- Body -->
+	<lightning:empApi aura:id="empApi"/>
+
+</aura:component>

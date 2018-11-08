@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.financialforce.orizuru</groupId>
@@ -12,7 +13,7 @@
 		<java.version>1.8</java.version>
 		<jdkVersion>1.8</jdkVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<avro.version>1.8.1</avro.version>
+		<avro.version>1.8.2</avro.version>
 		<commons.configuration.version>1.9</commons.configuration.version>
 		<jsprit.version>c465cf16da8dddf405573d57442673221a7c2188</jsprit.version>
 		<junit.version>4.12</junit.version>
@@ -20,7 +21,7 @@
 		<maven.compiler.version>3.7.0</maven.compiler.version>
 		<maven.javadoc.version>3.0.0-M1</maven.javadoc.version>
 		<mockito.version>2.8.47</mockito.version>
-		<orizuru.version>0.0.1</orizuru.version>
+		<orizuru.version>0.0.2</orizuru.version>
 		<orizuru.transport.rabbitmq.java.version>0.0.1</orizuru.transport.rabbitmq.java.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<rabbitmq.version>5.0.0</rabbitmq.version>
@@ -181,7 +182,7 @@
 							<goal>schema</goal>
 						</goals>
 						<configuration>
-							<sourceDirectory>${basedir}/src/java/main/resources/schema/avro</sourceDirectory>
+							<sourceDirectory>${basedir}/src/node/lib/schema</sourceDirectory>
 							<outputDirectory>target/generated-sources/avro/</outputDirectory>
 						</configuration>
 					</execution>
@@ -290,6 +291,7 @@
 										<exclude>com.financialforce.routesolver.RouteSolver</exclude>
 										<exclude>com.financialforce.routesolver.problem.avro.*</exclude>
 										<exclude>com.financialforce.routesolver.problem.jsprit.*</exclude>
+										<exclude>com.financialforce.orizuru.problem.avro.*</exclude>
 									</excludes>
 									<limits>
 										<limit>
@@ -319,8 +321,8 @@
 				</executions>
 				<configuration>
 					<additionalparam>-Xdoclint:none</additionalparam>
-					<reportOutputDirectory>docs/java</reportOutputDirectory>
-					<destDir>docs/java</destDir>
+					<reportOutputDirectory>doc/java</reportOutputDirectory>
+					<destDir>doc/java</destDir>
 					<notimestamp>true</notimestamp>
 					<includeDependencySources>true</includeDependencySources>
 					<dependencySourceIncludes>

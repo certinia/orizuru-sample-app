@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, FinancialForce.com, inc
+ * Copyright (c) 2017-2018, FinancialForce.com, inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -22,7 +22,7 @@
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **/
+ */
 
 package com.financialforce.routesolver;
 
@@ -53,21 +53,21 @@ public class QuestionConsumerTest {
 	@Test
 	public void getQueueName_shouldReturnTheQueueName() {
 
-		// given
+		// Given
 		Channel channel = mock(Channel.class);
 		QuestionConsumer consumer = new QuestionConsumer(channel);
 
-		// when
+		// When
 		String queueName = consumer.getQueueName();
 
-		// then
+		// Then
 		assertTrue(queueName.equals(Question.class.getName()));
 	}
 
 	@Test
 	public void handleMessage_shouldReturnTheAnswer() throws Exception {
 
-		// given
+		// Given
 		Question expectedQuestion = new Question();
 		Answer expectedAnswer = new Answer();
 
@@ -78,10 +78,10 @@ public class QuestionConsumerTest {
 		QuestionConsumer consumer = new QuestionConsumer(channel);
 		consumer.setSolver(solver);
 
-		// when
+		// When
 		Answer answer = consumer.handleMessage(null, expectedQuestion);
 
-		// then
+		// Then
 		assertEquals(expectedAnswer, answer);
 		verify(solver, times(1)).solve(expectedQuestion);
 
@@ -90,7 +90,7 @@ public class QuestionConsumerTest {
 	@Test
 	public void handleMessage_shouldThrowANoSolverExceptionForNoSolver() throws Exception {
 
-		// given
+		// Given
 		Question expectedQuestion = new Question();
 
 		Channel channel = mock(Channel.class);
@@ -99,7 +99,7 @@ public class QuestionConsumerTest {
 
 		exception.expect(NoSolverException.class);
 
-		// when
+		// When
 		consumer.handleMessage(null, expectedQuestion);
 
 	}
@@ -107,7 +107,7 @@ public class QuestionConsumerTest {
 	@Test
 	public void handleMessage_shouldThrowASolverExceptionForSolverExceptions() throws Exception {
 
-		// given
+		// Given
 		Question expectedQuestion = new Question();
 
 		ISolver<Question, Answer> solver = mock(ISolver.class);
@@ -119,7 +119,7 @@ public class QuestionConsumerTest {
 
 		exception.expect(SolverException.class);
 
-		// when
+		// When
 		consumer.handleMessage(null, expectedQuestion);
 
 	}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, FinancialForce.com, inc
+ * Copyright (c) 2017-2018, FinancialForce.com, inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -22,7 +22,7 @@
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **/
+ */
 
 package com.financialforce.routesolver.solver;
 
@@ -46,7 +46,7 @@ public class SolverTest {
 	@Test
 	public void solve_shouldCallTheTransformationMethods() throws Exception {
 
-		// given
+		// Given
 		Question expectedQuestion = new Question();
 		Problem expectedProblem = new Problem();
 		VehicleRoutingProblemSolution expectedSolution = new VehicleRoutingProblemSolution(null, 500d);
@@ -71,10 +71,10 @@ public class SolverTest {
 		solver.setSolutionFinder(solutionFinder);
 		solver.setOutputTransform(outputTransform);
 
-		// when
+		// When
 		Answer answer = solver.solve(expectedQuestion);
 
-		// then
+		// Then
 		assertEquals(expectedAnswer, answer);
 		verify(inputTransform, times(1)).transform(expectedQuestion);
 		verify(xmlTransform, times(1)).transform(expectedProblem);

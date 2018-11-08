@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, FinancialForce.com, inc
+ * Copyright (c) 2017-2018, FinancialForce.com, inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -22,7 +22,7 @@
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **/
+ */
 
 package com.financialforce.routesolver.solver;
 
@@ -48,15 +48,15 @@ public class DefaultSolutionFinderTest {
 	@Test
 	public void transform_shouldFindTheSolution() throws Exception {
 
-		// given
+		// Given
 		String inputXml = getFileContents("vehicleRoutingProblem.xml");
 
 		DefaultSolutionFinder solutionFinder = new DefaultSolutionFinder();
 
-		// when
+		// When
 		VehicleRoutingProblemSolution solution = solutionFinder.transform(inputXml);
 
-		// then
+		// Then
 		assertEquals(solution.getRoutes().size(), 9);
 
 	}
@@ -64,14 +64,14 @@ public class DefaultSolutionFinderTest {
 	@Test
 	public void transform_shouldThrowASolverExceptionForNoXml() throws Exception {
 
-		// given
+		// Given
 		DefaultSolutionFinder solutionFinder = new DefaultSolutionFinder();
 
 		// expect
 		exception.expect(SolverException.class);
 		exception.expectMessage("Failed to handle message: Failed to find solution");
 
-		// when
+		// When
 		solutionFinder.transform(null);
 
 	}

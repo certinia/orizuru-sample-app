@@ -1,71 +1,39 @@
 {
 	"version": "0.2.0",
-	"configurations": [{
-		"type": "node",
-		"request": "launch",
-		"name": "Debug web",
-		"runtimeArgs": [
-			"src/node/lib/web.js"
-		],
-		"envFile": "${workspaceRoot}/local.run.properties"
-	}, {
-		"type": "node",
-		"request": "launch",
-		"name": "Debug deploy",
-		"runtimeArgs": [
-			"src/node/lib/deploy.js"
-		],
-		"envFile": "${workspaceRoot}/local.run.properties"
-	}, {
-		"type": "node",
-		"request": "launch",
-		"name": "Debug dataCreator",
-		"runtimeArgs": [
-			"src/node/lib/dataCreator.js"
-		],
-		"envFile": "${workspaceRoot}/local.run.properties"
-	}, {
-		"type": "node",
-		"request": "launch",
-		"name": "Debug questionBuilder",
-		"runtimeArgs": [
-			"src/node/lib/questionBuilder.js"
-		],
-		"envFile": "${workspaceRoot}/local.run.properties"
-	}, {
-		"type": "node",
-		"request": "launch",
-		"name": "Debug resultWriter",
-		"runtimeArgs": [
-			"src/node/lib/resultWriter.js"
-		],
-		"envFile": "${workspaceRoot}/local.run.properties"
-	}, {
-		"type": "node",
-		"request": "launch",
-		"name": "Debug Tests",
-		"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-		"args": [
-			"-u",
-			"tdd",
-			"--timeout",
-			"999999",
-			"--colors",
-			"--recursive",
-			"${workspaceRoot}/src/node/spec"
-		],
-		"internalConsoleOptions": "openOnSessionStart"
-	}, {
-		"name": "Route Solver",
-		"type": "java",
-		"request": "launch",
-		"stopOnEntry": true,
-		"jdkPath": "${env:JAVA_HOME}/bin",
-		"cwd": "${fileDirname}",
-		"mainClass": "com.financialforce.routesolver.RouteSolver",
-		"classpath": [
-			".",
-			"${fileDirname}"
-		]
-	}]
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug web dyno",
+			"args": [
+				"src/node/lib/web.js"
+			],
+			"envFile": "${workspaceFolder}/.env"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug worker dyno",
+			"args": [
+				"src/node/lib/worker.js"
+			],
+			"envFile": "${workspaceFolder}/.env"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug Tests",
+			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+			"args": [
+				"-u",
+				"tdd",
+				"--timeout",
+				"999999",
+				"--colors",
+				"--recursive",
+				"${workspaceRoot}/src/node/spec"
+			],
+			"internalConsoleOptions": "openOnSessionStart"
+		}
+	]
 }

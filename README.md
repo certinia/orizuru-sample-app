@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/financialforcedev/orizuru-sample-app.svg?branch=master)](https://travis-ci.org/financialforcedev/orizuru-sample-app)
 
-<img src="./docs/readme/logo.png" width="200" align="right"/>
+<img src="./docs/readme/logo.svg" width="200" align="right"/>
 
 For [Dreamforce '17](https://www.salesforce.com/dreamforce/), [FinancialForce](https://www.financialforce.com/) has been prototyping a Force-Heroku application with the aim of demonstrating the best features of both [Force.com](https://www.salesforce.com/products/platform/products/force/) and [Heroku](https://www.heroku.com/home).
 

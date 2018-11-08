@@ -1,0 +1,13 @@
+#
+# Copyright (c) 2018 FinancialForce.com, inc.  All rights reserved.
+#
+
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.6.14-management
+    ports:
+      - "0.0.0.0:5672:5672"
+      - "0.0.0.0:15672:15672"
+    container_name: ffdc-orizuru-rabbitmq

@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+
+	<!-- Events -->
+	<aura:registerEvent name="dataGeneratorStepEvent" type="c:DataGeneratorStepEvent" />
+
+	<!-- Handlers -->
+	<aura:handler name="streamingEvent" event="c:StreamingEvent" action="{!c.handleIncomingStreamingMessage}" />
+
+	<!-- Body -->
+	<c:StreamingEventEmitter eventSubscription="DataGeneratorStep__e" />
+
+</aura:component>

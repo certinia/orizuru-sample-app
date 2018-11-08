@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+
+	<!-- Events -->
+	<aura:registerEvent name="routeCalculationStepEvent" type="c:RouteCalculationStepEvent" />
+
+	<!-- Handlers -->
+	<aura:handler name="streamingEvent" event="c:StreamingEvent" action="{!c.handleIncomingStreamingMessage}" />
+
+	<!-- Body -->
+	<c:StreamingEventEmitter eventSubscription="RouteCalculationStep__e" />
+
+</aura:component>

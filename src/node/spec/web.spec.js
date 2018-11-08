@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, FinancialForce.com, inc
+ * Copyright (c) 2017-2018, FinancialForce.com, inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -22,126 +22,218 @@
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **/
+ */
 
 'use strict';
 
 const
-	_ = require('lodash'),
-	express = require('express'),
-	sinon = require('sinon'),
 	chai = require('chai'),
+	sinon = require('sinon'),
 	sinonChai = require('sinon-chai'),
 
-	expect = chai.expect,
+	pkgInfo = require('pkginfo'),
+
+	id = require('../lib/boilerplate/id'),
+	schemas = require('../lib/boilerplate/schema/web'),
+	read = require('../lib/boilerplate/read'),
 
 	orizuru = require('@financialforcedev/orizuru'),
-	orizuruTransportRabbitmq = require('@financialforcedev/orizuru-transport-rabbitmq'),
-	orizuruAuth = require('@financialforcedev/orizuru-auth'),
+	auth = require('@financialforcedev/orizuru-auth'),
+	transport = require('@financialforcedev/orizuru-transport-rabbitmq'),
+	openApi = require('@financialforcedev/orizuru-openapi'),
 
-	webPath = '../lib/web',
-	schemaNameToDefinition = require('../lib/web/schema');
+	expect = chai.expect;
 
 chai.use(sinonChai);
 
 describe('web.js', () => {
 
-	let expressMock, serverMock;
+	let serverStubInstance, transportStubInstance, tokenValidatorStub, grantCheckerStub, idStub, jsonStub;
 
 	beforeEach(() => {
 
-		process.env.CLOUDAMQP_URL = 'cloudamqpUrlTest';
-		process.env.JWT_SIGNING_KEY = 'jwtSigningKeyTest';
-		process.env.OPENID_CLIENT_ID = 'openidClientIdTest';
-		process.env.OPENID_HTTP_TIMEOUT = '4001';
-		process.env.OPENID_ISSUER_URI = 'openidIssuerURITest';
-		process.env.PORT = '5555';
-
-		sinon.stub(express, 'static');
-
-		expressMock = {
-			use: sinon.stub().returnsThis(),
-			listen: sinon.spy()
-		};
-
-		serverMock = {
-			addRoute: sinon.stub(),
-			getServer: sinon.stub().returns(expressMock)
-		};
-
-		serverMock.addRoute.returns(serverMock);
-
-		sinon.stub(orizuru, 'Server').callsFake(function (config) {
-			this.addRoute = serverMock.addRoute;
-			this.getServer = serverMock.getServer;
+		sinon.stub(pkgInfo, 'read').returns({
+			['package']: {
+				description: 'Test Web Server Description',
+				name: 'Test Web Server',
+				version: '1.0.0'
+			}
 		});
 
-		sinon.stub(orizuruAuth.middleware, 'tokenValidator').returns(_.noop);
-		sinon.stub(orizuruAuth.middleware, 'grantChecker').returns(_.noop);
+		sinon.stub(schemas, 'getSchemas').returns({
+			test1: 'api/test1.avsc',
+			test2: 'api/test2.avsc'
+		});
+
+		sinon.stub(read, 'readSchema')
+			.withArgs('api/test1.avsc').returns({ namespace: 'api', name: 'test1' })
+			.withArgs('api/test2.avsc').returns({ namespace: 'api', name: 'test2' });
+
+		sinon.stub(openApi.generator, 'generateV2');
+
+		tokenValidatorStub = sinon.stub();
+		grantCheckerStub = sinon.stub();
+
+		sinon.stub(auth.middleware, 'tokenValidator').returns(tokenValidatorStub);
+		sinon.stub(auth.middleware, 'grantChecker').returns(grantCheckerStub);
+
+		idStub = sinon.stub(id, 'middleware');
+
+		transportStubInstance = sinon.createStubInstance(transport.Transport);
+		sinon.stub(transport, 'Transport').returns(transportStubInstance);
+
+		jsonStub = sinon.stub();
+		sinon.stub(orizuru, 'json').returns(jsonStub);
+
+		serverStubInstance = sinon.createStubInstance(orizuru.Server);
+		serverStubInstance.addRoute.returnsThis();
+		serverStubInstance.listen.returnsThis();
+		serverStubInstance.on.returnsThis();
+		serverStubInstance.use.returnsThis();
+		serverStubInstance.server = sinon.stub();
+		serverStubInstance.server.get = sinon.stub();
+		sinon.stub(orizuru, 'Server').returns(serverStubInstance);
 
 	});
 
 	afterEach(() => {
-		process.env.CLOUDAMQP_URL = null;
-		process.env.JWT_SIGNING_KEY = null;
-		process.env.OPENID_CLIENT_ID = null;
-		process.env.OPENID_HTTP_TIMEOUT = null;
-		process.env.OPENID_ISSUER_URI = null;
-		process.env.PORT = null;
+		delete process.env.ADVERTISE_HOST;
+		delete process.env.ADVERTISE_SCHEME;
+		delete process.env.JWT_SIGNING_KEY;
+		delete process.env.OPENID_CLIENT_ID;
+		delete process.env.OPENID_HTTP_TIMEOUT;
+		delete process.env.OPENID_ISSUER_URI;
+		delete process.env.PORT;
+		delete require.cache[require.resolve('../lib/web')];
 		sinon.restore();
 	});
 
-	it('should build a orizuru web server correctly', () => {
+	it('should create an orizuru server with the default options', () => {
 
-		// given
-		express.static.returns('defaultRoute');
+		// Given
+		// When
+		require('../lib/web');
 
-		// when
-		require(webPath);
+		// Then
+		expect(transport.Transport).to.have.been.calledOnce;
+		expect(transport.Transport).to.have.been.calledWithNew;
+		expect(transport.Transport).to.have.been.calledWithExactly({
+			url: 'amqp://localhost'
+		});
 
-		// then
 		expect(orizuru.Server).to.have.been.calledOnce;
 		expect(orizuru.Server).to.have.been.calledWithNew;
-		expect(orizuru.Server).to.have.been.calledWith({
-			transport: orizuruTransportRabbitmq,
-			transportConfig: {
-				cloudamqpUrl: 'cloudamqpUrlTest'
-			}
+		expect(orizuru.Server).to.have.been.calledWithExactly({
+			port: 8080,
+			transport: transportStubInstance
 		});
 
-		expect(orizuruAuth.middleware.tokenValidator).to.have.been.calledOnce;
-		expect(orizuruAuth.middleware.tokenValidator).to.have.been.calledWith({
-			jwtSigningKey: 'jwtSigningKeyTest',
-			openidClientId: 'openidClientIdTest',
-			openidHTTPTimeout: 4001,
-			openidIssuerURI: 'openidIssuerURITest'
+		expect(serverStubInstance.addRoute).to.have.been.calledTwice;
+		expect(serverStubInstance.addRoute).to.have.calledWithExactly({
+			endpoint: '/api/',
+			middleware: [jsonStub, tokenValidatorStub, grantCheckerStub, idStub],
+			schema: { namespace: 'api', name: 'test1' }
 		});
-		expect(orizuruAuth.middleware.grantChecker).to.have.been.calledOnce;
-		expect(orizuruAuth.middleware.grantChecker).to.have.been.calledWith({
-			jwtSigningKey: 'jwtSigningKeyTest',
-			openidClientId: 'openidClientIdTest',
-			openidHTTPTimeout: 4001,
-			openidIssuerURI: 'openidIssuerURITest'
+		expect(serverStubInstance.addRoute).to.have.calledWithExactly({
+			endpoint: '/api/',
+			middleware: [jsonStub, tokenValidatorStub, grantCheckerStub, idStub],
+			schema: { namespace: 'api', name: 'test2' }
 		});
 
-		expect(serverMock.addRoute).to.have.been.calledOnce;
-		expect(serverMock.addRoute).to.have.been.calledWith({
-			schemaNameToDefinition,
-			apiEndpoint: '/api',
-			middlewares: [_.noop, _.noop]
+		expect(serverStubInstance.server.get).to.have.been.calledTwice;
+		expect(openApi.generator.generateV2).to.have.been.calledTwice;
+		expect(openApi.generator.generateV2).to.have.been.calledWithExactly({
+			basePath: 'api.api',
+			host: 'localhost:8080',
+			info: {
+				description: 'Test Web Server Description',
+				title: 'Test Web Server',
+				version: '1.0.0'
+			},
+			schemes: ['http']
+		}, { test1: { name: 'test1', namespace: 'api' } });
+		expect(openApi.generator.generateV2).to.have.been.calledWithExactly({
+			basePath: 'api.api',
+			host: 'localhost:8080',
+			info: {
+				description: 'Test Web Server Description',
+				title: 'Test Web Server',
+				version: '1.0.0'
+			},
+			schemes: ['http']
+		}, { test2: { name: 'test2', namespace: 'api' } });
+
+		expect(serverStubInstance.listen).to.have.been.calledOnce;
+		expect(serverStubInstance.listen).to.have.been.calledWithExactly();
+
+	});
+
+	it('should create an orizuru server with the specified options', () => {
+
+		// Given
+		process.env.ADVERTISE_HOST = 'testHost';
+		process.env.ADVERTISE_SCHEME = 'testScheme';
+		process.env.CLOUDAMQP_URL = 'testCloudAmqpUrl';
+		process.env.JWT_SIGNING_KEY = 'testJwtSigningKey';
+		process.env.OPENID_CLIENT_ID = 'testOpenIdClientId';
+		process.env.OPENID_HTTP_TIMEOUT = '4000';
+		process.env.OPENID_ISSUER_URI = 'testOpenIdIssuerUri';
+		process.env.PORT = '4242';
+
+		// When
+		require('../lib/web');
+
+		// Then
+		expect(transport.Transport).to.have.been.calledOnce;
+		expect(transport.Transport).to.have.been.calledWithNew;
+		expect(transport.Transport).to.have.been.calledWithExactly({
+			url: 'testCloudAmqpUrl'
 		});
 
-		expect(serverMock.getServer).to.have.been.calledOnce;
-		expect(serverMock.getServer).to.have.been.calledWith();
+		expect(orizuru.Server).to.have.been.calledOnce;
+		expect(orizuru.Server).to.have.been.calledWithNew;
+		expect(orizuru.Server).to.have.been.calledWithExactly({
+			port: 4242,
+			transport: transportStubInstance
+		});
 
-		expect(expressMock.use).to.have.been.calledOnce;
-		expect(expressMock.use).to.have.been.calledWith('/', 'defaultRoute');
+		expect(serverStubInstance.addRoute).to.have.been.calledTwice;
+		expect(serverStubInstance.addRoute).to.have.calledWithExactly({
+			endpoint: '/api/',
+			middleware: [jsonStub, tokenValidatorStub, grantCheckerStub, idStub],
+			schema: { namespace: 'api', name: 'test1' }
+		});
+		expect(serverStubInstance.addRoute).to.have.calledWithExactly({
+			endpoint: '/api/',
+			middleware: [jsonStub, tokenValidatorStub, grantCheckerStub, idStub],
+			schema: { namespace: 'api', name: 'test2' }
+		});
 
-		expect(express.static).to.have.been.calledOnce;
-		expect(express.static).to.have.been.calledWith(sinon.match(/web\/static$/gi));
+		expect(serverStubInstance.server.get).to.have.been.calledTwice;
+		expect(openApi.generator.generateV2).to.have.been.calledTwice;
+		expect(openApi.generator.generateV2).to.have.been.calledWithExactly({
+			basePath: 'api.api',
+			host: 'testHost',
+			info: {
+				description: 'Test Web Server Description',
+				title: 'Test Web Server',
+				version: '1.0.0'
+			},
+			schemes: ['testScheme']
+		}, { test1: { name: 'test1', namespace: 'api' } });
+		expect(openApi.generator.generateV2).to.have.been.calledWithExactly({
+			basePath: 'api.api',
+			host: 'testHost',
+			info: {
+				description: 'Test Web Server Description',
+				title: 'Test Web Server',
+				version: '1.0.0'
+			},
+			schemes: ['testScheme']
+		}, { test2: { name: 'test2', namespace: 'api' } });
 
-		expect(expressMock.listen).to.have.been.calledOnce;
-		expect(expressMock.listen).to.have.been.calledWith('5555');
+		expect(serverStubInstance.listen).to.have.been.calledOnce;
+		expect(serverStubInstance.listen).to.have.been.calledWithExactly();
 
 	});
 

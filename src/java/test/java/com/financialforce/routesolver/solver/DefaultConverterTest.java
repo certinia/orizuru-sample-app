@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, FinancialForce.com, inc
+ * Copyright (c) 2017-2018, FinancialForce.com, inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -22,7 +22,7 @@
  *  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  *  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **/
+ */
 
 package com.financialforce.routesolver.solver;
 
@@ -45,7 +45,7 @@ public class DefaultConverterTest {
 	@Test
 	public void transform_shouldConvertAProblemToXml() throws Exception {
 
-		// given
+		// Given
 		ProblemType problemType = new ProblemType();
 		problemType.setFleetComposition("FINITE");
 
@@ -54,10 +54,10 @@ public class DefaultConverterTest {
 
 		DefaultConverter converter = new DefaultConverter();
 
-		// when
+		// When
 		String xml = converter.transform(problem);
 
-		// then
+		// Then
 		assertEquals(
 				"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><problem><problemType><fleetComposition>FINITE</fleetComposition></problemType></problem>",
 				xml);
@@ -67,7 +67,7 @@ public class DefaultConverterTest {
 	@Test
 	public void transform_shouldThrowAnExceptionForNullXml() throws Exception {
 
-		// given
+		// Given
 		DefaultConverter converter = new DefaultConverter();
 
 		// expect
@@ -75,7 +75,7 @@ public class DefaultConverterTest {
 		exception.expectMessage("Failed to handle message: Failed to convert problem to xml");
 		exception.expectCause(IsInstanceOf.<Throwable>instanceOf(IllegalArgumentException.class));
 
-		// when
+		// When
 		converter.transform(null);
 
 	}

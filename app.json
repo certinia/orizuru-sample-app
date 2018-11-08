@@ -1,34 +1,31 @@
 {
-	"name": "orizuru",
-	"description": "Dreamforce Sample App to demonstrate the Orizuru framework",
+	"name": "Example",
+	"description": "Orizuru Example",
 	"formation": {
 		"web": {
 			"quantity": 1,
 			"size": "standard-1x"
 		},
-		"questionBuilder": {
+		"worker": {
 			"quantity": 1,
 			"size": "standard-1x"
 		},
-		"routeSolver": {
-			"quantity": 1,
-			"size": "performance-l"
-		},
-		"resultWriter": {
-			"quantity": 1,
-			"size": "standard-1x"
-		},
-		"dataCreator": {
+		"route-solver": {
 			"quantity": 1,
 			"size": "standard-1x"
 		}
 	},
-	"addons": [{
-		"plan": "cloudamqp:lemur"
-	}],
-	"buildpacks": [{
-		"url": "heroku/nodejs"
-	}, {
-		"url": "heroku/java"
-	}]
+	"addons": [
+		{
+			"plan": "cloudamqp:lemur"
+		}
+	],
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		},
+		{
+			"url": "heroku/java"
+		}
+	]
 }
